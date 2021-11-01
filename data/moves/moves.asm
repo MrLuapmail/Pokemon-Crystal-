@@ -25,7 +25,7 @@ Moves:
 	move SCRATCH,      EFFECT_NORMAL_HIT,         40, NORMAL,       100, 35,   0
 	move VICEGRIP,     EFFECT_NORMAL_HIT,         55, NORMAL,       100, 30,   0
 	move GUILLOTINE,   EFFECT_OHKO,                0, NORMAL,        30,  5,   0
-	move RAZOR_WIND,   EFFECT_FLY,         		  80, NORMAL,        75, 10,   0
+	move RAZOR_WIND,   EFFECT_FLY,         	      80, NORMAL,        75, 10,   0
 	move SWORDS_DANCE, EFFECT_ATTACK_UP_2,         0, NORMAL,       100, 30,   0
 	move CUT,          EFFECT_NORMAL_HIT,         50, NORMAL,        95, 30,   0
 	move GUST,         EFFECT_GUST,               40, FLYING,       100, 35,   0
@@ -246,7 +246,7 @@ Moves:
 	move IRON_TAIL,    EFFECT_DEFENSE_DOWN_HIT,  100, STEEL,         85, 15,  30
 	move METAL_CLAW,   EFFECT_ATTACK_UP_HIT,     100, STEEL,        100, 10,  10
 	move VITAL_THROW,  EFFECT_ALWAYS_HIT,         70, FIGHTING,     100, 10,   0
-	move MORNING_SUN,  EFFECT_HEAL,         	   0, NORMAL,       100, 10,   0
+	move MORNING_SUN,  EFFECT_HEAL,                0, NORMAL,       100, 10,   0
 	move SYNTHESIS,    EFFECT_HEAL,                0, GRASS,        100, 10,   0
 	move MOONLIGHT,    EFFECT_HEAL,                0, NORMAL,       100, 10,   0
 	move HIDDEN_POWER, EFFECT_HIDDEN_POWER,        1, NORMAL,       100, 15,   0
