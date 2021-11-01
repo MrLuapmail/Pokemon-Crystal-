@@ -28,14 +28,9 @@ jobs:
         run: |
           rm -rf rgbds
 
-      - name: Compare
+      - name: Build
         run: |
-          make DEBUG=1 -j$(nproc) compare
-          if ! git diff-index --quiet HEAD --; then
-            echo 'Uncommitted changes detected:'
-            git diff-index HEAD --
-            return 1
-          fi
+          make -j3
 
       - name: Discord webhook
         if: ${{ github.event_name == 'push' && github.repository_owner == 'pret' }}
