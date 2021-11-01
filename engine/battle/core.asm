@@ -7011,25 +7011,14 @@ GiveExperiencePoints:
 	jp z, .next_mon
 
 ; give stat exp
-	ld hl, MON_STAT_EXP + 1
+	ld hl, 0
 	add hl, bc
 	ld d, h
 	ld e, l
-	ld hl, wEnemyMonBaseStats - 1
+	ld hl, 0
 	push bc
-	ld c, NUM_EXP_STATS
+	ld c, 0 
 .stat_exp_loop
-	inc hl
-	ld a, [de]
-	add [hl]
-	ld [de], a
-	jr nc, .no_carry_stat_exp
-	dec de
-	ld a, [de]
-	inc a
-	jr z, .stat_exp_maxed_out
-	ld [de], a
-	inc de
 
 .no_carry_stat_exp
 	push hl
