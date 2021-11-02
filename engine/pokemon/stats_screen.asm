@@ -570,11 +570,9 @@ StatsScreen_LoadGFX:
 
 .Jumptable:
 ; entries correspond to *_PAGE constants
-	table_width 2, StatsScreen_LoadGFX.Jumptable
 	dw LoadPinkPage
 	dw LoadGreenPage
 	dw LoadBluePage
-	assert_table_length NUM_STAT_PAGES
 
 LoadPinkPage:
 	hlcoord 0, 9
@@ -776,7 +774,7 @@ LoadBluePage:
 	jr nz, .vertical_divider
 	hlcoord 11, 8
 	ld bc, 6
-	predef PrintTempMonStats
+	predef PrintTempMonStatsDVs
 	ret
 
 .PlaceOTInfo:
