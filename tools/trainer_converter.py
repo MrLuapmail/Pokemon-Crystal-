@@ -56,7 +56,6 @@ def main():
 		print('Errored while reading CSV, ending')
 		return
 	
-	print(trainers)
 	groups = {}
 	for trainer in trainers:
 		parts = trainer.split(' ')
