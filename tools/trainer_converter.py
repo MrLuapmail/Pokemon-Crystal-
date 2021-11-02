@@ -51,6 +51,8 @@ def main():
 					t_moves = True
 				pokemon.append({'species':codeify_name(row['Pokemon']), 'level':row['Level'], 'item':codeify_name(row['Item']),
 					'moves':[codeify_name(row['Move 1']), codeify_name(row['Move 2']), codeify_name(row['Move 3']), codeify_name(row['Move 4'])]})
+		if pokemon:
+			trainers[t_name] = {'moves': t_moves, 'items': t_items, 'pokemon': pokemon}
 
 	if errored:
 		print('Errored while reading CSV, ending')
@@ -62,9 +64,11 @@ def main():
 		group = parts[0]
 		id_ = int(parts[2][1:-1])
 		comment = '; ' + parts[1] + ' ' + parts[2]
-		name = parts[3]
+		name = ' '.join(parts[3:])
 		if group not in groups:
 			groups[group] = []
+			if group == 'Rival1':
+				groups['PokemonProf'] = []
 		groups[group].append({'id': id_, 'comment': comment, 'name': name, 'moves': trainers[trainer]['moves'], 'items': trainers[trainer]['items'], 'pokemon': trainers[trainer]['pokemon']})
 	for group in groups:
 		groups[group] = sorted(groups[group], key=lambda x:x['id'])
@@ -85,6 +89,8 @@ Trainers:
 	
 	for group in groups:
 		output += f'{group}Group:\n'
+		if not groups[group]:
+			output += '\n'
 		for trainer in groups[group]:
 			output += f'\t{trainer["comment"]}\n'
 			output += f'\tdb "{trainer["name"]}@", TRAINERTYPE_'
@@ -98,12 +104,15 @@ Trainers:
 				ttype = 'NORMAL'
 			output += f'{ttype}\n'
 			for pokemon in trainer['pokemon']:
-				output += f'\tdb {pokemon["level"]}, {pokemon["species"]}'
+				output += f'\tdb {str(pokemon["level"]).rjust(2)}, {pokemon["species"]}'
 				length = len(pokemon['species'])
+				joiner = f',{" "*(11-length)}'
 				if trainer['items']:
-					output += f',{" "*(11-length)}{pokemon["item"]}'
+					output += f'{joiner}{pokemon["item"]}'
+					length = len(pokemon["item"])
+					joiner = f',{" "*(13-length)}'
 				if trainer['moves']:
-					output += f',{" "*(13-length)}'
+					output += joiner
 					output += ', '.join(pokemon['moves'])
 				output += '\n'
 			output += '\tdb -1 ; end\n\n'
