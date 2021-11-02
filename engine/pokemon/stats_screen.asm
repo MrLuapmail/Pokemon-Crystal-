@@ -617,7 +617,7 @@ LoadPinkPage:
 	call PlaceString
 	call .CalcHPDVs
 	hlcoord 6, 10
-	ld de, wTempMonStatus ; wTempMonStatus is just a buffer, should probably get one with a more fitting name
+	ld de, wTempMonUnused
 	lb bc, 2, 3
 	call PrintNum
 	hlcoord 1, 15
@@ -752,7 +752,7 @@ LoadPinkPage:
 	ld a, [hl]
 	and 1
 	add b
-	ld [wTempMonStatus + 1], a ; ; wTempMonStatus is just a buffer, should probably get one with a more fitting name
+	ld [wTempMonUnused + 1], a
 	pop bc
 	ret
 
