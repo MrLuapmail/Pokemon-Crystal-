@@ -140,8 +140,6 @@ TrainerYoungsterJoey:
 	opentext
 	writetext YoungsterJoeyText_GiveHPUpAfterBattle
 	waitbutton
-	verbosegiveitem HP_UP
-	iffalse .PackFull
 	clearevent EVENT_JOEY_HP_UP
 	setevent EVENT_GOT_HP_UP_FROM_JOEY
 	sjump .NumberAccepted
