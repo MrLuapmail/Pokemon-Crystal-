@@ -54,7 +54,7 @@ def main():
 
 	if errored:
 		print('Errored while reading CSV, ending')
-		#return
+		return
 	
 	print(trainers)
 	groups = {}
