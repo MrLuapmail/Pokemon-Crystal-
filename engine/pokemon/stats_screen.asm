@@ -575,10 +575,10 @@ StatsScreen_LoadGFX:
 	dw LoadBluePage
 
 LoadPinkPage:
-	hlcoord 0, 9
+	hlcoord 0, 8
 	ld b, $0
 	predef DrawPlayerHP
-	hlcoord 8, 9
+	hlcoord 8, 8
 	ld [hl], $41 ; right HP/exp bar end cap
 	ld de, .Status_Type
 	hlcoord 0, 12
@@ -612,6 +612,14 @@ LoadPinkPage:
 	ld de, .OK_str
 	call PlaceString
 .done_status
+	ld de, .HP_DVs
+	hlcoord 0, 10
+	call PlaceString
+	call .CalcHPDVs
+	hlcoord 6, 10
+	ld de, wTempMonStatus ; wTempMonStatus is just a buffer, should probably get one with a more fitting name
+	lb bc, 2, 3
+	call PrintNum
 	hlcoord 1, 15
 	predef PrintMonTypes
 	hlcoord 9, 8
@@ -701,6 +709,9 @@ LoadPinkPage:
 	db   "STATUS/"
 	next "TYPE/@"
 
+.HP_DVs:
+	db "HP DV@"
+
 .OK_str:
 	db "OK @"
 
@@ -715,6 +726,35 @@ LoadPinkPage:
 
 .PkrsStr:
 	db "#RUS@"
+
+.CalcHPDVs:
+	push bc
+	ld hl, wTempMonDVs
+	ld a, [hl]
+	swap a
+	and 1
+	add a
+	add a
+	add a
+	ld b, a
+	ld a, [hli]
+	and 1
+	add a
+	add a
+	add b
+	ld b, a
+	ld a, [hl]
+	swap a
+	and 1
+	add a
+	add b
+	ld b, a
+	ld a, [hl]
+	and 1
+	add b
+	ld [wTempMonStatus + 1], a ; ; wTempMonStatus is just a buffer, should probably get one with a more fitting name
+	pop bc
+	ret
 
 LoadGreenPage:
 	ld de, .Item
