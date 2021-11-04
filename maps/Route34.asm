@@ -346,21 +346,30 @@ TrainerPicnickerGina1:
 	end
 
 OfficerKeithScript:
-	faceplayer
+	trainer OFFICER, KEITH, EVENT_BEAT_OFFICER_KEITH, OfficerKeithSeenText, OfficerKeithWinText, 0, .Script
+;	faceplayer
+;	opentext
+;	checktime NITE
+;	iffalse .NoFight
+;	checkevent EVENT_BEAT_OFFICER_KEITH
+;	iftrue .AfterScript
+;	playmusic MUSIC_OFFICER_ENCOUNTER
+;	writetext OfficerKeithSeenText
+;	waitbutton
+;	closetext
+;	winlosstext OfficerKeithWinText, 0
+;	loadtrainer OFFICER, KEITH
+;	startbattle
+;	reloadmapafterbattle
+;	setevent EVENT_BEAT_OFFICER_KEITH
+;	closetext
+;	end
+
+.Script:
+	endifjustbattled
 	opentext
-	checktime NITE
-	iffalse .NoFight
-	checkevent EVENT_BEAT_OFFICER_KEITH
-	iftrue .AfterScript
-	playmusic MUSIC_OFFICER_ENCOUNTER
-	writetext OfficerKeithSeenText
+	writetext OfficerKeithAfterText
 	waitbutton
-	closetext
-	winlosstext OfficerKeithWinText, 0
-	loadtrainer OFFICER, KEITH
-	startbattle
-	reloadmapafterbattle
-	setevent EVENT_BEAT_OFFICER_KEITH
 	closetext
 	end
 
@@ -779,7 +788,7 @@ Route34_MapEvents:
 	object_event 18, 29, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerYoungsterSamuel, -1
 	object_event  5, 35, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerYoungsterIan, -1
 	object_event 15, 32, SPRITE_LASS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerPicnickerGina1, -1
-	object_event 10, 14, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OfficerKeithScript, -1
+	object_event 10, 14, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, OfficerKeithScript, -1
 	object_event  7,  9, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerPokefanmBrandon, -1
 	object_event 15, 16, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DayCareManScript_Outside, EVENT_DAY_CARE_MAN_ON_ROUTE_34
 	object_event 14, 18, SPRITE_DAY_CARE_MON_1, SPRITEMOVEDATA_POKEMON, 2, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DayCareMon1Script, EVENT_DAY_CARE_MON_1
