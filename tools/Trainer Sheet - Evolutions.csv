@@ -1,0 +1,123 @@
+Unevolved Form,Method,Level,Item,Evolved Form
+Bulbasaur,Level,16,,Ivysaur
+Ivysaur,Level,32,,Venusaur
+Charmander,Level,16,,Charmeleon
+Charmeleon,Level,36,,Charizard
+Squirtle,Level,16,,Wartortle
+Wartortle,Level,36,,Blastoise
+Caterpie,Level,7,,Metapod
+Metapod,Level,10,,Butterfree
+Weedle,Level,7,,Kakuna
+Kakuna,Level,10,,Beedrill
+Pidgey,Level,18,,Pidgeotto
+Pidgeotto,Level,36,,Pidgeot
+Rattata,Level,20,,Raticate
+Spearow,Level,20,,Fearow
+Ekans,Level,22,,Arbok
+Pikachu,Item,,Thunderstone,Raichu
+Sandshrew,Level,22,,Sandslash
+Nidoran F,Level,16,,Nidorina
+Nidorina,Item,,Moon Stone,Nidoqueen
+Nidoran M,Level,16,,Nidorino
+Nidorino,Item,,Moon Stone,Nidoking
+Clefairy,Item,,Moon Stone,Clefable
+Vulpix,Item,,Fire Stone,Ninetales
+Jigglypuff,Item,,Moon Stone,Wigglytuff
+Zubat,Level,22,,Golbat
+Golbat,Happiness,,,Crobat
+Oddish,Level,21,,Gloom
+Gloom,Item,,Leaf Stone,Vileplume
+Gloom,Item,,Sun Stone,Bellossom
+Paras,Level,24,,Parasect
+Venonat,Level,31,,Venomoth
+Diglett,Level,26,,Dugtrio
+Meowth,Level,28,,Persian
+Psyduck,Level,33,,Golduck
+Mankey,Level,28,,Primeape
+Growlithe,Item,,Fire Stone,Arcanine
+Poliwag,Level,25,,Poliwhirl
+Poliwhirl,Item,,Water Stone,Poliwrath
+Poliwhirl,Trade,,Kings Rock,Politoed
+Abra,Level,16,,Kadabra
+Kadabra,Trade,,No Item,Alakazam
+Machop,Level,28,,Machoke
+Machoke,Trade,,No Item,Machamp
+Bellsprout,Level,21,,Weepinbell
+Weepinbell,Item,,Leaf Stone,Victreebel
+Tentacool,Level,30,,Tentacruel
+Geodude,Level,25,,Graveler
+Graveler,Trade,,No Item,Golem
+Ponyta,Level,40,,Rapidash
+Slowpoke,Level,37,,Slowbro
+Slowpoke,Trade,,Kings Rock,Slowking
+Magnemite,Level,30,,Magneton
+Doduo,Level,31,,Dodrio
+Seel,Level,34,,Dewgong
+Grimer,Level,38,,Muk
+Shellder,Item,,Water Stone,Cloyster
+Gastly,Level,25,,Haunter
+Haunter,Trade,,No Item,Gengar
+Onix,Trade,,Metal Coat,Steelix
+Drowzee,Level,26,,Hypno
+Krabby,Level,28,,Kingler
+Voltorb,Level,30,,Electrode
+Exeggcute,Item,,Leaf Stone,Exeggutor
+Cubone,Level,28,,Marowak
+Koffing,Level,35,,Weezing
+Rhyhorn,Level,42,,Rhydon
+Chansey,Happiness,,,Blissey
+Horsea,Level,32,,Seadra
+Seadra,Trade,,Dragon Scale,Kingdra
+Goldeen,Level,33,,Seaking
+Staryu,Item,,Water Stone,Starmie
+Scyther,Trade,,Metal Coat,Scizor
+Magikarp,Level,20,,Gyarados
+Eevee,Item,,Thunderstone,Jolteon
+Eevee,Item,,Water Stone,Vaporeon
+Eevee,Item,,Fire Stone,Flareon
+Eevee,Item,,Sun Stone,Espeon
+Eevee,Item,,Moon Stone,Umbreon
+Porygon,Trade,,Up Grade,Porygon2
+Omanyte,Level,40,,Omastar
+Kabuto,Level,40,,Kabutops
+Dratini,Level,30,,Dragonair
+Dragonair,Level,55,,Dragonite
+Chikorita,Level,16,,Bayleef
+Bayleef,Level,32,,Meganium
+Cyndaquil,Level,14,,Quilava
+Quilava,Level,36,,Typhlosion
+Totodile,Level,18,,Croconaw
+Croconaw,Level,30,,Feraligatr
+Sentret,Level,15,,Furret
+Hoothoot,Level,20,,Noctowl
+Ledyba,Level,18,,Ledian
+Spinarak,Level,22,,Ariados
+Chinchou,Level,27,,Lanturn
+Pichu,Happiness,,,Pikachu
+Cleffa,Happiness,,,Clefairy
+Igglybuff,Happiness,,,Jigglypuff
+Togepi,Happiness,,,Togetic
+Natu,Level,25,,Xatu
+Mareep,Level,15,,Flaaffy
+Flaaffy,Level,30,,Ampharos
+Marill,Level,18,,Azumarill
+Hoppip,Level,18,,Skiploom
+Skiploom,Level,27,,Jumpluff
+Sunkern,Item,,Sun Stone,Sunflora
+Wooper,Level,20,,Quagsire
+Pineco,Level,31,,Forretress
+Snubbull,Level,23,,Granbull
+Teddiursa,Level,30,,Ursaring
+Slugma,Level,38,,Magcargo
+Swinub,Level,33,,Piloswine
+Remoraid,Level,25,,Octillery
+Houndour,Level,24,,Houndoom
+Phanpy,Level,25,,Donphan
+Tyrogue,Hitmonchan,20,,Hitmonchan
+Tyrogue,Hitmonlee,20,,Hitmonlee
+Tyrogue,Hitmontop,20,,Hitmontop
+Smoochum,Level,30,,Jynx
+Elekid,Level,30,,Electabuzz
+Magby,Level,30,,Magmar
+Larvitar,Level,30,,Pupitar
+Pupitar,Level,55,,Tyranitar
