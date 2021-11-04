@@ -570,17 +570,15 @@ StatsScreen_LoadGFX:
 
 .Jumptable:
 ; entries correspond to *_PAGE constants
-	table_width 2, StatsScreen_LoadGFX.Jumptable
 	dw LoadPinkPage
 	dw LoadGreenPage
 	dw LoadBluePage
-	assert_table_length NUM_STAT_PAGES
 
 LoadPinkPage:
-	hlcoord 0, 9
+	hlcoord 0, 8
 	ld b, $0
 	predef DrawPlayerHP
-	hlcoord 8, 9
+	hlcoord 8, 8
 	ld [hl], $41 ; right HP/exp bar end cap
 	ld de, .Status_Type
 	hlcoord 0, 12
@@ -592,7 +590,7 @@ LoadPinkPage:
 	ld a, b
 	and $f0
 	jr z, .NotImmuneToPkrs
-	hlcoord 8, 8
+	hlcoord 8, 9
 	ld [hl], "." ; Pokérus immunity dot
 .NotImmuneToPkrs:
 	ld a, [wMonType]
@@ -614,6 +612,14 @@ LoadPinkPage:
 	ld de, .OK_str
 	call PlaceString
 .done_status
+	ld de, .HP_DVs
+	hlcoord 0, 10
+	call PlaceString
+	call .CalcHPDVs
+	hlcoord 6, 10
+	ld de, wTempMonUnused
+	lb bc, 2, 3
+	call PrintNum
 	hlcoord 1, 15
 	predef PrintMonTypes
 	hlcoord 9, 8
@@ -703,6 +709,9 @@ LoadPinkPage:
 	db   "STATUS/"
 	next "TYPE/@"
 
+.HP_DVs:
+	db "HP DV@"
+
 .OK_str:
 	db "OK @"
 
@@ -717,6 +726,35 @@ LoadPinkPage:
 
 .PkrsStr:
 	db "#RUS@"
+
+.CalcHPDVs:
+	push bc
+	ld hl, wTempMonDVs
+	ld a, [hl]
+	swap a
+	and 1
+	add a
+	add a
+	add a
+	ld b, a
+	ld a, [hli]
+	and 1
+	add a
+	add a
+	add b
+	ld b, a
+	ld a, [hl]
+	swap a
+	and 1
+	add a
+	add b
+	ld b, a
+	ld a, [hl]
+	and 1
+	add b
+	ld [wTempMonUnused + 1], a
+	pop bc
+	ret
 
 LoadGreenPage:
 	ld de, .Item
@@ -776,7 +814,7 @@ LoadBluePage:
 	jr nz, .vertical_divider
 	hlcoord 11, 8
 	ld bc, 6
-	predef PrintTempMonStats
+	predef PrintTempMonStatsDVs
 	ret
 
 .PlaceOTInfo:
