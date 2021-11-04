@@ -108,10 +108,15 @@ Trainers:
 				length = len(pokemon['species'])
 				joiner = f',{" "*(11-length)}'
 				if trainer['items']:
+					if pokemon['item'] == '':
+						pokemon['item'] = 'NO_ITEM'
 					output += f'{joiner}{pokemon["item"]}'
 					length = len(pokemon["item"])
 					joiner = f',{" "*(13-length)}'
 				if trainer['moves']:
+					for i in range(4):
+						if pokemon['moves'][i] == '':
+							pokemon['moves'][i] = 'NO_MOVE'
 					output += joiner
 					output += ', '.join(pokemon['moves'])
 				output += '\n'
