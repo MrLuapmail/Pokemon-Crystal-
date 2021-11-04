@@ -806,7 +806,7 @@ MartSellPriceText:
 	text_end
 
 UnusedDummyString: ; unreferenced
-	db "！ダミー！@" ; "!Dummy!"
+	db "!???!@" ; "!Dummy!"
 
 MartWelcomeText:
 	text_far _MartWelcomeText

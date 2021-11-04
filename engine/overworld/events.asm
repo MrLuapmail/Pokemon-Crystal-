@@ -892,7 +892,7 @@ CountStep:
 	farcall StepHappiness
 
 .skip_happiness
-	; Every 256 steps, offset from the happiness incrementor by 128 steps,
+	; Every 256 steps, offset from the happiness increment or by 128 steps,
 	; decrease the hatch counter of all your eggs until you reach the first
 	; one that is ready to hatch.
 	ld a, [wStepCount]
