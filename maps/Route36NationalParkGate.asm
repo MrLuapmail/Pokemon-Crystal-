@@ -46,8 +46,12 @@ Route36NationalParkGate_MapScripts:
 	checkevent EVENT_WARPED_FROM_ROUTE_35_NATIONAL_PARK_GATE
 	iftrue .Return
 	readvar VAR_WEEKDAY
+	ifequal SUNDAY, .SetContestOfficer
+	ifequal MONDAY, .SetContestOfficer
 	ifequal TUESDAY, .SetContestOfficer
+	ifequal WEDNESDAY, .SetContestOfficer
 	ifequal THURSDAY, .SetContestOfficer
+	ifequal FRIDAY, .SetContestOfficer
 	ifequal SATURDAY, .SetContestOfficer
 	checkflag ENGINE_BUG_CONTEST_TIMER
 	iftrue .SetContestOfficer
@@ -139,11 +143,11 @@ Route36NationalParkGate_MapScripts:
 	end
 
 Route36OfficerScriptContest:
-	readvar VAR_WEEKDAY
-	ifequal SUNDAY, _ContestNotOn
-	ifequal MONDAY, _ContestNotOn
-	ifequal WEDNESDAY, _ContestNotOn
-	ifequal FRIDAY, _ContestNotOn
+;	readvar VAR_WEEKDAY
+;	ifequal SUNDAY, _ContestNotOn
+;	ifequal MONDAY, _ContestNotOn
+;	ifequal WEDNESDAY, _ContestNotOn
+;	ifequal FRIDAY, _ContestNotOn
 	faceplayer
 	opentext
 	checkflag ENGINE_DAILY_BUG_CONTEST
