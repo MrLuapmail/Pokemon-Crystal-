@@ -918,6 +918,12 @@ RandomPhoneMon:
 ; c = mon length
 ; All trainers use two bytes for level and species
 	ld c, 2
+; TRAINERTYPE_DVS uses two more bytes
+	bit TRAINERTYPE_DVS_F, b
+	jr z, .no_dvs
+	inc c
+	inc c
+.no_dvs
 ; TRAINERTYPE_ITEM uses one more byte
 	bit TRAINERTYPE_ITEM_F, b
 	jr z, .no_item
