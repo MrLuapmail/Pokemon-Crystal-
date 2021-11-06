@@ -19,7 +19,7 @@ ItemEffects:
 	dw NoEffect            ; BRIGHTPOWDER
 	dw PokeBallEffect      ; GREAT_BALL
 	dw PokeBallEffect      ; POKE_BALL
-	dw TownMapEffect       ; TOWN_MAP
+	dw RareCandyEffect     ; TOWN_MAP
 	dw BicycleEffect       ; BICYCLE
 	dw EvoStoneEffect      ; MOON_STONE
 	dw StatusHealingEffect ; ANTIDOTE
@@ -1308,7 +1308,7 @@ RareCandyEffect:
 
 	ld a, [hl]
 	cp MAX_LEVEL
-	jp nc, NoEffectMessage
+        jp nc, NoEffectMessage
 
 	inc a
 	ld [hl], a
@@ -1383,7 +1383,7 @@ RareCandyEffect:
 	ld [wForceEvolution], a
 	farcall EvolvePokemon
 
-	jp UseDisposableItem
+        ret
 
 HealPowderEffect:
 	ld b, PARTYMENUACTION_HEALING_ITEM
