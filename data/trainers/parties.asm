@@ -1,14 +1,14 @@
-INCLUDE "data/trainers/party_pointers.asm"
-
-Trainers:
 ; Trainer data structure:
-; - db "NAME@", TRAINERTYPE_* constant
+; - db "NAME@", TRAINERTYPE_* constants |ed together
 ; - 1 to 6 Pokémon:
-;    * for TRAINERTYPE_NORMAL:     db level, species
-;    * for TRAINERTYPE_MOVES:      db level, species, 4 moves
-;    * for TRAINERTYPE_ITEM:       db level, species, item
-;    * for TRAINERTYPE_ITEM_MOVES: db level, species, item, 4 moves
+;    * in all cases:               db level, species
+;    * for TRAINERTYPE_DVS:        db atk|def dv, spd|spc dv
+;    * for TRAINERTYPE_ITEM:       db item
+;    * for TRAINERTYPE_MOVES:      db 4 moves
+;    (TRAINERTYPE_ITEM_MOVES is just TRAINERTYPE_ITEM | TRAINERTYPE_MOVES)
 ; - db -1 ; end
+
+SECTION "Enemy Trainer Parties 1", ROMX
 
 FalknerGroup:
 	; FALKNER (1)
