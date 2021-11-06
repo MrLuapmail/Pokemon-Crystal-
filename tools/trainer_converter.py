@@ -73,17 +73,17 @@ def main():
 	for group in groups:
 		groups[group] = sorted(groups[group], key=lambda x:x['id'])
 
-	output = '''INCLUDE "data/trainers/party_pointers.asm"
-
-Trainers:
-; Trainer data structure:
-; - db "NAME@", TRAINERTYPE_* constant
+	output = '''; Trainer data structure:
+; - db "NAME@", TRAINERTYPE_* constants |ed together
 ; - 1 to 6 Pokémon:
-;    * for TRAINERTYPE_NORMAL:     db level, species
-;    * for TRAINERTYPE_MOVES:      db level, species, 4 moves
-;    * for TRAINERTYPE_ITEM:       db level, species, item
-;    * for TRAINERTYPE_ITEM_MOVES: db level, species, item, 4 moves
+;    * in all cases:               db level, species
+;    * for TRAINERTYPE_DVS:        db atk|def dv, spd|spc dv
+;    * for TRAINERTYPE_ITEM:       db item
+;    * for TRAINERTYPE_MOVES:      db 4 moves
+;    (TRAINERTYPE_ITEM_MOVES is just TRAINERTYPE_ITEM | TRAINERTYPE_MOVES)
 ; - db -1 ; end
+
+SECTION "Enemy Trainer Parties 1", ROMX
 
 '''
 	
@@ -93,18 +93,16 @@ Trainers:
 			output += '\n'
 		for trainer in groups[group]:
 			output += f'\t{trainer["comment"]}\n'
-			output += f'\tdb "{trainer["name"]}@", TRAINERTYPE_'
-			if trainer['moves'] and trainer['items']:
-				ttype = 'ITEM_MOVES'
-			elif trainer['moves']:
-				ttype = 'MOVES'
-			elif trainer['items']:
-				ttype = 'ITEM'
-			else:
-				ttype = 'NORMAL'
-			output += f'{ttype}\n'
+			output += f'\tdb "{trainer["name"]}@", '
+			ttypes = ['TRAINERTYPE_DVS']
+			if trainer['moves']:
+				ttypes.append('TRAINERTYPE_MOVES')
+			if trainer['items']:
+				ttypes.append('TRAINERTYPE_ITEM')
+			output += ' | '.join(ttypes)
+			output += '\n'
 			for pokemon in trainer['pokemon']:
-				output += f'\tdb {str(pokemon["level"]).rjust(2)}, {pokemon["species"]}'
+				output += f'\tdb {str(pokemon["level"]).rjust(2)}, {pokemon["species"]}, PERFECT_DV, PERFECT_DV'
 				length = len(pokemon['species'])
 				joiner = f',{" "*(11-length)}'
 				if trainer['items']:
