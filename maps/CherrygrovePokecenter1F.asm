@@ -20,7 +20,6 @@ CherrygrovePokecenter1FGentlemanScript:
         opentext
         writetext CherrygrovePokecenter1FGentlemanText
         waitbutton
-        giveitem TOWN_MAP
         closetext
         end
 
