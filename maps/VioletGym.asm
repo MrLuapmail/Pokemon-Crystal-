@@ -12,6 +12,8 @@ VioletGym_MapScripts:
 VioletGymFalknerScript:
 	faceplayer
 	opentext
+	checkevent EVENT_GOT_HM05_FLASH
+	iffalse .GoToSproutTower
 	checkevent EVENT_BEAT_FALKNER
 	iftrue .FightDone
 	writetext FalknerIntroText
@@ -42,6 +44,12 @@ VioletGymFalknerScript:
 	iffalse .NoRoomForMudSlap
 	setevent EVENT_GOT_TM31_MUD_SLAP
 	writetext FalknerTMMudSlapText
+	waitbutton
+	closetext
+	end
+	
+.GoToSproutTower:
+	writetext GoToSproutTowerText
 	waitbutton
 	closetext
 	end
@@ -189,6 +197,19 @@ FalknerTMMudSlapText:
 	para "In other words, it"
 	line "is both defensive"
 	cont "and offensive."
+	done
+
+GoToSproutTowerText:
+	text "Were we to battle"
+	line "now you'd end up"
+	cont "dead as a dodo."
+
+	para "Head on over to"
+	line "SPROUT TOWER."
+	
+	para "They take rookies"
+	line "like you under"
+	cont "their wing."
 	done
 
 FalknerFightDoneText:

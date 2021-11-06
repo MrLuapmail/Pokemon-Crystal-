@@ -55,4 +55,6 @@ used_space.png
 # macos files
 .DS_STORE
 
+# CKK
 tools/Trainer\ Sheet\ -\ Learnsets.csv
+tools/Trainer Sheet - Trainers.csv
