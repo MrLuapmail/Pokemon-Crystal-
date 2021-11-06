@@ -1,6 +1,6 @@
-CELADONGAMECORNERPRIZEROOM_TM32_COINS EQU 1500
-CELADONGAMECORNERPRIZEROOM_TM29_COINS EQU 3500
-CELADONGAMECORNERPRIZEROOM_TM15_COINS EQU 7500
+CELADONGAMECORNERPRIZEROOM_TM32_COINS EQU 1
+CELADONGAMECORNERPRIZEROOM_TM29_COINS EQU 1
+CELADONGAMECORNERPRIZEROOM_TM15_COINS EQU 1
 CELADONGAMECORNERPRIZEROOM_PIKACHU_COINS  EQU 2222
 CELADONGAMECORNERPRIZEROOM_PORYGON_COINS  EQU 5555
 CELADONGAMECORNERPRIZEROOM_LARVITAR_COINS EQU 8888
@@ -39,8 +39,6 @@ CeladonPrizeRoom_tmcounterloop:
 	sjump CeladonPrizeRoom_CancelPurchaseScript
 
 .DoubleTeam:
-	checkitem TM_DOUBLE_TEAM
-	iftrue CeladonPrizeRoom_alreadyhavetm
 	checkcoins CELADONGAMECORNERPRIZEROOM_TM32_COINS
 	ifequal HAVE_LESS, CeladonPrizeRoom_notenoughcoins
 	getitemname STRING_BUFFER_3, TM_DOUBLE_TEAM
@@ -52,8 +50,6 @@ CeladonPrizeRoom_tmcounterloop:
 	sjump CeladonPrizeRoom_purchased
 
 .Psychic:
-	checkitem TM_PSYCHIC_M
-	iftrue CeladonPrizeRoom_alreadyhavetm
 	checkcoins CELADONGAMECORNERPRIZEROOM_TM29_COINS
 	ifequal HAVE_LESS, CeladonPrizeRoom_notenoughcoins
 	getitemname STRING_BUFFER_3, TM_PSYCHIC_M
@@ -65,8 +61,6 @@ CeladonPrizeRoom_tmcounterloop:
 	sjump CeladonPrizeRoom_purchased
 
 .HyperBeam:
-	checkitem TM_HYPER_BEAM
-	iftrue CeladonPrizeRoom_alreadyhavetm
 	checkcoins CELADONGAMECORNERPRIZEROOM_TM15_COINS
 	ifequal HAVE_LESS, CeladonPrizeRoom_notenoughcoins
 	getitemname STRING_BUFFER_3, TM_HYPER_BEAM
