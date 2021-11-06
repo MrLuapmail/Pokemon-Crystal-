@@ -108,8 +108,6 @@ TrainerSailorHuey:
 	opentext
 	writetext SailorHueyGiveProteinText
 	waitbutton
-	verbosegiveitem PROTEIN
-	iffalse .PackFull
 	clearevent EVENT_HUEY_PROTEIN
 	setevent EVENT_GOT_PROTEIN_FROM_HUEY
 	sjump .NumberAccepted

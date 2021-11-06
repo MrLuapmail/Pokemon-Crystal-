@@ -71,7 +71,7 @@ RadioTower1FLuckyNumberManScript:
 	playsound SFX_1ST_PLACE
 	waitsfx
 	promptbutton
-	giveitem MASTER_BALL
+	giveitem BERRY
 	iffalse .BagFull
 	itemnotify
 	setflag ENGINE_LUCKY_NUMBER_SHOW
@@ -82,7 +82,7 @@ RadioTower1FLuckyNumberManScript:
 	playsound SFX_2ND_PLACE
 	waitsfx
 	promptbutton
-	giveitem EXP_SHARE
+	giveitem RARE_CANDY
 	iffalse .BagFull
 	itemnotify
 	setflag ENGINE_LUCKY_NUMBER_SHOW
@@ -93,7 +93,7 @@ RadioTower1FLuckyNumberManScript:
 	playsound SFX_3RD_PLACE
 	waitsfx
 	promptbutton
-	giveitem PP_UP
+	giveitem EON_MAIL
 	iffalse .BagFull
 	itemnotify
 	setflag ENGINE_LUCKY_NUMBER_SHOW

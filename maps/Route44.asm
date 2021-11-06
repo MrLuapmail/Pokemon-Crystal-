@@ -96,8 +96,6 @@ TrainerBirdKeeperVance1:
 	opentext
 	writetext BirdKeeperVance2BeatenText
 	waitbutton
-	verbosegiveitem CARBOS
-	iffalse VancePackFull
 	clearevent EVENT_VANCE_CARBOS
 	setevent EVENT_GOT_CARBOS_FROM_VANCE
 	sjump Route44NumberAcceptedM

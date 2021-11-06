@@ -224,8 +224,6 @@ TrainerHikerParry:
 	opentext
 	writetext HikerParryGivesIronText
 	waitbutton
-	verbosegiveitem IRON
-	iffalse HikerParryHasIron
 	clearevent EVENT_PARRY_IRON
 	setevent EVENT_GOT_IRON_FROM_PARRY
 	sjump Route45NumberAcceptedM
