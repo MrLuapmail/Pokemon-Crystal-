@@ -15,6 +15,25 @@ import sys
 def codeify_name(string):
 	return string.upper().replace(' ', '_')
 
+HIDDEN_POWERS = {
+  'FIGHTING': '$CC',
+  'FLYING': '$CD',
+  'POISON': '$CE',
+  'GROUND': '$CF',
+  'ROCK': '$DC',
+  'BUG': '$DD',
+  'GHOST': '$DE',
+  'STEEL': '$DF',
+  'FIRE': '$EC',
+  'WATER': '$ED',
+  'GRASS': '$EE',
+  'ELECTRIC': '$EF',
+  'PSYCHIC': '$FC',
+  'ICE': '$FD',
+  'DRAGON': '$FE',
+  'DARK': 'PERFECT_DV'
+}
+
 def main():
 	path = 'Trainer Sheet - Trainers.csv'
 	o_path = '../data/trainers/parties.asm'
@@ -102,7 +121,19 @@ SECTION "Enemy Trainer Parties 1", ROMX
 			output += ' | '.join(ttypes)
 			output += '\n'
 			for pokemon in trainer['pokemon']:
-				output += f'\tdb {str(pokemon["level"]).rjust(2)}, {pokemon["species"]}, PERFECT_DV, PERFECT_DV'
+				hp_dv = 'PERFECT_DV'
+				for i in range(4):
+					if pokemon['moves'][i] == '':
+						pokemon['moves'][i] = 'NO_MOVE'
+					if pokemon['moves'][i].startswith('HIDDEN_POWER_('):
+						hp_type = re.match('HIDDEN_POWER_\((\w+)\)', pokemon['moves'][i]).group(1)
+						if hp_type not in HIDDEN_POWERS:
+							print(f'Unknown hidden power type {hp_type}')
+						else:
+							hp_dv = HIDDEN_POWERS[hp_type]
+						pokemon['moves'][i] = 'HIDDEN_POWER'
+
+				output += f'\tdb {str(pokemon["level"]).rjust(2)}, {pokemon["species"]}, {hp_dv}, PERFECT_DV'
 				length = len(pokemon['species'])
 				joiner = f',{" "*(11-length)}'
 				if trainer['items']:
@@ -112,9 +143,6 @@ SECTION "Enemy Trainer Parties 1", ROMX
 					length = len(pokemon["item"])
 					joiner = f',{" "*(13-length)}'
 				if trainer['moves']:
-					for i in range(4):
-						if pokemon['moves'][i] == '':
-							pokemon['moves'][i] = 'NO_MOVE'
 					output += joiner
 					output += ', '.join(pokemon['moves'])
 				output += '\n'
