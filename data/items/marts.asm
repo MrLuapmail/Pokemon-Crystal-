@@ -117,7 +117,7 @@ MartGoldenrod3F:
 	db 7 ; # items
 	db FIRE_STONE
 	db WATER_STONE
-	db THUNDER_STONE
+	db THUNDERSTONE
 	db LEAF_STONE
 	db MOON_STONE
 	db SUN_STONE

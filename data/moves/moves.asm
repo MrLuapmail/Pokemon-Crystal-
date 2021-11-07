@@ -155,7 +155,7 @@ Moves:
 	move BARRAGE,      EFFECT_MULTI_HIT,          15, NORMAL,        85, 20,   0
 	move LEECH_LIFE,   EFFECT_LEECH_HIT,          20, BUG,          100, 15,   0
 	move LOVELY_KISS,  EFFECT_SLEEP,               0, NORMAL,        90, 10,   0
-	move SKY_ATTACK,   EFFECT_FLINCH_HIT,        120, FLYING,        90,  5, 9.8
+	move SKY_ATTACK,   EFFECT_FLINCH_HIT,        120, FLYING,        90,  5,  10
 	move TRANSFORM,    EFFECT_TRANSFORM,           0, NORMAL,       100, 10,   0
 	move BUBBLE,       EFFECT_SPEED_DOWN_HIT,     20, WATER,        100, 30,  10
 	move DIZZY_PUNCH,  EFFECT_CONFUSE_HIT,        70, NORMAL,       100, 10,  20
@@ -189,7 +189,7 @@ Moves:
 	move CURSE,        EFFECT_CURSE,               0, CURSE_TYPE,   100, 10,   0
 	move FLAIL,        EFFECT_REVERSAL,            1, NORMAL,       100, 15,   0
 	move CONVERSION2,  EFFECT_CONVERSION2,         0, NORMAL,       100, 30,   0
-	move AEROBLAST,    EFFECT_TRI_ATTACK,        120, FLYING,       100,  5,6.67
+	move AEROBLAST,    EFFECT_TRI_ATTACK,        120, FLYING,       100,  5,   7
 	move COTTON_SPORE, EFFECT_SPEED_DOWN_2,        0, GRASS,        100, 15,   0
 	move REVERSAL,     EFFECT_REVERSAL,            1, FIGHTING,     100, 15,   0
 	move SPITE,        EFFECT_SPITE,               0, GHOST,        100, 10,   0
