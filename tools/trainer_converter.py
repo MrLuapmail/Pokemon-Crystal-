@@ -15,6 +15,25 @@ import sys
 def codeify_name(string):
 	return string.upper().replace(' ', '_')
 
+HIDDEN_POWERS = {
+  'FIGHTING': '$CC',
+  'FLYING': '$CD',
+  'POISON': '$CE',
+  'GROUND': '$CF',
+  'ROCK': '$DC',
+  'BUG': '$DD',
+  'GHOST': '$DE',
+  'STEEL': '$DF',
+  'FIRE': '$EC',
+  'WATER': '$ED',
+  'GRASS': '$EE',
+  'ELECTRIC': '$EF',
+  'PSYCHIC': '$FC',
+  'ICE': '$FD',
+  'DRAGON': '$FE',
+  'DARK': 'PERFECT_DV'
+}
+
 def main():
 	path = 'Trainer Sheet - Trainers.csv'
 	o_path = '../data/trainers/parties.asm'
@@ -73,17 +92,17 @@ def main():
 	for group in groups:
 		groups[group] = sorted(groups[group], key=lambda x:x['id'])
 
-	output = '''INCLUDE "data/trainers/party_pointers.asm"
-
-Trainers:
-; Trainer data structure:
-; - db "NAME@", TRAINERTYPE_* constant
+	output = '''; Trainer data structure:
+; - db "NAME@", TRAINERTYPE_* constants |ed together
 ; - 1 to 6 Pokémon:
-;    * for TRAINERTYPE_NORMAL:     db level, species
-;    * for TRAINERTYPE_MOVES:      db level, species, 4 moves
-;    * for TRAINERTYPE_ITEM:       db level, species, item
-;    * for TRAINERTYPE_ITEM_MOVES: db level, species, item, 4 moves
+;    * in all cases:               db level, species
+;    * for TRAINERTYPE_DVS:        db atk|def dv, spd|spc dv
+;    * for TRAINERTYPE_ITEM:       db item
+;    * for TRAINERTYPE_MOVES:      db 4 moves
+;    (TRAINERTYPE_ITEM_MOVES is just TRAINERTYPE_ITEM | TRAINERTYPE_MOVES)
 ; - db -1 ; end
+
+SECTION "Enemy Trainer Parties 1", ROMX
 
 '''
 	
@@ -93,18 +112,28 @@ Trainers:
 			output += '\n'
 		for trainer in groups[group]:
 			output += f'\t{trainer["comment"]}\n'
-			output += f'\tdb "{trainer["name"]}@", TRAINERTYPE_'
-			if trainer['moves'] and trainer['items']:
-				ttype = 'ITEM_MOVES'
-			elif trainer['moves']:
-				ttype = 'MOVES'
-			elif trainer['items']:
-				ttype = 'ITEM'
-			else:
-				ttype = 'NORMAL'
-			output += f'{ttype}\n'
+			output += f'\tdb "{trainer["name"]}@", '
+			ttypes = ['TRAINERTYPE_DVS']
+			if trainer['moves']:
+				ttypes.append('TRAINERTYPE_MOVES')
+			if trainer['items']:
+				ttypes.append('TRAINERTYPE_ITEM')
+			output += ' | '.join(ttypes)
+			output += '\n'
 			for pokemon in trainer['pokemon']:
-				output += f'\tdb {str(pokemon["level"]).rjust(2)}, {pokemon["species"]}'
+				hp_dv = 'PERFECT_DV'
+				for i in range(4):
+					if pokemon['moves'][i] == '':
+						pokemon['moves'][i] = 'NO_MOVE'
+					if pokemon['moves'][i].startswith('HIDDEN_POWER_('):
+						hp_type = re.match('HIDDEN_POWER_\((\w+)\)', pokemon['moves'][i]).group(1)
+						if hp_type not in HIDDEN_POWERS:
+							print(f'Unknown hidden power type {hp_type}')
+						else:
+							hp_dv = HIDDEN_POWERS[hp_type]
+						pokemon['moves'][i] = 'HIDDEN_POWER'
+
+				output += f'\tdb {str(pokemon["level"]).rjust(2)}, {pokemon["species"]}, {hp_dv}, PERFECT_DV'
 				length = len(pokemon['species'])
 				joiner = f',{" "*(11-length)}'
 				if trainer['items']:
@@ -114,9 +143,6 @@ Trainers:
 					length = len(pokemon["item"])
 					joiner = f',{" "*(13-length)}'
 				if trainer['moves']:
-					for i in range(4):
-						if pokemon['moves'][i] == '':
-							pokemon['moves'][i] = 'NO_MOVE'
 					output += joiner
 					output += ', '.join(pokemon['moves'])
 				output += '\n'
