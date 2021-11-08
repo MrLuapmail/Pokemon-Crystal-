@@ -55,7 +55,7 @@ OlivineCafeStrengthSailorText_GotStrength:
 	done
 
 OlivineCafeFishingGuruText:
-	text "OLIVINE CAFE's"
+	text "CIANWOOD CAFE's"
 	line "menu is chock full"
 
 	para "of hearty fare for"
@@ -67,7 +67,7 @@ OlivineCafeSailorText:
 	line "into this town, I"
 
 	para "always visit the"
-	line "OLIVINE CAFE."
+	line "CIANWOOD CAFE."
 
 	para "Everything on the"
 	line "menu makes me feel"
@@ -80,8 +80,8 @@ OlivineCafe_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
-	warp_event  2,  7, OLIVINE_CITY, 7
-	warp_event  3,  7, OLIVINE_CITY, 7
+	warp_event  2,  7, CIANWOOD_CITY, 5
+	warp_event  3,  7, CIANWOOD_CITY, 5
 
 	def_coord_events
 

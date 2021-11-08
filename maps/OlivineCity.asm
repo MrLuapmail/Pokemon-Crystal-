@@ -296,7 +296,7 @@ OlivineCity_MapEvents:
 	warp_event 15,  9, OLIVINE_HOUSE_BETA, 1 ; inaccessible
 	warp_event 29, 11, OLIVINE_PUNISHMENT_SPEECH_HOUSE, 1
 	warp_event 15, 15, OLIVINE_GOOD_ROD_HOUSE, 1
-	warp_event  7, 21, OLIVINE_CAFE, 1
+	warp_event  7, 21, CIANWOOD_PHOTO_STUDIO, 1
 	warp_event 19, 17, OLIVINE_MART, 2
 	warp_event 29, 27, OLIVINE_LIGHTHOUSE_1F, 1
 	warp_event 19, 27, OLIVINE_PORT_PASSAGE, 1
