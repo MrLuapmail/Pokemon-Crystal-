@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Usage: python3 learner_importer.py -L="Trainer Sheet - Learnsets.csv" -E="Trainer Sheet - Evolutions.csv" -O="../data/pokemon/evos_attacks.asm"
+Usage: python3 learnset_importer.py -L="Trainer Sheet - Learnsets.csv" -E="Trainer Sheet - Evolutions.csv" -O="../data/pokemon/evos_attacks.asm"
 
 Rips the contents of a provided csv containing trainer data and produces code.
 If -L is given, use that as the learnsets csv instead of the default
@@ -16,8 +16,8 @@ import sys
 from pokemon_data import *
 
 def main():
-  learn_path = 'Trainer Sheet - Learnsets.csv'
-  evo_path = 'Trainer Sheet - Evolutions.csv'
+  learn_path = 'Mastersheet - Learnsets.csv'
+  evo_path = 'Mastersheet - Evolutions.csv'
   out_path = '../data/pokemon/evos_attacks.asm'
   for arg in sys.argv[1:]:
     if arg.startswith('-O='):

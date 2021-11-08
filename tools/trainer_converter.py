@@ -35,7 +35,7 @@ HIDDEN_POWERS = {
 }
 
 def main():
-	path = 'Trainer Sheet - Trainers.csv'
+	path = 'Mastersheet - Trainers.csv'
 	o_path = '../data/trainers/parties.asm'
 	for arg in sys.argv[1:]:
 		if arg.startswith('-o='):
