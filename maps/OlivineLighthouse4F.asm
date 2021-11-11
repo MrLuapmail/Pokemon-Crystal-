@@ -83,7 +83,7 @@ OlivineLighthouse4F_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
-	warp_event 13,  3, OLIVINE_LIGHTHOUSE_3F, 1
+	warp_event 13,  7, OLIVINE_LIGHTHOUSE_3F, 1
 	warp_event  3,  5, OLIVINE_LIGHTHOUSE_5F, 2
 	warp_event  9,  7, OLIVINE_LIGHTHOUSE_5F, 3
 	warp_event  9,  5, OLIVINE_LIGHTHOUSE_3F, 3
