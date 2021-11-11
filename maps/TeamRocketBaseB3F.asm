@@ -203,10 +203,10 @@ TeamRocketBaseB3FOathScript:
 	jumpstd TeamRocketOathScript
 
 TeamRocketBaseB3FProtein:
-	itemball PROTEIN
+	itemball SLOWPOKETAIL
 
 TeamRocketBaseB3FXSpecial:
-	itemball X_SPECIAL
+	itemball NUGGET
 
 TeamRocketBaseB3FFullHeal:
 	itemball FULL_HEAL
