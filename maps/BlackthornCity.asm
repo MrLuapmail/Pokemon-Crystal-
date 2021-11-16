@@ -14,7 +14,7 @@ BlackthornCity_MapScripts:
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, .FlyPoint
-	callback MAPCALLBACK_OBJECTS, .Santos
+	callback MAPCALLBACK_OBJECTS, .SantosAppears
 
 .FlyPoint:
 	setflag ENGINE_FLYPOINT_BLACKTHORN
