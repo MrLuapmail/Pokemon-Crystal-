@@ -193,7 +193,7 @@ VermilionPortSuperNerdScript:
 	end
 
 VermilionPortHiddenIron:
-	hiddenitem IRON, EVENT_VERMILION_PORT_HIDDEN_IRON
+	hiddenitem NUGGET, EVENT_VERMILION_PORT_HIDDEN_IRON
 
 VermilionPortEnterFastShipMovement:
 	step DOWN
