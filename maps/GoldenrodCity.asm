@@ -36,17 +36,16 @@ GoldenrodCity_MapScripts:
 	iffalse .MoveTutorDone
 	checkitem COIN_CASE
 	iffalse .MoveTutorDisappear
-	readvar VAR_WEEKDAY
-	ifequal WEDNESDAY, .MoveTutorAppear
-	ifequal SATURDAY, .MoveTutorAppear
-.MoveTutorDisappear:
-	disappear GOLDENRODCITY_MOVETUTOR
-	endcallback
-
 .MoveTutorAppear:
 	checkflag ENGINE_DAILY_MOVE_TUTOR
 	iftrue .MoveTutorDone
 	appear GOLDENRODCITY_MOVETUTOR
+	endcallback
+
+.MoveTutorDisappear:
+	disappear GOLDENRODCITY_MOVETUTOR
+	endcallback
+
 .MoveTutorDone:
 	endcallback
 
