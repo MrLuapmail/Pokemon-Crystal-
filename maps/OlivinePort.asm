@@ -82,12 +82,6 @@ OlivinePortWalkUpToShipScript:
 	opentext
 	checkevent EVENT_FAST_SHIP_FIRST_TIME
 	iffalse .FirstTime
-	readvar VAR_WEEKDAY
-	ifequal SUNDAY, .NextShipMonday
-	ifequal SATURDAY, .NextShipMonday
-	ifequal TUESDAY, .NextShipFriday
-	ifequal WEDNESDAY, .NextShipFriday
-	ifequal THURSDAY, .NextShipFriday
 .FirstTime:
 	writetext OlivinePortAskBoardText
 	yesorno
@@ -105,20 +99,6 @@ OlivinePortWalkUpToShipScript:
 
 .NoTicket:
 	writetext OlivinePortNoTicketText
-	waitbutton
-	closetext
-	applymovement PLAYER, OlivinePortCannotEnterFastShipMovement
-	end
-
-.NextShipMonday:
-	writetext OlivinePortMondayShipText
-	waitbutton
-	closetext
-	applymovement PLAYER, OlivinePortCannotEnterFastShipMovement
-	end
-
-.NextShipFriday:
-	writetext OlivinePortFridayShipText
 	waitbutton
 	closetext
 	applymovement PLAYER, OlivinePortCannotEnterFastShipMovement
@@ -147,12 +127,6 @@ OlivinePortSailorAfterHOFScript:
 	iftrue OlivinePortAlreadyRodeScript
 	checkevent EVENT_FAST_SHIP_FIRST_TIME
 	iffalse .FirstTime
-	readvar VAR_WEEKDAY
-	ifequal SUNDAY, .NextShipMonday
-	ifequal SATURDAY, .NextShipMonday
-	ifequal TUESDAY, .NextShipFriday
-	ifequal WEDNESDAY, .NextShipFriday
-	ifequal THURSDAY, .NextShipFriday
 .FirstTime:
 	writetext OlivinePortAskBoardText
 	yesorno
@@ -176,18 +150,6 @@ OlivinePortSailorAfterHOFScript:
 
 .NoTicket:
 	writetext OlivinePortNoTicketText
-	waitbutton
-	closetext
-	end
-
-.NextShipMonday:
-	writetext OlivinePortMondayShipText
-	waitbutton
-	closetext
-	end
-
-.NextShipFriday:
-	writetext OlivinePortFridayShipText
 	waitbutton
 	closetext
 	end
