@@ -15,20 +15,18 @@ UnionCaveB2F_MapScripts:
 .Lapras:
 	checkflag ENGINE_UNION_CAVE_LAPRAS
 	iftrue .NoAppear
-	readvar VAR_WEEKDAY
-	ifequal FRIDAY, .Appear
-.NoAppear:
-	disappear UNIONCAVEB2F_LAPRAS
-	endcallback
-
 .Appear:
 	appear UNIONCAVEB2F_LAPRAS
+	endcallback
+
+.NoAppear:
+	disappear UNIONCAVEB2F_LAPRAS
 	endcallback
 
 UnionCaveLapras:
 	faceplayer
 	cry LAPRAS
-	loadwildmon LAPRAS, 20
+	loadwildmon LAPRAS, 90
 	startbattle
 	disappear UNIONCAVEB2F_LAPRAS
 	setflag ENGINE_UNION_CAVE_LAPRAS
