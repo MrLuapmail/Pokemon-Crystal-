@@ -2951,14 +2951,56 @@ AI_Aggressive:
 	push hl
 	push de
 	push bc
+	ld a, [de]
 	call AIGetEnemyMove
 	ld a, [wEnemyMoveStruct + MOVE_POWER]
 	and a
 	jr z, .nodamage
 	call AIDamageCalc
+	pop de
+	push de
+	ld a, [de]
+	cp PURSUIT 
+	call z, PursuitDamage
 	pop bc
 	pop de
 	pop hl
+	
+	push hl
+	push de
+	push bc
+	call AIAggessiveCheckTurnsToKOPlayer
+	pop bc
+	pop de
+	pop hl
+	
+; Encourage moves that can OHKO and have good accuracy.
+	cp 1
+	jr nz, .check_damage
+	
+	ld a, [wEnemyMoveStruct + MOVE_ACC]
+	cp 74 percent
+	jr c, .check_damage
+	
+	dec [hl]
+	
+; Encourage moves that can OHKO and have perfect accuracy.
+
+	ld a, [wEnemyMoveStruct + MOVE_ACC]
+	cp 99 percent + 1
+	jr c, .check_damage
+	
+	dec [hl]
+	
+; Encourage moves that have no recoil.
+	
+	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
+	cp EFFECT_RECOIL_HIT
+	jr z, .check_damage
+	
+	dec [hl]
+	
+.check_damage
 
 ; Update current move if damage is highest so far
 	ld a, [wCurDamage + 1]
@@ -3005,13 +3047,6 @@ AI_Aggressive:
 
 	call AIGetEnemyMove
 
-; Ignore this move if its power is 0 or 1.
-; Moves such as Seismic Toss, Hidden Power,
-; Counter and Fissure have a base power of 1.
-	ld a, [wEnemyMoveStruct + MOVE_POWER]
-	cp 2
-	jr c, .checkmove2
-
 ; Ignore this move if it is reckless.
 	push hl
 	push de
@@ -3025,6 +3060,17 @@ AI_Aggressive:
 	pop hl
 	jr c, .checkmove2
 
+	
+; Ignore this move if it doesn't deal damage and is EFFECT_SPLASH.
+	ld a, [wEnemyMoveStruct + MOVE_POWER]
+	and a
+	jr nz, .discourage
+
+	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
+	cp EFFECT_SPLASH
+	jr nz, .checkmove2
+
+.discourage
 ; If we made it this far, discourage this move.
 	inc [hl]
 	jr .checkmove2
@@ -3042,13 +3088,86 @@ AIDamageCalc:
 	ld hl, ConstantDamageEffects
 	call IsInArray
 	jr nc, .notconstant
-	callfar BattleCommand_ConstantDamage
+	farcall BattleCommand_ConstantDamage
 	ret
 
 .notconstant
-	callfar EnemyAttackDamage
-	callfar BattleCommand_DamageCalc
-	callfar BattleCommand_Stab
+	farcall EnemyAttackDamage
+	farcall BattleCommand_DamageCalc
+	farcall BattleCommand_Stab
+	farcall BattleCommand_DamageVariation
+	ret
+	
+PursuitDamage:
+	call AICheckPlayerQuarterHP
+	jr nc, .calc_pursuit
+	
+	ld a, [wCurDamage]
+	ld d, a
+	ld a, [wCurDamage + 1]
+	ld e, a
+	
+	push hl
+	farcall CheckPlayerMoveTypeMatchups
+	pop hl 
+	ld a, [wEnemyAISwitchScore]
+	cp BASE_AI_SWITCH_SCORE + 1
+	jr c, .return
+
+	ld a, d
+	ld [wCurDamage], a
+	ld a, e
+	ld [wCurDamage + 1], a
+	
+.calc_pursuit
+	call Random
+	cp 50 percent + 1
+	ret c
+	ld hl, wCurDamage + 1
+	sla [hl]
+	dec hl
+	rl [hl]
+	ret nc
+
+	ld a, $ff
+	ld [hli], a
+	ld [hl], a
+	ret
+	
+.return
+	ld a, d
+	ld [wCurDamage], a
+	ld a, e
+	ld [wCurDamage + 1], a
+	ret
+	
+AIAggessiveCheckTurnsToKOPlayer:
+	ld hl, wCurDamage
+	ld a, [hli]
+	cpl
+	ld e, a
+	ld a, [hl]
+	cpl
+	ld d, a
+	and e
+	cp -1
+	jr z, .max_turns
+	inc de
+	ld hl, wBattleMonHP
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	xor a
+.loop
+	inc a
+	add hl, de
+	jr nc, .less_than_six_turns
+	cp 6
+	jr c, .loop
+	jr .max_turns
+.max_turns
+	ld a, -1
+.less_than_six_turns
 	ret
 
 INCLUDE "data/battle/ai/constant_damage_effects.asm"
