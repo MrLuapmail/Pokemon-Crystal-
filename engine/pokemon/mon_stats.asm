@@ -82,6 +82,121 @@ DrawHP:
 	pop de
 	ret
 
+PrintTempMonStatsDVs:
+; Print wTempMon's stats at hl, with spacing bc.
+	push bc
+	push hl
+	ld de, .StatNames
+	call PlaceString
+	pop hl
+	pop bc
+	add hl, bc
+	ld bc, SCREEN_WIDTH - 6
+	add hl, bc
+	 ; Attack DVs and stat
+	ld de, wTempMonAttack + 1
+	ld a, [de]
+	push af
+	ld a, [wTempMonDVs]
+    and $f0
+    swap a
+	ld [wTempMonAttack + 1], a
+	ld de, wTempMonAttack
+	lb bc, 2, 3
+	call .PrintDVs
+	pop af
+	ld [wTempMonAttack + 1], a
+	lb bc, 2, 3
+	ld de, wTempMonAttack
+	call .PrintStat
+	 ; Defense DVs and stat
+	ld de, wTempMonAttack + 1
+	ld a, [de]
+	push af
+	ld a, [wTempMonDVs]
+    and $f
+	ld [wTempMonAttack + 1], a
+	ld de, wTempMonAttack
+	lb bc, 2, 3
+	call .PrintDVs
+	pop af
+	ld [wTempMonAttack + 1], a
+	lb bc, 2, 3
+	ld de, wTempMonDefense
+	call .PrintStat
+	 ; Special DVs and Sp. Atk stat
+	ld de, wTempMonAttack + 1
+	ld a, [de]
+	push af
+	ld a, [wTempMonDVs + 1]
+    and $f
+	ld [wTempMonAttack + 1], a
+	ld de, wTempMonAttack
+	lb bc, 2, 3
+	call .PrintDVs
+	pop af
+	ld [wTempMonAttack + 1], a
+	lb bc, 2, 3
+	ld de, wTempMonSpclAtk
+	call .PrintStat
+	 ; Special DVs and Sp. Def stat
+	ld de, wTempMonAttack + 1
+	ld a, [de]
+	push af
+	ld a, [wTempMonDVs + 1]
+    and $f
+	ld [wTempMonAttack + 1], a
+	ld de, wTempMonAttack
+	lb bc, 2, 3
+	call .PrintDVs
+	pop af
+	ld [wTempMonAttack + 1], a
+	lb bc, 2, 3
+	ld de, wTempMonSpclDef
+	call .PrintStat
+	 ; Speed DVs and stat
+	ld de, wTempMonAttack + 1
+	ld a, [de]
+	push af
+	ld a, [wTempMonDVs + 1]
+    and $f0
+    swap a
+	ld [wTempMonAttack + 1], a
+	ld de, wTempMonAttack
+	lb bc, 2, 3
+	call .PrintDVs
+	pop af
+	ld [wTempMonAttack + 1], a
+	lb bc, 2, 3
+	ld de, wTempMonSpeed
+	jp PrintNum
+
+.PrintStat:
+	push hl
+	call PrintNum
+	pop hl
+	ld de, SCREEN_WIDTH
+	add hl, de
+	ld de, SCREEN_WIDTH - 5
+	add hl, de
+	ret
+
+.PrintDVs:
+	push hl
+	call PrintNum
+	pop hl
+	ld de, 5
+	add hl, de
+	ret
+
+.StatNames:
+	db   "DVs  Atk"
+	next "DVs  Def"
+	next "DVs  SpA"
+	next "DVs  SpD"
+	next "DVs  Spe"
+	next "@"
+
 PrintTempMonStats:
 ; Print wTempMon's stats at hl, with spacing bc.
 	push bc
@@ -114,11 +229,11 @@ PrintTempMonStats:
 	ret
 
 .StatNames:
-	db   "ATTACK"
-	next "DEFENSE"
-	next "SPCL.ATK"
-	next "SPCL.DEF"
-	next "SPEED"
+	db   "Atk"
+	next "Def"
+	next "Sp. Atk"
+	next "Sp. Def"
+	next "Spe"
 	next "@"
 
 GetGender:

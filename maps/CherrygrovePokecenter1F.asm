@@ -16,7 +16,12 @@ CherrygrovePokecenter1FFisherScript:
 	jumptextfaceplayer CherrygrovePokecenter1FFisherText
 
 CherrygrovePokecenter1FGentlemanScript:
-	jumptextfaceplayer CherrygrovePokecenter1FGentlemanText
+	faceplayer 
+        opentext
+        writetext CherrygrovePokecenter1FGentlemanText
+        waitbutton
+        closetext
+        end
 
 CherrygrovePokecenter1FTeacherScript:
 	faceplayer

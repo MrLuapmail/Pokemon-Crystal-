@@ -1,6 +1,6 @@
-CELADONGAMECORNERPRIZEROOM_TM32_COINS EQU 1500
-CELADONGAMECORNERPRIZEROOM_TM29_COINS EQU 3500
-CELADONGAMECORNERPRIZEROOM_TM15_COINS EQU 7500
+CELADONGAMECORNERPRIZEROOM_TM32_COINS EQU 1
+CELADONGAMECORNERPRIZEROOM_TM29_COINS EQU 1
+CELADONGAMECORNERPRIZEROOM_TM15_COINS EQU 1
 CELADONGAMECORNERPRIZEROOM_PIKACHU_COINS  EQU 2222
 CELADONGAMECORNERPRIZEROOM_PORYGON_COINS  EQU 5555
 CELADONGAMECORNERPRIZEROOM_LARVITAR_COINS EQU 8888
@@ -80,6 +80,11 @@ CeladonPrizeRoom_purchased:
 	waitsfx
 	playsound SFX_TRANSACTION
 	writetext CeladonPrizeRoom_HereYouGoText
+	waitbutton
+	sjump CeladonPrizeRoom_tmcounterloop
+
+CeladonPrizeRoom_alreadyhavetm:
+	writetext CeladonPrizeRoom_AlreadyHaveTMText
 	waitbutton
 	sjump CeladonPrizeRoom_tmcounterloop
 
@@ -252,6 +257,11 @@ CeladonPrizeRoom_ConfirmPurchaseText:
 
 CeladonPrizeRoom_HereYouGoText:
 	text "Here you go!"
+	done
+
+CeladonPrizeRoom_AlreadyHaveTMText:
+	text "You already have"
+	line "that TM."
 	done
 
 CeladonPrizeRoom_NotEnoughCoinsText:

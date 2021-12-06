@@ -12,6 +12,8 @@ VioletGym_MapScripts:
 VioletGymFalknerScript:
 	faceplayer
 	opentext
+	checkevent EVENT_GOT_HM05_FLASH
+	iffalse .GoToSproutTower
 	checkevent EVENT_BEAT_FALKNER
 	iftrue .FightDone
 	writetext FalknerIntroText
@@ -42,6 +44,12 @@ VioletGymFalknerScript:
 	iffalse .NoRoomForMudSlap
 	setevent EVENT_GOT_TM31_MUD_SLAP
 	writetext FalknerTMMudSlapText
+	waitbutton
+	closetext
+	end
+	
+.GoToSproutTower:
+	writetext GoToSproutTowerText
 	waitbutton
 	closetext
 	end
@@ -173,9 +181,9 @@ FalknerTMMudSlapText:
 	para "instantly learn a"
 	line "new move."
 
-	para "Think before you"
-	line "act--a TM can be"
-	cont "used only once."
+	para "A TM can be used"
+	line "as many times as"
+	cont "you like."
 
 	para "TM31 contains"
 	line "MUD-SLAP."
@@ -189,6 +197,19 @@ FalknerTMMudSlapText:
 	para "In other words, it"
 	line "is both defensive"
 	cont "and offensive."
+	done
+
+GoToSproutTowerText:
+	text "Were we to battle"
+	line "now you'd end up"
+	cont "dead as a dodo."
+
+	para "Head on over to"
+	line "SPROUT TOWER."
+	
+	para "They take rookies"
+	line "like you under"
+	cont "their wing."
 	done
 
 FalknerFightDoneText:
@@ -294,6 +315,6 @@ VioletGym_MapEvents:
 
 	def_object_events
 	object_event  5,  1, SPRITE_FALKNER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, VioletGymFalknerScript, -1
-	object_event  7,  6, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 2, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerBirdKeeperRod, -1
-	object_event  2, 10, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 2, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerBirdKeeperAbe, -1
-	object_event  7, 13, SPRITE_GYM_GUIDE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, VioletGymGuideScript, -1
+	object_event  6,  6, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 2, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerBirdKeeperRod, -1
+	object_event  2,  8, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 2, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerBirdKeeperAbe, -1
+	object_event  7, 12, SPRITE_GYM_GUIDE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, VioletGymGuideScript, -1

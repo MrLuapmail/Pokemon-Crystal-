@@ -1,6 +1,6 @@
-GOLDENRODGAMECORNER_TM25_COINS EQU 5500
-GOLDENRODGAMECORNER_TM14_COINS EQU 5500
-GOLDENRODGAMECORNER_TM38_COINS EQU 5500
+GOLDENRODGAMECORNER_TM25_COINS EQU 1
+GOLDENRODGAMECORNER_TM14_COINS EQU 1
+GOLDENRODGAMECORNER_TM38_COINS EQU 1
 GOLDENRODGAMECORNER_ABRA_COINS      EQU 100
 GOLDENRODGAMECORNER_CUBONE_COINS    EQU 800
 GOLDENRODGAMECORNER_WOBBUFFET_COINS EQU 1500
@@ -116,6 +116,11 @@ GoldenrodGameCornerTMVendor_FinishScript:
 	waitsfx
 	playsound SFX_TRANSACTION
 	writetext GoldenrodGameCornerPrizeVendorHereYouGoText
+	waitbutton
+	sjump GoldenrodGameCornerTMVendor_LoopScript
+
+GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript:
+	writetext GoldenrodGameCornerPrizeVendorAlreadyHaveTMText
 	waitbutton
 	sjump GoldenrodGameCornerTMVendor_LoopScript
 
@@ -340,6 +345,11 @@ GoldenrodGameCornerPrizeVendorConfirmPrizeText:
 
 GoldenrodGameCornerPrizeVendorHereYouGoText:
 	text "Here you go!"
+	done
+
+GoldenrodGameCornerPrizeVendorAlreadyHaveTMText:
+	text "But you already"
+	line "have that TM!"
 	done
 
 GoldenrodGameCornerPrizeVendorNeedMoreCoinsText:

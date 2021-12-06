@@ -47,6 +47,7 @@ PredefPointers::
 	add_predef StatsScreenInit
 	add_predef DrawPlayerHP
 	add_predef DrawEnemyHP
+	add_predef PrintTempMonStatsDVs
 	add_predef PrintTempMonStats
 	add_predef GetTypeName
 	add_predef PrintMoveType

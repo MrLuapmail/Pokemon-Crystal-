@@ -15,17 +15,17 @@ SometimesFleeMons:
 	db UNOWN
 	db SNUBBULL
 	db HERACROSS
-	db -1
-
-OftenFleeMons:
 	db CUBONE
-	db ARTICUNO
-	db ZAPDOS
-	db MOLTRES
 	db QUAGSIRE
 	db DELIBIRD
 	db PHANPY
 	db TEDDIURSA
+	db -1
+
+OftenFleeMons:
+	db ARTICUNO
+	db ZAPDOS
+	db MOLTRES
 	db -1
 
 AlwaysFleeMons:

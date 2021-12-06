@@ -102,8 +102,6 @@ TrainerPicnickerErin1:
 	opentext
 	writetext PicnickerErin2BeatenText
 	waitbutton
-	verbosegiveitem CALCIUM
-	iffalse ErinNoRoomForCalcium
 	clearevent EVENT_ERIN_CALCIUM
 	setevent EVENT_GOT_CALCIUM_FROM_ERIN
 	sjump Route46NumberAcceptedF

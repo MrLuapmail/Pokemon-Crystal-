@@ -41,6 +41,7 @@ MeetMomScript:
 	setflag ENGINE_POKEGEAR
 	setflag ENGINE_PHONE_CARD
 	addcellnum PHONE_MOM
+        giveitem TOWN_MAP
 	setscene SCENE_FINISHED
 	setevent EVENT_PLAYERS_HOUSE_MOM_1
 	clearevent EVENT_PLAYERS_HOUSE_MOM_2
