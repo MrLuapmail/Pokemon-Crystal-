@@ -110,19 +110,20 @@ DoBattle:
 	call SpikesDamage
 
 .not_linked_2
-	call StartAutomaticFieldEffect
+	call StartAutomaticBattleWeather
 	jp BattleTurn
 
 .tutorial_debug
 	jp BattleMenu
 
-StartAutomaticFieldEffect:
-	call GetAutomaticFieldEffect
+
+StartAutomaticBattleWeather:
+	call GetAutomaticBattleWeather
 	and a
 	ret z
-; get current AutomaticFieldEffects entry
+; get current AutomaticWeatherEffects entry
 	dec a
-	ld hl, AutomaticFieldEffects
+	ld hl, AutomaticWeatherEffects
 	ld bc, 5 ; size of one entry
 	call AddNTimes
 ; [wBattleWeather] = weather
@@ -146,8 +147,8 @@ StartAutomaticFieldEffect:
 	call StdBattleTextbox ; uses hl
 	jp EmptyBattleTextbox
 
-GetAutomaticFieldEffect:
-	ld hl, AutomaticFieldEffectsMaps
+GetAutomaticBattleWeather:
+	ld hl, AutomaticWeatherMaps
 	ld a, [wMapGroup]
 	ld b, a
 	ld a, [wMapNumber]
@@ -170,7 +171,7 @@ GetAutomaticFieldEffect:
 	inc hl ; skip weather
 	jr .loop
 
-INCLUDE "data/battle/field_effects.asm"
+INCLUDE "data/battle/automatic_weather.asm"
 
 WildFled_EnemyFled_LinkBattleCanceled:
 	call SafeLoadTempTilemapToTilemap
