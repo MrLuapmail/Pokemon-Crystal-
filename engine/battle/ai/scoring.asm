@@ -2964,7 +2964,6 @@ AI_Aggressive:
 	ld a, [de]
 	cp PURSUIT 
 	call z, PursuitDamage
-<<<<<<< Updated upstream
 	pop bc
 	pop de
 	pop hl
@@ -2973,14 +2972,11 @@ AI_Aggressive:
 	push de
 	push bc
 	call AIAggessiveCheckTurnsToKOPlayer
-=======
->>>>>>> Stashed changes
 	pop bc
 	pop de
 	pop hl
 	
-<<<<<<< Updated upstream
-=======
+
 	push hl
 	push de
 	push bc
@@ -2989,18 +2985,17 @@ AI_Aggressive:
 	pop de
 	pop hl
 	
->>>>>>> Stashed changes
+
 ; Encourage moves that can OHKO and have good accuracy.
 	cp 1
 	jr nz, .check_damage
 	
-<<<<<<< Updated upstream
-=======
+
 	ld a, [wMovesThatOHKOPlayer]
 	inc a
 	ld [wMovesThatOHKOPlayer], a
 	
->>>>>>> Stashed changes
+
 	ld a, [wEnemyMoveStruct + MOVE_ACC]
 	cp 74 percent
 	jr c, .check_damage
@@ -3086,11 +3081,10 @@ AI_Aggressive:
 	ld a, [de]
 	jr z, .checkmove2
 
-<<<<<<< Updated upstream
-=======
+
 	call AIGetEnemyMove
 
->>>>>>> Stashed changes
+
 ; Ignore this move if it is reckless.
 	push hl
 	push de
@@ -3104,7 +3098,6 @@ AI_Aggressive:
 	pop hl
 	jr c, .checkmove2
 
-<<<<<<< Updated upstream
 	
 ; Ignore this move if it doesn't deal damage and is EFFECT_SPLASH.
 	ld a, [wEnemyMoveStruct + MOVE_POWER]
@@ -3114,8 +3107,6 @@ AI_Aggressive:
 	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
 	cp EFFECT_SPLASH
 	jr nz, .checkmove2
-=======
->>>>>>> Stashed changes
 
 .discourage
 ; If we made it this far, discourage this move.
@@ -3193,7 +3184,7 @@ PursuitDamage:
 	ld [wCurDamage + 1], a
 	ret
 	
-<<<<<<< Updated upstream
+
 AIAggessiveCheckTurnsToKOPlayer:
 	ld hl, wCurDamage
 	ld a, [hli]
@@ -3235,7 +3226,7 @@ AIAggressiveCheckOHKO:
 .done
 	sbc a
 	inc a
->>>>>>> Stashed changes
+
 	ret
 
 INCLUDE "data/battle/ai/constant_damage_effects.asm"
