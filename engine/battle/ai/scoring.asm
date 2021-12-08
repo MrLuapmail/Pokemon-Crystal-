@@ -2938,6 +2938,8 @@ AI_Aggressive:
 	ld hl, wEnemyMonMoves
 	ld bc, 0
 	ld de, 0
+	xor a
+	ld [wMovesThatOHKOPlayer], a
 .checkmove
 	inc b
 	ld a, b
@@ -2962,6 +2964,7 @@ AI_Aggressive:
 	ld a, [de]
 	cp PURSUIT 
 	call z, PursuitDamage
+<<<<<<< Updated upstream
 	pop bc
 	pop de
 	pop hl
@@ -2970,14 +2973,34 @@ AI_Aggressive:
 	push de
 	push bc
 	call AIAggessiveCheckTurnsToKOPlayer
+=======
+>>>>>>> Stashed changes
 	pop bc
 	pop de
 	pop hl
 	
+<<<<<<< Updated upstream
+=======
+	push hl
+	push de
+	push bc
+	call AIAggressiveCheckOHKO
+	pop bc
+	pop de
+	pop hl
+	
+>>>>>>> Stashed changes
 ; Encourage moves that can OHKO and have good accuracy.
 	cp 1
 	jr nz, .check_damage
 	
+<<<<<<< Updated upstream
+=======
+	ld a, [wMovesThatOHKOPlayer]
+	inc a
+	ld [wMovesThatOHKOPlayer], a
+	
+>>>>>>> Stashed changes
 	ld a, [wEnemyMoveStruct + MOVE_ACC]
 	cp 74 percent
 	jr c, .check_damage
@@ -3027,6 +3050,11 @@ AI_Aggressive:
 	ld a, c
 	and a
 	jr z, .done
+	
+; Don't discourage if more than one move can OHKO
+	ld a, [wMovesThatOHKOPlayer]
+	cp 2
+	jr nc, .done
 
 ; Discourage moves that do less damage unless they're reckless too.
 	ld hl, wEnemyAIMoveScores - 1
@@ -3038,15 +3066,31 @@ AI_Aggressive:
 	cp NUM_MOVES + 1
 	jr z, .done
 
-; Ignore this move if it is the highest damaging one.
-	cp c
+; Discourage this move if it is SPLASH.
+
 	ld a, [de]
 	inc de
 	inc hl
+	cp SPLASH
+	jr z, .splash
+	
+; Ignore this move if it doesn't deal damage.
+
+	ld a, [wEnemyMoveStruct + MOVE_POWER]
+	and a
 	jr z, .checkmove2
 
+; Ignore this move if it is the highest damaging one.
+	ld a, b
+	cp c
+	ld a, [de]
+	jr z, .checkmove2
+
+<<<<<<< Updated upstream
+=======
 	call AIGetEnemyMove
 
+>>>>>>> Stashed changes
 ; Ignore this move if it is reckless.
 	push hl
 	push de
@@ -3060,6 +3104,7 @@ AI_Aggressive:
 	pop hl
 	jr c, .checkmove2
 
+<<<<<<< Updated upstream
 	
 ; Ignore this move if it doesn't deal damage and is EFFECT_SPLASH.
 	ld a, [wEnemyMoveStruct + MOVE_POWER]
@@ -3069,11 +3114,18 @@ AI_Aggressive:
 	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
 	cp EFFECT_SPLASH
 	jr nz, .checkmove2
+=======
+>>>>>>> Stashed changes
 
 .discourage
 ; If we made it this far, discourage this move.
 	inc [hl]
 	jr .checkmove2
+	
+.splash
+	inc [hl]
+	inc [hl]
+	jr .discourage
 
 .done
 	ret
@@ -3141,6 +3193,7 @@ PursuitDamage:
 	ld [wCurDamage + 1], a
 	ret
 	
+<<<<<<< Updated upstream
 AIAggessiveCheckTurnsToKOPlayer:
 	ld hl, wCurDamage
 	ld a, [hli]
@@ -3168,6 +3221,21 @@ AIAggessiveCheckTurnsToKOPlayer:
 .max_turns
 	ld a, -1
 .less_than_six_turns
+=======
+AIAggressiveCheckOHKO:
+	ld a, [wBattleMonHP]
+	ld b, a
+	ld a, [wCurDamage]
+	cp b
+	jr nz, .done
+	ld a, [wBattleMonHP + 1]
+	ld b, a
+	ld a, [wCurDamage + 1]
+	cp b
+.done
+	sbc a
+	inc a
+>>>>>>> Stashed changes
 	ret
 
 INCLUDE "data/battle/ai/constant_damage_effects.asm"

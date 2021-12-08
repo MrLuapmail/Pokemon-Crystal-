@@ -547,7 +547,7 @@ wEnemyLightScreenCount:: db
 wEnemyReflectCount:: db
 	ds 1
 
-	ds 1
+wMovesThatOHKOPlayer:: db
 
 wBattleWeather::
 ; 00 normal
