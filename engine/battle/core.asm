@@ -110,10 +110,39 @@ DoBattle:
 	call SpikesDamage
 
 .not_linked_2
+	call PlaceSpikes
 	jp BattleTurn
 
 .tutorial_debug
 	jp BattleMenu
+	
+PlaceSpikes:
+	call GetAutomaticBattleSpikes
+	and a
+	ret z
+	ld hl, wPlayerScreens
+	set SCREENS_SPIKES, [hl]
+	ldh [hBattleTurn], a
+	ld de, SPIKES
+	call Call_PlayBattleAnim
+	ld hl, SpikesText
+	call StdBattleTextbox
+	jp EmptyBattleTextbox
+
+GetAutomaticBattleSpikes:
+	ld hl, AutomaticSpikesMaps
+	ld a, [wMapNumber]
+	ld b, a
+.loop
+	ld a, [hli]
+	and a
+	ret z ; end
+	cp b          ; Check map
+	jr nz, .loop
+	ld a, 1
+	ret
+	
+INCLUDE "data/battle/automatic_spikes.asm"
 
 WildFled_EnemyFled_LinkBattleCanceled:
 	call SafeLoadTempTilemapToTilemap
