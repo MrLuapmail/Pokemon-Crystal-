@@ -2971,31 +2971,19 @@ AI_Aggressive:
 	push hl
 	push de
 	push bc
-	call AIAggessiveCheckTurnsToKOPlayer
-	pop bc
-	pop de
-	pop hl
-	
-
-	push hl
-	push de
-	push bc
 	call AIAggressiveCheckOHKO
 	pop bc
 	pop de
 	pop hl
 	
-
 ; Encourage moves that can OHKO and have good accuracy.
 	cp 1
 	jr nz, .check_damage
 	
-
 	ld a, [wMovesThatOHKOPlayer]
 	inc a
 	ld [wMovesThatOHKOPlayer], a
 	
-
 	ld a, [wEnemyMoveStruct + MOVE_ACC]
 	cp 74 percent
 	jr c, .check_damage
@@ -3081,9 +3069,7 @@ AI_Aggressive:
 	ld a, [de]
 	jr z, .checkmove2
 
-
 	call AIGetEnemyMove
-
 
 ; Ignore this move if it is reckless.
 	push hl
@@ -3098,15 +3084,6 @@ AI_Aggressive:
 	pop hl
 	jr c, .checkmove2
 
-	
-; Ignore this move if it doesn't deal damage and is EFFECT_SPLASH.
-	ld a, [wEnemyMoveStruct + MOVE_POWER]
-	and a
-	jr nz, .discourage
-
-	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
-	cp EFFECT_SPLASH
-	jr nz, .checkmove2
 
 .discourage
 ; If we made it this far, discourage this move.
@@ -3184,35 +3161,6 @@ PursuitDamage:
 	ld [wCurDamage + 1], a
 	ret
 	
-
-AIAggessiveCheckTurnsToKOPlayer:
-	ld hl, wCurDamage
-	ld a, [hli]
-	cpl
-	ld e, a
-	ld a, [hl]
-	cpl
-	ld d, a
-	and e
-	cp -1
-	jr z, .max_turns
-	inc de
-	ld hl, wBattleMonHP
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	xor a
-.loop
-	inc a
-	add hl, de
-	jr nc, .less_than_six_turns
-	cp 6
-	jr c, .loop
-	jr .max_turns
-.max_turns
-	ld a, -1
-.less_than_six_turns
-=======
 AIAggressiveCheckOHKO:
 	ld a, [wBattleMonHP]
 	ld b, a
@@ -3226,7 +3174,6 @@ AIAggressiveCheckOHKO:
 .done
 	sbc a
 	inc a
-
 	ret
 
 INCLUDE "data/battle/ai/constant_damage_effects.asm"
