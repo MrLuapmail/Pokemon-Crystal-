@@ -19,7 +19,7 @@ ItemEffects:
 	dw NoEffect            ; BRIGHTPOWDER
 	dw PokeBallEffect      ; GREAT_BALL
 	dw PokeBallEffect      ; POKE_BALL
-	dw RareCandyEffect     ; TOWN_MAP
+	dw RareCandyEffect     ; CANDYBAG
 	dw BicycleEffect       ; BICYCLE
 	dw EvoStoneEffect      ; MOON_STONE
 	dw StatusHealingEffect ; ANTIDOTE
@@ -193,21 +193,18 @@ ItemEffects:
 	dw PokeBallEffect      ; PARK_BALL
 	dw NoEffect            ; RAINBOW_WING
 	dw NoEffect            ; ITEM_B3
-	assert_table_length ITEM_B3
-; The items past ITEM_B3 do not have effect entries:
-;	BRICK_PIECE
-;	SURF_MAIL
-;	LITEBLUEMAIL
-;	PORTRAITMAIL
-;	LOVELY_MAIL
-;	EON_MAIL
-;	MORPH_MAIL
-;	BLUESKY_MAIL
-;	MUSIC_MAIL
-;	MIRAGE_MAIL
-;	ITEM_BE
-; They all have the ITEMMENU_NOUSE attribute so they can't be used anyway.
-; NoEffect would be appropriate, with the table then being NUM_ITEMS long.
+	dw NoEffect            ; BRICK_PIECE
+	dw NoEffect            ; SURF_MAIL
+	dw NoEffect            ; LITEBLUEMAIL
+	dw NoEffect            ; PORTRAITMAIL
+	dw NoEffect            ; LOVELY_MAIL
+	dw NoEffect            ; EON_MAIL
+	dw NoEffect            ; MORPH_MAIL
+	dw NoEffect            ; BLUESKY_MAIL
+	dw NoEffect            ; MUSIC_MAIL
+	dw NoEffect            ; MIRAGE_MAIL
+	dw TrainingKitEffect   ; TRAINING_KIT
+	assert_table_length NUM_ITEMS
 
 PokeBallEffect:
 	ld a, [wBattleMode]
@@ -1384,6 +1381,57 @@ RareCandyEffect:
 	farcall EvolvePokemon
 
         ret
+		
+TrainingKitEffect:
+	ld b, PARTYMENUACTION_HEALING_ITEM
+	call UseItem_SelectMon
+
+	jp c, RareCandy_StatBooster_ExitMenu
+
+	call RareCandy_StatBooster_GetParameters
+
+	ld a, MON_LEVEL
+	call GetPartyParamLocation
+
+	ld a, [hl]
+	cp MAX_LEVEL
+        jp nc, NoEffectMessage
+	
+	push de
+	inc a
+	ld d, a
+	farcall CalcExpAtLevel
+	pop de
+	
+	ld a, MON_EXP
+	call GetPartyParamLocation
+	
+	ld bc, 2
+	add hl, bc
+	ldh a, [hMultiplicand + 2]
+	dec a
+	ld [hld], a
+	cp 99
+	jr nz, .done
+	
+	ldh a, [hMultiplicand + 1]
+	dec a
+	ld [hld], a
+	cp 99
+	jr nz, .done
+
+	ldh a, [hMultiplicand + 0]
+	dec a
+	ld [hl], a
+	
+.done
+	ld a, [wCurPartyMon]
+	ld hl, wPartyMonNicknames
+	call GetNickname
+	ld hl, GainedALotOfExpText
+	call PrintText
+	jp ClearPalettes
+
 
 HealPowderEffect:
 	ld b, PARTYMENUACTION_HEALING_ITEM
@@ -2734,6 +2782,10 @@ ItemGotOnText: ; unreferenced
 ItemGotOffText: ; unreferenced
 	text_far _ItemGotOffText
 	text_end
+	
+GainedALotOfExpText: ; unreferenced
+	text_far _GainedALotOfExpText
+	text_end	
 
 ApplyPPUp:
 	ld a, MON_MOVES
