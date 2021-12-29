@@ -194,7 +194,7 @@ OlivinePortCooltrainerFScript:
 	end
 
 OlivinePortHiddenProtein:
-	hiddenitem PROTEIN, EVENT_OLIVINE_PORT_HIDDEN_PROTEIN
+	hiddenitem NUGGET, EVENT_OLIVINE_PORT_HIDDEN_PROTEIN
 
 OlivinePortEnterFastShipMovement:
 	step DOWN
