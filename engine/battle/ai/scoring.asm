@@ -2938,6 +2938,8 @@ AI_Aggressive:
 	ld hl, wEnemyMonMoves
 	ld bc, 0
 	ld de, 0
+	xor a
+	ld [wMovesThatOHKOPlayer], a
 .checkmove
 	inc b
 	ld a, b
@@ -2951,14 +2953,60 @@ AI_Aggressive:
 	push hl
 	push de
 	push bc
+	ld a, [de]
 	call AIGetEnemyMove
 	ld a, [wEnemyMoveStruct + MOVE_POWER]
 	and a
 	jr z, .nodamage
 	call AIDamageCalc
+	pop de
+	push de
+	ld a, [de]
+	cp PURSUIT 
+	call z, PursuitDamage
 	pop bc
 	pop de
 	pop hl
+	
+	push hl
+	push de
+	push bc
+	call AIAggressiveCheckOHKO
+	pop bc
+	pop de
+	pop hl
+	
+; Encourage moves that can OHKO and have good accuracy.
+	cp 1
+	jr nz, .check_damage
+	
+	ld a, [wMovesThatOHKOPlayer]
+	inc a
+	ld [wMovesThatOHKOPlayer], a
+	
+	ld a, [wEnemyMoveStruct + MOVE_ACC]
+	cp 74 percent
+	jr c, .check_damage
+	
+	dec [hl]
+	
+; Encourage moves that can OHKO and have perfect accuracy.
+
+	ld a, [wEnemyMoveStruct + MOVE_ACC]
+	cp 99 percent + 1
+	jr c, .check_damage
+	
+	dec [hl]
+	
+; Encourage moves that have no recoil.
+	
+	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
+	cp EFFECT_RECOIL_HIT
+	jr z, .check_damage
+	
+	dec [hl]
+	
+.check_damage
 
 ; Update current move if damage is highest so far
 	ld a, [wCurDamage + 1]
@@ -2985,6 +3033,11 @@ AI_Aggressive:
 	ld a, c
 	and a
 	jr z, .done
+	
+; Don't discourage if more than one move can OHKO
+	ld a, [wMovesThatOHKOPlayer]
+	cp 2
+	jr nc, .done
 
 ; Discourage moves that do less damage unless they're reckless too.
 	ld hl, wEnemyAIMoveScores - 1
@@ -2996,21 +3049,27 @@ AI_Aggressive:
 	cp NUM_MOVES + 1
 	jr z, .done
 
-; Ignore this move if it is the highest damaging one.
-	cp c
+; Discourage this move if it is SPLASH.
+
 	ld a, [de]
 	inc de
 	inc hl
+	cp SPLASH
+	jr z, .splash
+	
+; Ignore this move if it doesn't deal damage.
+
+	ld a, [wEnemyMoveStruct + MOVE_POWER]
+	and a
+	jr z, .checkmove2
+
+; Ignore this move if it is the highest damaging one.
+	ld a, b
+	cp c
+	ld a, [de]
 	jr z, .checkmove2
 
 	call AIGetEnemyMove
-
-; Ignore this move if its power is 0 or 1.
-; Moves such as Seismic Toss, Hidden Power,
-; Counter and Fissure have a base power of 1.
-	ld a, [wEnemyMoveStruct + MOVE_POWER]
-	cp 2
-	jr c, .checkmove2
 
 ; Ignore this move if it is reckless.
 	push hl
@@ -3025,9 +3084,16 @@ AI_Aggressive:
 	pop hl
 	jr c, .checkmove2
 
+
+.discourage
 ; If we made it this far, discourage this move.
 	inc [hl]
 	jr .checkmove2
+	
+.splash
+	inc [hl]
+	inc [hl]
+	jr .discourage
 
 .done
 	ret
@@ -3042,13 +3108,72 @@ AIDamageCalc:
 	ld hl, ConstantDamageEffects
 	call IsInArray
 	jr nc, .notconstant
-	callfar BattleCommand_ConstantDamage
+	farcall BattleCommand_ConstantDamage
 	ret
 
 .notconstant
-	callfar EnemyAttackDamage
-	callfar BattleCommand_DamageCalc
-	callfar BattleCommand_Stab
+	farcall EnemyAttackDamage
+	farcall BattleCommand_DamageCalc
+	farcall BattleCommand_Stab
+	farcall BattleCommand_DamageVariation
+	ret
+	
+PursuitDamage:
+	call AICheckPlayerQuarterHP
+	jr nc, .calc_pursuit
+	
+	ld a, [wCurDamage]
+	ld d, a
+	ld a, [wCurDamage + 1]
+	ld e, a
+	
+	push hl
+	farcall CheckPlayerMoveTypeMatchups
+	pop hl 
+	ld a, [wEnemyAISwitchScore]
+	cp BASE_AI_SWITCH_SCORE + 1
+	jr c, .return
+
+	ld a, d
+	ld [wCurDamage], a
+	ld a, e
+	ld [wCurDamage + 1], a
+	
+.calc_pursuit
+	call Random
+	cp 50 percent + 1
+	ret c
+	ld hl, wCurDamage + 1
+	sla [hl]
+	dec hl
+	rl [hl]
+	ret nc
+
+	ld a, $ff
+	ld [hli], a
+	ld [hl], a
+	ret
+	
+.return
+	ld a, d
+	ld [wCurDamage], a
+	ld a, e
+	ld [wCurDamage + 1], a
+	ret
+	
+AIAggressiveCheckOHKO:
+	ld a, [wBattleMonHP]
+	ld b, a
+	ld a, [wCurDamage]
+	cp b
+	jr nz, .done
+	ld a, [wBattleMonHP + 1]
+	ld b, a
+	ld a, [wCurDamage + 1]
+	cp b
+.done
+	sbc a
+	inc a
 	ret
 
 INCLUDE "data/battle/ai/constant_damage_effects.asm"
