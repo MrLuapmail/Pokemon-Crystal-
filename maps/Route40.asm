@@ -16,16 +16,10 @@ Route40_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_OBJECTS, .MonicaCallback
-
-.MonicaCallback:
-	clearevent EVENT_BATTLE_TOWER_OUTSIDE_SAILOR
-	readvar VAR_WEEKDAY
-	ifequal MONDAY, .MonicaAppears
-	disappear ROUTE40_MONICA
-	endcallback
+	callback MAPCALLBACK_OBJECTS, .MonicaAppears
 
 .MonicaAppears:
+	clearevent EVENT_BATTLE_TOWER_OUTSIDE_SAILOR
 	appear ROUTE40_MONICA
 	endcallback
 
@@ -95,8 +89,6 @@ MonicaScript:
 	opentext
 	checkevent EVENT_GOT_SHARP_BEAK_FROM_MONICA
 	iftrue .Monday
-	readvar VAR_WEEKDAY
-	ifnotequal MONDAY, .NotMonday
 	checkevent EVENT_MET_MONICA_OF_MONDAY
 	iftrue .MetMonica
 	writetext MeetMonicaText
@@ -117,12 +109,6 @@ MonicaScript:
 	writetext MonicaMondayText
 	waitbutton
 .done:
-	closetext
-	end
-
-.NotMonday:
-	writetext MonicaNotMondayText
-	waitbutton
 	closetext
 	end
 
@@ -320,12 +306,6 @@ MonicaMondayText:
 
 	para "See if you could"
 	line "find them all!"
-	done
-
-MonicaNotMondayText:
-	text "MONICA: I don't"
-	line "think today is"
-	cont "Monday. How sad…"
 	done
 
 Route40SignText:
