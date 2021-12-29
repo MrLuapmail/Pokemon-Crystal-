@@ -38,7 +38,7 @@ ItemEffects:
 	dw EvoStoneEffect      ; FIRE_STONE
 	dw EvoStoneEffect      ; THUNDERSTONE
 	dw EvoStoneEffect      ; WATER_STONE
-	dw NoEffect            ; ITEM_19
+	dw FullRestoreEffect   ; ITEM_19
 	dw VitaminEffect       ; HP_UP
 	dw VitaminEffect       ; PROTEIN
 	dw VitaminEffect       ; IRON
@@ -1672,7 +1672,6 @@ FullRestoreEffect:
 	ld a, PARTYMENUTEXT_HEAL_HP
 	ld [wPartyMenuActionText], a
 	call ItemActionTextWaitButton
-	call UseDisposableItem
 	ld a, 0
 	ret
 

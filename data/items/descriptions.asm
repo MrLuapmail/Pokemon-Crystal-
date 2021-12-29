@@ -356,7 +356,8 @@ WaterStoneDesc:
 	next "kinds of #MON.@"
 
 TeruSama2Desc:
-	db   "?@"
+	db   "Fully restores HP"
+	next "& status.@"
 
 HPUpDesc:
 	db   "Raises the HP of"

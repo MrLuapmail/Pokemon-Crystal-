@@ -42,7 +42,8 @@ MeetMomScript:
 	setflag ENGINE_PHONE_CARD
 	addcellnum PHONE_MOM
         giveitem TOWN_MAP
-		giveitem TRAINING_KIT
+		    giveitem TRAINING_KIT
+        giveitem ITEM_19
 	setscene SCENE_FINISHED
 	setevent EVENT_PLAYERS_HOUSE_MOM_1
 	clearevent EVENT_PLAYERS_HOUSE_MOM_2

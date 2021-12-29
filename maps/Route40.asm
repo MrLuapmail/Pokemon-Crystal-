@@ -16,16 +16,10 @@ Route40_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_OBJECTS, .MonicaCallback
-
-.MonicaCallback:
-	clearevent EVENT_BATTLE_TOWER_OUTSIDE_SAILOR
-	readvar VAR_WEEKDAY
-	ifequal MONDAY, .MonicaAppears
-	disappear ROUTE40_MONICA
-	endcallback
+	callback MAPCALLBACK_OBJECTS, .MonicaAppears
 
 .MonicaAppears:
+	clearevent EVENT_BATTLE_TOWER_OUTSIDE_SAILOR
 	appear ROUTE40_MONICA
 	endcallback
 
@@ -95,8 +89,6 @@ MonicaScript:
 	opentext
 	checkevent EVENT_GOT_SHARP_BEAK_FROM_MONICA
 	iftrue .Monday
-	readvar VAR_WEEKDAY
-	ifnotequal MONDAY, .NotMonday
 	checkevent EVENT_MET_MONICA_OF_MONDAY
 	iftrue .MetMonica
 	writetext MeetMonicaText
@@ -117,12 +109,6 @@ MonicaScript:
 	writetext MonicaMondayText
 	waitbutton
 .done:
-	closetext
-	end
-
-.NotMonday:
-	writetext MonicaNotMondayText
-	waitbutton
 	closetext
 	end
 
@@ -322,12 +308,6 @@ MonicaMondayText:
 	line "find them all!"
 	done
 
-MonicaNotMondayText:
-	text "MONICA: I don't"
-	line "think today is"
-	cont "Monday. How sad…"
-	done
-
 Route40SignText:
 	text "ROUTE 40"
 
@@ -348,10 +328,10 @@ Route40_MapEvents:
 	bg_event  7,  8, BGEVENT_ITEM, Route40HiddenHyperPotion
 
 	def_object_events
-	object_event 14, 15, SPRITE_OLIVINE_RIVAL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerSwimmermSimon, -1
+	object_event  2, 28, SPRITE_OLIVINE_RIVAL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerSwimmermSimon, -1
 	object_event 18, 30, SPRITE_OLIVINE_RIVAL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 5, TrainerSwimmermRandall, -1
-	object_event  3, 19, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 4, TrainerSwimmerfElaine, -1
-	object_event 10, 25, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerSwimmerfPaula, -1
+	object_event 16, 30, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 4, TrainerSwimmerfElaine, -1
+	object_event  4, 28, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerSwimmerfPaula, -1
 	object_event  7, 11, SPRITE_ROCK, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route40Rock, -1
 	object_event  6,  9, SPRITE_ROCK, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route40Rock, -1
 	object_event  7,  8, SPRITE_ROCK, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route40Rock, -1
