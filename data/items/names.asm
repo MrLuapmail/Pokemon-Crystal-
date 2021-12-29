@@ -189,7 +189,7 @@ ItemNames::
 	li "BLUESKY MAIL"
 	li "MUSIC MAIL"
 	li "MIRAGE MAIL"
-	li "TERU-SAMA"
+	li "TRAINING KIT"
 	assert_list_length NUM_ITEMS
 	li "TM01"
 	li "TM02"
