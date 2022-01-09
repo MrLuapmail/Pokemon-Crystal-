@@ -1411,17 +1411,25 @@ TrainingKitEffect:
 	ldh a, [hMultiplicand + 2]
 	dec a
 	ld [hld], a
-	cp 99
-	jr nz, .done
+	cp $ff
+	jr nz, .no_more_subtract
 	
 	ldh a, [hMultiplicand + 1]
 	dec a
 	ld [hld], a
-	cp 99
-	jr nz, .done
+	cp $ff
+	jr nz, .no_more_subtract
 
 	ldh a, [hMultiplicand + 0]
 	dec a
+	ld [hl], a
+	jr .done
+	
+.no_more_subtract
+	ldh a, [hMultiplicand + 1]
+	ld [hld], a
+	
+	ldh a, [hMultiplicand]
 	ld [hl], a
 	
 .done
