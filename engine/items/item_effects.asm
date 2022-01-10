@@ -1412,26 +1412,25 @@ TrainingKitEffect:
 	dec a
 	ld [hld], a
 	cp $ff
-	jr nz, .no_more_subtract
+	jr nz, .no_more_subtract_1
 	
 	ldh a, [hMultiplicand + 1]
 	dec a
 	ld [hld], a
 	cp $ff
-	jr nz, .no_more_subtract
+	jr nz, .no_more_subtract_2
 
 	ldh a, [hMultiplicand + 0]
 	dec a
 	ld [hl], a
 	jr .done
 	
-.no_more_subtract
+.no_more_subtract_1
 	ldh a, [hMultiplicand + 1]
 	ld [hld], a
-	
+.no_more_subtract_2	
 	ldh a, [hMultiplicand]
 	ld [hl], a
-	
 .done
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonNicknames
