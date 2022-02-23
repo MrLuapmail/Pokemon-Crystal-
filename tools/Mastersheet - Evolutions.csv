@@ -24,7 +24,7 @@ Clefairy,Item,,Moon Stone,Clefable
 Vulpix,Item,,Fire Stone,Ninetales
 Jigglypuff,Item,,Moon Stone,Wigglytuff
 Zubat,Level,22,,Golbat
-Golbat,Happiness,,,Crobat
+Golbat,Level,45,,Crobat
 Oddish,Level,21,,Gloom
 Gloom,Item,,Leaf Stone,Vileplume
 Gloom,Item,,Sun Stone,Bellossom
@@ -37,27 +37,27 @@ Mankey,Level,28,,Primeape
 Growlithe,Item,,Fire Stone,Arcanine
 Poliwag,Level,25,,Poliwhirl
 Poliwhirl,Item,,Water Stone,Poliwrath
-Poliwhirl,Trade,,Kings Rock,Politoed
+Poliwhirl,Level,36,,Politoed
 Abra,Level,16,,Kadabra
-Kadabra,Trade,,No Item,Alakazam
+Kadabra,Level,55,,Alakazam
 Machop,Level,28,,Machoke
-Machoke,Trade,,No Item,Machamp
+Machoke,Level,55,,Machamp
 Bellsprout,Level,21,,Weepinbell
 Weepinbell,Item,,Leaf Stone,Victreebel
 Tentacool,Level,30,,Tentacruel
 Geodude,Level,25,,Graveler
-Graveler,Trade,,No Item,Golem
-Ponyta,Level,40,,Rapidash
+Graveler,Level,42,,Golem
+Ponyta,Level,36,,Rapidash
 Slowpoke,Level,37,,Slowbro
-Slowpoke,Trade,,Kings Rock,Slowking
+Slowpoke,Item,,Water Stone,Slowking
 Magnemite,Level,30,,Magneton
 Doduo,Level,31,,Dodrio
 Seel,Level,34,,Dewgong
 Grimer,Level,38,,Muk
 Shellder,Item,,Water Stone,Cloyster
 Gastly,Level,25,,Haunter
-Haunter,Trade,,No Item,Gengar
-Onix,Trade,,Metal Coat,Steelix
+Haunter,Level,55,,Gengar
+Onix,Level,65,,Steelix
 Drowzee,Level,26,,Hypno
 Krabby,Level,28,,Kingler
 Voltorb,Level,30,,Electrode
@@ -65,19 +65,19 @@ Exeggcute,Item,,Leaf Stone,Exeggutor
 Cubone,Level,28,,Marowak
 Koffing,Level,35,,Weezing
 Rhyhorn,Level,42,,Rhydon
-Chansey,Happiness,,,Blissey
+Chansey,Level,90,,Blissey
 Horsea,Level,32,,Seadra
-Seadra,Trade,,Dragon Scale,Kingdra
+Seadra,Level,70,,Kingdra
 Goldeen,Level,33,,Seaking
 Staryu,Item,,Water Stone,Starmie
-Scyther,Trade,,Metal Coat,Scizor
-Magikarp,Level,20,,Gyarados
+Scyther,Level,55,,Scizor
+Magikarp,Level,30,,Gyarados
 Eevee,Item,,Thunderstone,Jolteon
 Eevee,Item,,Water Stone,Vaporeon
 Eevee,Item,,Fire Stone,Flareon
 Eevee,Item,,Sun Stone,Espeon
 Eevee,Item,,Moon Stone,Umbreon
-Porygon,Trade,,Up Grade,Porygon2
+Porygon,Level,50,,Porygon2
 Omanyte,Level,40,,Omastar
 Kabuto,Level,40,,Kabutops
 Dratini,Level,30,,Dragonair
@@ -93,10 +93,10 @@ Hoothoot,Level,20,,Noctowl
 Ledyba,Level,18,,Ledian
 Spinarak,Level,22,,Ariados
 Chinchou,Level,27,,Lanturn
-Pichu,Happiness,,,Pikachu
-Cleffa,Happiness,,,Clefairy
-Igglybuff,Happiness,,,Jigglypuff
-Togepi,Happiness,,,Togetic
+Pichu,Level,16,,Pikachu
+Cleffa,Level,16,,Clefairy
+Igglybuff,Level,16,,Jigglypuff
+Togepi,Level,18,,Togetic
 Natu,Level,25,,Xatu
 Mareep,Level,15,,Flaaffy
 Flaaffy,Level,30,,Ampharos
