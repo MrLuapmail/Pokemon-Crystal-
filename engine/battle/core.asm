@@ -119,7 +119,7 @@ DoBattle:
 PlaceSpikes:
 	call GetAutomaticBattleSpikes
 	and a
-	ret z
+	ret nz
 	ld hl, wPlayerScreens
 	set SCREENS_SPIKES, [hl]
 	ldh [hBattleTurn], a
@@ -131,16 +131,26 @@ PlaceSpikes:
 
 GetAutomaticBattleSpikes:
 	ld hl, AutomaticSpikesMaps
-	ld a, [wMapNumber]
+	ld a, [wMapGroup]
 	ld b, a
+	ld a, [wMapNumber]
+	ld c, a
 .loop
-	ld a, [hli]
+	ld a, [hli] ; group
 	and a
 	ret z ; end
-	cp b          ; Check map
-	jr nz, .loop
-	ld a, 1
+	cp b
+	jr nz, .wrong_group
+	ld a, [hli] ; map
+	cp c
+	jr nz, .wrong_map
+	ld a, 1 ;spikes
 	ret
+
+.wrong_group:
+	inc hl ; skip map
+.wrong_map
+	jr .loop
 	
 INCLUDE "data/battle/automatic_spikes.asm"
 
