@@ -56,7 +56,5 @@ used_space.png
 .DS_STORE
 
 # CKK
-tools/Mastersheet\ -\ Encounters.csv
-tools/Mastersheet\ -\ Special\ Encounters.csv
 tools/Mastersheet\ -\ Learnsets.csv
 tools/Mastersheet - Trainers.csv

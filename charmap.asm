@@ -159,12 +159,25 @@
 	charmap "y",         $b8
 	charmap "z",         $b9
 
-	charmap "Ä",         $c0
-	charmap "Ö",         $c1
-	charmap "Ü",         $c2
-	charmap "ä",         $c3
-	charmap "ö",         $c4
-	charmap "ü",         $c5
+	charmap "Ä",         $ba
+	charmap "Ö",         $bb
+	charmap "Ü",         $bc
+	charmap "ä",         $bd
+	charmap "ö",         $be
+	charmap "ü",         $bf
+	
+	charmap "<FRZ1>",    $c0
+	charmap "<FRZ2>",    $c1
+	charmap "<SLP1>",    $c2
+	charmap "<SLP2>",    $c3
+	charmap "<PAR1>",    $c4
+	charmap "<PAR2>",    $c5
+	charmap "<PSN1>",    $c6
+	charmap "<PSN2>",    $c7
+	charmap "<BRN1>",    $c8
+	charmap "<BRN2>",    $c9
+	charmap "<FNT1>",    $ca
+	charmap "<FNT2>",    $cb
 
 	charmap "'d",        $d0
 	charmap "'l",        $d1
