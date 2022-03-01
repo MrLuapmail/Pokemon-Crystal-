@@ -119,7 +119,7 @@ DoBattle:
 PlaceSpikes:
 	call GetAutomaticBattleSpikes
 	and a
-	ret nz
+	ret z
 	ld hl, wPlayerScreens
 	set SCREENS_SPIKES, [hl]
 	ldh [hBattleTurn], a
