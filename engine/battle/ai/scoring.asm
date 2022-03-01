@@ -2943,24 +2943,24 @@ AI_Aggressive:
 	inc b
 	ld a, b
 	cp NUM_MOVES + 1
-	jr z, .gotstrongestmove
+	jp z, .gotstrongestmove
 
-	ld a, [hli]
+	ld a, [hl]
 	and a
-	jr z, .gotstrongestmove
+	jp z, .gotstrongestmove
 
 	push hl
 	push de
 	push bc
-	ld a, [de]
+	ld a, [hl]
 	call AIGetEnemyMove
 	ld a, [wEnemyMoveStruct + MOVE_POWER]
 	and a
 	jr z, .nodamage
 	call AIDamageCalc
-	pop de
-	push de
-	ld a, [de]
+	pop hl
+	push hl
+	ld a, [hl]
 	cp PURSUIT 
 	call z, PursuitDamage
 	pop bc
@@ -2987,7 +2987,15 @@ AI_Aggressive:
 	cp 74 percent
 	jr c, .check_damage
 	
+	push hl
+	push bc
+	ld hl, wEnemyAIMoveScores
+	ld c, b
+	ld b, 0
+	add hl, bc
 	dec [hl]
+	pop bc
+	pop hl
 	
 ; Encourage moves that can OHKO and have perfect accuracy.
 
@@ -2995,7 +3003,15 @@ AI_Aggressive:
 	cp 99 percent + 1
 	jr c, .check_damage
 	
+	push hl
+	push bc
+	ld hl, wEnemyAIMoveScores
+	ld c, b
+	ld b, 0
+	add hl, bc
 	dec [hl]
+	pop bc
+	pop hl
 	
 ; Encourage moves that have no recoil.
 	
@@ -3003,9 +3019,18 @@ AI_Aggressive:
 	cp EFFECT_RECOIL_HIT
 	jr z, .check_damage
 	
+	push hl
+	push bc
+	ld hl, wEnemyAIMoveScores
+	ld c, b
+	ld b, 0
+	add hl, bc
 	dec [hl]
+	pop bc
+	pop hl
 	
 .check_damage
+	inc hl
 
 ; Update current move if damage is highest so far
 	ld a, [wCurDamage + 1]
@@ -3019,13 +3044,14 @@ AI_Aggressive:
 	ld a, [wCurDamage]
 	ld d, a
 	ld c, b
-	jr .checkmove
+	jp .checkmove
 
 .nodamage
 	pop bc
 	pop de
 	pop hl
-	jr .checkmove
+	inc hl
+	jp .checkmove
 
 .gotstrongestmove
 ; Nothing we can do if no attacks did damage.
