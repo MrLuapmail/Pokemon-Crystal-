@@ -119,7 +119,7 @@ DoBattle:
 PlaceSpikes:
 	call GetAutomaticBattleSpikes
 	and a
-	ret nz
+	ret z
 	ld hl, wPlayerScreens
 	set SCREENS_SPIKES, [hl]
 	ldh [hBattleTurn], a
@@ -4724,20 +4724,16 @@ PrintPlayerHUD:
 .got_gender_char
 	hlcoord 17, 8
 	ld [hl], a
-	hlcoord 14, 8
 	push af ; back up gender
 	push hl
+	hlcoord 10, 8
 	ld de, wBattleMonStatus
 	predef PlaceNonFaintStatus
 	pop hl
 	pop bc
-	ret nz
-	ld a, b
-	cp " "
-	jr nz, .copy_level ; male or female
-	dec hl ; genderless
+	hlcoord 14, 8
 
-.copy_level
+
 	ld a, [wBattleMonLevel]
 	ld [wTempMonLevel], a
 	jp PrintLevel
@@ -4801,23 +4797,18 @@ DrawEnemyHUD:
 	hlcoord 9, 1
 	ld [hl], a
 
-	hlcoord 6, 1
 	push af
 	push hl
+	hlcoord 2, 1
 	ld de, wEnemyMonStatus
 	predef PlaceNonFaintStatus
 	pop hl
 	pop bc
-	jr nz, .skip_level
+	hlcoord 6, 1
 	ld a, b
-	cp " "
-	jr nz, .print_level
-	dec hl
-.print_level
 	ld a, [wEnemyMonLevel]
 	ld [wTempMonLevel], a
 	call PrintLevel
-.skip_level
 
 	ld hl, wEnemyMonHP
 	ld a, [hli]
