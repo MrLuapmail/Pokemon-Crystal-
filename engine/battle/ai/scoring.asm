@@ -3082,6 +3082,8 @@ AI_Aggressive:
 	cp SPLASH
 	jr z, .splash
 	
+	call AIGetEnemyMove
+	
 ; Ignore this move if it doesn't deal damage.
 
 	ld a, [wEnemyMoveStruct + MOVE_POWER]
