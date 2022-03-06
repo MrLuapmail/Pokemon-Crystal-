@@ -24,7 +24,7 @@ ItemNames::
 	li "FIRE STONE"
 	li "THUNDERSTONE"
 	li "WATER STONE"
-	li "RESTORE BOX"
+	li "RESTORE KIT"
 	li "HP UP"
 	li "PROTEIN"
 	li "IRON"
