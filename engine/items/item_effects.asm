@@ -38,7 +38,7 @@ ItemEffects:
 	dw EvoStoneEffect      ; FIRE_STONE
 	dw EvoStoneEffect      ; THUNDERSTONE
 	dw EvoStoneEffect      ; WATER_STONE
-	dw FullRestoreEffect   ; ITEM_19
+	dw RestoreKitEffect    ; RESTORE_KIT
 	dw VitaminEffect       ; HP_UP
 	dw VitaminEffect       ; PROTEIN
 	dw VitaminEffect       ; IRON
@@ -1630,6 +1630,45 @@ RevivePokemon:
 	ld a, FALSE
 	ret
 
+RestoreKitEffect:
+	ld b, PARTYMENUACTION_HEALING_ITEM
+	call UseItem_SelectMon
+	jp c, StatusHealer_ExitMenu
+
+	call IsMonFainted
+	jp z, StatusHealer_NoEffect
+
+	call IsMonAtFullHealth
+	jr c, .NotAtFullHealth
+
+	call IsMonFainted
+	ld a, TRUE
+	ret z
+	call GetItemHealingAction
+	ld a, MON_STATUS
+	call GetPartyParamLocation
+	ld a, [hl]
+	and c
+	jr nz, .good
+	call IsItemUsedOnConfusedMon
+	ld a, TRUE
+	ret nc
+	ld b, PARTYMENUTEXT_HEAL_CONFUSION
+.good
+	xor a
+	ld [hl], a
+	ld a, b
+	ld [wPartyMenuActionText], a
+	call HealStatus
+	call Play_SFX_FULL_HEAL
+	call ItemActionTextWaitButton
+	ld a, FALSE
+	jp StatusHealer_Jumptable
+	
+.NotAtFullHealth:
+	call FullRestoreStatus
+	jp StatusHealer_Jumptable
+	
 FullRestoreEffect:
 	ld b, PARTYMENUACTION_HEALING_ITEM
 	call UseItem_SelectMon
@@ -1644,10 +1683,10 @@ FullRestoreEffect:
 	jp FullyHealStatus
 
 .NotAtFullHealth:
-	call .FullRestore
+	call FullRestoreStatus
 	jp StatusHealer_Jumptable
 
-.FullRestore:
+FullRestoreStatus:
 	xor a
 	ld [wLowHealthAlarm], a
 	call ReviveFullHP
