@@ -26,7 +26,7 @@ Moves:
 	move VICEGRIP,     EFFECT_NORMAL_HIT,         55, NORMAL,       100, 30,   0
 	move GUILLOTINE,   EFFECT_OHKO,                0, NORMAL,        30,  5,   0
 	move RAZOR_WIND,   EFFECT_FLY,         	      80, NORMAL,       100, 10,   0
-	move SWORDS_DANCE, EFFECT_ATTACK_UP_2,         0, NORMAL,       100, 30,   0
+	move SWORDS_DANCE, EFFECT_ATTACK_UP_2,         0, NORMAL,       100,  2,   0
 	move CUT,          EFFECT_NORMAL_HIT,         50, NORMAL,       100, 30,   0
 	move GUST,         EFFECT_GUST,               40, FLYING,       100, 35,   0
 	move WING_ATTACK,  EFFECT_NORMAL_HIT,         60, FLYING,       100, 35,   0
