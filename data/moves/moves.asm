@@ -51,7 +51,7 @@ Moves:
 	move TAKE_DOWN,    EFFECT_RECOIL_HIT,         90, NORMAL,        85, 20,   0
 	move THRASH,       EFFECT_RAMPAGE,            90, NORMAL,       100, 20,   0
 	move DOUBLE_EDGE,  EFFECT_RECOIL_HIT,        120, NORMAL,       100, 15,   0
-	move TAIL_WHIP,    EFFECT_DEFENSE_DOWN,        0, NORMAL,       100, 30,   0
+	move TAIL_WHIP,    EFFECT_DEFENSE_DOWN,        0, NORMAL,       100,  3,   0
 	move POISON_STING, EFFECT_POISON_HIT,         15, POISON,       100, 35,  30
 	move TWINEEDLE,    EFFECT_POISON_MULTI_HIT,   25, BUG,          100, 20,  20
 	move PIN_MISSILE,  EFFECT_MULTI_HIT,          14, BUG,          100, 20,   0
@@ -171,7 +171,7 @@ Moves:
 	move REST,         EFFECT_HEAL,                0, PSYCHIC_TYPE, 100, 10,   0
 	move ROCK_SLIDE,   EFFECT_FLINCH_HIT,         75, ROCK,         100, 10,  30
 	move HYPER_FANG,   EFFECT_FLINCH_HIT,         80, NORMAL,        90, 15,  10
-	move SHARPEN,      EFFECT_ATTACK_UP,           0, NORMAL,       100,  2,   0
+	move SHARPEN,      EFFECT_ATTACK_UP,           0, NORMAL,       100,  1,   0
 	move CONVERSION,   EFFECT_CONVERSION,          0, NORMAL,       100,  3,   0
 	move TRI_ATTACK,   EFFECT_TRI_ATTACK,         80, NORMAL,       100, 10,  20
 	move SUPER_FANG,   EFFECT_SUPER_FANG,          1, NORMAL,       100, 10,   0
