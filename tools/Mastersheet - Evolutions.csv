@@ -1,4 +1,4 @@
-Unevolved Form,Method,Level,Item,Evolved Form
+ ,Method,Level,Item,Evolved Form
 Bulbasaur,Level,16,,Ivysaur
 Ivysaur,Level,32,,Venusaur
 Charmander,Level,16,,Charmeleon
@@ -29,10 +29,10 @@ Oddish,Level,21,,Gloom
 Gloom,Item,,Leaf Stone,Vileplume
 Gloom,Item,,Sun Stone,Bellossom
 Paras,Level,24,,Parasect
-Venonat,Level,31,,Venomoth
+Venonat,Level,29,,Venomoth
 Diglett,Level,26,,Dugtrio
 Meowth,Level,28,,Persian
-Psyduck,Level,33,,Golduck
+Psyduck,Level,30,,Golduck
 Mankey,Level,28,,Primeape
 Growlithe,Item,,Fire Stone,Arcanine
 Poliwag,Level,25,,Poliwhirl
@@ -68,7 +68,7 @@ Rhyhorn,Level,42,,Rhydon
 Chansey,Level,90,,Blissey
 Horsea,Level,32,,Seadra
 Seadra,Level,70,,Kingdra
-Goldeen,Level,33,,Seaking
+Goldeen,Level,27,,Seaking
 Staryu,Item,,Water Stone,Starmie
 Scyther,Level,55,,Scizor
 Magikarp,Level,30,,Gyarados
@@ -77,7 +77,7 @@ Eevee,Item,,Water Stone,Vaporeon
 Eevee,Item,,Fire Stone,Flareon
 Eevee,Item,,Sun Stone,Espeon
 Eevee,Item,,Moon Stone,Umbreon
-Porygon,Level,50,,Porygon2
+Porygon,Level,40,,Porygon2
 Omanyte,Level,40,,Omastar
 Kabuto,Level,40,,Kabutops
 Dratini,Level,30,,Dragonair
