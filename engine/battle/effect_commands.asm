@@ -506,7 +506,7 @@ CheckEnemyTurn:
 	call StdBattleTextbox
 
 	call HitSelfInConfusion
-	call BattleCommand_DamageCalc
+	call ConfusionDamageCalc
 	call BattleCommand_LowerSub
 
 	xor a
