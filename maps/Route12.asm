@@ -44,17 +44,6 @@ TrainerFisherStephen:
 	closetext
 	end
 
-TrainerFisherBarney:
-	trainer FISHER, BARNEY, EVENT_BEAT_FISHER_BARNEY, FisherBarneySeenText, FisherBarneyBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext FisherBarneyAfterBattleText
-	waitbutton
-	closetext
-	end
-
 Route12Sign:
 	jumptext Route12SignText
 
@@ -105,34 +94,6 @@ FisherStephenAfterBattleText:
 	line "good variety here."
 	done
 
-FisherBarneySeenText:
-	text "What's most impor-"
-	line "tant in our every-"
-	cont "day lives?"
-	done
-
-FisherBarneyBeatenText:
-	text "The answer is"
-	line "coming up next!"
-	done
-
-FisherBarneyAfterBattleText:
-	text "I think electric-"
-	line "ity is the most"
-
-	para "important thing in"
-	line "our daily lives."
-
-	para "If it weren't,"
-	line "people wouldn't"
-
-	para "have made such a"
-	line "fuss when the"
-
-	para "POWER PLANT went"
-	line "out of commission."
-	done
-
 FisherKyleSeenText:
 	text "Do you remember?"
 	done
@@ -180,7 +141,6 @@ Route12_MapEvents:
 	def_object_events
 	object_event 10, 25, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerFisherMartin, -1
 	object_event 14, 33, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerFisherStephen, -1
-	object_event  8, 34, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 5, TrainerFisherBarney, -1
 	object_event  6,  6, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerFisherKyle, -1
 	object_event  5, 43, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route12Calcium, EVENT_ROUTE_12_CALCIUM
 	object_event  5, 51, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route12Nugget, EVENT_ROUTE_12_NUGGET

@@ -18,17 +18,6 @@ TrainerBirdKeeperBoris:
 	closetext
 	end
 
-TrainerBirdKeeperBob:
-	trainer BIRD_KEEPER, BOB, EVENT_BEAT_BIRD_KEEPER_BOB, BirdKeeperBobSeenText, BirdKeeperBobBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext BirdKeeperBobAfterBattleText
-	waitbutton
-	closetext
-	end
-
 Route18Sign:
 	jumptext Route18SignText
 
@@ -48,24 +37,6 @@ BirdKeeperBorisAfterBattleText:
 	text "Since you're so"
 	line "strong, it must be"
 	cont "fun to battle."
-	done
-
-BirdKeeperBobSeenText:
-	text "CYCLING ROAD is a"
-	line "quick shortcut to"
-	cont "CELADON."
-	done
-
-BirdKeeperBobBeatenText:
-	text "…Whew!"
-	done
-
-BirdKeeperBobAfterBattleText:
-	text "If you don't have"
-	line "a BICYCLE, you're"
-
-	para "not allowed to use"
-	line "the shortcut."
 	done
 
 Route18SignText:
@@ -89,4 +60,3 @@ Route18_MapEvents:
 
 	def_object_events
 	object_event 13, 10, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerBirdKeeperBoris, -1
-	object_event 13,  6, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerBirdKeeperBob, -1

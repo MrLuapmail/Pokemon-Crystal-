@@ -143,18 +143,10 @@ KRIS EQU __trainer_class__
 	const CHAD1
 	const NATE
 	const RICKY
-	const JACK2
-	const JACK3
 	const ALAN2
 	const ALAN3
-	const CHAD2
-	const CHAD3
-	const JACK4
-	const JACK5
 	const ALAN4
 	const ALAN5
-	const CHAD4
-	const CHAD5
 
 	trainerclass BIRD_KEEPER ; 18
 	const ROD
@@ -167,7 +159,6 @@ KRIS EQU __trainer_class__
 	const HANK
 	const ROY
 	const BORIS
-	const BOB
 	const JOSE1
 	const PETER
 	const JOSE2
@@ -180,10 +171,8 @@ KRIS EQU __trainer_class__
 	trainerclass LASS ; 19
 	const CARRIE
 	const BRIDGET
-	const ALICE
 	const KRISE
 	const CONNIE1
-	const LINDA
 	const LAURA
 	const SHANNON
 	const MICHELLE
@@ -368,7 +357,6 @@ KRIS EQU __trainer_class__
 	const JONAH
 	const MARTIN
 	const STEPHEN
-	const BARNEY
 	const RALPH2
 	const RALPH3
 	const TULLY2
@@ -459,9 +447,7 @@ KRIS EQU __trainer_class__
 	const RIVAL2_1_CHIKORITA
 	const RIVAL2_1_CYNDAQUIL
 	const RIVAL2_1_TOTODILE
-	const RIVAL2_2_CHIKORITA
-	const RIVAL2_2_CYNDAQUIL
-	const RIVAL2_2_TOTODILE
+	const RIVAL2_2
 
 	trainerclass GUITARIST ; 2b
 	const CLYDE
@@ -483,7 +469,6 @@ KRIS EQU __trainer_class__
 	const TIM
 	const NOLAND
 	const SIDNEY
-	const KENNY
 	const JIM
 	const DANIEL
 	const PARRY2
@@ -496,9 +481,7 @@ KRIS EQU __trainer_class__
 	const KAZU
 	const DWAYNE
 	const HARRIS
-	const ZEKE
 	const CHARLES
-	const RILEY
 	const JOEL
 	const GLENN
 
