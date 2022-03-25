@@ -1042,6 +1042,13 @@
 	const EVENT_BEAT_SAGE_GAKU
 	const EVENT_BEAT_SAGE_MASA
 	const EVENT_BEAT_SAGE_KOJI
+
+; Elite Four Rematches at Mt. Silver
+	const EVENT_BEAT_REMATCH_WILL
+	const EVENT_BEAT_REMATCH_KOGA
+	const EVENT_BEAT_REMATCH_BRUNO
+	const EVENT_BEAT_REMATCH_KAREN
+
 ; Unused: next 116 events
 
 	const_next 1600
