@@ -9,6 +9,9 @@ auto_weather_map: MACRO
 	map_id \1 ; map
 	db \2 ; AUTOMATIC_* weather index
 ENDM
+	auto_weather_map PEWTER_GYM, AUTOMATIC_SANDSTORM
+	auto_weather_map CERULEAN_GYM, AUTOMATIC_RAIN
+	auto_weather_map SEAFOAM_GYM, AUTOMATIC_SUN
 	db 0 ; end
 
 AutomaticWeatherEffects:
