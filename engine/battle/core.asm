@@ -110,7 +110,6 @@ DoBattle:
 	call SpikesDamage
 
 .not_linked_2
- auto-field-effects
 	call StartAutomaticBattleWeather
 	call PlaceSpikes
 	jp BattleTurn
