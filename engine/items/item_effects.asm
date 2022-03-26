@@ -19,7 +19,7 @@ ItemEffects:
 	dw NoEffect            ; BRIGHTPOWDER
 	dw PokeBallEffect      ; GREAT_BALL
 	dw PokeBallEffect      ; POKE_BALL
-	dw RareCandyEffect     ; TOWN_MAP
+	dw RareCandyEffect     ; CANDYBAG
 	dw BicycleEffect       ; BICYCLE
 	dw EvoStoneEffect      ; MOON_STONE
 	dw StatusHealingEffect ; ANTIDOTE
@@ -38,7 +38,7 @@ ItemEffects:
 	dw EvoStoneEffect      ; FIRE_STONE
 	dw EvoStoneEffect      ; THUNDERSTONE
 	dw EvoStoneEffect      ; WATER_STONE
-	dw NoEffect            ; ITEM_19
+	dw RestoreKitEffect    ; RESTORE_KIT
 	dw VitaminEffect       ; HP_UP
 	dw VitaminEffect       ; PROTEIN
 	dw VitaminEffect       ; IRON
@@ -193,26 +193,27 @@ ItemEffects:
 	dw PokeBallEffect      ; PARK_BALL
 	dw NoEffect            ; RAINBOW_WING
 	dw NoEffect            ; ITEM_B3
-	assert_table_length ITEM_B3
-; The items past ITEM_B3 do not have effect entries:
-;	BRICK_PIECE
-;	SURF_MAIL
-;	LITEBLUEMAIL
-;	PORTRAITMAIL
-;	LOVELY_MAIL
-;	EON_MAIL
-;	MORPH_MAIL
-;	BLUESKY_MAIL
-;	MUSIC_MAIL
-;	MIRAGE_MAIL
-;	ITEM_BE
-; They all have the ITEMMENU_NOUSE attribute so they can't be used anyway.
-; NoEffect would be appropriate, with the table then being NUM_ITEMS long.
+	dw NoEffect            ; BRICK_PIECE
+	dw NoEffect            ; SURF_MAIL
+	dw NoEffect            ; LITEBLUEMAIL
+	dw NoEffect            ; PORTRAITMAIL
+	dw NoEffect            ; LOVELY_MAIL
+	dw NoEffect            ; EON_MAIL
+	dw NoEffect            ; MORPH_MAIL
+	dw NoEffect            ; BLUESKY_MAIL
+	dw NoEffect            ; MUSIC_MAIL
+	dw NoEffect            ; MIRAGE_MAIL
+	dw TrainingKitEffect   ; TRAINING_KIT
+	assert_table_length NUM_ITEMS
 
 PokeBallEffect:
 	ld a, [wBattleMode]
 	dec a
 	jp nz, UseBallInTrainerBattle
+
+	ld a, [wBattleType]
+	cp BATTLETYPE_TUTORIAL
+	jr z, .room_in_party
 
 	ld a, [wPartyCount]
 	cp PARTY_LENGTH
@@ -334,17 +335,12 @@ PokeBallEffect:
 	jr nz, .statuscheck
 	ld a, 1
 .statuscheck
-; This routine is buggy. It was intended that SLP and FRZ provide a higher
-; catch rate than BRN/PSN/PAR, which in turn provide a higher catch rate than
-; no status effect at all. But instead, it makes BRN/PSN/PAR provide no
-; benefit.
-; Uncomment the line below to fix this.
 	ld b, a
 	ld a, [wEnemyMonStatus]
 	and 1 << FRZ | SLP
 	ld c, 10
 	jr nz, .addstatus
-	; ld a, [wEnemyMonStatus]
+	ld a, [wEnemyMonStatus]
 	and a
 	ld c, 5
 	jr nz, .addstatus
@@ -356,13 +352,10 @@ PokeBallEffect:
 	ld a, $ff
 .max_1
 
-	; BUG: farcall overwrites a, and GetItemHeldEffect takes b anyway.
-	; This is probably the reason the HELD_CATCH_CHANCE effect is never used.
-	; Uncomment the line below to fix.
 	ld d, a
 	push de
 	ld a, [wBattleMonItem]
-	; ld b, a
+	ld b, a
 	farcall GetItemHeldEffect
 	ld a, b
 	cp HELD_CATCH_CHANCE
@@ -447,19 +440,10 @@ PokeBallEffect:
 	set SUBSTATUS_TRANSFORMED, [hl]
 
 ; This code is buggy. Any wild Pokémon that has Transformed will be
-; caught as a Ditto, even if it was something else like Mew.
-; To fix, do not set [wTempEnemyMonSpecies] to DITTO.
 	bit SUBSTATUS_TRANSFORMED, a
-	jr nz, .ditto
-	jr .not_ditto
+	jr nz, .load_data
 
 .ditto
-	ld a, DITTO
-	ld [wTempEnemyMonSpecies], a
-	jr .load_data
-
-.not_ditto
-	set SUBSTATUS_TRANSFORMED, [hl]
 	ld hl, wEnemyBackupDVs
 	ld a, [wEnemyMonDVs]
 	ld [hli], a
@@ -767,7 +751,7 @@ GetPokedexEntryBank:
 	push hl
 	push de
 	ld a, [wEnemyMonSpecies]
-	; dec a
+	dec a
 	rlca
 	rlca
 	maskbits NUM_DEX_ENTRY_BANKS
@@ -931,13 +915,9 @@ MoonBallMultiplier:
 	inc hl
 	inc hl
 
-; Moon Stone's constant from Pokémon Red is used.
-; No Pokémon evolve with Burn Heal,
-; so Moon Balls always have a catch rate of 1×.
-	push bc
 	ld a, BANK("Evolutions and Attacks")
 	call GetFarByte
-	cp MOON_STONE_RED ; BURN_HEAL
+	cp MOON_STONE
 	pop bc
 	ret nz
 
@@ -996,7 +976,7 @@ LoveBallMultiplier:
 	pop de
 	cp d
 	pop bc
-	ret nz ; for the intended effect, this should be "ret z"
+	ret z
 
 	sla b
 	jr c, .max
@@ -1034,7 +1014,7 @@ FastBallMultiplier:
 	cp -1
 	jr z, .next
 	cp c
-	jr nz, .next ; for the intended effect, this should be "jr nz, .loop"
+	jr nz, .loop
 	sla b
 	jr c, .max
 
@@ -1384,6 +1364,64 @@ RareCandyEffect:
 	farcall EvolvePokemon
 
         ret
+		
+TrainingKitEffect:
+	ld b, PARTYMENUACTION_HEALING_ITEM
+	call UseItem_SelectMon
+
+	jp c, RareCandy_StatBooster_ExitMenu
+
+	call RareCandy_StatBooster_GetParameters
+
+	ld a, MON_LEVEL
+	call GetPartyParamLocation
+
+	ld a, [hl]
+	cp MAX_LEVEL
+        jp nc, NoEffectMessage
+	
+	push de
+	inc a
+	ld d, a
+	farcall CalcExpAtLevel
+	pop de
+	
+	ld a, MON_EXP
+	call GetPartyParamLocation
+	
+	ld bc, 2
+	add hl, bc
+	ldh a, [hMultiplicand + 2]
+	dec a
+	ld [hld], a
+	cp $ff
+	jr nz, .no_more_subtract_1
+	
+	ldh a, [hMultiplicand + 1]
+	dec a
+	ld [hld], a
+	cp $ff
+	jr nz, .no_more_subtract_2
+
+	ldh a, [hMultiplicand + 0]
+	dec a
+	ld [hl], a
+	jr .done
+	
+.no_more_subtract_1
+	ldh a, [hMultiplicand + 1]
+	ld [hld], a
+.no_more_subtract_2	
+	ldh a, [hMultiplicand]
+	ld [hl], a
+.done
+	ld a, [wCurPartyMon]
+	ld hl, wPartyMonNicknames
+	call GetNickname
+	ld hl, GainedALotOfExpText
+	call PrintText
+	jp ClearPalettes
+
 
 HealPowderEffect:
 	ld b, PARTYMENUACTION_HEALING_ITEM
@@ -1592,6 +1630,45 @@ RevivePokemon:
 	ld a, FALSE
 	ret
 
+RestoreKitEffect:
+	ld b, PARTYMENUACTION_HEALING_ITEM
+	call UseItem_SelectMon
+	jp c, StatusHealer_ExitMenu
+
+	call IsMonFainted
+	jp z, StatusHealer_NoEffect
+
+	call IsMonAtFullHealth
+	jr c, .NotAtFullHealth
+
+	call IsMonFainted
+	ld a, TRUE
+	ret z
+	call GetItemHealingAction
+	ld a, MON_STATUS
+	call GetPartyParamLocation
+	ld a, [hl]
+	and c
+	jr nz, .good
+	call IsItemUsedOnConfusedMon
+	ld a, TRUE
+	ret nc
+	ld b, PARTYMENUTEXT_HEAL_CONFUSION
+.good
+	xor a
+	ld [hl], a
+	ld a, b
+	ld [wPartyMenuActionText], a
+	call HealStatus
+	call Play_SFX_FULL_HEAL
+	call ItemActionTextWaitButton
+	ld a, FALSE
+	jp StatusHealer_Jumptable
+	
+.NotAtFullHealth:
+	call FullRestoreStatus
+	jp StatusHealer_Jumptable
+	
 FullRestoreEffect:
 	ld b, PARTYMENUACTION_HEALING_ITEM
 	call UseItem_SelectMon
@@ -1606,10 +1683,10 @@ FullRestoreEffect:
 	jp FullyHealStatus
 
 .NotAtFullHealth:
-	call .FullRestore
+	call FullRestoreStatus
 	jp StatusHealer_Jumptable
 
-.FullRestore:
+FullRestoreStatus:
 	xor a
 	ld [wLowHealthAlarm], a
 	call ReviveFullHP
@@ -1624,7 +1701,6 @@ FullRestoreEffect:
 	ld a, PARTYMENUTEXT_HEAL_HP
 	ld [wPartyMenuActionText], a
 	call ItemActionTextWaitButton
-	call UseDisposableItem
 	ld a, 0
 	ret
 
@@ -2734,6 +2810,10 @@ ItemGotOnText: ; unreferenced
 ItemGotOffText: ; unreferenced
 	text_far _ItemGotOffText
 	text_end
+	
+GainedALotOfExpText: ; unreferenced
+	text_far _GainedALotOfExpText
+	text_end	
 
 ApplyPPUp:
 	ld a, MON_MOVES

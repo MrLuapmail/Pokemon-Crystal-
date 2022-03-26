@@ -1,0 +1,1614 @@
+Name/Level,Move
+Bulbasaur,
+1,Tackle
+4,Vine Whip
+7,Poisonpowder
+10,Mega Drain
+15,Sleep Powder
+Ivysaur,
+1,Mega Drain
+19,Acid
+23,Razor Leaf
+28,Body Slam
+36,Sludge Bomb
+Venusaur,
+1,Sleep Powder
+45,Sludge Bomb
+54,Petal Dance
+70,Synthesis
+88,Earthquake
+Charmander,
+1,Scratch
+8,Ember
+13,Smog
+Charmeleon,
+1,Ember
+17,Scary Face
+23,Fire Punch
+28,Slash
+34,Dragon Rage
+Charizard,
+38,Wing Attack
+45,Steel Wing
+52,Flamethrower
+60,Fire Blast
+69,Smokescreen
+Squirtle,
+1,Tackle
+4,Water Gun
+7,Bite
+12,Headbutt
+16,Seismic Toss
+Wartortle,
+1,Water Gun
+23,Bubblebeam
+28,Ice Punch
+Blastoise,
+1,Bubblebeam
+38,Body Slam
+49,Hydro Pump
+69,Skull Bash
+Caterpie,
+1,Tackle
+7,String Shot
+Metapod,
+1,Tackle
+7,Tackle
+Butterfree,
+10,Confusion
+13,Mega Drain
+14,Poisonpowder
+15,Psybeam
+21,Sleep Powder
+23,Psywave
+23,Giga Drain
+23,Psych Up
+31,Stun Spore
+34,Psychic M
+Weedle,
+1,Poison Sting
+7,String Shot
+Kakuna,
+1,Poison Sting
+7,Poison Sting
+Beedrill,
+10,Pin Missile
+16,Pursuit
+18,Giga Drain
+22,Return
+25,Twineedle
+28,Sludge Bomb
+33,Toxic
+Pidgey,
+1,Gust
+4,Sand Attack
+7,Quick Attack
+14,Whirlwind
+Pidgeotto,
+1,Wing Attack
+18,Wing Attack
+23,Swift
+29,Steel Wing
+36,Return
+Pidgeot,
+1,Wing Attack
+47,Steel Wing
+57,Sky Attack
+Rattata,
+1,Quick Attack
+13,Hyper Fang
+17,Bite
+20,Focus Energy
+28,Pursuit
+34,Super Fang
+Raticate,
+1,Hyper Fang
+22,Body Slam
+26,Crunch
+31,Super Fang
+37,Shadow Ball
+59,Skull Bash
+Spearow,
+1,Quick Attack
+7,Peck
+13,Mud Slap
+17,Swift
+Fearow,
+1,Peck
+23,Wing Attack
+33,Tri Attack
+36,Steel Wing
+40,Drill Peck
+47,Mirror Move
+56,Agility
+Ekans,
+1,Glare
+4,Headbutt
+9,Acid
+13,Mega Drain
+16,Wrap
+19,Pursuit
+Arbok,
+1,Acid
+22,Sludge
+26,Bite
+36,Sludge Bomb
+42,Giga Drain
+49,Crunch
+58,Earthquake
+Pikachu,
+1,Quick Attack
+6,Thunder Wave
+15,Swift
+26,Seismic Toss
+37,Thunderbolt
+50,Surf
+50,Petal Dance
+50,Thunder
+Raichu,
+1,Thunder Wave
+36,Thunderbolt
+48,Seismic Toss
+69,Thunder
+Sandshrew,
+1,Scratch
+6,Sand Attack
+11,Magnitude
+15,Rock Throw
+28,Slash
+31,Rock Slide
+39,Earthquake
+Sandslash,
+1,Slash
+37,Rock Slide
+44,Earthquake
+49,Rapid Spin
+Nidoran F,
+1,Poison Sting
+4,Mud Slap
+8,Bite
+13,Double Kick
+Nidorina,
+1,Bite
+16,Horn Attack
+20,Sludge
+25,Body Slam
+36,Sludge Bomb
+41,Earthquake
+Nidoqueen,
+1,Sludge
+40,Attract
+46,Sludge Bomb
+50,Earthquake
+71,Slash
+Nidoran M,
+1,Poison Sting
+8,Scratch
+13,Double Kick
+Nidorino,
+16,Horn Attack
+20,Sludge
+23,Bite
+27,Body Slam
+36,Sludge Bomb
+42,Earthquake
+48,Thrash
+Nidoking,
+1,Sludge
+36,Body Slam
+42,Sludge Bomb
+49,Earthquake
+59,Thrash
+Clefairy,
+1,Pound
+7,Sing
+10,Metronome
+14,Attract
+19,Swift
+29,Body Slam
+32,Light Screen
+36,Tri Attack
+41,Moonlight
+Clefable,
+1,Metronome
+23,Attract
+36,Body Slam
+49,Tri Attack
+56,Moonlight
+Vulpix,
+1,Ember
+1,Quick Attack
+7,Swift
+13,Flame Wheel
+16,Bite
+17,Confuse Ray
+31,Flamethrower
+Ninetales,
+1,Ember
+36,Hypnosis
+39,Iron Tail
+46,Flamethrower
+49,Faint Attack
+51,Confuse Ray
+67,Solarbeam
+Jigglypuff,
+1,Sing
+4,Dizzy Punch
+9,Bubblebeam
+12,Rollout
+14,Faint Attack
+23,Headbutt
+27,Swift
+31,Body Slam
+Wigglytuff,
+1,Dizzy Punch
+27,Rollout
+31,Body Slam
+41,Seismic Toss
+49,Thunder Wave
+56,Double Edge
+Zubat,
+1,Confuse Ray
+4,Bite
+7,Mega Drain
+13,Confuse Ray
+15,Wing Attack
+21,Sludge
+Golbat,
+1,Confuse Ray
+22,Wing Attack
+29,Giga Drain
+36,Sludge Bomb
+41,Mean Look
+Oddish,
+1,Mega Drain
+7,Acid
+14,Stun Spore
+18,Sleep Powder
+Gloom,
+22,Giga Drain
+27,Sludge Bomb
+29,Stun Spore
+32,Sleep Powder
+Vileplume,
+1,Giga Drain
+1,Sludge Bomb
+55,Moonlight
+64,Petal Dance
+Paras,
+1,Scratch
+4,Stun Spore
+7,Mega Drain
+10,Toxic
+14,Body Slam
+18,Giga Drain
+25,Spore
+Parasect,
+14,Body Slam
+18,Giga Drain
+25,Spore
+27,Leech Life
+Venonat,
+1,Confusion
+6,Mega Drain
+13,Psybeam
+18,Hidden Power
+24,Toxic
+29,Sleep Powder
+Venomoth,
+31,Giga Drain
+34,Sludge Bomb
+43,Psychic M
+54,Psych Up
+Diglett,
+1,Mud Slap
+5,Scratch
+9,Rock Throw
+16,Magnitude
+23,Rock Slide
+29,Slash
+37,Earthquake
+Dugtrio,
+1,Magnitude
+26,Slash
+30,Rock Slide
+38,Tri Attack
+44,Sludge Bomb
+51,Earthquake
+Meowth,
+1,Pay Day
+7,Faint Attack
+12,Bite
+19,Slash
+29,Double Edge
+32,Bubblebeam
+38,Shadow Ball
+41,Thunder
+Persian,
+1,Pay Day
+29,Slash
+38,Shadow Ball
+43,Hypnosis
+53,Double Edge
+Psyduck,
+1,Confusion
+4,Water Gun
+7,Hypnosis
+13,Seismic Toss
+17,Bubblebeam
+21,Ice Punch
+26,Tri Attack
+Golduck,
+17,Bubblebeam
+33,Hypnosis
+37,Ice Beam
+43,Psychic M
+56,Hydro Pump
+Mankey,
+1,Low Kick
+5,Thrash
+9,Seismic Toss
+15,Karate Chop
+23,Rock Slide
+27,Body Slam
+34,Submission
+Primeape,
+1,Seismic Toss
+28,Body Slam
+35,Submission
+37,Rock Slide
+42,Cross Chop
+48,Thrash
+63,Earthquake
+Growlithe,
+1,Ember
+6,Headbutt
+11,Bite
+16,Take Down
+24,Flame Wheel
+36,Flamethrower
+Arcanine,
+1,Flamethrower
+39,Crunch
+45,Iron Tail
+59,Extremespeed
+68,Morning Sun
+Poliwag,
+1,Bubble
+4,Hypnosis
+10,Body Slam
+16,Bubblebeam
+20,Aurora Beam
+31,Hydro Pump
+Poliwhirl,
+1,Hypnosis
+25,Body Slam
+28,Submission
+33,Ice Punch
+39,Hydro Pump
+Poliwrath,
+1,Hypnosis
+45,Submission
+47,Ice Beam
+56,Hydro Pump
+76,Lovely Kiss
+Abra,
+1,Confusion
+7,Teleport
+Kadabra,
+22,Psybeam
+25,Thunder Wave
+28,Seismic Toss
+30,Recover
+Alakazam,
+1,Seismic Toss
+45,Recover
+55,Psychic M
+Machop,
+1,Karate Chop
+8,Dizzy Punch
+13,Seismic Toss
+16,Rock Throw
+23,Vital Throw
+Machoke,
+1,Karate Chop
+32,Rock Slide
+39,Submission
+Machamp,
+1,Cross Chop
+1,Rock Slide
+54,Earthquake
+61,Cross Chop
+Bellsprout,
+1,Acid
+8,Razor Leaf
+14,Stun Spore
+17,Sleep Powder
+Weepinbell,
+1,Acid
+26,Giga Drain
+33,Body Slam
+39,Sludge Bomb
+Victreebel,
+1,Lovely Kiss
+1,Stun Spore
+1,Giga Drain
+1,Sludge Bomb
+Tentacool,
+1,Water Gun
+7,Acid
+12,Wrap
+16,Bubblebeam
+21,Aurora Beam
+Tentacruel,
+1,Attract
+1,Ice Beam
+1,Surf
+38,Sludge Bomb
+55,Ice Beam
+100,Toxic
+Geodude,
+1,Rock Throw
+7,Mud Slap
+14,Magnitude
+26,Selfdestruct
+Graveler,
+1,Selfdestruct
+27,Body Slam
+34,Rock Slide
+48,Earthquake
+Golem,
+1,Earthquake
+1,Rock Slide
+1,Body Slam
+56,Earthquake
+100,Explosion
+Ponyta,
+1,Ember
+9,Stomp
+17,Double Kick
+24,Flame Wheel
+30,Double Edge
+37,Flamethrower
+Rapidash,
+1,Ember
+48,Iron Tail
+57,Fire Blast
+95,Hypnosis
+Slowpoke,
+1,Confusion
+8,Water Gun
+14,Tri Attack
+23,Bubblebeam
+28,Psybeam
+Slowbro,
+58,Psychic M
+Magnemite,
+1,Sonicboom
+6,Thunder Wave
+13,Thundershock
+21,Tri Attack
+25,Spark
+Magneton,
+34,Thunder Wave
+39,Hidden Power
+55,Thunderbolt
+Farfetch D,
+1,Scratch
+5,Gust
+9,Quick Attack
+18,Slash
+23,Wing Attack
+27,Steel Wing
+35,Double Edge
+42,Sky Attack
+Doduo,
+1,Quick Attack
+5,Peck
+14,Swift
+18,Double Kick
+25,Tri Attack
+36,Drill Peck
+Dodrio,
+1,Quick Attack
+40,Drill Peck
+46,Steel Wing
+55,Double Edge
+67,Sky Attack
+Seel,
+1,Water Gun
+13,Headbutt
+17,Aurora Beam
+24,Bubblebeam
+32,Safeguard
+Dewgong,
+1,Headbutt
+36,Disable
+40,Body Slam
+45,Ice Beam
+56,Icy Wind
+100,Rest
+Grimer,
+1,Mega Drain
+7,Acid
+15,Sludge
+23,Disable
+28,Body Slam
+Muk,
+1,Sludge
+39,Giga Drain
+46,Flamethrower
+50,Sludge Bomb
+100,Explosion
+Shellder,
+1,Water Gun
+9,Clamp
+16,Aurora Beam
+23,Bubblebeam
+Cloyster,
+9,Clamp
+35,Tri Attack
+50,Ice Beam
+100,Explosion
+Gastly,
+1,Selfdestruct
+1,Confuse Ray
+1,Night Shade
+1,Lick
+99,Hypnosis
+Haunter,
+1,Night Shade
+33,Faint Attack
+46,Shadow Ball
+Gengar,
+1,Night Shade
+52,Submission
+68,Psychic M
+Onix,
+1,Wrap
+9,Magnitude
+14,Rock Throw
+20,Slam
+27,Rock Slide
+34,Earthquake
+Drowzee,
+1,Pound
+9,Confusion
+15,Seismic Toss
+21,Headbutt
+26,Psybeam
+Hypno,
+1,Headbutt
+31,Shadow Ball
+37,Submission
+42,Thunder Wave
+46,Psychic M
+65,Reflect
+100,Hypnosis
+Krabby,
+1,Water Gun
+9,Stomp
+14,Slam
+26,Dig
+Kingler,
+1,Stomp
+29,Body Slam
+33,Crabhammer
+38,Submission
+45,Metal Claw
+Voltorb,
+1,Selfdestruct
+1,Thunder Wave
+1,Spark
+17,Sonicboom
+Electrode,
+1,Spark
+34,Thunderbolt
+46,Light Screen
+77,Explosion
+Exeggcute,
+1,Confusion
+13,Mega Drain
+17,Stun Spore
+24,Psybeam
+37,Sleep Powder
+Exeggutor,
+1,Psybeam
+36,Giga Drain
+57,Psychic M
+67,Giga Drain
+100,Ancientpower
+Cubone,
+1,Headbutt
+13,Bone Club
+17,Rock Throw
+23,Bone Rush
+27,Bonemerang
+Marowak,
+1,Bonemerang
+34,Frustration
+38,Earthquake
+68,Ancientpower
+Hitmonlee,
+1,Karate Chop
+26,Rock Slide
+33,Hi Jump Kick
+36,Body Slam
+41,Submission
+65,Reversal
+Hitmonchan,
+1,Karate Chop
+26,Mach Punch
+33,Submission
+37,Rock Slide
+47,Earthquake
+54,Counter
+Lickitung,
+1,Lick
+7,Rollout
+13,Pound
+17,Stomp
+24,Disable
+28,Ice Beam
+33,Fire Blast
+36,Body Slam
+43,Earthquake
+Koffing,
+1,Poison Gas
+8,Seismic Toss
+13,Smog
+18,Sludge
+24,Psybeam
+Weezing,
+1,Sludge
+36,Sludge Bomb
+40,Flamethrower
+47,Smokescreen
+53,Fire Blast
+100,Explosion
+Rhyhorn,
+1,Horn Attack
+13,Rock Throw
+18,Magnitude
+27,Body Slam
+34,Rock Slide
+Rhydon,
+1,Horn Attack
+42,Earthquake
+47,Double Edge
+100,Ancientpower
+Chansey,
+1,Psywave
+1,Softboiled
+Tangela,
+1,Mega Drain
+7,Wrap
+13,Hidden Power
+17,Stun Spore
+26,Synthesis
+30,Giga Drain
+39,Ancientpower
+47,Petal Dance
+Kangaskhan,
+1,Pound
+43,Body Slam
+49,Earthquake
+56,Submission
+67,Double Edge
+Horsea,
+1,Pound
+7,Water Gun
+14,Aurora Beam
+23,Bubblebeam
+27,Dragonbreath
+35,Dragon Rage
+Seadra,
+1,Bubblebeam
+35,Dragon Rage
+47,Ice Beam
+Goldeen,
+1,Water Gun
+7,Horn Attack
+14,Psybeam
+20,Haze
+28,Waterfall
+Seaking,
+1,Horn Attack
+34,Megahorn
+38,Hydro Pump
+41,Double Edge
+Staryu,
+1,Water Gun
+7,Confuse Ray
+14,Tri Attack
+23,Bubblebeam
+50,Hydro Pump
+Starmie,
+1,Bubblebeam
+46,Ice Beam
+55,Psychic M
+67,Thunderbolt
+100,Recover
+Mr  Mime,
+1,Confusion
+6,Seismic Toss
+16,Seismic Toss
+24,Psybeam
+35,Thunderbolt
+45,Psychic M
+54,Reflect
+Scyther,
+1,Scratch
+8,Quick Attack
+14,Fury Cutter
+24,Slash
+31,Wing Attack
+37,Steel Wing
+Jynx,
+1,Icy Wind
+35,Seismic Toss
+44,Ice Beam
+52,Psychic M
+Electabuzz,
+1,Thunderpunch
+44,Thunderbolt
+53,Cross Chop
+Magmar,
+1,Fire Punch
+33,Confuse Ray
+39,Cross Chop
+47,Flamethrower
+62,Fire Blast
+Pinsir,
+1,Vicegrip
+13,Fury Cutter
+24,Body Slam
+33,Submission
+39,Rock Slide
+44,Seismic Toss
+Tauros,
+1,Quick Attack
+43,Earthquake
+55,Iron Tail
+67,Double Edge
+Magikarp,
+1,Bubble
+1,Flail
+1,Tackle
+Gyarados,
+1,Dragon Rage
+20,Dragon Rage
+33,Thunderbolt
+39,Ice Beam
+45,Double Edge
+51,Hydro Pump
+59,Earthquake
+Lapras,
+1,Water Gun
+14,Confuse Ray
+22,Aurora Beam
+44,Ice Beam
+67,Thunderbolt
+Ditto,
+1,Transform
+Eevee,
+1,Quick Attack
+7,Sand Attack
+15,Headbutt
+Vaporeon,
+15,Water Gun
+23,Haze
+28,Bubblebeam
+34,Aurora Beam
+42,Bite
+57,Ice Beam
+100,Baton Pass
+Jolteon,
+15,Thundershock
+19,Bite
+20,Spark
+28,Bite
+34,Thunder Wave
+42,Thunderbolt
+57,Hidden Power
+100,Sing
+Flareon,
+15,Ember
+23,Bite
+28,Flame Wheel
+34,Flamethrower
+42,Double Edge
+52,Iron Tail
+57,Shadow Ball
+100,Sacred Fire
+Porygon,
+1,Conversion
+1,Conversion
+1,Recover
+1,Tri Attack
+12,Psybeam
+20,Recover
+Omanyte,
+1,Water Gun
+15,Aurora Beam
+20,Bubblebeam
+29,Surf
+36,Ice Beam
+Omastar,
+1,Bubblebeam
+49,Ancientpower
+55,Hydro Pump
+Kabuto,
+1,Rock Throw
+7,Bubblebeam
+14,Slash
+19,Submission
+24,Rock Slide
+33,Hydro Pump
+39,Double Edge
+Kabutops,
+1,Bubblebeam
+46,Earthquake
+66,Ancientpower
+Aerodactyl,
+1,Wing Attack
+1,Rock Throw
+22,Rock Slide
+59,Earthquake
+65,Fire Blast
+77,Sky Attack
+100,Ancientpower
+Snorlax,
+1,Tackle
+5,Rollout
+13,Sleep Talk
+24,Crunch
+44,Body Slam
+55,Ice Beam
+56,Double Edge
+61,Fire Blast
+69,Thunderbolt
+73,Earthquake
+100,Explosion
+Articuno,
+1,Ice Beam
+1,Sky Attack
+1,Rest
+1,Sleep Talk
+Zapdos,
+1,Thunderbolt
+1,Drill Peck
+1,Hidden Power
+1,Thunder Wave
+Moltres,
+1,Morning Sun
+1,Sky Attack
+1,Fire Blast
+1,Hidden Power
+Dratini,
+1,Dragon Rage
+Dragonair,
+1,Dragon Rage
+30,Thunder Wave
+36,Bubblebeam
+39,Wrap
+42,Body Slam
+47,Aurora Beam
+51,Safeguard
+Dragonite,
+1,Dragon Rage
+55,Wing Attack
+59,Thunderbolt
+60,Ice Beam
+65,Flamethrower
+78,Double Edge
+100,Outrage
+Mewtwo,
+1,Psych Up
+1,Recover
+1,Psychic M
+1,Submission
+Mew,
+1,Psych Up
+1,Submission
+1,Shadow Ball
+1,Softboiled
+Chikorita,
+1,Tackle
+8,Razor Leaf
+12,Poisonpowder
+16,Synthesis
+22,Giga Drain
+23,Body Slam
+24,Light Screen
+43,Safeguard
+Bayleef,
+19,Synthesis
+29,Giga Drain
+31,Body Slam
+39,Light Screen
+47,Safeguard
+Meganium,
+1,Giga Drain
+1,Synthesis
+41,Light Screen
+49,Reflect
+58,Petal Dance
+77,Earthquake
+Cyndaquil,
+1,Tackle
+8,Ember
+13,Smokescreen
+Quilava,
+14,Flame Wheel
+19,Quick Attack
+24,Fury Swipes
+33,Iron Tail
+54,Flamethrower
+Typhlosion,
+36,Flame Wheel
+52,Submission
+64,Thunderpunch
+70,Flamethrower
+86,Earthquake
+100,Fire Blast
+Totodile,
+1,Scratch
+8,Water Gun
+13,Bite
+18,Crunch
+Croconaw,
+1,Slash
+23,Bubblebeam
+28,Ice Punch
+Feraligatr,
+1,Slash
+1,Ice Punch
+36,Hydro Pump
+42,Double Edge
+77,Earthquake
+Sentret,
+1,Quick Attack
+5,Swift
+15,Slash
+Furret,
+1,Quick Attack
+25,Dizzy Punch
+33,Double Edge
+36,Pursuit
+49,Iron Tail
+54,Shadow Ball
+Hoothoot,
+1,Tackle
+1,Hypnosis
+1,Gust
+8,Night Shade
+16,Wing Attack
+Noctowl,
+1,Hypnosis
+20,Psybeam
+27,Whirlwind
+30,Reflect
+33,Shadow Ball
+37,Psychic M
+42,Dream Eater
+51,Return
+57,Sky Attack
+Ledyba,
+1,Psybeam
+6,Fury Cutter
+11,Mach Punch
+15,Mega Drain
+19,Reflect
+21,Light Screen
+22,Swift
+23,Toxic
+Ledian,
+1,Psybeam
+18,Giga Drain
+19,Thunderpunch
+20,Fire Punch
+21,Ice Punch
+22,Psychic M
+27,Swift
+35,Toxic
+Spinarak,
+1,Pursuit
+7,Mega Drain
+13,Night Shade
+16,Toxic
+19,Disable
+Ariados,
+1,Mega Drain
+23,Toxic
+23,Giga Drain
+27,Psychic M
+34,Shadow Ball
+40,Sludge Bomb
+46,Megahorn
+57,Agility
+Crobat,
+1,Confuse Ray
+1,Giga Drain
+1,Sludge Bomb
+39,Wing Attack
+46,Shadow Ball
+55,Sludge Bomb
+61,Hypnosis
+100,Sky Attack
+Chinchou,
+1,Bubble
+5,Thundershock
+9,Confuse Ray
+14,Thunder Wave
+18,Spark
+24,Aurora Beam
+26,Bubblebeam
+Lanturn,
+1,Confuse Ray
+1,Thunder Wave
+1,Bubblebeam
+1,Spark
+42,Thunderbolt
+47,Hydro Pump
+56,Ice Beam
+Pichu,
+1,Thundershock
+1,Present
+6,Thunder Wave
+8,Sweet Kiss
+25,Thunderbolt
+Cleffa,
+1,Present
+1,Metronome
+1,Sweet Kiss
+8,Dizzy Punch
+25,Sing
+Igglybuff,
+1,Present
+1,Sweet Kiss
+1,Faint Attack
+9,Sing
+14,Dizzy Punch
+Togepi,
+1,Present
+4,Metronome
+7,Seismic Toss
+18,Double Edge
+20,Softboiled
+Togetic,
+1,Metronome
+1,Softboiled
+18,Thunder Wave
+21,Psychic M
+24,Softboiled
+Natu,
+1,Confusion
+4,Confuse Ray
+7,Peck
+13,Night Shade
+16,Wing Attack
+30,Psychic M
+Xatu,
+1,Night Shade
+1,Confuse Ray
+25,Psybeam
+29,Drill Peck
+37,Psychic M
+45,Sky Attack
+Mareep,
+1,Thundershock
+5,Swift
+9,Thunder Wave
+16,Safeguard
+30,Light Screen
+Flaaffy,
+1,Thundershock
+1,Swift
+1,Thunder Wave
+17,Spark
+24,Safeguard
+30,Fire Punch
+45,Thunderbolt
+Ampharos,
+1,Thunder Wave
+1,Spark
+30,Fire Punch
+50,Thunderbolt
+Bellossom,
+1,Stun Spore
+1,Double Edge
+1,Giga Drain
+35,Sleep Powder
+45,Petal Dance
+60,Moonlight
+62,Sleep Powder
+65,Petal Dance
+69,Giga Drain
+Marill,
+1,Bubblebeam
+1,Ice Beam
+6,Charm
+10,Seismic Toss
+15,Body Slam
+Azumarill,
+1,Bubblebeam
+1,Seismic Toss
+1,Rollout
+19,Ice Beam
+24,Attract
+29,Hydro Pump
+35,Submission
+39,Double Edge
+Sudowoodo,
+1,Rock Throw
+7,Low Kick
+14,Ice Punch
+18,Return
+24,Rock Slide
+32,Submission
+38,Earthquake
+44,Low Kick
+54,Ancientpower
+100,Explosion
+Politoed,
+35,Ice Beam
+51,Hydro Pump
+67,Earthquake
+71,Lovely Kiss
+Hoppip,
+1,Mega Drain
+4,Confusion
+9,Toxic
+12,Stun Spore
+16,Sleep Powder
+Skiploom,
+1,Sleep Powder
+22,Giga Drain
+25,Double Edge
+Jumpluff,
+1,Giga Drain
+1,Double Edge
+1,Sleep Powder
+1,Toxic
+36,Petal Dance
+Aipom,
+1,Fury Swipes
+7,Pursuit
+12,Growl
+16,Swift
+23,Iron Tail
+27,Return
+36,Shadow Ball
+Sunkern,
+1,Giga Drain
+1,Return
+1,Synthesis
+Sunflora,
+1,Razor Leaf
+1,Synthesis
+19,Return
+31,Petal Dance
+49,Petal Dance
+58,Growth
+Yanma,
+1,Confuse Ray
+6,Hypnosis
+10,Leech Life
+15,Giga Drain
+19,Wing Attack
+28,Toxic
+34,Hidden Power
+45,Protect
+67,Ancientpower
+Wooper,
+1,Bubblebeam
+7,Magnitude
+14,Rock Throw
+23,Body Slam
+27,Earthquake
+32,Ice Beam
+36,Hydro Pump
+41,Sludge Bomb
+Quagsire,
+1,Bubblebeam
+25,Body Slam
+31,Earthquake
+36,Ice Beam
+41,Hydro Pump
+44,Sludge Bomb
+Espeon,
+1,Confusion
+1,Psywave
+20,Psybeam
+27,Shadow Ball
+34,Bite
+47,Psychic M
+59,Morning Sun
+Umbreon,
+1,Confuse Ray
+20,Body Slam
+27,Bite
+34,Confuse Ray
+44,Faint Attack
+100,Moonlight
+Murkrow,
+1,Peck
+7,Night Shade
+12,Pursuit
+18,Faint Attack
+24,Wing Attack
+30,Haze
+34,Drill Peck
+54,Sky Attack
+Slowking,
+34,Psychic M
+68,Earthquake
+Misdreavus,
+1,Night Shade
+34,Thunderbolt
+39,Hypnosis
+44,Shadow Ball
+55,Psywave
+Unown,
+1,Hidden Power
+Wobbuffet,
+1,Counter
+1,Mirror Coat
+1,Destiny Bond
+66,Safeguard
+Girafarig,
+1,Tackle
+7,Bite
+13,Confusion
+17,Confuse Ray
+23,Body Slam
+28,Crunch
+34,Psybeam
+41,Earthquake
+47,Thunderbolt
+53,Return
+Pineco,
+1,Pin Missile
+9,Tackle
+14,Headbutt
+28,Selfdestruct
+32,Double Edge
+35,Light Screen
+38,Rock Slide
+Forretress,
+1,Pin Missile
+29,Selfdestruct
+33,Double Edge
+36,Light Screen
+39,Rock Slide
+47,Earthquake
+100,Explosion
+Dunsparce,
+1,Bite
+7,Haze
+15,Rock Slide
+21,Glare
+24,Body Slam
+29,Earthquake
+34,Double Edge
+43,Rapid Spin
+Gligar,
+1,Mud Slap
+6,Slash
+9,Steel Wing
+17,Rock Slide
+23,Wing Attack
+29,Dig
+47,Earthquake
+Steelix,
+1,Swagger
+1,Body Slam
+1,Rock Slide
+56,Iron Tail
+67,Earthquake
+100,Explosion
+Snubbull,
+1,Metronome
+6,Haze
+10,Bite
+14,Swift
+18,Crunch
+25,Body Slam
+Granbull,
+1,Metronome
+1,Bite
+1,Swift
+1,Body Slam
+23,Attract
+39,Shadow Ball
+45,Earthquake
+51,Return
+80,Lovely Kiss
+Qwilfish,
+1,Hydro Pump
+1,Sludge Bomb
+1,Explosion
+1,Toxic
+100,Spikes
+Scizor,
+1,Slash
+40,Light Screen
+48,Double Edge
+50,Submission
+67,Steel Wing
+Shuckle,
+1,Sandstorm
+1,Wrap
+1,Thunder Wave
+1,Bide
+Heracross,
+1,Tackle
+13,Horn Attack
+23,Rock Slide
+32,Submission
+42,Counter
+52,Earthquake
+65,Megahorn
+Sneasel,
+1,Fury Swipes
+13,Faint Attack
+22,Ice Punch
+38,Shadow Ball
+55,Metal Claw
+Teddiursa,
+1,Scratch
+9,Lick
+15,Seismic Toss
+21,Slash
+Ursaring,
+1,Slash
+1,Seismic Toss
+35,Metal Claw
+39,Body Slam
+44,Earthquake
+47,Submission
+54,Double Edge
+Slugma,
+1,Ember
+7,Rock Throw
+14,Flame Wheel
+20,Rock Slide
+27,Flamethrower
+Magcargo,
+1,Ember
+21,Rock Slide
+21,Flame Wheel
+39,Recover
+45,Fire Blast
+49,Rapid Spin
+57,Earthquake
+64,Ancientpower
+72,Explosion
+Swinub,
+1,Powder Snow
+7,Mud Slap
+14,Magnitude
+28,Ice Beam
+37,Return
+55,Earthquake
+Piloswine,
+1,Ice Beam
+1,Body Slam
+45,Return
+70,Earthquake
+Corsola,
+1,Bubblebeam
+7,Confuse Ray
+22,Ice Beam
+34,Recover
+41,Rock Slide
+48,Rapid Spin
+57,Mirror Coat
+Remoraid,
+1,Water Gun
+7,Psybeam
+13,Aurora Beam
+17,Bubblebeam
+25,Flamethrower
+37,Ice Beam
+55,Hyper Beam
+60,Octazooka
+Octillery,
+1,Flamethrower
+1,Return
+38,Return
+54,Ice Beam
+70,Octazooka
+Delibird,
+1,Present
+6,Powder Snow
+10,Peck
+13,Fury Swipes
+16,Aurora Beam
+21,Safeguard
+25,Wing Attack
+31,Ice Beam
+42,Sky Attack
+48,Rapid Spin
+Mantine,
+1,Aurora Beam
+6,Confuse Ray
+13,Bubblebeam
+20,Toxic
+25,Wing Attack
+35,Ice Beam
+49,Confuse Ray
+Skarmory,
+1,Peck
+7,Swagger
+14,Rock Slide
+28,Drill Peck
+36,Steel Wing
+Houndour,
+1,Ember
+7,Bite
+13,Pursuit
+25,Flame Wheel
+29,Roar
+43,Crunch
+Houndoom,
+1,Ember
+1,Bite
+45,Flamethrower
+53,Crunch
+67,Fire Blast
+100,Return
+Kingdra,
+1,Bubble
+50,Dragonbreath
+56,Return
+58,Ice Beam
+68,Octazooka
+76,Double Edge
+Phanpy,
+1,Tackle
+5,Flail
+9,Rock Throw
+16,Rollout
+17,Magnitude
+25,Double Edge
+33,Rock Slide
+Donphan,
+1,Magnitude
+1,Rock Throw
+1,Rollout
+27,Swagger
+31,Body Slam
+37,Rock Slide
+44,Double Edge
+56,Earthquake
+Porygon2,
+35,Thunder Wave
+39,Thunderbolt
+46,Ice Beam
+54,Tri Attack
+60,Recover
+66,Conversion
+70,Conversion2
+Stantler,
+1,Confuse Ray
+7,Tackle
+16,Headbutt
+20,Reflect
+31,Submission
+42,Earthquake
+45,Return
+60,Skull Bash
+Smeargle,
+1,Sketch
+11,Sketch
+21,Sketch
+31,Sketch
+41,Sketch
+51,Sketch
+61,Sketch
+71,Sketch
+81,Sketch
+91,Sketch
+Tyrogue,
+1,Karate Chop
+Hitmontop,
+1,Hi Jump Kick
+1,Rock Slide
+1,Earthquake
+25,Rock Slide
+31,Earthquake
+39,Hi Jump Kick
+49,Rapid Spin
+56,Submission
+Smoochum,
+1,Powder Snow
+7,Confusion
+14,Sweet Kiss
+25,Psybeam
+33,Ice Punch
+49,Ice Beam
+Elekid,
+1,Thundershock
+7,Quick Attack
+14,Karate Chop
+19,Dizzy Punch
+23,Thunder Wave
+26,Thunder
+41,Thunderbolt
+49,Cross Chop
+Magby,
+1,Ember
+7,Mach Punch
+13,Dizzy Punch
+16,Confuse Ray
+19,Fire Punch
+37,Flamethrower
+43,Confuse Ray
+49,Cross Chop
+Miltank,
+1,Confuse Ray
+7,Attract
+15,Headbutt
+45,Earthquake
+65,Body Slam
+85,Milk Drink
+Blissey,
+1,Thunder Wave
+4,Reflect
+7,Psywave
+9,Safeguard
+13,Light Screen
+Raikou,
+1,Roar
+1,Spark
+1,Bite
+61,Crunch
+73,Thunderbolt
+Entei,
+1,Roar
+1,Stomp
+1,Flamethrower
+74,Extremespeed
+100,Metal Claw
+Suicune,
+1,Bite
+1,Surf
+78,Ice Beam
+Larvitar,
+1,Bite
+7,Rock Throw
+15,Magnitude
+24,Thrash
+27,Rock Slide
+43,Crunch
+65,Earthquake
+Pupitar,
+1,Rock Slide
+1,Earthquake
+15,Return
+47,Crunch
+70,Earthquake
+75,Hyper Beam
+Tyranitar,
+1,Rock Slide
+1,Crunch
+70,Fire Blast
+80,Ice Beam
+90,Thunderbolt
+100,Earthquake
+Lugia,
+1,Roar
+22,Recover
+100,Aeroblast
+Ho Oh,
+1,Whirlwind
+1,Roar
+22,Recover
+100,Sacred Fire
+Celebi,
+1,Giga Drain
+1,Psych Up
+1,Recover
+1,Psychic M

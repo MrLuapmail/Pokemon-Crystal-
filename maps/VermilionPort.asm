@@ -84,12 +84,6 @@ VermilionPortWalkUpToShipScript:
 	iftrue .skip
 	turnobject PLAYER, LEFT
 	opentext
-	readvar VAR_WEEKDAY
-	ifequal MONDAY, .NextShipWednesday
-	ifequal TUESDAY, .NextShipWednesday
-	ifequal THURSDAY, .NextShipSunday
-	ifequal FRIDAY, .NextShipSunday
-	ifequal SATURDAY, .NextShipSunday
 	writetext VermilionPortAskBoardingText
 	yesorno
 	iffalse VermilionPortNotRidingMoveAwayScript
@@ -106,20 +100,6 @@ VermilionPortWalkUpToShipScript:
 
 .NoTicket:
 	writetext VermilionPortNoTicketText
-	waitbutton
-	closetext
-	applymovement PLAYER, VermilionPortCannotEnterFastShipMovement
-	end
-
-.NextShipWednesday:
-	writetext VermilionPortSailMondayText
-	waitbutton
-	closetext
-	applymovement PLAYER, VermilionPortCannotEnterFastShipMovement
-	end
-
-.NextShipSunday:
-	writetext VermilionPortSailSundayText
 	waitbutton
 	closetext
 	applymovement PLAYER, VermilionPortCannotEnterFastShipMovement
@@ -146,12 +126,6 @@ VermilionPortSailorScript:
 	opentext
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue VermilionPortAlreadyRodeScript
-	readvar VAR_WEEKDAY
-	ifequal MONDAY, .NextShipWednesday
-	ifequal TUESDAY, .NextShipWednesday
-	ifequal THURSDAY, .NextShipSunday
-	ifequal FRIDAY, .NextShipSunday
-	ifequal SATURDAY, .NextShipSunday
 	writetext VermilionPortAskBoardingText
 	yesorno
 	iffalse VermilionPortNotRidingScript
@@ -172,18 +146,6 @@ VermilionPortSailorScript:
 	closetext
 	end
 
-.NextShipWednesday:
-	writetext VermilionPortSailMondayText
-	waitbutton
-	closetext
-	end
-
-.NextShipSunday:
-	writetext VermilionPortSailSundayText
-	waitbutton
-	closetext
-	end
-
 VermilionPortSuperNerdScript:
 	faceplayer
 	opentext
@@ -193,7 +155,7 @@ VermilionPortSuperNerdScript:
 	end
 
 VermilionPortHiddenIron:
-	hiddenitem IRON, EVENT_VERMILION_PORT_HIDDEN_IRON
+	hiddenitem NUGGET, EVENT_VERMILION_PORT_HIDDEN_IRON
 
 VermilionPortEnterFastShipMovement:
 	step DOWN

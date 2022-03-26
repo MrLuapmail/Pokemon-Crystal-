@@ -11,13 +11,7 @@ Route37_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_OBJECTS, .Sunny
-
-.Sunny:
-	readvar VAR_WEEKDAY
-	ifequal SUNDAY, .SunnyAppears
-	disappear ROUTE37_SUNNY
-	endcallback
+	callback MAPCALLBACK_OBJECTS, .SunnyAppears
 
 .SunnyAppears:
 	appear ROUTE37_SUNNY
@@ -61,8 +55,6 @@ SunnyScript:
 	opentext
 	checkevent EVENT_GOT_MAGNET_FROM_SUNNY
 	iftrue SunnySundayScript
-	readvar VAR_WEEKDAY
-	ifnotequal SUNDAY, SunnyNotSundayScript
 	checkevent EVENT_MET_SUNNY_OF_SUNDAY
 	iftrue .MetSunny
 	writetext MeetSunnyText
@@ -90,12 +82,6 @@ SunnySundayScript:
 	writetext SunnySundayText
 	waitbutton
 SunnyDoneScript:
-	closetext
-	end
-
-SunnyNotSundayScript:
-	writetext SunnyNotSundayText
-	waitbutton
 	closetext
 	end
 

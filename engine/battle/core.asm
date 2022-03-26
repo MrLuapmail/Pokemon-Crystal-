@@ -110,11 +110,51 @@ DoBattle:
 	call SpikesDamage
 
 .not_linked_2
+ auto-field-effects
 	call StartAutomaticBattleWeather
+	call PlaceSpikes
 	jp BattleTurn
 
 .tutorial_debug
 	jp BattleMenu
+	
+PlaceSpikes:
+	call GetAutomaticBattleSpikes
+	and a
+	ret z
+	ld hl, wPlayerScreens
+	set SCREENS_SPIKES, [hl]
+	ldh [hBattleTurn], a
+	ld de, SPIKES
+	call Call_PlayBattleAnim
+	ld hl, SpikesText
+	call StdBattleTextbox
+	jp EmptyBattleTextbox
+
+GetAutomaticBattleSpikes:
+	ld hl, AutomaticSpikesMaps
+	ld a, [wMapGroup]
+	ld b, a
+	ld a, [wMapNumber]
+	ld c, a
+.loop
+	ld a, [hli] ; group
+	and a
+	ret z ; end
+	cp b
+	jr nz, .wrong_group
+	ld a, [hli] ; map
+	cp c
+	jr nz, .wrong_map
+	ld a, 1 ;spikes
+	ret
+
+.wrong_group:
+	inc hl ; skip map
+.wrong_map
+	jr .loop
+	
+INCLUDE "data/battle/automatic_spikes.asm"
 
 
 StartAutomaticBattleWeather:
@@ -4743,20 +4783,16 @@ PrintPlayerHUD:
 .got_gender_char
 	hlcoord 17, 8
 	ld [hl], a
-	hlcoord 14, 8
 	push af ; back up gender
 	push hl
+	hlcoord 10, 8
 	ld de, wBattleMonStatus
 	predef PlaceNonFaintStatus
 	pop hl
 	pop bc
-	ret nz
-	ld a, b
-	cp " "
-	jr nz, .copy_level ; male or female
-	dec hl ; genderless
+	hlcoord 14, 8
 
-.copy_level
+
 	ld a, [wBattleMonLevel]
 	ld [wTempMonLevel], a
 	jp PrintLevel
@@ -4820,23 +4856,18 @@ DrawEnemyHUD:
 	hlcoord 9, 1
 	ld [hl], a
 
-	hlcoord 6, 1
 	push af
 	push hl
+	hlcoord 2, 1
 	ld de, wEnemyMonStatus
 	predef PlaceNonFaintStatus
 	pop hl
 	pop bc
-	jr nz, .skip_level
+	hlcoord 6, 1
 	ld a, b
-	cp " "
-	jr nz, .print_level
-	dec hl
-.print_level
 	ld a, [wEnemyMonLevel]
 	ld [wTempMonLevel], a
 	call PrintLevel
-.skip_level
 
 	ld hl, wEnemyMonHP
 	ld a, [hli]
@@ -6866,7 +6897,9 @@ BadgeStatBoosts:
 .CheckBadge:
 	ld a, b
 	srl b
+	push af
 	call c, BoostStat
+	pop af
 	inc hl
 	inc hl
 ; Check every other badge.
@@ -6874,8 +6907,6 @@ BadgeStatBoosts:
 	dec c
 	jr nz, .CheckBadge
 ; Check GlacierBadge again for Special Defense.
-; This check is buggy because it assumes that a is set by the "ld a, b" in the above loop,
-; but it can actually be overwritten by the call to BoostStat.
 	srl a
 	call c, BoostStat
 	ret
