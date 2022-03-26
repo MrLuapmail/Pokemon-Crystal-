@@ -1,17 +1,17 @@
 ,Trainer,Pokemon,Level,Item,Move 1,Move 2,Move 3,Move 4
-Cherrygrove City,Rival1 RIVAL1 (1) ?,Chikorita,7,Berry,Tackle,Growl,Charm,No Move
+Cherrygrove City,Rival1 RIVAL1 (1) ?,Chikorita,7,Berry,Tackle,Growl,No Move,No Move
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Rival1 RIVAL1 (2) ?,Cyndaquil,7,Berry,Tackle,Smokescreen,Sand Attack,No Move
+,Rival1 RIVAL1 (2) ?,Cyndaquil,7,Berry,Tackle,Smokescreen,No Move,No Move
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Rival1 RIVAL1 (3) ?,Totodile,7,Berry,Scratch,Leer,Tail Whip,No Move
+,Rival1 RIVAL1 (3) ?,Totodile,7,Berry,Scratch,Leer,No Move,No Move
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
@@ -24,7 +24,7 @@ Route 30,Youngster YOUNGSTER (1) JOEY,Rattata,11,Pink Bow,Quick Attack,Bite,No M
 ,,,,,,,,
 ,,,,,,,,
 ,Youngster YOUNGSTER (2) MIKEY,Pidgey,10,Berry,Quick Attack,Gust,,No Move
-,,Sentret,10,Berry,Rollout,No Move,No Move,No Move
+,,Sentret,9,Berry,Rollout,No Move,No Move,No Move
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
@@ -104,9 +104,9 @@ Violet City Gym,BirdKeeper BIRD_KEEPER (2) ABE,Spearow,14,Berry,Wing Attack,Swif
 ,Falkner FALKNER (1) FALKNER,Pidgeotto,15,Berry,Razor Wind,Quick Attack,Steel Wing,Wing Attack
 ,,Mantine,15,Berry,Confuse Ray,Toxic,Water Gun,Powder Snow
 ,,Gligar,14,Berry,Rock Throw,Wing Attack,Steel Wing,Mud Slap
-,,Togetic,15,Berry Juice,Metronome,Softboiled,,
-,,Murkrow,14,Berry,Faint Attack,Night Shade,Wing Attack,No Move
-,,Noctowl,16,Berry,Hypnosis,Psybeam,Night Shade,Quick Attack
+,,Togetic,15,Berry Juice,Metronome,Softboiled,No Move,No Move
+,,Murkrow,14,Berry,Faint Attack,Night Shade,Peck,No Move
+,,Noctowl,16,Berry,Hypnosis,Confusion,Night Shade,Quick Attack
 Route 32 (gauntlet),Youngster YOUNGSTER (3) ALBERT,Ekans,16,Berry,Sludge,Glare,Mega Drain,Headbutt
 ,,Flaaffy,17,Berry,Spark,Fire Punch,Thunder Wave,Iron Tail
 ,,,,,,,,
@@ -283,7 +283,7 @@ Azalea Gym,Twins TWINS (1) AMY & MAY,Omanyte,23,Berry,Surf,Rock Slide,Ice Beam,M
 ,,,,,,,,
 will need nerving?,Bugsy BUGSY (1) BUGSY,Butterfree,24,Gold Berry,Sleep Powder,Psychic M,Psywave,Giga Drain
 ,,Dunsparce,24,Miracleberry,Glare,Body Slam,Earthquake,Rock Slide
-,,Pinsir,24,Miracleberry,Body Slam,Rock Slide,Submission,Seismic Toss
+,,Pinsir,23,Miracleberry,Body Slam,Rock Slide,Submission,Seismic Toss
 ,,Ariados,24,Gold Berry,Sludge Bomb,Night Shade,Giga Drain,Psychic M
 ,,Scyther,24,Miracleberry,Light Screen,Double Edge,Steel Wing,Wing Attack
 ,,Shuckle,25,Leftovers,Toxic,Sandstorm,Protect,Wrap
@@ -395,12 +395,12 @@ Goldenrod Gym,Beauty BEAUTY (1) VICTORIA,Furret,27,Berry Juice,Return,Submission
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Whitney WHITNEY (1) WHITNEY,Nidoqueen,28,Berry Juice,Attract,Earthquake,Thunderbolt,Ice Beam
+,Whitney WHITNEY (1) WHITNEY,Nidoqueen,28,Berry Juice,Attract,Earthquake,Thunderpunch,Ice Punch
 ,,Chansey,28,Gold Berry,Attract,Thunder Wave,Psywave,Softboiled
-,,Granbull,29,Miracleberry,Attract,Lovely Kiss,Return,Earthquake
+,,Aipom,29,Miracleberry,Shadow Ball,Charm,Body Slam,Hidden Power (Flying)
 ,,Girafarig,29,Miracleberry,Psychic M,Return,Crunch,Earthquake
-,,Clefable,30,Miracleberry,Moonlight,Thunderbolt,Ice Beam,Flamethrower
-,,Miltank,30,Berry Juice,Attract,Body Slam,Earthquake,Milk Drink
+,,Clefable,30,Miracleberry,Moonlight,Thunderpunch,Ice Punch,Fire Punch
+,,Miltank,31,Berry Juice,Attract,Body Slam,Earthquake,Milk Drink
 Route 35,Picnicker PICNICKER (4) KIM,Butterfree,30,Twistedspoon,Psychic M,Giga Drain,Double Edge,Sleep Powder
 ,,Beedrill,30,Poison Barb,Sludge Bomb,Mega Punch,Giga Drain,Return
 ,,Dugtrio,30,Berry Juice,Magnitude,Rock Slide,Tri Attack,Sludge Bomb
@@ -449,8 +449,8 @@ Route 35,Picnicker PICNICKER (4) KIM,Butterfree,30,Twistedspoon,Psychic M,Giga D
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,BugCatcher BUG_CATCHER (8) ARNIE,Weedle,100,Poison Barb,Poison Sting,Absorb,No Move,No Move
-,,Caterpie,100,Berry Juice,Tackle,Absorb,No Move,No Move
+,BugCatcher BUG_CATCHER (8) ARNIE,Weedle,99,Poison Barb,Poison Sting,Absorb,No Move,No Move
+,,Caterpie,99,Berry Juice,Tackle,Absorb,No Move,No Move
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
@@ -480,7 +480,7 @@ National park,PokefanF POKEFANF (1) BEVERLY,Bellossom,31,Miracleberry,Petal Danc
 ,,,,,,,,
 ,,,,,,,,
 Route 36,Schoolboy SCHOOLBOY (3) ALAN,Arbok,32,Berry Juice,Sludge Bomb,Giga Drain,Mud Slap,Crunch
-sudowoodo has explosion*,,Sudowoodo,32,Hard Stone,Rock Slide,Low Kick,Ice Punch,Double Edge
+,,Sudowoodo,32,Hard Stone,Rock Slide,Low Kick,Ice Punch,Double Edge
 ,,Hitmonchan,32,Berry Juice,Submission,Rock Slide,Thunderpunch,Mach Punch
 ,,,,,,,,
 ,,,,,,,,
@@ -764,7 +764,7 @@ Cianwood city gym,Blackbelt BLACKBELT_T (2) YOSHI,Scizor,40,Quick Claw,Metal Cla
 ,Chuck CHUCK (1) CHUCK,Poliwrath,41,Miracleberry,Lovely Kiss,Submission,Earthquake,Ice Beam
 ,,Magmar,41,Miracleberry,Mach Punch,Flamethrower,Cross Chop,Thunderpunch
 ,,Electabuzz,41,Miracleberry,Thunderbolt,Cross Chop,Ice Punch,Fire Punch
-,,Hypno,41,Quick Claw,Thunder Wave,Psychic M,Submission,Shadow Ball
+,,Machamp,41,Quick Claw,Cross Chop,Rock Slide,Earthquake,Mach Punch
 ,,Ursaring,42,Berserk Gene,Double Edge,Earthquake,Metal Claw,Quick Attack
 ,,Primeape,42,Miracleberry,Cross Chop,Earthquake,Rock Slide,Reversal
 Mt. Mortar,Blackbelt BLACKBELT_T (6) KIYO,Hitmonlee,43,Miracleberry,Double Edge,Submission,Rock Slide,Reversal
@@ -799,11 +799,11 @@ Route 42,Pokemaniac POKEMANIAC (4) SHANE,Vileplume,45,Quick Claw,Sludge Bomb,Pet
 ,,,,,,,,
 ,Hiker HIKER (6) BENJAMIN,Sudowoodo,45,Quick Claw,Ancientpower,Earthquake,Double Edge,No Move
 ,,Crobat,45,Miracleberry,Sludge Bomb,Confuse Ray,Shadow Ball,Giga Drain
-,,Dugtrio,46,Miracleberry,Earthquake,Rock Slide,Ancientpower,Hidden Power (Fighting)
+,,Dugtrio,46,Miracleberry,Earthquake,Sludge Bomb,Ancientpower,Hidden Power (Fighting)
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Fisher FISHER (7) TULLY,Magikarp,100,Miracleberry,Flail,,,
+,Fisher FISHER (7) TULLY,Magikarp,99,Miracleberry,Flail,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
@@ -833,15 +833,15 @@ Route 43,Pokemaniac POKEMANIAC (5) BEN,Pidgeot,47,Leftovers,Sky Attack,Hidden Po
 ,,Lanturn,47,Leftovers,Thunder Wave,Thunderbolt,Surf,Ice Beam
 ,,,,,,,,
 ,,,,,,,,
-,Picnicker PICNICKER (20) TIFFANY,Sunkern,100,Leftovers,Giga Drain,Leech Seed,Toxic,Protect
-,,Cleffa,100,Leftovers,Metronome,,,
-,,Igglybuff,100,Leftovers,Double Edge,Thunder,Blizzard,Fire Blast
+,Picnicker PICNICKER (20) TIFFANY,Sunkern,99,Leftovers,Giga Drain,Leech Seed,Toxic,Protect
+,,Cleffa,99,Leftovers,Metronome,,,
+,,Igglybuff,99,Leftovers,Double Edge,Thunder,Blizzard,Fire Blast
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Camper CAMPER (19) SPENCER,Pichu,100,Leftovers,Thunder,Iron Tail,Surf,Petal Dance
-,,Togepi,100,Leftovers,Metronome,,,
-,,Caterpie,100,Leftovers,Hidden Power (Bug),,,
+,Camper CAMPER (19) SPENCER,Pichu,99,Leftovers,Thunder,Iron Tail,Surf,Petal Dance
+,,Togepi,99,Leftovers,Metronome,,,
+,,Caterpie,99,Leftovers,Hidden Power (Bug),,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
@@ -859,7 +859,7 @@ Lake of Rage,CooltrainerM COOLTRAINERM (2) AARON,Kangaskhan,47,Leftovers,Body Sl
 ,,,,,,,,
 (immediate),Fisher FISHER (9) RAYMOND,Omastar,47,Leftovers,Spikes,Surf,Ice Beam,Ancientpower
 ,,Weezing,47,Quick Claw,Flamethrower,Thunderbolt,Shadow Ball,Sludge Bomb
-,,Slowbro,47,Quick Claw,Fire Blast,Surf,Psychic M,Ice Punch
+,,Kingler,47,Quick Claw,Submission,Crabhammer,Submission,Ice Punch
 ,,Lanturn,47,Quick Claw,Hidden Power (Grass),Thunderbolt,Surf,Ice Beam
 ,,,,,,,,
 ,,,,,,,,
@@ -871,19 +871,19 @@ Lake of Rage,CooltrainerM COOLTRAINERM (2) AARON,Kangaskhan,47,Leftovers,Body Sl
 ,,Mr  Mime,47,Miracleberry,Psychic M,Ice Punch,Fire Punch,Thunderbolt
 Rocket Hideout,GruntM GRUNTM (16) GRUNT,Rhydon,48,Hard Stone,Ancientpower,Megahorn,Surf,Surf
 "order of grunts may be incorrect, but it should be all the hideout grunts",,Gyarados,48,Sharp Beak,Hidden Power (Flying),Double Edge,Waterfall,Thunderbolt
-,,Scizor,48,Quick Claw,Metal Claw,Quick Attack,Submission,No Move
+,,Yanma,48,Miracle Seed,Ancientpower,Quick Attack,Wing Attack,Hidden Power (Bug)
 ,,Persian,48,Pink Bow,Double Edge,Thunder,Shadow Ball,Iron Tail
 ,,,,,,,,
 ,,,,,,,,
-these 2 are the repeatable grunts,GruntM GRUNTM (20) GRUNT,Electrode,49,Miracleberry,Explosion,Thunderbolt,Hidden Power (Grass),No Move
-(boom),,Cloyster,49,Quick Claw,Explosion,Surf,Ice Beam,No Move
+these 2 are the repeatable grunts,GruntM GRUNTM (20) GRUNT,Electrode,46,Miracleberry,Selfdestruct,Thunderbolt,Hidden Power (Ice),No Move
+(boom),,Cloyster,46,Quick Claw,Selfdestruct,Surf,Ice Beam,No Move
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-these 2 are the repeatable grunts,GruntM GRUNTM (21) GRUNT,Golem,48,Quick Claw,Explosion,Earthquake,Rock Slide,No Move
-(boom),,Forretress,48,Quick Claw,Explosion,Hidden Power (Steel),Earthquake,Body Slam
-,,Weezing,49,Quick Claw,Explosion,Sludge Bomb,Flamethrower,No Move
+these 2 are the repeatable grunts,GruntM GRUNTM (21) GRUNT,Golem,45,Quick Claw,Selfdestruct,Earthquake,Rock Slide,No Move
+(boom),,Forretress,45,Quick Claw,Selfdestruct,Hidden Power (Steel),Earthquake,Body Slam
+,,Weezing,45,Quick Claw,Selfdestruct,Sludge Bomb,Flamethrower,No Move
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
@@ -935,18 +935,18 @@ these 2 are the repeatable grunts,GruntM GRUNTM (21) GRUNT,Golem,48,Quick Claw,E
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,ExecutiveM EXECUTIVEM (4) EXECUTIVE,Donphan,51,Quick Claw,Earthquake,Ancientpower,Body Slam,Swagger
-,,Espeon,51,Miracleberry,Sing,Psychic M,Psywave,Morning Sun
-,,Heracross,51,Miracleberry,Megahorn,Earthquake,Submission,Rock Slide
-,,Gengar,51,Miracleberry,Hypnosis,Ice Punch,Thunderbolt,Explosion
-,,Aerodactyl,52,Hard Stone,Rock Slide,Wing Attack,Earthquake,Fire Blast
-,,Tauros,52,Leftovers,Double Edge,Earthquake,Rest,Sleep Talk
-,ExecutiveF EXECUTIVEF (2) EXECUTIVE,Misdreavus,51,Miracleberry,Hypnosis,Night Shade,Psychic M,Thunderbolt
+,ExecutiveM EXECUTIVEM (4) EXECUTIVE,Misdreavus,51,Miracleberry,Hypnosis,Night Shade,Psychic M,Thunderbolt
 ,,Houndoom,51,Brightpowder,Flamethrower,Crunch,Frustration,Iron Tail
 ,,Exeggutor,51,Quick Claw,Sleep Powder,Giga Drain,Explosion,Psychic M
-,,Starmie,52,Miracleberry,Surf,Ice Beam,Thunderbolt,Recover
-,,Marowak,52,Thick Club,Earthquake,Ancientpower,Frustration,
+,,Starmie,51,Miracleberry,Surf,Ice Beam,Thunderbolt,Recover
+,,Marowak,52,Thick Club,Earthquake,Ancientpower,Frustration,No Move
 ,,Kangaskhan,52,Leftovers,Attract,Substitute,Body Slam,Earthquake
+,ExecutiveF EXECUTIVEF (2) EXECUTIVE,Donphan,51,Quick Claw,Earthquake,Ancientpower,Body Slam,Swagger
+,,Espeon,51,Miracleberry,Sing,Psychic M,Psywave,Morning Sun
+,,Heracross,51,Miracleberry,Megahorn,Earthquake,Submission,Rock Slide
+,,Gengar,52,Miracleberry,Hypnosis,Ice Punch,Thunderbolt,Explosion
+,,Aerodactyl,52,Hard Stone,Rock Slide,Wing Attack,Earthquake,Fire Blast
+,,Tauros,52,Leftovers,Double Edge,Earthquake,Rest,Sleep Talk
 Mahogany town gym,Boarder BOARDER (2) BRAD,Raichu,52,Magnet,Thunderbolt,Extremespeed,Surf,No Move
 ,,Dewgong,53,Leftovers,Surf,Ice Beam,Double Edge,No Move
 ,,,,,,,,
@@ -1037,8 +1037,8 @@ Olivine Lighthouse,Gentleman GENTLEMAN (5) ALFRED,Granbull,57,Miracleberry,Thund
 ,,Gengar,56,Miracleberry,Fire Punch,Ice Punch,Thunderbolt,Explosion
 ,,,,,,,,
 ,,,,,,,,
-Olivine city gym,Jasmine JASMINE (1) JASMINE,Ampharos,57,Quick Claw,Thunder Wave,Thunderbolt,Fire Punch,Hidden Power
-HP GRASS,,Skarmory,58,Leftovers,Swagger,Steel Wing,Rock Slide,Drill Peck
+Olivine city gym,Jasmine JASMINE (1) JASMINE,Ampharos,57,Quick Claw,Thunder Wave,Thunderbolt,Fire Punch,Hidden Power (Grass)
+HP GRASS,,Skarmory,58,Leftovers,Spikes,Steel Wing,Rock Slide,Drill Peck
 Skarmory change with explosion magneton,,Porygon2,57,Miracleberry,Tri Attack,Ice Beam,Thunderbolt,Psychic M
 ,,Scizor,58,Brightpowder,Light Screen,Metal Claw,Double Edge,Reversal
 ,,Slowbro,57,Leftovers,Thunder Wave,Surf,Psychic M,Earthquake
@@ -1098,14 +1098,14 @@ order again may be wrong,,Crobat,58,Leftovers,Hidden Power (Flying),Sludge Bomb,
 ,,,,,,,,
 ,,,,,,,,
 ,GruntM GRUNTM (10) GRUNT,Gengar,60,Miracleberry,Hypnosis,Thunderbolt,Ice Punch,Fire Punch
-,,Alakazam,60,Miracleberry,Hypnosis,Psychic M,Thunderbolt,Seismic Toss
+,,Alakazam,60,Miracleberry,Hypnosis,Psychic M,Thunderpunch,Seismic Toss
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,Scientist SCIENTIST (5) RICH,Skarmory,59,Leftovers,Drill Peck,Steel Wing,Mud Slap,Spikes
 ,,Chansey,59,Leftovers,Softboiled,Reflect,Thunderbolt,Ice Beam
-,,Alakazam,59,Twistedspoon,Hypnosis,Psychic M,Thunderbolt,Fire Punch
+,,Alakazam,59,Twistedspoon,Hypnosis,Psychic M,Thunderpunch,Fire Punch
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
@@ -1115,18 +1115,18 @@ order again may be wrong,,Crobat,58,Leftovers,Hidden Power (Flying),Sludge Bomb,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,ExecutiveM EXECUTIVEM (3) EXECUTIVE,Electrode,60,Scope Lens,Explosion,Thunder Wave,Thunderbolt,No Move
-,,Exeggutor,60,Quick Claw,Explosion,Psychic M,Sleep Powder,Giga Drain
-,,Muk,60,Quick Claw,Explosion,Sludge Bomb,Flamethrower,Giga Drain
-,,Cloyster,60,Quick Claw,Explosion,Ice Beam,Surf,Tri Attack
-,,Steelix,60,Quick Claw,Explosion,Earthquake,Rock Slide,Body Slam
-,,Snorlax,60,Quick Claw,Selfdestruct,Double Edge,Earthquake,Lovely Kiss
+,ExecutiveM EXECUTIVEM (3) EXECUTIVE,Electrode,59,Scope Lens,Explosion,Thunder Wave,Thunderbolt,Light Screen
+,,Exeggutor,59,Quick Claw,Selfdestruct,Psychic M,Sleep Powder,Giga Drain
+,,Muk,59,Quick Claw,Selfdestruct,Sludge Bomb,Flamethrower,Giga Drain
+,,Cloyster,59,Quick Claw,Selfdestruct,Ice Beam,Surf,Tri Attack
+,,Steelix,59,Quick Claw,Selfdestruct,Earthquake,Rock Slide,Body Slam
+,,Snorlax,58,Quick Claw,Selfdestruct,Body Slam,Rock Slide,Fire Punch
 ,Rival1 RIVAL1 (10) ?,Electabuzz,60,Magnet,Thunderbolt,Psychic M,Cross Chop,Fire Punch
 ,,Primeape,60,Miracleberry,Submission,Earthquake,Rock Slide,Rest
 ,,Dodrio,60,Pink Bow,Drill Peck,Double Edge,Double Kick,Quick Attack
 ,,Arcanine,60,Leftovers,Flamethrower,Extremespeed,Morning Sun,Hidden Power (Electric)
 ,,Politoed,60,Miracleberry,Surf,Ice Beam,Earthquake,Toxic
-,,Meganium,61,Leftovers,Synthesis,Leech Seed,Giga Drain,Hidden Power (Fire)
+,,Meganium,61,Leftovers,Synthesis,Ancientpower,Giga Drain,Hidden Power (Fire)
 ,Rival1 RIVAL1 (11) ?,Electabuzz,60,Magnet,Thunderbolt,Psychic M,Cross Chop,Ice Punch
 ,,Primeape,60,Miracleberry,Submission,Earthquake,Rock Slide,Rest
 ,,Dodrio,60,Pink Bow,Drill Peck,Double Edge,Double Kick,Quick Attack
@@ -1145,7 +1145,7 @@ order again may be wrong,,Crobat,58,Leftovers,Hidden Power (Flying),Sludge Bomb,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,GruntM GRUNTM (11) GRUNT,Politoed,60,Miracleberry,Surf,Ice Beam,Earthquake,Psychic M
+,GruntM GRUNTM (11) GRUNT,Kangaskhan,60,Miracleberry,Surf,Body Slam,Earthquake,Attract
 ,,Jynx,60,Nevermeltice,Lovely Kiss,Ice Beam,Psychic M,Seismic Toss
 ,,,,,,,,
 ,,,,,,,,
@@ -1243,7 +1243,7 @@ Route 44,Fisher FISHER (10) WILTON,Poliwrath,60,Leftovers,Surf,Ice Beam,Earthqua
 ,,,,,,,,
 ,BirdKeeper BIRD_KEEPER (7) VANCE,Skarmory,61,Leftovers,Protect,Drill Peck,Steel Wing,Hidden Power (Ground)
 ,,Dodrio,61,Pink Bow,Double Edge,Drill Peck,Double Kick,Quick Attack
-,,,,,,,,
+,,Fearow,61,Sharp Beak,Drill Peck,Mud Slap,Quick Attack,Double Edge
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
@@ -1298,7 +1298,7 @@ Blackthorn city gym,CooltrainerM COOLTRAINERM (3) PAUL,Dragonair,61,Miracleberry
 ,Clair CLAIR (1) CLAIR,Lapras,63,Leftovers,Ice Beam,Surf,Earthquake,Psychic M
 ,,Feraligatr,64,Quick Claw,Ancientpower,Hydro Pump,Ice Beam,Earthquake
 ,,Dragonite,63,Brightpowder,Extremespeed,Ice Beam,Thunderbolt,Outrage
-,,Charizard,64,Brightpowder,Sky Attack,Ancientpower,Flamethrower,Earthquake
+,,Charizard,64,Miracleberry,Sky Attack,Ancientpower,Flamethrower,Earthquake
 ,,Nidoking,64,Brightpowder,Lovely Kiss,Earthquake,Ice Beam,Thunderbolt
 ,,Kingdra,65,Leftovers,Octazooka,Hidden Power,Ice Beam,Return
 Route 45,Hiker HIKER (7) ERIK,Rhydon,65,Leftovers,Earthquake,Rock Slide,Double Edge,Seismic Toss
@@ -1365,9 +1365,9 @@ Dark Cave,Hiker HIKER (8) MICHAEL,Golem,67,Miracleberry,Explosion,Earthquake,Roc
 ,,Cloyster,67,Leftovers,Explosion,Ice Beam,Surf,Tri Attack
 ,,Quagsire,67,Leftovers,Recover,Curse,Earthquake,Ancientpower
 ,,Muk,67,Quick Claw,Explosion,Sludge Bomb,Fire Blast,Giga Drain
-,,Skarmory,67,Leftovers,Drill Peck,Hidden Power (Ground),Steel Wing,Toxic
+,,Gligar,67,Leftovers,Earthquake,Wing Attack,Steel Wing,Toxic
 ,,Persian,67,Pink Bow,Bubblebeam,Double Edge,Thunderbolt,Hidden Power (Fire)
-Dragon’s den,CooltrainerM COOLTRAINERM (20) DARIN,Kingdra,68,Miracleberry,Octazooka,Hidden Power,Ice Beam,Body Slam
+Dragonâ€™s den,CooltrainerM COOLTRAINERM (20) DARIN,Kingdra,68,Miracleberry,Octazooka,Hidden Power,Ice Beam,Body Slam
 ,,Steelix,68,Leftovers,Earthquake,Ancientpower,Hidden Power (Ghost),Explosion
 ,,Gyarados,68,Leftovers,Earthquake,Hydro Pump,Ice Beam,Hidden Power (Flying)
 ,,,,,,,,
@@ -1389,7 +1389,7 @@ Route 27,CooltrainerF COOLTRAINERF (11) MEGAN,Venusaur,67,Leftovers,Giga Drain,S
 ,,Lapras,67,Leftovers,Thunderbolt,Psychic M,Surf,Ice Beam
 ,,Dugtrio,67,Focus Band,Earthquake,Sludge Bomb,Ancientpower,Toxic
 ,,Lanturn,67,Leftovers,Surf,Thunderbolt,Ice Beam,Confuse Ray
-,,Ditto,67,Focus Band,Transform,No Move,No Move,No Move
+,,Ditto,67,Metal Powder,Transform,No Move,No Move,No Move
 ,,Magmar,67,Brightpowder,Flamethrower,Thunderbolt,Psychic M,Cross Chop
 (immediate),BirdKeeper BIRD_KEEPER (14) JOSE,Farfetch D,75,Stick,Aeroblast,Hidden Power (Ground),Steel Wing,Swords Dance
 ,,,,,,,,
@@ -1410,7 +1410,7 @@ Route 27,CooltrainerF COOLTRAINERF (11) MEGAN,Venusaur,67,Leftovers,Giga Drain,S
 ,,,,,,,,
 ,,,,,,,,
 ,CooltrainerM COOLTRAINERM (12) BRIAN,Gengar,68,Miracleberry,Hypnosis,Thunderbolt,Ice Punch,Fire Punch
-,,Alakazam,68,Miracleberry,Hypnosis,Thunderbolt,Psychic M,Fire Punch
+,,Alakazam,68,Miracleberry,Hypnosis,Thunderpunch,Psychic M,Fire Punch
 ,,Porygon2,69,Leftovers,Recover,Thunderbolt,Ice Beam,Tri Attack
 ,,,,,,,,
 ,,,,,,,,
@@ -1445,10 +1445,10 @@ Route 26,CooltrainerM COOLTRAINERM (9) JAKE,Magneton,68,Miracleberry,Thunder Wav
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,CooltrainerM COOLTRAINERM (10) GAVEN,Quagsire,68,Berserk Gene,Recover,Earthquake,Ancientpower,Surf
+,CooltrainerM COOLTRAINERM (10) GAVEN,Electrode,68,Berserk Gene,Explosion,Thunderbolt,Hidden Power (Grass),Thunder Wave
 ,,Machamp,68,Berserk Gene,Earthquake,Rock Slide,Hidden Power (Ghost),Cross Chop
 ,,Ursaring,68,Berserk Gene,Earthquake,Fire Punch,Rock Slide,Return
-,,Electrode,68,Berserk Gene,Explosion,Thunderbolt,Hidden Power (Grass),Thunder Wave
+,,Quagsire,68,Berserk Gene,Recover,Earthquake,Ancientpower,Surf
 ,,Scizor,68,Berserk Gene,Quick Attack,Metal Claw,Leech Life,Hidden Power (Ground)
 ,,Aerodactyl,68,Berserk Gene,Rock Slide,Fly,Earthquake,Hidden Power (Ghost)
 (immediate),CooltrainerF COOLTRAINERF (9) BETH,Skarmory,70,Leftovers,Rest,Sleep Talk,Hidden Power (Ground),Drill Peck
@@ -1461,7 +1461,7 @@ Victoary road,Rival1 RIVAL1 (13) ?,Ampharos,70,Leftovers,Thunderbolt,Thunder Wav
 ,,Feraligatr,71,Focus Band,Ancientpower,Hydro Pump,Ice Beam,Earthquake
 ,,Tauros,70,Leftovers,Double Edge,Earthquake,Rest,Sleep Talk
 ,,Marowak,70,Thick Club,Earthquake,Ancientpower,Frustration,No Move
-,,Meganium,71,Leftovers,Synthesis,Leech Seed,Giga Drain,Hidden Power (Fire)
+,,Meganium,71,Leftovers,Synthesis,Ancientpower,Giga Drain,Hidden Power (Fire)
 ,,Typhlosion,71,Focus Band,Flamethrower,Earthquake,Thunderpunch,Toxic
 ,Rival1 RIVAL1 (14) ?,Ampharos,70,Leftovers,Thunderbolt,Thunder Wave,Fire Punch,Hidden Power (Water)
 ,,Feraligatr,71,Focus Band,Ancientpower,Hydro Pump,Ice Beam,Earthquake
@@ -1469,10 +1469,10 @@ Victoary road,Rival1 RIVAL1 (13) ?,Ampharos,70,Leftovers,Thunderbolt,Thunder Wav
 ,,Marowak,70,Thick Club,Earthquake,Ancientpower,Frustration,No Move
 ,,Meganium,71,Leftovers,Synthesis,Leech Seed,Giga Drain,Hidden Power (Fire)
 ,,Typhlosion,71,Focus Band,Flamethrower,Earthquake,Thunderpunch,Toxic
-,Rival1 RIVAL1 (15) ?,Marowak,70,Thick Club,Earthquake,Ancientpower,Frustration,No Move
+,Rival1 RIVAL1 (15) ?,Ampharos,70,Leftovers,Thunderbolt,Thunder Wave,Fire Punch,Hidden Power (Water)
 ,,Feraligatr,71,Focus Band,Ancientpower,Hydro Pump,Ice Beam,Earthquake
 ,,Tauros,70,Leftovers,Double Edge,Earthquake,Rest,Sleep Talk
-,,Ampharos,70,Leftovers,Thunderbolt,Thunder Wave,Fire Punch,Hidden Power (Water)
+,,Marowak,70,Thick Club,Earthquake,Ancientpower,Frustration,No Move
 ,,Meganium,71,Leftovers,Synthesis,Leech Seed,Giga Drain,Hidden Power (Fire)
 ,,Typhlosion,71,Focus Band,Flamethrower,Earthquake,Thunderpunch,Toxic
 Elite 4,Will WILL (1) WILL,Espeon,71,Miracleberry,Sing,Psychic M,Psywave,Morning Sun
@@ -1501,1778 +1501,1676 @@ Elite 4,Will WILL (1) WILL,Espeon,71,Miracleberry,Sing,Psychic M,Psywave,Morning
 ,,Umbreon,73,Leftovers,Double Team,Confuse Ray,Toxic,Moonlight
 ,Champion CHAMPION (1) LANCE,Kangaskhan,73,Leftovers,Double Edge,Earthquake,Rest,Sleep Talk
 ,,Aerodactyl,74,Miracleberry,Sky Attack,Earthquake,Ancientpower,Fire Blast
-,,Jolteon,73,Brightpowder,Thunder Wave,Thunderbolt,Bite,Reflect
+,,Gyarados,73,Miracleberry,Hidden Power (Flying),Earthquake,Hydro Pump,Body Slam
 ,,Kingdra,75,Leftovers,Octazooka,Double Edge,Rest,Sleep Talk
 ,,Tyranitar,75,Quick Claw,Ancientpower,Earthquake,Thunderbolt,Ice Beam
 ,,Dragonite,75,Miracleberry,Extremespeed,Thunderbolt,Ice Beam,Flamethrower
-S. S. Anne,Firebreather FIREBREATHER (8) LYLE,Weezing,1,,,,,
-,,Octillery,1,,,,,
-,,Houndoom,1,,,,,
+S. S. Anne,Firebreather FIREBREATHER (8) LYLE,Weezing,73,Leftovers,Sludge Bomb,Flamethrower,Thunderbolt,Explosion
+,,Octillery,73,Gold Berry,Surf,Ice Beam,Sludge Bomb,Flamethrower
+,,Houndoom,73,Charcoal,Flamethrower,Crunch,Iron Tail,Hidden Power (Grass)
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Hiker HIKER (14) NOLAND,Piloswine,1,,,,,
-,,Stantler,1,,,,,
+,Hiker HIKER (14) NOLAND,Piloswine,73,Leftovers,Earthquake,Ice Beam,Ancientpower,Double Edge
+,,Stantler,73,Pink Bow,Double Edge,Submission,Earthquake,Hypnosis
+,,Steelix,73,Gold Berry,Earthquake,Iron Tail,Rock Slide,Explosion
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
+,Sailor SAILOR (9) STANLY,Poliwrath,74,Quick Claw,Submission,Earthquake,Surf,Lovely Kiss
+,,Granbull,74,Leftovers,Double Edge,Earthquake,Submission,Lovely Kiss
+,,Scizor,74,Focus Band,Metal Claw,Submission,Quick Attack,Wing Attack
 ,,,,,,,,
-,Sailor SAILOR (9) STANLY,Poliwrath,1,,,,,
-,,Granbull,1,,,,,
-,,Scizor,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
+,PokefanM POKEFANM (9) COLIN,Jolteon,74,Focus Band,Thunderbolt,Hidden Power (Grass),Crunch,Shadow Ball
+,,Vaporeon,74,Leftovers,Surf,Ice Beam,Hidden Power (Grass),Lovely Kiss
+,,Flareon,74,Charcoal,Fire Blast,Iron Tail,Double Edge,Quick Attack
 ,,,,,,,,
-,PokefanM POKEFANM (9) COLIN,Wobbuffet,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
+,Juggler JUGGLER (2) FRITZ,Mr  Mime,74,Miracleberry,Psychic M,Thunderbolt,Hypnosis,Hidden Power (Water)
+,,Primeape,74,Blackbelt I,Cross Chop,Rock Slide,Earthquake,Double Edge
+,,Magmar,74,Miracleberry,Flamethrower,Thunderbolt,Cross Chop,Psychic M
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Juggler JUGGLER (2) FRITZ,Mr  Mime,1,,,,,
-,,Primeape,1,,,,,
-,,Magmar,1,,,,,
+,Sailor SAILOR (6) JEFF,Raticate,78,Pink Bow,Double Edge,Shadow Ball,Iron Tail,Quick Attack
+,,Piloswine,74,Leftovers,Ice Beam,Return,Earthquake,Rock Slide
+,,Tentacruel,74,Leftovers,Surf,Ice Beam,Sludge Bomb,Giga Drain
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Sailor SAILOR (6) JEFF,Raticate,1,,,,,
-,,Politoed,1,,,,,
+,Picnicker PICNICKER (8) DEBRA,Jumpluff,74,Leftovers,Sleep Powder,Substitute,Leech Seed,Sky Attack
+,,Clefable,74,Miracleberry,Thunderbolt,Ice Beam,Flamethrower,Softboiled
+,,Girafarig,74,Gold Berry,Return,Psychic M,Shadow Ball,Hidden Power (Fighting)
+,,Starmie,74,Miracleberry,Waterfall,Ice Beam,Thunderbolt,Psychic M
 ,,,,,,,,
 ,,,,,,,,
+,Twins TWINS (7) MEG & PEG,Wigglytuff,74,Focus Band,Lovely Kiss,Double Edge,Psychic M,Ice Beam
+,,Azumarill,74,Leftovers,Hydro Pump,Blizzard,Double Edge,Lovely Kiss
+,,Clefable,74,Pink Bow,Tri Attack,Ice Beam,Lovely Kiss,Softboiled
 ,,,,,,,,
 ,,,,,,,,
-,Picnicker PICNICKER (8) DEBRA,Jumpluff,1,,,,,
 ,,,,,,,,
+Vermilion City Gym,Gentleman GENTLEMAN (3) GREGORY,Dragonite,75,Leftovers,Ice Beam,Earthquake,Thunderbolt,Iron Tail
+,,Lanturn,75,Miracleberry,Surf,Ice Beam,Thunderbolt,Thunder Wave
+,,Hitmonlee,75,Blackbelt I,Submission,Rock Slide,Earthquake,Mach Punch
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
+(immediate),Juggler JUGGLER (3) HORTON,Electrode,75,Miracleberry,Thunderbolt,Hidden Power (Grass),Explosion,Minimize
+,,Mr  Mime,75,Miracleberry,Psychic M,Hidden Power (Water),Thunderbolt,Lovely Kiss
+,,Lickitung,75,Leftovers,Body Slam,Earthquake,Fire Blast,Thunderbolt
+,,Jumpluff,75,Leftovers,Sleep Powder,Substitute,Giga Drain,Hidden Power (Ice)
 ,,,,,,,,
-,Twins TWINS (7) MEG & PEG,Wigglytuff,1,,,,,
-,,Azumarill,1,,,,,
 ,,,,,,,,
+,Guitarist GUITARIST (2) VINCENT,Blastoise,76,Gold Berry,Waterfall,Earthquake,Ice Beam,Return
+,,Ampharos,76,Miracleberry,Thunderbolt,Fire Punch,Hidden Power (Grass),Iron Tail
+,,Jynx,76,Focus Band,Lovely Kiss,Ice Beam,Psychic M,Hidden Power (Water)
+,,Bellossom,76,Leftovers,Sleep Powder,Petal Dance,Sludge Bomb,Hidden Power (Ice)
 ,,,,,,,,
 ,,,,,,,,
+,LtSurge LT_SURGE (1) LT.SURGE,Raichu,76,Focus Band,Petal Dance,Thunderbolt,Surf,Seismic Toss
+,,Lapras,76,Leftovers,Psychic M,Ice Beam,Surf,Thunderbolt
+,,Electabuzz,77,Blackbelt I,Thunderbolt,Cross Chop,Ice Punch,Fire Punch
+,,Porygon2,76,Leftovers,Thunder Wave,Thunderbolt,Ice Beam,Recover
+,,Raikou,76,Leftovers,Hidden Power (Water),Thunderbolt,Crunch,Iron Tail
+,,Zapdos,77,Mint Berry,Hidden Power (Ice),Thunderbolt,Sky Attack,Rest
+Route 6,PokefanM POKEFANM (13) REX,Scyther,76,Leftovers,Wing Attack,Hidden Power (Bug),Quick Attack,Steel Wing
+,,Donphan,76,Quick Claw,Earthquake,Ancientpower,Body Slam,Hidden Power (Fighting)
+,,Skarmory,76,Leftovers,Sky Attack,Steel Wing,Rock Slide,No Move
+,,Yanma,76,Miracleberry,Ancientpower,Hidden Power (Bug),Giga Drain,Hypnosis
 ,,,,,,,,
-Vermilion City Gym,Gentleman GENTLEMAN (3) GREGORY,Dragonite,1,,,,,
-,,Lanturn,1,,,,,
 ,,,,,,,,
+,PokefanM POKEFANM (14) ALLAN,Ursaring,76,Quick Claw,Double Edge,Metal Claw,Earthquake,Submission
+,,Vaporeon,76,Miracleberry,Surf,Ice Beam,Rest,Hidden Power (Grass)
+,,Pinsir,76,Quick Claw,Megahorn,Submission,Rock Slide,Double Edge
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-(immediate),Juggler JUGGLER (3) HORTON,Electrode,1,,,,,
-,,Mr  Mime,1,,,,,
-,,Clefable,1,,,,,
-,,Jumpluff,1,,,,,
+Saffron City Gym,Medium MEDIUM (7) DORIS,Gengar,76,Focus Band,Shadow Ball,Psychic M,Submission,Destiny Bond
+,,Murkrow,76,Sharp Beak,Pursuit,Sky Attack,Faint Attack,Hidden Power (Fire)
+,,Hypno,76,Leftovers,Submission,Psychic M,Hypnosis,Body Slam
+,,Misdreavus,76,Leftovers,Pain Split,Psychic M,Thunderbolt,Night Shade
 ,,,,,,,,
 ,,,,,,,,
-,Guitarist GUITARIST (2) VINCENT,Blastoise,1,,,,,
-,,Ampharos,1,,,,,
-,,Jynx,1,,,,,
-,,Bellossom,1,,,,,
+,Psychic PSYCHIC_T (11) JARED,Xatu,77,Miracleberry,Sky Attack,Psychic M,Drill Peck,Night Shade
+,,Mr  Mime,77,Magnet,Reflect,Psychic M,Thunderbolt,Hypnosis
+,,Wobbuffet,77,Miracleberry,Destiny Bond,Counter,Mirror Coat,Safeguard
+,,Alakazam,77,Charcoal,Psychic M,Ice Punch,Fire Punch,Thunderpunch
 ,,,,,,,,
 ,,,,,,,,
-,LtSurge LT_SURGE (1) LT.SURGE,Raichu,76,,Thunder Wave,Thunderbolt,Surf,Seismic Toss
-,,Slowbro,76,Leftovers,Thunder Wave,Psychic M,Surf,Earthquake
-,,Electabuzz,76,,Thunderbolt,Cross Chop,Ice Punch,Fire Punch
-,,Porygon2,75,Leftovers,Thunder Wave,Thunderbolt,Ice Beam,Recover
-,,Jolteon,76,,Hidden Power,Sing,Thunderbolt,
-,,Zapdos,77,Leftovers,Hidden Power,Thunderbolt,,
-Route 6,PokefanM POKEFANM (13) REX,Scyther,1,,,,,
-,,Phanpy,1,,,,,
+,Medium MEDIUM (6) REBECCA,Electrode,77,Miracleberry,Explosion,Thunderbolt,Hidden Power (Water),Reflect
+,,Misdreavus,77,Leftovers,Destiny Bond,Psychic M,Thunderbolt,Pain Split
+,,Starmie,77,Twistedspoon,Hydro Pump,Thunderbolt,Psychic M,Ice Beam
+,,Porygon2,77,Leftovers,Psychic M,Ice Punch,Thunderbolt,Hyper Beam
 ,,,,,,,,
 ,,,,,,,,
+(immediate),Psychic PSYCHIC_T (2) FRANKLIN,Girafarig,78,Pink Bow,Double Edge,Thunderbolt,Shadow Ball,Psychic M
+,,Meganium,77,Leftovers,Reflect,Light Screen,Ancientpower,Earthquake
+,,Noctowl,78,Focus Band,Sky Attack,Double Edge,Psychic M,Hidden Power (Fire)
+,,Starmie,78,Leftovers,Ice Beam,Psychic M,Thunderbolt,Surf
+,,Magmar,78,Charcoal,Fire Blast,Cross Chop,Thunderpunch,Mach Punch
 ,,,,,,,,
+,Sabrina SABRINA (1) SABRINA,Mew,77,Miracleberry,Ice Beam,Psychic M,Submission,Shadow Ball
+,,Gengar,78,Mystic Water,Hidden Power (Water),Thunderbolt,Shadow Ball,Ice Punch
+,,Exeggutor,78,Quick Claw,Sleep Powder,Psychic M,Giga Drain,Ancientpower
+,,Kangaskhan,79,Leftovers,Earthquake,Submission,Body Slam,Hidden Power (Flying)
+,,Alakazam,78,Miracleberry,Thunderpunch,Fire Punch,Psychic M,Ice Punch
+,,Slowking,79,Miracleberry,Surf,Flamethrower,Psychic M,Ice Beam
+Route 8,Biker BIKER (3) DWAYNE,Weezing,78,Poison Barb,Explosion,Fire Blast,Sludge Bomb,Thunderbolt
+,,Pinsir,78,Silverpowder,Megahorn,Double Edge,Submission,Rock Slide
+,,Granbull,78,Quick Claw,Earthquake,Double Edge,Shadow Ball,Attract
+,,Flareon,78,Charcoal,Fire Blast,Shadow Ball,Submission,Quick Attack
 ,,,,,,,,
-,PokefanM POKEFANM (14) ALLAN,Teddiursa,1,,,,,
 ,,,,,,,,
+,Biker BIKER (4) HARRIS,Nidoking,78,Soft Sand,Earthquake,Megahorn,Sludge Bomb,Blizzard
+,,Rhydon,78,Hard Stone,Ancientpower,Earthquake,Double Edge,Iron Tail
+,,Machamp,78,Blackbelt I,Cross Chop,Earthquake,Counter,Mach Punch
+,,Houndoom,78,Blackglasses,Flamethrower,Pursuit,Crunch,Hidden Power (Ice)
 ,,,,,,,,
 ,,,,,,,,
+,SuperNerd SUPER_NERD (6) SAM,Exeggutor,78,Miracle Seed,Explosion,Psychic M,Giga Drain,Hidden Power (Fire)
+,,Cloyster,78,Nevermeltice,Explosion,Ice Beam,Surf,Spikes
+,,Electrode,78,Pink Bow,Explosion,Thunderbolt,Reflect,Hidden Power (Grass)
+,,Porygon2,79,Pink Bow,Psychic M,Thunderbolt,Ice Beam,Hyper Beam
 ,,,,,,,,
 ,,,,,,,,
-Saffron City Gym,Medium MEDIUM (7) DORIS,Gengar,1,,,,,
-,,Murkrow,1,,,,,
+,SuperNerd SUPER_NERD (7) TOM,Golem,78,Quick Claw,Explosion,Earthquake,Ancientpower,Double Edge
+,,Forretress,79,Quick Claw,Explosion,Earthquake,Spikes,Body Slam
+,,Muk,78,Quick Claw,Explosion,Sludge Bomb,Fire Blast,Giga Drain
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
+Route 12,Fisher FISHER (4) KYLE,Lanturn,79,Leftovers,Thunderbolt,Surf,Ice Beam,Thunder Wave
+,,Slowbro,79,Leftovers,Fire Blast,Surf,Psychic M,Ice Beam
+,,Mantine,79,Leftovers,Recover,Toxic,Surf,Whirlwind
+,,Misdreavus,79,Leftovers,Pain Split,Hypnosis,Psychic M,Thunderbolt
 ,,,,,,,,
-,Psychic PSYCHIC_T (11) JARED,Xatu,1,,,,,
-,,Mr  Mime,1,,,,,
-,,Wobbuffet,1,,,,,
 ,,,,,,,,
+,Fisher FISHER (13) MARTIN,Tentacool,79,Leftovers,Surf,Sludge Bomb,Thunderbolt,Blizzard
+,,Kingdra,79,Miracleberry,Outrage,Surf,Ice Beam,Rest
+,,Gyarados,79,Pink Bow,Double Edge,Earthquake,Hydro Pump,Fire Blast
+,,Octillery,80,Quick Claw,Fire Blast,Octazooka,Ice Beam,Sludge Bomb
 ,,,,,,,,
 ,,,,,,,,
-,Medium MEDIUM (6) REBECCA,Magmar,1,,,,,
-,,Misdreavus,1,,,,,
+,Fisher FISHER (14) STEPHEN,Qwilfish,78,Quick Claw,Sludge Bomb,Spikes,Surf,Explosion
+,,Cloyster,78,Quick Claw,Surf,Ice Beam,Explosion,Spikes
+,,Starmie,79,Mystic Water,Surf,Psychic M,Thunderbolt,Recover
+,,Seaking,81,Quick Claw,Megahorn,Double Edge,Hydro Pump,Ice Beam
 ,,,,,,,,
 ,,,,,,,,
+,Youngster YOUNGSTER (12) JASON,Rhydon,80,Silverpowder,Earthquake,Megahorn,Double Edge,Ancientpower
+,,Crobat,80,Miracle Seed,Confuse Ray,Sky Attack,Giga Drain,Sludge Bomb
+,,Dodrio,80,Metal Coat,Sky Attack,Double Edge,Steel Wing,Quick Attack
+,,Miltank,80,Pink Bow,Milk Drink,Body Slam,Earthquake,Attract
 ,,,,,,,,
 ,,,,,,,,
-(immediate),Psychic PSYCHIC_T (2) FRANKLIN,Girafarig,1,,,,,
+,Youngster YOUNGSTER (11) OWEN,Farfetch D,80,Stick,Sky Attack,Steel Wing,Submission,Quick Attack
+,,Sneasel,80,Spell Tag,Shadow Ball,Ice Beam,Metal Claw,Surf
+,,Lickitung,81,Soft Sand,Double Edge,Earthquake,Flamethrower,Rock Slide
+,,Hitmonlee,81,Focus Band,Endure,Reversal,Foresight,Earthquake
 ,,,,,,,,
 ,,,,,,,,
+,Psychic PSYCHIC_T (4) FIDEL,Mr  Mime,81,Focus Band,Reflect,Light Screen,Psychic M,Swagger
+,,Xatu,81,Miracleberry,Steel Wing,Sky Attack,Hypnosis,Dream Eater
+,,Slowking,80,Mystic Water,Fire Blast,Surf,Psychic M,Earthquake
+,,Jigglypuff,84,Pink Bow,Psychic M,Double Edge,Submission,Thunder Wave
 ,,,,,,,,
 ,,,,,,,,
+,Psychic PSYCHIC_T (3) HERMAN,Exeggutor,80,Pink Bow,Giga Drain,Psychic M,Ancientpower,Egg Bomb
+,,Slowbro,80,Leftovers,Thunder Wave,Recover,Seismic Toss,Surf
+,,Jynx,80,Nevermeltice,Lovely Kiss,Psychic M,Ice Beam,Perish Song
+,,Misdreavus,80,Leftovers,Pain Split,Thunder Wave,Night Shade,Psychic M
 ,,,,,,,,
-,Sabrina SABRINA (1) SABRINA,Jynx,77,Brightpowder,Ice Beam,Psychic M,Seismic Toss,Lovely Kiss
-,,Primeape,77,,Rock Slide,Cross Chop,Earthquake,
-,,Hypno,78,,Psychic M,Seismic Toss,Reflect,
-,,Miltank,78,,Earthquake,Milk Drink,,
-,,Alakazam,79,Miracleberry,Thunder Wave,Seismic Toss,,
-,,Espeon,79,,Psywave,,,
-Route 8,Biker BIKER (3) DWAYNE,Weezing,1,,,,,
-,,Pinsir,1,,,,,
-,,Granbull,1,,,,,
-,,Flareon,1,,,,,
 ,,,,,,,,
+Route 13,BirdKeeper BIRD_KEEPER (16) BRET,,,,,,,
+,neeeds to be removed,,,,,,,
 ,,,,,,,,
-,Biker BIKER (4) HARRIS,Nidoking,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
+,BirdKeeper BIRD_KEEPER (15) PERRY,Gligar,81,Focus Band,Earthquake,Wing Attack,Steel Wing,Rock Slide
+,,Skarmory,81,Focus Band,Swords Dance,Sky Attack,Steel Wing,Rock Slide
+,,Golduck,81,Focus Band,Surf,Ice Beam,Psychic M,Disable
+,,Charizard,81,Focus Band,Fire Blast,Earthquake,Wing Attack,Thunderpunch
 ,,,,,,,,
 ,,,,,,,,
-,Biker BIKER (5) ZEKE,Magneton,1,,,,,
-,,Dodrio,1,,,,,
+,PokefanM POKEFANM (12) ALEX,Nidoking,81,Scope Lens,Earthquake,Sludge Bomb,Fire Blast,Blizzard
+,,Kingler,81,Scope Lens,Crabhammer,Body Slam,Hidden Power (Flying),Metal Claw
+,,Victreebel,81,Miracle Seed,Sleep Powder,Petal Dance,Sludge Bomb,Hidden Power (Ice)
+,,Tauros,81,Leftovers,Double Edge,Iron Tail,Earthquake,Blizzard
 ,,,,,,,,
 ,,,,,,,,
+,PokefanM POKEFANM (4) JOSHUA,Pikachu,90,Light Ball,Thunderbolt,Extremespeed,Submission,Hidden Power (Fire)
+,,Farfetch D,81,Stick,Slash,Sky Attack,Steel Wing,Quick Attack
+,,Voltorb,100,Berserk Gene,Explosion,,,
+,,Cubone,100,Thick Club,Ancientpower,Earthquake,No Move,No Move
+,,Pichu,100,Light Ball,Thunderbolt,Surf,Petal Dance,Hidden Power (Ice)
 ,,,,,,,,
+Route 14,PokefanM POKEFANM (5) CARTER,Charizard,81,Charcoal,Flamethrower,Earthquake,Thunderpunch,Crunch
+,,Venusaur,81,Focus Band,Sleep Powder,Petal Dance,Ancientpower,Hidden Power (Fire)
+,,Blastoise,82,Leftovers,Surf,Ice Beam,Seismic Toss,Body Slam
+,,Raichu,82,Miracle Seed,Thunderbolt,Petal Dance,Extremespeed,Thunder Wave
 ,,,,,,,,
-,SuperNerd SUPER_NERD (6) SAM,Exeggutor,1,,,,,
-,,Cloyster,1,,,,,
 ,,,,,,,,
+,PokefanM POKEFANM (6) TREVOR,Vileplume,81,Miracle Seed,Sleep Powder,Giga Drain,Sludge Bomb,Hidden Power (Fire)
+,,Omastar,81,Brightpowder,Surf,Ice Beam,Ancientpower,Hidden Power (Grass)
+,,Typhlosion,82,Charcoal,Fire Blast,Thunderpunch,Earthquake,Hidden Power (Grass)
+,,Tangela,82,Leftovers,Sleep Powder,Giga Drain,Ancientpower,Hidden Power (Fire)
 ,,,,,,,,
 ,,,,,,,,
+,BirdKeeper BIRD_KEEPER (9) ROY,Noctowl,83,Leftovers,Hypnosis,Sky Attack,Double Edge,Psychic M
+,,Golduck,81,Mystic Water,Hypnosis,Surf,Ice Beam,Psychic M
+,,Dodrio,82,Pink Bow,Drill Peck,Return,Jump Kick,Steel Wing
+,,Xatu,82,Miracle Seed,Psychic M,Giga Drain,Sky Attack,Hypnosis
+,,Donphan,82,Quick Claw,Earthquake,Rock Slide,Double Edge,Hidden Power (Flying)
 ,,,,,,,,
-,SuperNerd SUPER_NERD (7) TOM,Golem,1,,,,,
-,,Forretress,1,,,,,
-,,Muk,1,,,,,
+Route 15,Schoolboy SCHOOLBOY (4) JOHNNY,Sudowoodo,81,Hard Stone,Ancientpower,Earthquake,Double Edge,Explosion
+,,Victreebel,81,Leftovers,Sleep Powder,Giga Drain,Sludge Bomb,Hidden Power (Ice)
+,,Raichu,82,Magnet,Thunderbolt,Surf,Hidden Power (Grass),Extremespeed
+,,Hitmonchan,82,Blackbelt I,Submission,Earthquake,Rock Slide,Mach Punch
 ,,,,,,,,
 ,,,,,,,,
+,Schoolboy SCHOOLBOY (9) BILLY,Jumpluff,81,Leftovers,Sleep Powder,Leech Seed,Substitute,Hidden Power (Bug)
+,,Wigglytuff,81,Leftovers,Double Edge,Psychic M,Ice Punch,Thunderpunch
+,,Ninetales,81,Miracleberry,Flamethrower,Hidden Power (Psychic),Hidden Power (Grass),Hypnosis
+,,Marowak,82,Soft Sand,Earthquake,Rock Slide,Body Slam,Iron Tail
+,,Fearow,82,Sharp Beak,Drill Peck,Double Edge,Steel Wing,Quick Attack
 ,,,,,,,,
-Route 12,Fisher FISHER (4) KYLE,Lanturn,1,,,,,
-,,Slowbro,1,,,,,
-,,Mantine,1,,,,,
+,Teacher TEACHER (1) COLETTE,Chansey,81,Leftovers,Ice Beam,Softboiled,Psychic M,Sing
+,,Meganium,82,Leftovers,Giga Drain,Ancientpower,Earthquake,Sleep Powder
+,,Cloyster,82,Mystic Water,Surf,Ice Beam,Hidden Power (Grass),Explosion
+,,Dugtrio,82,Soft Sand,Earthquake,Ancientpower,Sludge Bomb,Slash
 ,,,,,,,,
 ,,,,,,,,
+,Schoolboy SCHOOLBOY (6) TOMMY,Shuckle,95,Leftovers,Wrap,Toxic,Rest,Sleep Talk
+,,Ditto,95,Metal Powder,Transform,No Move,No Move,No Move
+,,Smeargle,95,Scope Lens,Aeroblast,Sacred Fire,Extremespeed,Crabhammer
 ,,,,,,,,
-,Fisher FISHER (13) MARTIN,Dragonair,1,,,,,
-,,Gyarados,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
+,Schoolboy SCHOOLBOY (2) KIPP,Sneasel,82,Metal Coat,Ice Beam,Crunch,Metal Claw,Shadow Ball
+,,Magcargo,82,Focus Band,Flamethrower,Ancientpower,Earthquake,Hidden Power (Grass)
+,,Corsola,82,Brightpowder,Surf,Ice Beam,Ancientpower,Mirror Coat
+,,Magneton,82,Focus Band,Thunderbolt,Hidden Power (Grass),Thunder Wave,Explosion
 ,,,,,,,,
 ,,,,,,,,
-,Fisher FISHER (14) STEPHEN,Qwilfish,1,,,,,
-,,Cloyster,1,,,,,
-,,Starmie,1,,,,,
-,,Seaking,1,,,,,
+,Teacher TEACHER (2) HILLARY,Arcanine,82,Charcoal,Fire Blast,Extremespeed,Morning Sun,Iron Tail
+,,Girafarig,82,Miracleberry,Return,Psychic M,Earthquake,Shadow Ball
+,,Dewgong,82,Leftovers,Surf,Ice Beam,Hidden Power (Grass),Return
+,,Machamp,82,Gold Berry,Submission,Rock Slide,Earthquake,Hidden Power (Ghost)
+,,Pidgeot,82,Leftovers,Sky Attack,Double Edge,Steel Wing,Quick Attack
 ,,,,,,,,
+Fuchsia city gym,Picnicker PICNICKER (5) CINDY,Nidoqueen,83,Leftovers,Earthquake,Sludge Bomb,Thunderbolt,Submission
+,,Nidoking,83,Brightpowder,Night Shade,Hypnosis,Psychic M,Thunderbolt
+,,Gyarados,83,Focus Band,Surf,Earthquake,Flamethrower,Hidden Power (Flying)
+,,Vileplume,84,Miracleberry,Sleep Powder,Sludge Bomb,Giga Drain,Hidden Power (Rock)
 ,,,,,,,,
-,Fisher FISHER (15) BARNEY,Quagsire,1,,,,,
-,,Tentacruel,1,,,,,
-,,Octillery,1,,,,,
 ,,,,,,,,
+,Janine JANINE (1) JANINE,Muk,84,Quick Claw,Shadow Ball,Giga Drain,Fire Blast,Explosion
+,,Umbreon,83,Leftovers,Double Team,Confuse Ray,Moonlight,Toxic
+,,Blissey,83,Leftovers,Double Team,Toxic,Softboiled,Flamethrower
+,,Crobat,84,Miracleberry,Super Fang,Sky Attack,Sludge Bomb,Hidden Power (Fire)
+,,Stantler,84,Berserk Gene,Return,Submission,Shadow Ball,Earthquake
+,,Tentacruel,85,Leftovers,Sludge Bomb,Surf,Ice Beam,Giga Drain
+,Camper CAMPER (5) BARRY,Nidoking,83,Leftovers,Earthquake,Shadow Ball,Thunderbolt,Rock Slide
+,,Misdreavus,83,Miracle Seed,Night Shade,Hypnosis,Psychic M,Thunderbolt
+,,Rhydon,83,Soft Sand,Earthquake,Rock Slide,Megahorn,Double Edge
+,,Hypno,84,Miracle Seed,Psychic M,Shadow Ball,Hypnosis,Hidden Power (Water)
 ,,,,,,,,
 ,,,,,,,,
-,Youngster YOUNGSTER (12) JASON,Rhydon,1,,,,,
-,,Crobat,1,,,,,
+Route 18,BirdKeeper BIRD_KEEPER (10) BORIS,Togetic,100,Leftovers,Metronome,Softboiled,No Move,No Move
+,,Xatu,82,Leftovers,Psychic M,Giga Drain,Drill Peck,Hidden Power (Fire)
+,,Murkrow,83,Miracleberry,Sky Attack,Faint Attack,Hidden Power (Fighting),Quick Attack
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
+,Biker BIKER (8) JOEL,Electabuzz,82,Magnet,Thunderbolt,Fire Punch,Ice Punch,Cross Chop
+,,Donphan,83,Berserk Gene,Earthquake,Rock Slide,Return,Hidden Power (Flying)
+,,Muk,83,Leftovers,Shadow Ball,Fire Blast,Giga Drain,Explosion
+,,Houndoom,82,Blackglasses,Flamethrower,Crunch,Iron Tail,Hidden Power (Grass)
 ,,,,,,,,
-,Youngster YOUNGSTER (11) OWEN,Ditto,1,,,,,
 ,,,,,,,,
+,Biker BIKER (6) CHARLES,Blastoise,82,Leftovers,Waterfall,Ice Beam,Earthquake,Hidden Power (Electric)
+,,Arbok,84,Leftovers,Sludge Bomb,Earthquake,Giga Drain,Glare
+,,Dunsparce,90,Pink Bow,Glare,Return,Earthquake,Rock Slide
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
+,Biker BIKER (9) GLENN,Lickitung,84,Focus Band,Thunderbolt,Ice Beam,Earthquake,Double Edge
+,,Parasect,84,Quick Claw,Spore,Leech Life,Hidden Power (Rock),Double Edge
+,,Hitmonchan,84,Leftovers,Hi Jump Kick,Rock Slide,Earthquake,Mach Punch
+,,Hypno,83,Miracleberry,Hypnosis,Psychic M,Shadow Ball,Hidden Power (Water)
+,,Magneton,84,Miracle Seed,Thunderbolt,Hidden Power (Grass),Tri Attack,Thunder Wave
 ,,,,,,,,
-,Psychic PSYCHIC_T (4) FIDEL,Wobbuffet,1,,,,,
+Celadon City,Lass LASS (9) MICHELLE,Dugtrio,85,Hard Stone,Earthquake,Ancientpower,Sludge Bomb,Double Edge
+,,Jumpluff,85,Leftovers,Sleep Powder,Giga Drain,Hidden Power (Fire),Substitute
+,,Dewgong,86,Leftovers,Surf,Ice Beam,Hidden Power (Grass),Protect
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
+(immediate),Picnicker PICNICKER (19) TANYA,Victreebel,85,Miracleberry,Sleep Powder,Hidden Power (Fire),Petal Dance,Sludge Bomb
+,,Lapras,85,Miracleberry,Surf,Ice Beam,Thunderbolt,Psychic M
+,,Crobat,86,Leftovers,Sludge Bomb,Giga Drain,Hidden Power (Fire),Hypnosis
 ,,,,,,,,
 ,,,,,,,,
-,Psychic PSYCHIC_T (3) HERMAN,Exeggutor,1,,,,,
-,,Slowbro,1,,,,,
-,,Jynx,1,,,,,
 ,,,,,,,,
+might also be ,Twins TWINS (5) JO & ZOE,Sudowoodo,85,Hard Stone,Ancientpower,Earthquake,Double Edge,Explosion
+TWINS (6) JO & ZOE,,Bellossom,86,Leftovers,Sleep Powder,Double Team,Giga Drain,Hidden Power (Ice)
+same,,Wigglytuff,86,Leftovers,Return,Ice Beam,Thunderbolt,Psychic M
+,,Rapidash,86,Charcoal,Fire Blast,Iron Tail,Double Edge,Hidden Power (Rock)
 ,,,,,,,,
 ,,,,,,,,
-Route 13,BirdKeeper BIRD_KEEPER (16) BRET,Skarmory,1,,,,,
-,,Pidgeot,1,,,,,
+,Beauty BEAUTY (14) JULIA,Mantine,85,Leftovers,Surf,Ice Beam,Hidden Power (Electric),Confuse Ray
+,,Sandslash,86,Soft Sand,Earthquake,Rock Slide,Metal Claw,Double Edge
+,,Vileplume,86,Miracleberry,Sleep Powder,Petal Dance,Sludge Bomb,Hidden Power (Fire)
+,,Persian,86,Pink Bow,Return,Shadow Ball,Iron Tail,Thunderbolt
 ,,,,,,,,
 ,,,,,,,,
+,Erika ERIKA (1) ERIKA,Meganium,87,Brightpowder,Petal Dance,Ancientpower,Earthquake,Leech Seed
+,,Politoed,85,Miracleberry,Lovely Kiss,Hydro Pump,Ice Beam,Earthquake
+,,Snorlax,86,Leftovers,Body Slam,Earthquake,Lovely Kiss,Shadow Ball
+,,Exeggutor,85,Quick Claw,Ancientpower,Sleep Powder,Giga Drain,Psychic M
+,,Celebi,86,Leftovers,Psychic M,Giga Drain,Recover,Hidden Power (Fire)
+,,Tangela,87,Miracleberry,Ancientpower,Giga Drain,Earthquake,Hidden Power (Fire)
+Route 10,PokefanM POKEFANM (3) ROBERT,Rapidash,85,Charcoal,Fire Blast,Iron Tail,Hidden Power (Grass),Megahorn
+,,Meganium,85,Leftovers,Petal Dance,Hidden Power (Fire),Earthquake,Ancientpower
+,,Gyarados,85,Gold Berry,Hyper Beam,Surf,Hidden Power (Flying),Earthquake
+,,Ampharos,85,Leftovers,Thunderbolt,Hidden Power (Grass),Iron Tail,Fire Punch
 ,,,,,,,,
 ,,,,,,,,
-,BirdKeeper BIRD_KEEPER (15) PERRY,Gligar,1,,,,,
+,Hiker HIKER (17) JIM,Hitmontop,85,Focus Band,Hi Jump Kick,Earthquake,Counter,Quick Attack
+,,Jolteon,85,Miracleberry,Thunderbolt,Hidden Power (Ice),Crunch,No Move
+,,Magmar,85,Leftovers,Flamethrower,Psychic M,Thunderpunch,Cross Chop
+,,Rhydon,86,Blackbelt I,Earthquake,Rock Slide,Submission,Hidden Power (Flying)
 ,,,,,,,,
 ,,,,,,,,
+,Picnicker PICNICKER (13) HEIDI,Ninetales,86,Leftovers,Fire Blast,Hidden Power (Grass),Psychic M,Confuse Ray
+,,Jumpluff,86,Leftovers,Leech Seed,Substitute,Sleep Powder,Sky Attack
+,,Sneasel,86,Blackglasses,Ice Beam,Crunch,Shadow Ball,Metal Claw
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,PokefanM POKEFANM (12) ALEX,Nidoking,1,,,,,
-,,Kingler,1,,,,,
+,Hiker HIKER (15) SIDNEY,Dewgong,86,Miracleberry,Surf,Ice Beam,Hidden Power (Grass),Attract
+,,Dugtrio,86,Hard Stone,Earthquake,Ancientpower,Sludge Bomb,Hidden Power (Flying)
+,,Arcanine,86,Leftovers,Flamethrower,Extremespeed,Hidden Power (Grass),Iron Tail
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
+,Camper CAMPER (7) DEAN,Poliwrath,86,Miracleberry,Lovely Kiss,Submission,Earthquake,Ice Beam
+,,Girafarig,86,Miracleberry,Psychic M,Earthquake,Return,Shadow Ball
+,,Tentacruel,86,Leftovers,Surf,Ice Beam,Giga Drain,Confuse Ray
+,,Quagsire,86,Leftovers,Surf,Earthquake,Ancientpower,Recover
 ,,,,,,,,
-,PokefanM POKEFANM (4) JOSHUA,Pikachu,1,,,,,
-,,Farfetch D,1,,,,,
-,,Raichu,1,Focus Band,,,,
-,,Pikachu,1,,,,,
-,,Cubone,1,,,,,
-,,Pichu,1,,,,,
-,Hiker HIKER (16) KENNY,Sandslash,1,,,,,
-,,Furret,1,,,,,
-,,Ariados,1,,,,,
-,,Kabutops,1,,,,,
 ,,,,,,,,
+,Hiker HIKER (13) TIM,Ampharos,86,Miracleberry,Thunderbolt,Fire Punch,Iron Tail,Hidden Power (Ice)
+,,Victreebel,86,Leftovers,Sleep Powder,Sludge Bomb,Giga Drain,Hidden Power (Rock)
+,,Sandslash,86,Soft Sand,Earthquake,Ancientpower,Metal Claw,Submission
+,,Lanturn,87,Leftovers,Thunder Wave,Thunderbolt,Surf,Ice Beam
 ,,,,,,,,
-Route 14,PokefanM POKEFANM (5) CARTER,Charizard,1,,,,,
-,,Venusaur,1,Focus Band,,,,
-,,Blastoise,1,Leftovers,,,,
 ,,,,,,,,
+,Picnicker PICNICKER (14) EDNA,Venomoth,86,Quick Claw,Sleep Powder,Giga Drain,Psychic M,Sludge Bomb
+,,Raichu,86,Miracleberry,Thunderbolt,Surf,Petal Dance,Extremespeed
+,,Golduck,87,Leftovers,Hypnosis,Surf,Ice Beam,Psychic M
+,,Charizard,87,Leftovers,Flamethrower,Earthquake,Crunch,Thunderpunch
 ,,,,,,,,
 ,,,,,,,,
-,PokefanM POKEFANM (6) TREVOR,Vileplume,1,,,,,
+,Camper CAMPER (8) SID,Azumarill,90,Quick Claw,Hydro Pump,Ice Beam,Sing,Hidden Power (Ground)
+,,Dunsparce,90,Miracleberry,Glare,Double Edge,Earthquake,Ancientpower
+,,Tangela,86,Leftovers,Sleep Powder,Giga Drain,Ancientpower,Hidden Power (Fire)
+,,Noctowl,90,Miracleberry,Hypnosis,Psychic M,Sky Attack,Hidden Power (Water)
+,,Furret,90,Pink Bow,Double Edge,Submission,Shadow Ball,Quick Attack
 ,,,,,,,,
+Route 24,GruntM GRUNTM (31) GRUNT,Crobat,87,Leftovers,Confuse Ray,Shadow Ball,Giga Drain,Sky Attack
+,,Tyranitar,87,Leftovers,Earthquake,Ancientpower,Ice Beam,Crunch
+,,Nidoking,87,Miracleberry,Earthquake,Ice Beam,Thunderbolt,Sludge Bomb
+,,Misdreavus,87,Miracleberry,Hypnosis,Psychic M,Hidden Power (Grass),Thunderbolt
+,,Tauros,87,Leftovers,Return,Earthquake,Ice Beam,Hidden Power (Flying)
 ,,,,,,,,
+Route 2,BugCatcher BUG_CATCHER (3) ED,Venomoth,87,Quick Claw,Psychic M,Giga Drain,Sleep Powder,Sludge Bomb
+,,Butterfree,87,Brightpowder,Psychic M,Light Screen,Giga Drain,Hidden Power (Fire)
+,,Pinsir,87,Quick Claw,Double Edge,Rock Slide,Megahorn,Earthquake
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,BirdKeeper BIRD_KEEPER (9) ROY,Noctowl,1,,,,,
-,,Golduck,1,,,,,
+,BugCatcher BUG_CATCHER (2) ROB,Scizor,87,Quick Claw,Metal Claw,Submission,Double Edge,Hidden Power (Bug)
+,,Scyther,87,Miracleberry,Wing Attack,Hidden Power (Bug),Hidden Power (Steel),Slash
+,,Parasect,90,Quick Claw,Spore,Leech Life,Giga Drain,Body Slam
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
+,BugCatcher BUG_CATCHER (12) DOUG,Heracross,87,Focus Band,Megahorn,Rock Slide,Submission,Earthquake
+,,Ariados,87,Berserk Gene,Megahorn,Sludge Bomb,Psychic M,Hidden Power (Rock)
+,,Beedrill,90,Silverpowder,Megahorn,Sludge Bomb,Double Edge,Giga Drain
+,,Ledian,90,Berserk Gene,Sky Attack,Hidden Power (Fighting),Leech Life,Extremespeed
 ,,,,,,,,
-Route 15,Schoolboy SCHOOLBOY (4) JOHNNY,Sudowoodo,1,,,,,
-,,Victreebel,1,,,,,
-,,Raticate,1,,,,,
 ,,,,,,,,
+Pewter City Gym,Camper CAMPER (18) JERRY,Omastar,87,Focus Band,Hydro Pump,Ice Beam,Ancientpower,Hidden Power (Electric)
+,,Typhlosion,87,Leftovers,Flamethrower,Hidden Power (Grass),Earthquake,Thunderpunch
+,,Machamp,88,Blackbelt I,Cross Chop,Rock Slide,Earthquake,Mach Punch
+,,Espeon,88,Leftovers,Psychic M,Hidden Power (Water),Psywave,Morning Sun
 ,,,,,,,,
 ,,,,,,,,
-,Schoolboy SCHOOLBOY (9) BILLY,Jumpluff,1,,,,,
-,,Wigglytuff,1,,,,,
-,,Ninetales,1,,,,,
-,,Marowak,1,,,,,
-,,Pidgey,1,,,,,
+,Brock BROCK (1) BROCK,Aerodactyl,87,Sharp Beak,Ancientpower,Sky Attack,Fire Blast,Earthquake
+,,Marowak,89,Thick Club,Earthquake,Ancientpower,Hidden Power (Flying),Body Slam
+,,Poliwrath,88,Mint Berry,Submission,Surf,Ice Beam,Rest
+,,Scizor,87,Quick Claw,Double Edge,Metal Claw,Hidden Power (Bug),Submission
+,,Steelix,88,Quick Claw,Rock Slide,Double Edge,Explosion,Earthquake
+,,Heracross,89,Leftovers,Megahorn,Submission,Earthquake,Rock Slide
+Route 3,Youngster YOUNGSTER (9) WARREN,Fearow,88,Sharp Beak,Drill Peck,Return,Steel Wing,Hidden Power (Ground)
+gauntlet,,Raticate,92,Leftovers,Double Edge,Shadow Ball,Hidden Power (Fighting),Quick Attack
+,,Exeggutor,88,Miracleberry,Sleep Powder,Giga Drain,Psychic M,Selfdestruct
+,,Dewgong,88,Leftovers,Surf,Ice Beam,Sing,Hidden Power (Electric)
 ,,,,,,,,
-,Teacher TEACHER (1) COLETTE,Chansey,1,,,,,
 ,,,,,,,,
+,Firebreather FIREBREATHER (4) BURT,Octillery,87,Quick Claw,Surf,Fire Blast,Sludge Bomb,Double Edge
+,,Typhlosion,87,Leftovers,Flamethrower,Earthquake,Thunderpunch,Double Edge
+,,Weezing,87,Miracleberry,Sludge Bomb,Thunderbolt,Flamethrower,Hidden Power (Grass)
+,,Electrode,87,Focus Band,Thunderbolt,Hidden Power (Grass),Explosion,No Move
 ,,,,,,,,
 ,,,,,,,,
+,Youngster YOUNGSTER (10) JIMMY,Miltank,87,Miracleberry,Return,Shadow Ball,Earthquake,Milk Drink
+,,Arbok,87,Leftovers,Sludge Bomb,Giga Drain,Earthquake,Glare
+,,Cloyster,87,Gold Berry,Surf,Ice Beam,Hidden Power (Grass),Selfdestruct
+,,Steelix,87,Leftovers,Earthquake,Rock Slide,Iron Tail,Body Slam
 ,,,,,,,,
 ,,,,,,,,
-,Schoolboy SCHOOLBOY (6) TOMMY,Shuckle,1,,,,,
-,,Ditto,1,,,,,
+,Firebreather FIREBREATHER (1) OTIS,Magmar,87,Charcoal,Fire Blast,Thunderbolt,Cross Chop,Hidden Power (Grass)
+,,Slowking,87,Leftovers,Psychic M,Earthquake,Flamethrower,Surf
+,,Charizard,88,Gold Berry,Flamethrower,Earthquake,Crunch,Thunderpunch
+,,Venusaur,88,Miracleberry,Sleep Powder,Giga Drain,Earthquake,Ancientpower
 ,,,,,,,,
 ,,,,,,,,
+Mt. Moon,Rival2 RIVAL2 (1) ?,Alakazam,88,Charcoal,Psychic M,Fire Punch,Ice Punch,Thunderpunch
+,,Donphan,88,Brightpowder,Earthquake,Ancientpower,Body Slam,Counter
+,,Meganium,88,Miracleberry,Ancientpower,Giga Drain,Earthquake,Leech Seed
+,,Muk,88,Quick Claw,Giga Drain,Fire Blast,Sludge Bomb,Explosion
+,,Crobat,88,Sharp Beak,Sky Attack,Sludge Bomb,Shadow Ball,Super Fang
+,,Jolteon,88,Brightpowder,Thunderbolt,Hidden Power (Grass),Shadow Ball,Thunder Wave
+,Rival2 RIVAL2 (2) ?,Alakazam,88,Nevermeltice,Psychic M,Fire Punch,Ice Punch,Thunderpunch
+,,Donphan,88,Brightpowder,Earthquake,Ancientpower,Body Slam,Counter
+,,Typhlosion,88,Miracleberry,Fire Blast,Thunderpunch,Submission,Earthquake
+,,Muk,88,Quick Claw,Giga Drain,Fire Blast,Sludge Bomb,Explosion
+,,Crobat,88,Sharp Beak,Sky Attack,Sludge Bomb,Shadow Ball,Super Fang
+,,Jolteon,88,Brightpowder,Thunderbolt,Hidden Power (Grass),Shadow Ball,Thunder Wave
+,Rival2 RIVAL2 (3) ?,Alakazam,88,Magnet,Psychic M,Fire Punch,Ice Punch,Thunderpunch
+,,Donphan,88,Brightpowder,Earthquake,Ancientpower,Body Slam,Counter
+,,Feraligatr,88,Miracleberry,Earthquake,Ancientpower,Hydro Pump,Ice Punch
+,,Muk,88,Quick Claw,Giga Drain,Fire Blast,Sludge Bomb,Explosion
+,,Crobat,88,Sharp Beak,Sky Attack,Sludge Bomb,Shadow Ball,Super Fang
+,,Jolteon,88,Brightpowder,Thunderbolt,Hidden Power (Grass),Shadow Ball,Thunder Wave
+Route 4,Picnicker PICNICKER (6) HOPE,Rapidash,87,Pink Bow,Megahorn,Double Edge,Fire Blast,Quick Attack
+,,Jumpluff,87,Focus Band,Sky Attack,Petal Dance,Sleep Powder,Hidden Power (Fire)
+,,Golduck,87,Miracleberry,Hydro Pump,Ice Beam,Psychic M,Hypnosis
+,,Sandslash,87,Quick Claw,Earthquake,Ancientpower,Counter,Slash
 ,,,,,,,,
 ,,,,,,,,
-,Schoolboy SCHOOLBOY (2) KIPP,Magcargo,1,,,,,
-,,Sneasel,1,,,,,
-,,Corsola,1,,,,,
-,,Magneton,1,,,,,
+,BirdKeeper BIRD_KEEPER (8) HANK,Gligar,87,Soft Sand,Earthquake,Steel Wing,Wing Attack,Rock Slide
+,,Pidgeot,87,Sharp Beak,Sky Attack,Return,Steel Wing,Quick Attack
+,,Charizard,88,Charcoal,Fire Blast,Earthquake,Rock Slide,Thunderpunch
 ,,,,,,,,
 ,,,,,,,,
-,Teacher TEACHER (2) HILLARY,Arcanine,1,,,,,
-,,Girafarig,1,,,,,
 ,,,,,,,,
+,Picnicker PICNICKER (7) SHARON,Beedrill,95,Blackbelt I,Sludge Bomb,Giga Drain,Return,Hidden Power (Fighting)
+,,Furret,95,Leftovers,Double Edge,Shadow Ball,Surf,Thunderpunch
+,,Farfetch D,95,Metal Coat,Double Edge,Sky Attack,Steel Wing,Submission
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-Fuchsia city gym,Lass LASS (3) ALICE,Kabutops,1,,,,,
-,,Arbok,1,,,,,
-,,Venomoth,1,,,,,
+Route 25,Schoolboy SCHOOLBOY (7) DUDLEY,Houndoom,87,Blackglasses,Fire Blast,Crunch,Iron Tail,Hidden Power (Ice)
+,,Vileplume,88,Poison Barb,Sludge Bomb,Petal Dance,Hidden Power (Fire),Sleep Powder
+,,Rhydon,88,Silverpowder,Megahorn,Ancientpower,Earthquake,Double Edge
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Picnicker PICNICKER (5) CINDY,Nidoqueen,1,,,,,
+,Lass LASS (11) ELLEN,Wigglytuff,92,Magnet,Hyper Beam,Blizzard,Thunder,Fire Blast
+,,Seaking,92,Nevermeltice,Megahorn,Waterfall,Ice Beam,Double Edge
+,,Delibird,92,Quick Claw,Sky Attack,Steel Wing,Ice Beam,Submission
+,,Unown,95,Twistedspoon,Hidden Power (Psychic),Hidden Power (Fire),Hidden Power (Ice),Hidden Power (Fighting)
 ,,,,,,,,
 ,,,,,,,,
+,Schoolboy SCHOOLBOY (8) JOE,Tangela,88,Quick Claw,Giga Drain,Ancientpower,Sleep Powder,Hidden Power (Fire)
+,,Dunsparce,92,Leftovers,Double Edge,Rock Slide,Earthquake,Glare
+,,Steelix,85,Quick Claw,Iron Tail,Rock Slide,Earthquake,Explosion
+,,Dodrio,88,Miracleberry,Hi Jump Kick,Double Edge,Sky Attack,Steel Wing
 ,,,,,,,,
 ,,,,,,,,
+,Lass LASS (7) LAURA,Slowking,88,Leftovers,Psychic M,Recover,Ice Beam,Surf
+,,Ninetales,88,Miracleberry,Fire Blast,Psychic M,Iron Tail,Quick Attack
+,,Bellossom,88,Quick Claw,Petal Dance,Sleep Powder,Moonlight,Hidden Power (Fire)
 ,,,,,,,,
-,Lass LASS (6) LINDA,Forretress,1,,,,,
-,,Muk,1,,,,,
-,,Ditto,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
+(immediate),Camper CAMPER (6) LLOYD,Granbull,89,Quick Claw,Double Edge,Earthquake,Shadow Ball,Metronome
+,,Dugtrio,89,Soft Sand,Earthquake,Ancientpower,Submission,No Move
+,,Piloswine,89,Hard Stone,Earthquake,Ice Beam,Ancientpower,Body Slam
+,,Sunflora,89,Miracle Seed,Giga Drain,Hidden Power (Fire),Growth,Sleep Powder
 ,,,,,,,,
-,Janine JANINE (1) JANINE,Weezing,82,,Hidden Power,Sludge Bomb,Fire Blast,
-,,Umbreon,82,Leftovers,Double Team,Confuse Ray,Moonlight,Toxic
-,,Chansey,81,Leftovers,Double Team,Toxic,Softboiled,Reflect
-,,Crobat,82,Leftovers,Super Fang,,,
-,,Gligar,83,,Wing Attack,Rock Slide,Earthquake,
-,,Tentacruel,83,,Sludge Bomb,Surf,Ice Beam,
-,Camper CAMPER (5) BARRY,Nidoking,1,,,,,
 ,,,,,,,,
+,Lass LASS (8) SHANNON,Raichu,89,Magnet,Surf,Petal Dance,Thunderbolt,Iron Tail
+,,Parasect,93,Quick Claw,Spore,Giga Drain,Leech Seed,Body Slam
+,,Arcanine,89,Leftovers,Extremespeed,Morning Sun,Flamethrower,Iron Tail
+,,Togetic,100,Leftovers,Softboiled,Metronome,No Move,No Move
 ,,,,,,,,
 ,,,,,,,,
+,SuperNerd SUPER_NERD (8) PAT,Snorlax,89,Leftovers,Body Slam,Rest,Sleep Talk,Earthquake
+,,Hitmonchan,89,Miracleberry,Submission,Earthquake,Mach Punch,Counter
+,,Magmar,89,Blackbelt I,Fire Blast,Cross Chop,Thunderpunch,Mach Punch
+,,Umbreon,89,Leftovers,Mean Look,Moonlight,Toxic,Night Shade
 ,,,,,,,,
 ,,,,,,,,
-Route 18,BirdKeeper BIRD_KEEPER (11) BOB,Dodrio,1,,,,,
+,CooltrainerM COOLTRAINERM (17) KEVIN,Jynx,90,Scope Lens,Psychic M,Ice Beam,Lovely Kiss,Destiny Bond
+,,Misdreavus,90,Spell Tag,Shadow Ball,Thunderbolt,Destiny Bond,Hypnosis
+,,Muk,90,Leftovers,Fire Blast,Sludge Bomb,Giga Drain,Destiny Bond
+,,Nidoqueen,90,Leftovers,Earthquake,Sludge Bomb,Megahorn,Blizzard
 ,,,,,,,,
 ,,,,,,,,
+Cerulean City Gym,SwimmerM SWIMMERM (21) PARKER,Cloyster,90,Quick Claw,Explosion,Surf,Ice Beam,Tri Attack
+,,Quagsire,90,Quick Claw,Earthquake,Surf,Ancientpower,Recover
+,,Slowbro,90,Quick Claw,Recover,Psychic M,Surf,Earthquake
+,,Rhydon,90,Quick Claw,Earthquake,Rock Slide,Megahorn,Double Edge
 ,,,,,,,,
 ,,,,,,,,
+,SwimmerF SWIMMERF (18) DIANA,Blastoise,90,Leftovers,Light Screen,Surf,Earthquake,Blizzard
+,,Kabutops,90,Hard Stone,Ancientpower,Hydro Pump,Submission,Earthquake
+,,Octillery,91,Quick Claw,Fire Blast,Surf,Ice Beam,Sludge Bomb
+,,Mantine,91,Leftovers,Confuse Ray,Blizzard,Hyper Beam,Recover
+,,Sneasel,91,Nevermeltice,Beat Up,Ice Beam,Surf,Metal Claw
 ,,,,,,,,
-,BirdKeeper BIRD_KEEPER (10) BORIS,Togetic,1,,,,,
-,,Xatu,1,,,,,
-,,Murkrow,1,,,,,
+,SwimmerF SWIMMERF (19) BRIANA,Lanturn,91,Leftovers,Surf,Thunderbolt,Ice Beam,Thunder Wave
+,,Feraligatr,91,Focus Band,Surf,Ice Beam,Earthquake,Crunch
+,,Poliwrath,91,Gold Berry,Cross Chop,Surf,Earthquake,Ice Beam
+,,Tentacruel,91,Focus Band,Mirror Coat,Surf,Giga Drain,Sludge Bomb
+,,Nidoking,91,Poison Barb,Surf,Sludge Bomb,Earthquake,Megahorn
 ,,,,,,,,
+,Misty MISTY (1) MISTY,Starmie,91,Mystic Water,Hydro Pump,Thunderbolt,Ice Beam,Psychic M
+,,Kingdra,91,Leftovers,Ice Beam,Octazooka,Rest,Sleep Talk
+,,Vaporeon,92,Leftovers,Surf,Growth,Rest,Sleep Talk
+,,Suicune,91,Mint Berry,Rest,Sleep Talk,Ice Beam,Surf
+,,Lapras,92,Leftovers,Ice Beam,Thunderbolt,Earthquake,Surf
+,,Misdreavus,92,Miracleberry,Thunderbolt,Psychic M,Hidden Power (Water),Shadow Ball
+Route 1,Schoolboy SCHOOLBOY (5) DANNY,Jynx,91,Mystic Water,Ice Beam,Psychic M,Lovely Kiss,Hidden Power (Water)
+,,Electabuzz,91,Miracleberry,Thunderbolt,Fire Punch,Psychic M,Ice Punch
+,,Magmar,91,Charcoal,Fire Blast,Thunderbolt,Cross Chop,Mach Punch
+,,Pidgeot,91,Leftovers,Sky Attack,Return,Extremespeed,Hidden Power (Fighting)
 ,,,,,,,,
 ,,,,,,,,
-,Biker BIKER (7) RILEY,Poliwrath,1,,Mind Reader,Fissure,,
+,CooltrainerF COOLTRAINERF (14) QUINN,Venusaur,91,Leftovers,Giga Drain,Sludge Bomb,Earthquake,Sleep Powder
+,,Starmie,91,Gold Berry,Surf,Ice Beam,Thunderbolt,Psychic M
+,,Heracross,92,Leftovers,Megahorn,Submission,Earthquake,Rock Slide
+,,Dugtrio,92,Hard Stone,Earthquake,Ancientpower,Sludge Bomb,Submission
 ,,,,,,,,
 ,,,,,,,,
+,SwimmerF SWIMMERF (17) NIKKI,Ledian,100,Focus Band,Light Screen,Reflect,Psychic M,Mach Punch
+,,Arbok,92,Quick Claw,Sludge Bomb,Earthquake,Giga Drain,Glare
+,,Dewgong,92,Leftovers,Surf,Ice Beam,Hidden Power (Grass),Attract
+,,Lanturn,92,Leftovers,Surf,Thunderbolt,Ice Beam,Confuse Ray
 ,,,,,,,,
 ,,,,,,,,
+,SwimmerM SWIMMERM (18) SETH,Quagsire,92,Focus Band,Earthquake,Surf,Ancientpower,Ice Beam
+,,Golduck,92,Leftovers,Hydro Pump,Ice Beam,Psychic M,Hypnosis
+,,Qwilfish,93,Pink Bow,Sludge Bomb,Surf,Explosion,Return
+,,Omastar,93,Mystic Water,Surf,Ice Beam,Ancientpower,Hidden Power (Electric)
 ,,,,,,,,
-,Biker BIKER (8) JOEL,Electabuzz,1,,,,,
-,,Donphan,1,,,,,
 ,,,,,,,,
+,Fisher FISHER (3) ARNOLD,Tentacruel,93,Leftovers,Surf,Ice Beam,Giga Drain,Sludge Bomb
+,,Qwilfish,93,Poison Barb,Sludge Bomb,Surf,Explosion,Spikes
+,,Murkrow,93,Focus Band,Sky Attack,Faint Attack,Hidden Power (Fighting),Quick Attack
+,,Kabutops,93,Hard Stone,Ancientpower,Surf,Ice Beam,Submission
 ,,,,,,,,
 ,,,,,,,,
+,SwimmerM SWIMMERM (14) JEROME,Raichu,93,Miracleberry,Thunderbolt,Surf,Petal Dance,Hidden Power (Fire)
+,,Quagsire,93,Leftovers,Surf,Earthquake,Ice Beam,Sludge Bomb
+,,Kangaskhan,93,Pink Bow,Return,Earthquake,Shadow Ball,Rock Slide
+,,Persian,95,Pink Bow,Double Edge,Shadow Ball,Hidden Power (Fighting),Hypnosis
 ,,,,,,,,
-,Biker BIKER (6) CHARLES,Scizor,1,,,,,
-,,Arbok,1,,,,,
-,,Dunsparce,1,,,,,
 ,,,,,,,,
+,SwimmerM SWIMMERM (1) HAROLD,Octillery,93,Quick Claw,Hydro Pump,Fire Blast,Blizzard,Sludge Bomb
+,,Gyarados,94,Leftovers,Earthquake,Hydro Pump,Hidden Power (Flying),Fire Blast
+,,Tauros,93,Soft Sand,Earthquake,Surf,Double Edge,Shadow Ball
+,,Xatu,94,Brightpowder,Giga Drain,Psychic M,Drill Peck,Light Screen
 ,,,,,,,,
 ,,,,,,,,
-,Biker BIKER (9) GLENN,Parasect,1,,,,,
-,,Lickitung,1,,,,,
-,,Hitmonchan,1,,,,,
+,SwimmerM SWIMMERM (15) TUCKER,Kingdra,94,Brightpowder,Octazooka,Outrage,Ice Beam,Hidden Power (Grass)
+,,Starmie,93,Miracleberry,Hydro Pump,Thunderbolt,Psychic M,Ice Beam
+,,Sneasel,94,Spell Tag,Shadow Ball,Metal Claw,Ice Beam,Quick Attack
+,,Quagsire,94,Quick Claw,Earthquake,Sludge Bomb,Surf,Ice Beam
 ,,,,,,,,
 ,,,,,,,,
+,SwimmerF SWIMMERF (12) DAWN,Gyarados,94,Leftovers,Double Edge,Surf,Earthquake,Hidden Power (Flying)
+,,Skarmory,94,Leftovers,Steel Wing,Drill Peck,Spikes,Detect
+,,Feraligatr,94,Miracleberry,Surf,Ice Beam,Earthquake,Submission
+,,Victreebel,94,Quick Claw,Sludge Bomb,Hidden Power (Fire),Giga Drain,Toxic
 ,,,,,,,,
-Celadon City,Lass LASS (9) MICHELLE,Dugtrio,1,,,,,
-,,Jumpluff,1,,,,,
-,,Dewgong,1,,,,,
 ,,,,,,,,
+Route 20,SwimmerF SWIMMERF (15) LORI,Lanturn,94,Leftovers,Surf,Thunderbolt,Ice Beam,Thunder Wave
+,,Charizard,94,Scope Lens,Flamethrower,Thunderpunch,Earthquake,Crunch
+,,Cloyster,95,Focus Band,Surf,Ice Punch,Explosion,No Move
+,,Jumpluff,100,Leftovers,Leech Seed,Toxic,Giga Drain,Detect
 ,,,,,,,,
 ,,,,,,,,
-(immediate),Picnicker PICNICKER (19) TANYA,Victreebel,1,,,,,
+,SwimmerM SWIMMERM (17) CAMERON,Gengar,95,Miracleberry,Shadow Ball,Submission,Giga Drain,Perish Song
+,,Dewgong,95,Leftovers,Surf,Ice Beam,Hidden Power (Electric),Rest
+,,Rhydon,95,Gold Berry,Earthquake,Surf,Ancientpower,Double Edge
+,,Starmie,95,Leftovers,Thunderbolt,Fire Punch,Iron Tail,Hidden Power (Water)
 ,,,,,,,,
 ,,,,,,,,
+,SwimmerF SWIMMERF (14) NICOLE,Tentacruel,95,Miracleberry,Surf,Giga Drain,Sludge Bomb,Ice Beam
+,,Vaporeon,95,Leftovers,Surf,Ice Beam,Hidden Power (Grass),Recover
+,,Nidoqueen,95,Charcoal,Fire Blast,Iron Tail,Earthquake,Sludge Bomb
+,,Gyarados,96,Miracleberry,Earthquake,Double Edge,Hidden Power (Flying),Fire Blast
+,,Lapras,96,Leftovers,Surf,Psychic M,Ice Beam,Thunderbolt
 ,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-might also be ,Twins TWINS (5) JO & ZOE,Sudowoodo,1,,,,,
-TWINS (6) JO & ZOE,,Bellossom,1,,,,,
-same,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,Beauty BEAUTY (14) JULIA,Mantine,1,,,,,
-,,Sandslash,1,,,,,
-,,Vileplume,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,Erika ERIKA (1) ERIKA,Exeggutor,85,,,,,
-,,Politoed,84,Quick Claw,Lovely Kiss,Hydro Pump,Ice Beam,Earthquake
-,,Venusaur,86,,Sleep Powder,Ancientpower,Petal Dance,Earthquake
-,,Nidoqueen,85,,Lovely Kiss,,,
-,,Granbull,85,Quick Claw,Lovely Kiss,,,
-,,Tangela,86,,,,,
-Route 10,PokefanM POKEFANM (3) ROBERT,Rapidash,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,Hiker HIKER (17) JIM,Hitmontop,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,Picnicker PICNICKER (13) HEIDI,Ninetales,1,,,,,
-,,Jumpluff,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,Hiker HIKER (15) SIDNEY,Dewgong,1,,,,,
-,,Dugtrio,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,Camper CAMPER (7) DEAN,Poliwrath,1,,,,,
-,,Girafarig,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,Hiker HIKER (13) TIM,Furret,1,,,,,
-,,Ampharos,1,,,,,
-,,Sandslash,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,Picnicker PICNICKER (14) EDNA,Venomoth,1,,,,,
-,,Raichu,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,Camper CAMPER (8) SID,Azumarill,1,,,,,
-,,Dunsparce,1,,,,,
-,,Tangela,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-Route 24,GruntM GRUNTM (31) GRUNT,Tyranitar,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-Route 2,BugCatcher BUG_CATCHER (3) ED,Venomoth,1,,,,,
-,,Butterfree,1,,,,,
-,,Pinsir,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,BugCatcher BUG_CATCHER (2) ROB,Scizor,1,,,,,
-,,Scyther,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,BugCatcher BUG_CATCHER (12) DOUG,Heracross,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-Pewter City Gym,Camper CAMPER (18) JERRY,Omastar,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,Brock BROCK (1) BROCK,Steelix,87,Quick Claw,Rock Slide,Body Slam,,
-,,Aerodactyl,88,,Ancientpower,Sky Attack,Fire Blast,Earthquake
-,,Slowking,88,Leftovers,Thunder Wave,Psychic M,Surf,Earthquake
-,,Blissey,87,Leftovers,Thunder Wave,Softboiled,Reflect,Psywave
-,,Shuckle,89,Leftovers,Double Team,Rest,Sleep Talk,Toxic
-,,Heracross,89,,Megahorn,Submission,Earthquake,Rock Slide
-Route 3,Youngster YOUNGSTER (9) WARREN,Fearow,1,,,,,
-gauntlet,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,Firebreather FIREBREATHER (4) BURT,Octillery,1,,,,,
-,,Typhlosion,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,Youngster YOUNGSTER (10) JIMMY,Raticate,1,,,,,
-,,Arbok,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,Firebreather FIREBREATHER (1) OTIS,Weezing,1,,,,,
-,,Slowking,1,,,,,
-,,Charizard,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-Mt. Moon,Rival2 RIVAL2 (1) ?,Alakazam,1,,,,,
-,,Donphan,1,,,,,
-,,Meganium,1,,,,,
-,,Muk,1,,,,,
-,,Crobat,1,,,,,
-,,Jolteon,1,,,,,
-,Rival2 RIVAL2 (2) ?,Alakazam,1,,,,,
-,,Donphan,1,,,,,
-,,Typhlosion,1,,,,,
-,,Muk,1,,,,,
-,,Crobat,1,,,,,
-,,Jolteon,1,,,,,
-,Rival2 RIVAL2 (3) ?,Alakazam,1,,,,,
-,,Donphan,1,,,,,
-,,Feraligatr,1,,,,,
-,,Muk,1,,,,,
-,,Crobat,1,,,,,
-,,Jolteon,1,,,,,
-Route 4,Picnicker PICNICKER (6) HOPE,Rapidash,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,BirdKeeper BIRD_KEEPER (8) HANK,Gligar,1,,,,,
-,,Pidgeot,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,Picnicker PICNICKER (7) SHARON,Vileplume,1,,,,,
-,,Furret,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-Route 25,Schoolboy SCHOOLBOY (7) DUDLEY,Jumpluff,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,Lass LASS (11) ELLEN,Wigglytuff,1,,,,,
-,,Seaking,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,Schoolboy SCHOOLBOY (8) JOE,Tangela,1,,,,,
-,,Dunsparce,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,Lass LASS (7) LAURA,Golduck,1,,,,,
-,,Ninetales,1,,,,,
-,,Bellossom,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-(immediate),Camper CAMPER (6) LLOYD,Granbull,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,Lass LASS (8) SHANNON,Raichu,1,,,,,
-,,Parasect,1,,,,,
-,,Arcanine,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,SuperNerd SUPER_NERD (8) PAT,Snorlax,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,CooltrainerM COOLTRAINERM (17) KEVIN,Piloswine,1,,,,,
-,,Misdreavus,1,,,,,
-,,Wobbuffet,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-Cerulean City Gym,SwimmerM SWIMMERM (21) PARKER,Cloyster,1,,,,,
-,,Quagsire,1,,,,,
-,,Togetic,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,SwimmerF SWIMMERF (18) DIANA,Blastoise,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,SwimmerF SWIMMERF (19) BRIANA,Lanturn,1,,,,,
-,,Feraligatr,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,Misty MISTY (1) MISTY,Kingdra,91,Leftovers,Double Edge,Octazooka,Rest,Sleep Talk
-,,Marowak,91,Thick Club,Ancientpower,Earthquake,Rest,Sleep Talk
-,,Vaporeon,90,Leftovers,Surf,Growth,Rest,Sleep Talk
-,,Ampharos,91,,Hidden Power,Thunder Wave,Thunderbolt,Fire Punch
-,,Starmie,92,,Surf,Thunderbolt,Ice Beam,Recover
-,,Lapras,92,Leftovers,Ice Beam,Thunderbolt,Rest,Sleep Talk
-Route 1,Schoolboy SCHOOLBOY (5) DANNY,Jynx,1,,,,,
-,,Electabuzz,1,,,,,
-,,Magmar,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,CooltrainerF COOLTRAINERF (14) QUINN,Venusaur,1,,,,,
-,,Starmie,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,SwimmerF SWIMMERF (17) NIKKI,Ledian,1,,,,,
-,,Arbok,1,,,,,
-,,Dewgong,1,,,,,
-,,Lanturn,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,SwimmerM SWIMMERM (18) SETH,Quagsire,1,,,,,
-,,Golduck,1,,,,,
-,,Qwilfish,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,Fisher FISHER (3) ARNOLD,Tentacruel,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,SwimmerM SWIMMERM (14) JEROME,Magneton,1,,,,,
-,,Quagsire,1,,,,,
-,,Magmar,1,,,,,
-,,Persian,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,SwimmerM SWIMMERM (1) HAROLD,Octillery,1,,,,,
-,,Rapidash,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,SwimmerM SWIMMERM (15) TUCKER,Houndoom,1,,,,,
-,,Starmie,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,SwimmerF SWIMMERF (12) DAWN,Ninetales,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-Route 20,SwimmerF SWIMMERF (15) LORI,Lanturn,1,,,,,
-,,Charizard,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,SwimmerM SWIMMERM (17) CAMERON,Arcanine,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,SwimmerF SWIMMERF (14) NICOLE,Jolteon,1,,,,,
-,,Vaporeon,1,,,,,
-,,Flareon,1,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-Cinnabar City Gym,Blaine BLAINE (1) BLAINE,Typhlosion,93,,Hidden Power,,,
-,,Meganium,94,Leftovers,Ancientpower,Petal Dance,Synthesis,Earthquake
-,,Kangaskhan,93,Leftovers,Double Edge,Earthquake,Rest,Sleep Talk
-,,Clefable,94,Leftovers,Thunderbolt,Ice Beam,Flamethrower,Moonlight
-,,Entei,95,Leftovers,Hidden Power,Metal Claw,,
-,,Moltres,95,,Hidden Power,Morning Sun,Sky Attack,Fire Blast
-Viridian City Gym,Blue BLUE (1) BLUE,Jolteon,98,,Hidden Power,Thunderbolt,Sing,
-,,Kingdra,98,Leftovers,Octazooka,Double Edge,Rest,Sleep Talk
-,,Houndoom,98,,Hidden Power,Flamethrower,Crunch,Return
-,,Machamp,98,,Light Screen,Earthquake,,
-,,Mew,98,Miracleberry,Shadow Ball,Psychic M,Softboiled,
-,,Tauros,98,Leftovers,Double Edge,Earthquake,Rest,Sleep Talk
-Mt. Silver,WILL (2) WILL,,,,,,,
-needs to be added,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-needs to be added,KOGA (2) KOGA,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-needs to be added,BRUNO (2) BRUNO,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-needs to be added,KAREN (2) KAREN,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-All fields must be filled,Red RED (1) RED,Espeon,100,Miracleberry,Sing,Psywave,Morning Sun,
-,,Dragonite,100,Miracleberry,Extremespeed,Flamethrower,Ice Beam,Thunderbolt
-,,Raikou,100,Miracleberry,Hidden Power,Thunderbolt,Crunch,
-,,Suicune,100,Leftovers,Hidden Power,Extremespeed,Ice Beam,Surf
-,,Celebi,100,,Ancientpower,Recover,,
+Cinnabar City Gym,Blaine BLAINE (1) BLAINE,Typhlosion,96,Charcoal,Fire Blast,Solarbeam,Earthquake,Submission
+,,Tangela,96,Quick Claw,Solarbeam,Ancientpower,Earthquake,Sleep Powder
+,,Kangaskhan,97,Leftovers,Double Edge,Earthquake,Rest,Sleep Talk
+,,Gyarados,97,Pink Bow,Double Edge,Fire Blast,Hidden Power (Flying),Earthquake
+,,Moltres,96,Leftovers,Solarbeam,Morning Sun,Sky Attack,Fire Blast
+,,Ninetales,97,Nevermeltice,Fire Blast,Solarbeam,Hidden Power (Ice),Sacred Fire
+Viridian City Gym,Blue BLUE (1) BLUE,Alakazam,98,Brightpowder,Psychic M,Fire Punch,Thunderpunch,Ice Punch
+,,Blastoise,98,Leftovers,Hydro Pump,Blizzard,Mirror Coat,Earthquake
+,,Arcanine,98,Leftovers,Hidden Power (Grass),Fire Blast,Extremespeed,Iron Tail
+,,Dodrio,98,Sharp Beak,Sky Attack,Submission,Double Edge,Steel Wing
+,,Tyranitar,98,Miracleberry,Crunch,Earthquake,Ancientpower,Thunderbolt
+,,Tauros,98,Pink Bow,Double Edge,Earthquake,Iron Tail,Fire Blast
+Mt. Silver,Will WILL (2) WILL,Starmie,100,Leftovers,Hydro Pump,Ice Beam,Psychic M,Thunderbolt
+,,Misdreavus,100,Miracleberry,Hypnosis,Thunderbolt,Psychic M,Pain Split
+,,Celebi,100,Leftovers,Ancientpower,Psychic M,Giga Drain,Hidden Power (Fire)
+,,Articuno,100,Twistedspoon,Ice Beam,Sky Attack,Hidden Power (Grass),Psychic M
+,,Slowbro,100,Leftovers,Surf,Psychic M,Ice Beam,Fire Blast
+,,Raikou,100,Magnet,Thunderbolt,Crunch,Hidden Power (Grass),Reflect
+,Koga KOGA (2) KOGA,Crobat,100,Sharp Beak,Sky Attack,Sludge Bomb,Super Fang,Giga Drain
+,,Muk,100,Quick Claw,Sludge Bomb,Fire Blast,Giga Drain,Explosion
+,,Scizor,100,Quick Claw,Double Edge,Metal Claw,Submission,Hidden Power (Bug)
+,,Suicune,100,Leftovers,Sleep Talk,Rest,Surf,Ice Beam
+,,Zapdos,100,Leftovers,Double Team,Thunderbolt,Drill Peck,Hidden Power (Grass)
+,,Mew,100,Leftovers,Submission,Softboiled,Toxic,Psywave
+,Bruno BRUNO (2) BRUNO,Entei,100,Miracle Seed,Sacred Fire,Extremespeed,Metal Claw,Hidden Power (Grass)
+,,Heracross,100,Silverpowder,Megahorn,Submission,Counter,Rock Slide
+,,Kangaskhan,100,Leftovers,Counter,Double Edge,Earthquake,Rock Slide
+,,Machamp,100,Quick Claw,Cross Chop,Earthquake,Rock Slide,Hidden Power (Ghost)
+,,Feraligatr,100,Leftovers,Earthquake,Hydro Pump,Ancientpower,Ice Beam
+,,Steelix,100,Quick Claw,Explosion,Iron Tail,Earthquake,Rock Slide
+,Karen KAREN (2) KAREN,Gengar,100,Miracleberry,Destiny Bond,Ice Punch,Thunderbolt,Fire Punch
+,,Tyranitar,100,Miracleberry,Crunch,Earthquake,Ancientpower,Thunderbolt
+,,Sneasel,100,Metal Coat,Beat Up,Metal Claw,Surf,Ice Beam
+,,Lugia,100,Leftovers,Recover,Aeroblast,Surf,Hidden Power (Fire)
+,,Houndoom,100,Charcoal,Flamethrower,Crunch,Hidden Power (Grass),Destiny Bond
+,,Umbreon,100,Leftovers,Moonlight,Double Team,Toxic,Pursuit
+,Red RED (1) RED,Pikachu,110,Light Ball,Surf,Thunderbolt,Petal Dance,Hidden Power (Ice)
+,,Ho Oh,100,Miracleberry,Sacred Fire,Sky Attack,Recover,Hidden Power (Grass)
+,,Aerodactyl,100,Hard Stone,Sky Attack,Ancientpower,Earthquake,Fire Blast
+,,Lapras,100,Leftovers,Thunderbolt,Psychic M,Ice Beam,Surf
+,,Mewtwo,100,Leftovers,Psychic M,Submission,Flamethrower,Thunderbolt
 ,,Snorlax,100,Leftovers,Body Slam,Earthquake,Curse,Rest
-Pokémon League,Rival2 RIVAL2 (4) ?,Snorlax,1,,Body Slam,,,
-All fields must be filled,,Mew,1,Miracleberry,Shadow Ball,Submission,Softboiled,Swords Dance
-,,Celebi,1,Leftovers,Ancientpower,Giga Drain,Psychic M,Recover
-,,Lugia,1,Miracleberry,Curse,Aeroblast,,
-,,Mewtwo,1,Miracleberry,Psychic M,Submission,Thunderbolt,Recover
-,,Ho Oh,1,,Sacred Fire,,,
-All fields must be filled,Rival2 RIVAL2 (5) ?,Snorlax,1,,Body Slam,,,
-,,Mew,1,Miracleberry,Shadow Ball,Submission,Softboiled,Swords Dance
-,,Celebi,1,Leftovers,Ancientpower,Giga Drain,Psychic M,Recover
-,,Lugia,1,Miracleberry,Curse,Aeroblast,,
-,,Mewtwo,1,Miracleberry,Psychic M,Submission,Thunderbolt,Recover
-,,Ho Oh,1,,Sacred Fire,,,
-All fields must be filled,Rival2 RIVAL2 (6) ?,Snorlax,1,,Body Slam,,,
-,,Mew,1,Miracleberry,Shadow Ball,Submission,Softboiled,Swords Dance
-,,Celebi,1,Leftovers,Ancientpower,Giga Drain,Psychic M,Recover
-,,Lugia,1,Miracleberry,Curse,Aeroblast,,
-,,Mewtwo,1,Miracleberry,Psychic M,Submission,Thunderbolt,Recover
-,,Ho Oh,1,,Sacred Fire,,,
-this needs to exist for now,PKMNTrainer CAL (1) CAL,Chikorita,10,,,,,
-,,Cyndaquil,10,,,,,
-,,Totodile,10,,,,,
+PokÃ©mon League,Rival2 RIVAL2 (4) ?,Snorlax,105,Quick Claw,Earthquake,Double Edge,Explosion,Shadow Ball
+,,Mew,105,Brightpowder,Psychic M,Submission,Softboiled,Flamethrower
+,,Ditto,127,Metal Powder,Transform,No Move,No Move,No Move
+,,Lugia,105,Brightpowder,Aeroblast,Recover,Surf,Hidden Power (Fire)
+,,Mewtwo,105,Brightpowder,Psychic M,Shadow Ball,Thunderbolt,Flamethrower
+,,Ho Oh,105,Brightpowder,Sacred Fire,Sky Attack,Recover,Hidden Power (Water)
+this needs to exist for now,PKMNTrainer CAL (1) CAL,Bulbasaur,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-Note these trainers may exist,Beauty BEAUTY (10) RACHAEL,Chikorita,10,,,,,
+,,,,,,,,
+,,,,,,,,
+Note these trainers may exist,Beauty BEAUTY (10) RACHAEL,Ivysaur,1,,,,,
 and need to be reordered and,,,,,,,,
 given teams. but they are here,,,,,,,,
  for the importer,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Beauty BEAUTY (11) ANGELICA,Chikorita,10,,,,,
+,Beauty BEAUTY (11) ANGELICA,Venusaur,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Beauty BEAUTY (12) KENDRA,Chikorita,10,,,,,
+,Beauty BEAUTY (12) KENDRA,Charmander,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Beauty BEAUTY (13) VERONICA,Chikorita,10,,,,,
+,Beauty BEAUTY (13) VERONICA,Charmeleon,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Beauty BEAUTY (15) THERESA,Chikorita,10,,,,,
+,Beauty BEAUTY (15) THERESA,Charizard,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Beauty BEAUTY (3) JULIE,Chikorita,10,,,,,
+,Beauty BEAUTY (3) JULIE,Squirtle,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Beauty BEAUTY (4) JACLYN,Chikorita,10,,,,,
+,Beauty BEAUTY (4) JACLYN,Wartortle,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Beauty BEAUTY (5) BRENDA,Chikorita,10,,,,,
+,Beauty BEAUTY (5) BRENDA,Blastoise,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Beauty BEAUTY (6) CASSIE,Chikorita,10,,,,,
+,Beauty BEAUTY (6) CASSIE,Caterpie,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Beauty BEAUTY (7) CAROLINE,Chikorita,10,,,,,
+,Beauty BEAUTY (7) CAROLINE,Metapod,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Beauty BEAUTY (8) CARLENE,Chikorita,10,,,,,
+,Beauty BEAUTY (8) CARLENE,Butterfree,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Beauty BEAUTY (9) JESSICA,Chikorita,10,,,,,
+,Beauty BEAUTY (9) JESSICA,Weedle,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Biker BIKER (1) BENNY,Chikorita,10,,,,,
+,Biker BIKER (1) BENNY,Kakuna,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Biker BIKER (2) KAZU,Chikorita,10,,,,,
+,Biker BIKER (2) KAZU,Pidgey,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,BirdKeeper BIRD_KEEPER (12) JOSE,Chikorita,10,,,,,
+,BirdKeeper BIRD_KEEPER (12) JOSE,Pidgeotto,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,BirdKeeper BIRD_KEEPER (17) JOSE,Chikorita,10,,,,,
+,BirdKeeper BIRD_KEEPER (17) JOSE,Pidgeot,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,BirdKeeper BIRD_KEEPER (18) VANCE,Chikorita,10,,,,,
+,BirdKeeper BIRD_KEEPER (18) VANCE,Rattata,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,BirdKeeper BIRD_KEEPER (19) VANCE,Chikorita,10,,,,,
+,BirdKeeper BIRD_KEEPER (19) VANCE,Raticate,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Blackbelt BLACKBELT_T (1) KENJI,Chikorita,10,,,,,
+,Blackbelt BLACKBELT_T (1) KENJI,Spearow,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Blackbelt BLACKBELT_T (3) KENJI,Chikorita,10,,,,,
+,Blackbelt BLACKBELT_T (3) KENJI,Fearow,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Blackbelt BLACKBELT_T (9) WAI,Chikorita,10,,,,,
+,Blackbelt BLACKBELT_T (9) WAI,Ekans,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,BugCatcher BUG_CATCHER (10) WADE,Chikorita,10,,,,,
+,BugCatcher BUG_CATCHER (10) WADE,Arbok,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,BugCatcher BUG_CATCHER (11) WADE,Chikorita,10,,,,,
+,BugCatcher BUG_CATCHER (11) WADE,Pikachu,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,BugCatcher BUG_CATCHER (13) ARNIE,Chikorita,10,,,,,
+,BugCatcher BUG_CATCHER (13) ARNIE,Raichu,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,BugCatcher BUG_CATCHER (14) ARNIE,Chikorita,10,,,,,
+,BugCatcher BUG_CATCHER (14) ARNIE,Sandshrew,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,BugCatcher BUG_CATCHER (15) WADE,Chikorita,10,,,,,
+,BugCatcher BUG_CATCHER (15) WADE,Sandslash,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,BugCatcher BUG_CATCHER (16) WADE,Chikorita,10,,,,,
+,BugCatcher BUG_CATCHER (16) WADE,Nidoran F,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,BugCatcher BUG_CATCHER (17) ARNIE,Chikorita,10,,,,,
+,BugCatcher BUG_CATCHER (17) ARNIE,Nidorina,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,BugCatcher BUG_CATCHER (18) ARNIE,Chikorita,10,,,,,
+,BugCatcher BUG_CATCHER (18) ARNIE,Nidoqueen,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,BugCatcher BUG_CATCHER (9) KEN,Chikorita,10,,,,,
+,BugCatcher BUG_CATCHER (9) KEN,Nidoran M,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Burglar BURGLAR (3) COREY,Chikorita,10,,,,,
+,Burglar BURGLAR (3) COREY,Nidorino,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Camper CAMPER (10) DALE,Chikorita,10,,,,,
+,Camper CAMPER (10) DALE,Nidoking,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Camper CAMPER (12) TODD,Chikorita,10,,,,,
+,Camper CAMPER (12) TODD,Clefairy,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Camper CAMPER (13) TODD,Chikorita,10,,,,,
+,Camper CAMPER (13) TODD,Clefable,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Camper CAMPER (14) THOMAS,Chikorita,10,,,,,
+,Camper CAMPER (14) THOMAS,Vulpix,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Camper CAMPER (15) LEROY,Chikorita,10,,,,,
+,Camper CAMPER (15) LEROY,Ninetales,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Camper CAMPER (16) DAVID,Chikorita,10,,,,,
+,Camper CAMPER (16) DAVID,Jigglypuff,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Camper CAMPER (17) JOHN,Chikorita,10,,,,,
+,Camper CAMPER (17) JOHN,Wigglytuff,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Camper CAMPER (20) TODD,Chikorita,10,,,,,
+,Camper CAMPER (20) TODD,Zubat,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Camper CAMPER (21) TODD,Chikorita,10,,,,,
+,Camper CAMPER (21) TODD,Golbat,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Camper CAMPER (9) HARVEY,Chikorita,10,,,,,
+,Camper CAMPER (9) HARVEY,Oddish,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,CooltrainerF COOLTRAINERF (1) GWEN,Chikorita,10,,,,,
+,CooltrainerF COOLTRAINERF (1) GWEN,Gloom,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,CooltrainerF COOLTRAINERF (12) BETH,Chikorita,10,,,,,
+,CooltrainerF COOLTRAINERF (12) BETH,Vileplume,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,CooltrainerF COOLTRAINERF (13) CAROL,Chikorita,10,,,,,
+,CooltrainerF COOLTRAINERF (13) CAROL,Paras,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,CooltrainerF COOLTRAINERF (15) EMMA,Chikorita,10,,,,,
+,CooltrainerF COOLTRAINERF (15) EMMA,Parasect,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,CooltrainerF COOLTRAINERF (18) BETH,Chikorita,10,,,,,
+,CooltrainerF COOLTRAINERF (18) BETH,Venonat,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,CooltrainerF COOLTRAINERF (19) REENA,Chikorita,10,,,,,
+,CooltrainerF COOLTRAINERF (19) REENA,Venomoth,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,CooltrainerF COOLTRAINERF (20) REENA,Chikorita,10,,,,,
+,CooltrainerF COOLTRAINERF (20) REENA,Diglett,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,CooltrainerM COOLTRAINERM (1) NICK,Chikorita,10,,,,,
+,CooltrainerM COOLTRAINERM (1) NICK,Dugtrio,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,CooltrainerM COOLTRAINERM (13) ERICK,Chikorita,10,,,,,
+,CooltrainerM COOLTRAINERM (13) ERICK,Meowth,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,CooltrainerM COOLTRAINERM (14) ANDY,Chikorita,10,,,,,
+,CooltrainerM COOLTRAINERM (14) ANDY,Persian,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,CooltrainerM COOLTRAINERM (15) TYLER,Chikorita,10,,,,,
+,CooltrainerM COOLTRAINERM (15) TYLER,Psyduck,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,CooltrainerM COOLTRAINERM (16) SEAN,Chikorita,10,,,,,
+,CooltrainerM COOLTRAINERM (16) SEAN,Golduck,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,CooltrainerM COOLTRAINERM (18) STEVE,Chikorita,10,,,,,
+,CooltrainerM COOLTRAINERM (18) STEVE,Mankey,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,CooltrainerM COOLTRAINERM (6) GAVEN,Chikorita,10,,,,,
+,CooltrainerM COOLTRAINERM (6) GAVEN,Primeape,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,CooltrainerM COOLTRAINERM (7) GAVEN,Chikorita,10,,,,,
+,CooltrainerM COOLTRAINERM (7) GAVEN,Growlithe,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,ExecutiveM EXECUTIVEM (2) EXECUTIVE,Chikorita,10,,,,,
+,ExecutiveM EXECUTIVEM (2) EXECUTIVE,Arcanine,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Firebreather FIREBREATHER (2) DICK,Chikorita,10,,,,,
+,Firebreather FIREBREATHER (2) DICK,Poliwag,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Firebreather FIREBREATHER (3) NED,Chikorita,10,,,,,
+,Firebreather FIREBREATHER (3) NED,Poliwhirl,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Fisher FISHER (12) JONAH,Chikorita,10,,,,,
+,Fisher FISHER (12) JONAH,Poliwrath,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Fisher FISHER (16) RALPH,Chikorita,10,,,,,
+,Fisher FISHER (16) RALPH,Abra,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Fisher FISHER (17) RALPH,Chikorita,10,,,,,
+,Fisher FISHER (17) RALPH,Kadabra,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Fisher FISHER (18) TULLY,Chikorita,10,,,,,
+,Fisher FISHER (18) TULLY,Alakazam,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Fisher FISHER (19) TULLY,Chikorita,10,,,,,
+,Fisher FISHER (19) TULLY,Machop,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Fisher FISHER (20) WILTON,Chikorita,10,,,,,
+,Fisher FISHER (20) WILTON,Machoke,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Fisher FISHER (22) WILTON,Chikorita,10,,,,,
+,Fisher FISHER (22) WILTON,Machamp,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Fisher FISHER (23) RALPH,Chikorita,10,,,,,
+,Fisher FISHER (23) RALPH,Bellsprout,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Fisher FISHER (24) RALPH,Chikorita,10,,,,,
+,Fisher FISHER (24) RALPH,Weepinbell,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Fisher FISHER (25) TULLY,Chikorita,10,,,,,
+,Fisher FISHER (25) TULLY,Victreebel,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Gentleman GENTLEMAN (2) EDWARD,Chikorita,10,,,,,
+,Gentleman GENTLEMAN (2) EDWARD,Tentacool,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Gentleman GENTLEMAN (4) VIRGIL,Chikorita,10,,,,,
+,Gentleman GENTLEMAN (4) VIRGIL,Tentacruel,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,GruntM GRUNTM (12) EXECUTIVE,Chikorita,10,,,,,
+,GruntM GRUNTM (12) EXECUTIVE,Geodude,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,GruntM GRUNTM (23) EXECUTIVE,Chikorita,10,,,,,
+,GruntM GRUNTM (23) EXECUTIVE,Graveler,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,GruntM GRUNTM (26) GRUNT,Chikorita,10,,,,,
+,GruntM GRUNTM (26) GRUNT,Golem,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,GruntM GRUNTM (27) EXECUTIVE,Chikorita,10,,,,,
+,GruntM GRUNTM (27) EXECUTIVE,Ponyta,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,GruntM GRUNTM (30) GRUNT,Chikorita,10,,,,,
+,GruntM GRUNTM (30) GRUNT,Slowpoke,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Guitarist GUITARIST (1) CLYDE,Chikorita,10,,,,,
+,Guitarist GUITARIST (1) CLYDE,Slowking,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Hiker HIKER (12) ANTHONY,Chikorita,10,,,,,
+,Hiker HIKER (12) ANTHONY,Magnemite,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Hiker HIKER (19) PARRY,Chikorita,10,,,,,
+,Hiker HIKER (19) PARRY,Magneton,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Hiker HIKER (21) ANTHONY,Chikorita,10,,,,,
+,Hiker HIKER (21) ANTHONY,Farfetch D,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Hiker HIKER (22) ANTHONY,Chikorita,10,,,,,
+,Hiker HIKER (22) ANTHONY,Doduo,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Hiker HIKER (5) ANTHONY,Chikorita,10,,,,,
+,Hiker HIKER (5) ANTHONY,Dodrio,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Hiker HIKER (9) PARRY,Chikorita,10,,,,,
+,Hiker HIKER (9) PARRY,Seel,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Juggler JUGGLER (4) IRWIN,Chikorita,10,,,,,
+,Juggler JUGGLER (4) IRWIN,Dewgong,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Juggler JUGGLER (5) IRWIN,Chikorita,10,,,,,
+,Juggler JUGGLER (5) IRWIN,Grimer,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Juggler JUGGLER (6) IRWIN,Chikorita,10,,,,,
+,Juggler JUGGLER (6) IRWIN,Muk,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,KimonoGirl KIMONO_GIRL (1) NAOKO,Chikorita,10,,,,,
+,KimonoGirl KIMONO_GIRL (1) NAOKO,Shellder,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Lass LASS (12) CONNIE,Chikorita,10,,,,,
+,Lass LASS (12) CONNIE,Cloyster,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Lass LASS (13) CONNIE,Chikorita,10,,,,,
+,Lass LASS (13) CONNIE,Gastly,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Lass LASS (14) DANA,Chikorita,10,,,,,
+,Lass LASS (14) DANA,Haunter,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Lass LASS (15) DANA,Chikorita,10,,,,,
+,Lass LASS (15) DANA,Gengar,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Lass LASS (16) DANA,Chikorita,10,,,,,
+,Lass LASS (16) DANA,Onix,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Lass LASS (17) DANA,Chikorita,10,,,,,
+,Lass LASS (17) DANA,Drowzee,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Medium MEDIUM (3) BETHANY,Chikorita,10,,,,,
+,Medium MEDIUM (3) BETHANY,Hypno,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Medium MEDIUM (4) MARGRET,Chikorita,10,,,,,
+,Medium MEDIUM (4) MARGRET,Krabby,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Medium MEDIUM (5) ETHEL,Chikorita,10,,,,,
+,Medium MEDIUM (5) ETHEL,Kingler,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Picnicker PICNICKER (11) LIZ,Chikorita,10,,,,,
+,Picnicker PICNICKER (11) LIZ,Voltorb,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Picnicker PICNICKER (12) LIZ,Chikorita,10,,,,,
+,Picnicker PICNICKER (12) LIZ,Electrode,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Picnicker PICNICKER (15) GINA,Chikorita,10,,,,,
+,Picnicker PICNICKER (15) GINA,Exeggcute,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Picnicker PICNICKER (16) TIFFANY,Chikorita,10,,,,,
+,Picnicker PICNICKER (16) TIFFANY,Exeggutor,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Picnicker PICNICKER (17) TIFFANY,Chikorita,10,,,,,
+,Picnicker PICNICKER (17) TIFFANY,Cubone,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Picnicker PICNICKER (18) ERIN,Chikorita,10,,,,,
+,Picnicker PICNICKER (18) ERIN,Marowak,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Picnicker PICNICKER (21) ERIN,Chikorita,10,,,,,
+,Picnicker PICNICKER (21) ERIN,Hitmonlee,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Picnicker PICNICKER (22) LIZ,Chikorita,10,,,,,
+,Picnicker PICNICKER (22) LIZ,Hitmonchan,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Picnicker PICNICKER (23) LIZ,Chikorita,10,,,,,
+,Picnicker PICNICKER (23) LIZ,Lickitung,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Picnicker PICNICKER (24) GINA,Chikorita,10,,,,,
+,Picnicker PICNICKER (24) GINA,Koffing,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Picnicker PICNICKER (25) GINA,Chikorita,10,,,,,
+,Picnicker PICNICKER (25) GINA,Weezing,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Picnicker PICNICKER (26) TIFFANY,Chikorita,10,,,,,
+,Picnicker PICNICKER (26) TIFFANY,Rhyhorn,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Picnicker PICNICKER (9) GINA,Chikorita,10,,,,,
+,Picnicker PICNICKER (9) GINA,Rhydon,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,PKMNTrainer CAL (2) CAL,Chikorita,10,,,,,
+,PKMNTrainer CAL (2) CAL,Chansey,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,PKMNTrainer CAL (3) CAL,Chikorita,10,,,,,
+,PKMNTrainer CAL (3) CAL,Tangela,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,PokefanF POKEFANF (3) BEVERLY,Chikorita,10,,,,,
+,PokefanF POKEFANF (3) BEVERLY,Kangaskhan,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,PokefanF POKEFANF (4) BEVERLY,Chikorita,10,,,,,
+,PokefanF POKEFANF (4) BEVERLY,Horsea,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,PokefanF POKEFANF (5) GEORGIA,Chikorita,10,,,,,
+,PokefanF POKEFANF (5) GEORGIA,Seadra,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,PokefanM POKEFANM (10) DEREK,Chikorita,10,,,,,
+,PokefanM POKEFANM (10) DEREK,Goldeen,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,PokefanM POKEFANM (11) DEREK,Chikorita,10,,,,,
+,PokefanM POKEFANM (11) DEREK,Seaking,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,PokefanM POKEFANM (8) JEREMY,Chikorita,10,,,,,
+,PokefanM POKEFANM (8) JEREMY,Staryu,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Pokemaniac POKEMANIAC (10) BRENT,Chikorita,10,,,,,
+,Pokemaniac POKEMANIAC (10) BRENT,Starmie,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Pokemaniac POKEMANIAC (14) BRENT,Chikorita,10,,,,,
+,Pokemaniac POKEMANIAC (14) BRENT,Mr  Mime,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Pokemaniac POKEMANIAC (8) ETHAN,Chikorita,10,,,,,
+,Pokemaniac POKEMANIAC (8) ETHAN,Scyther,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Pokemaniac POKEMANIAC (9) BRENT,Chikorita,10,,,,,
+,Pokemaniac POKEMANIAC (9) BRENT,Jynx,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Psychic PSYCHIC_T (12) RODNEY,Chikorita,10,,,,,
+,Psychic PSYCHIC_T (12) RODNEY,Electabuzz,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Sage SAGE (10) GAKU,Chikorita,10,,,,,
+,Sage SAGE (10) GAKU,Magmar,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Sage SAGE (11) MASA,Chikorita,10,,,,,
+,Sage SAGE (11) MASA,Pinsir,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Sage SAGE (12) KOJI,Chikorita,10,,,,,
+,Sage SAGE (12) KOJI,Tauros,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Sailor SAILOR (11) HUEY,Chikorita,10,,,,,
+,Sailor SAILOR (11) HUEY,Magikarp,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Sailor SAILOR (12) HUEY,Chikorita,10,,,,,
+,Sailor SAILOR (12) HUEY,Gyarados,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Sailor SAILOR (13) HUEY,Chikorita,10,,,,,
+,Sailor SAILOR (13) HUEY,Lapras,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Sailor SAILOR (7) GARRETT,Chikorita,10,,,,,
+,Sailor SAILOR (7) GARRETT,Ditto,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Sailor SAILOR (8) KENNETH,Chikorita,10,,,,,
+,Sailor SAILOR (8) KENNETH,Eevee,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Schoolboy SCHOOLBOY (11) NATE,Chikorita,10,,,,,
+,Schoolboy SCHOOLBOY (11) NATE,Vaporeon,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Schoolboy SCHOOLBOY (12) RICKY,Chikorita,10,,,,,
+,Schoolboy SCHOOLBOY (12) RICKY,Jolteon,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Schoolboy SCHOOLBOY (13) JACK,Chikorita,10,,,,,
+,Schoolboy SCHOOLBOY (13) JACK,Flareon,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Schoolboy SCHOOLBOY (14) JACK,Chikorita,10,,,,,
+,Schoolboy SCHOOLBOY (14) JACK,Porygon,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Schoolboy SCHOOLBOY (15) ALAN,Chikorita,10,,,,,
+,Schoolboy SCHOOLBOY (19) JACK,Aerodactyl,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Schoolboy SCHOOLBOY (16) ALAN,Chikorita,10,,,,,
+,Schoolboy SCHOOLBOY (20) JACK,Snorlax,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Schoolboy SCHOOLBOY (17) CHAD,Chikorita,10,,,,,
+,SuperNerd SUPER_NERD (1) STAN,Dragonair,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Schoolboy SCHOOLBOY (18) CHAD,Chikorita,10,,,,,
+,SuperNerd SUPER_NERD (11) RUSS,Dragonite,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Schoolboy SCHOOLBOY (19) JACK,Chikorita,10,,,,,
+,SuperNerd SUPER_NERD (12) NORTON,Mewtwo,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Schoolboy SCHOOLBOY (20) JACK,Chikorita,10,,,,,
+,SuperNerd SUPER_NERD (3) GREGG,Mew,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Schoolboy SCHOOLBOY (21) ALAN,Chikorita,10,,,,,
+,SuperNerd SUPER_NERD (4) JAY,Chikorita,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Schoolboy SCHOOLBOY (22) ALAN,Chikorita,10,,,,,
+,SuperNerd SUPER_NERD (5) DAVE,Bayleef,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Schoolboy SCHOOLBOY (23) CHAD,Chikorita,10,,,,,
+,SuperNerd SUPER_NERD (9) SHAWN,Meganium,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Schoolboy SCHOOLBOY (24) CHAD,Chikorita,10,,,,,
+,SwimmerF SWIMMERF (10) MARY,Cyndaquil,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,SuperNerd SUPER_NERD (1) STAN,Chikorita,10,,,,,
+,SwimmerF SWIMMERF (11) KATIE,Quilava,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,SuperNerd SUPER_NERD (11) RUSS,Chikorita,10,,,,,
+,SwimmerF SWIMMERF (13) TARA,Typhlosion,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,SuperNerd SUPER_NERD (12) NORTON,Chikorita,10,,,,,
+,SwimmerF SWIMMERF (16) JODY,Totodile,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,SuperNerd SUPER_NERD (3) GREGG,Chikorita,10,,,,,
+,SwimmerF SWIMMERF (8) LISA,Croconaw,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,SuperNerd SUPER_NERD (4) JAY,Chikorita,10,,,,,
+,SwimmerF SWIMMERF (9) JILL,Feraligatr,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,SuperNerd SUPER_NERD (5) DAVE,Chikorita,10,,,,,
+,SwimmerM SWIMMERM (10) PATON,Sentret,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,SuperNerd SUPER_NERD (9) SHAWN,Chikorita,10,,,,,
+,SwimmerM SWIMMERM (11) DARYL,Furret,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,SwimmerF SWIMMERF (10) MARY,Chikorita,10,,,,,
+,SwimmerM SWIMMERM (12) WALTER,Hoothoot,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,SwimmerF SWIMMERF (11) KATIE,Chikorita,10,,,,,
+,SwimmerM SWIMMERM (13) TONY,Noctowl,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,SwimmerF SWIMMERF (13) TARA,Chikorita,10,,,,,
+,SwimmerM SWIMMERM (16) RICK,Ledyba,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,SwimmerF SWIMMERF (16) JODY,Chikorita,10,,,,,
+,SwimmerM SWIMMERM (19) JAMES,Ledian,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,SwimmerF SWIMMERF (8) LISA,Chikorita,10,,,,,
+,SwimmerM SWIMMERM (20) LEWIS,Spinarak,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,SwimmerF SWIMMERF (9) JILL,Chikorita,10,,,,,
+,SwimmerM SWIMMERM (9) HAL,Ariados,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,SwimmerM SWIMMERM (10) PATON,Chikorita,10,,,,,
+,Teacher TEACHER (3) SHIRLEY,Crobat,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,SwimmerM SWIMMERM (11) DARYL,Chikorita,10,,,,,
+,Twins TWINS (10) LEA & PIA,Chinchou,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,SwimmerM SWIMMERM (12) WALTER,Chikorita,10,,,,,
+,Twins TWINS (2) ANN & ANNE,Lanturn,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,SwimmerM SWIMMERM (13) TONY,Chikorita,10,,,,,
+,Twins TWINS (4) AMY & MAY,Pichu,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,SwimmerM SWIMMERM (16) RICK,Chikorita,10,,,,,
+,Twins TWINS (6) JO & ZOE,Cleffa,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,SwimmerM SWIMMERM (19) JAMES,Chikorita,10,,,,,
+,Twins TWINS (8) MEG & PEG,Igglybuff,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,SwimmerM SWIMMERM (20) LEWIS,Chikorita,10,,,,,
+,Youngster YOUNGSTER (13) JOEY,Togepi,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,SwimmerM SWIMMERM (9) HAL,Chikorita,10,,,,,
+,Youngster YOUNGSTER (14) JOEY,Togetic,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Teacher TEACHER (3) SHIRLEY,Chikorita,10,,,,,
+,Youngster YOUNGSTER (7) JOEY,Natu,1,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
-,Twins TWINS (10) LEA & PIA,Chikorita,10,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,Twins TWINS (2) ANN & ANNE,Chikorita,10,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,Twins TWINS (4) AMY & MAY,Chikorita,10,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,Twins TWINS (6) JO & ZOE,Chikorita,10,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,Twins TWINS (8) MEG & PEG,Chikorita,10,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,Youngster YOUNGSTER (13) JOEY,Chikorita,10,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,Youngster YOUNGSTER (14) JOEY,Chikorita,10,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,Youngster YOUNGSTER (7) JOEY,Chikorita,10,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,Youngster YOUNGSTER (8) JOEY,Chikorita,10,,,,,
+,Youngster YOUNGSTER (8) JOEY,Xatu,1,,,,,
