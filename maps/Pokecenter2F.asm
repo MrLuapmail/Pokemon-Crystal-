@@ -3,6 +3,7 @@
 	const POKECENTER2F_BATTLE_RECEPTIONIST
 	const POKECENTER2F_TIME_CAPSULE_RECEPTIONIST
 	const POKECENTER2F_OFFICER
+	const POKECENTER2F_SHADY_GUY
 
 Pokecenter2F_MapScripts:
 	def_scene_scripts
@@ -619,6 +620,19 @@ Pokecenter2FOfficerScript:
 	waitbutton
 	closetext
 	end
+	
+ShadyDamageGuy:
+	faceplayer
+	opentext
+	writetext Text_ShadyGuyIntro
+	waitbutton
+	writetext Text_ShadyGuyAsk
+	promptbutton
+	special DamageMon
+	writetext Text_ShadyGuyExit
+	waitbutton
+	closetext
+	end
 
 Pokecenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight:
 	slow_step UP
@@ -796,6 +810,22 @@ Pokecenter2FMovementData_ReceptionistStepsRightLooksLeft_2:
 	slow_step RIGHT
 	turn_head LEFT
 	step_end
+	
+Text_ShadyGuyIntro:
+	text "I have a painful"
+	line "potion for your"
+	cont "#MON."
+	done
+	
+Text_ShadyGuyAsk:
+	text "Who shall receive"
+	line "this potion?"
+	done
+
+Text_ShadyGuyExit:
+	text "If you need help,"
+	line "just come back."
+	done
 
 Text_BattleReceptionistMobile:
 	text "Would you like to"
@@ -1041,3 +1071,5 @@ Pokecenter2F_MapEvents:
 	object_event  9,  2, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_Battle, -1
 	object_event 13,  3, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_TimeCapsule, -1
 	object_event  1,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Pokecenter2FOfficerScript, EVENT_MYSTERY_GIFT_DELIVERY_GUY
+	object_event 15,  7, SPRITE_UNUSED_GUY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ShadyDamageGuy, -1
+	

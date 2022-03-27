@@ -565,7 +565,8 @@ Dodrio,
 1,Quick Attack
 40,Drill Peck
 46,Steel Wing
-55,Double Edge
+53,Hi Jump Kick
+59,Double Edge
 67,Sky Attack
 Seel,
 1,Water Gun
@@ -963,11 +964,10 @@ Kabutops,
 Aerodactyl,
 1,Wing Attack
 1,Rock Throw
-22,Rock Slide
-59,Earthquake
-65,Fire Blast
-77,Sky Attack
-99,Ancientpower
+45,Rock Slide
+67,Earthquake
+78,Fire Blast
+99,Sky Attack
 Snorlax,
 1,Tackle
 5,Rollout
@@ -1082,6 +1082,7 @@ Feraligatr,
 Sentret,
 1,Quick Attack
 5,Swift
+10,Rock Smash
 15,Slash
 Furret,
 1,Quick Attack
@@ -1300,11 +1301,12 @@ Jumpluff,
 Aipom,
 1,Fury Swipes
 7,Pursuit
-12,Growl
-16,Swift
-23,Iron Tail
-27,Return
-36,Shadow Ball
+14,Growl
+20,Swift
+28,Iron Tail
+34,Return
+39,Submission
+44,Shadow Ball
 Sunkern,
 1,Giga Drain
 1,Return
@@ -1341,6 +1343,7 @@ Quagsire,
 36,Ice Beam
 41,Hydro Pump
 44,Sludge Bomb
+60,Recover
 Espeon,
 1,Confusion
 1,Psywave
@@ -1355,6 +1358,7 @@ Umbreon,
 27,Bite
 34,Confuse Ray
 44,Shadow Ball
+53,Mean Look
 99,Moonlight
 Murkrow,
 1,Peck
@@ -1464,7 +1468,8 @@ Qwilfish,
 1,Sludge Bomb
 1,Explosion
 1,Toxic
-99,Spikes
+90,Destiny Bond
+100,Spikes
 Scizor,
 1,Slash
 40,Light Screen
@@ -1481,12 +1486,14 @@ Shuckle,
 Heracross,
 1,Tackle
 13,Horn Attack
-23,Rock Slide
-32,Vital Throw
-42,Counter
-52,Earthquake
-57,Submission
-65,Megahorn
+18,Rock Smash
+24,Fury Cutter
+33,Slash
+40,Counter
+48,Rock Slide
+56,Vital Throw
+64,Submission
+74,Megahorn
 Sneasel,
 1,Fury Swipes
 13,Faint Attack

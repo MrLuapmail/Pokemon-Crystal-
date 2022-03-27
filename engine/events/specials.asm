@@ -15,7 +15,301 @@ Special::
 
 INCLUDE "data/events/special_pointers.asm"
 
-UnusedDummySpecial:
+DamageMon:
+	call DisableSpriteUpdates
+.select_mon
+    farcall SelectTradeOrDayCareMonWithoutReturningToMap
+    jp c, .ShadyGuyExit
+    ld a, [wCurPartySpecies]
+    cp EGG
+    jp z, .Egg
+	
+	ld d, a
+	ld hl, wPartyMon1Species
+.find_target_mon
+	ld a, [hl]
+	cp d
+	jr z, .damage
+	ld bc, PARTYMON_STRUCT_LENGTH
+	add hl, bc
+	jr .find_target_mon
+	
+.damage
+	push hl
+	ld hl, .ShadyGuyDealDamage
+	call PrintText
+	
+	call HowMuchDamage
+	pop hl
+	jr c, .select_mon
+	
+	; Deal damage
+	ld bc, MON_MAXHP
+	add hl, bc
+	
+	; Multiply by $ff
+	xor a
+	ldh [hMultiplicand + 0], a
+	ld a, [hl]
+	ldh [hMultiplicand + 1], a
+	inc hl
+	ld a, [hl]
+	ldh [hMultiplicand + 2], a
+	ld a, $ff
+	ldh [hMultiplier], a
+	call Multiply
+	
+	; Multiply by the percent value of d
+	ld a, d
+	ldh [hMultiplier], a
+	call Multiply
+	 
+	; Divide by 100 to complete HP * d%
+	ld a, 100
+	ld [hDivisor], a
+	ld b, 3
+	call Divide
+	
+	dec hl
+	dec hl
+	dec hl
+	ldh a, [hQuotient + 2]
+	and a
+	jr z, .cont
+	ldh a, [hQuotient + 2]
+	cp [hl]
+	jr nc, .error_damaging
+	
+.cont
+	
+	inc hl
+	ldh a, [hQuotient + 3]
+	inc a
+	cp [hl]
+	jr nc, .error_damaging
+	
+	push hl
+	push af
+	; HP bar animation stuff
+	ld a, MON_MAXHP
+	call GetPartyParamLocation
+	ld a, [hli]
+	ld [wHPBuffer1 + 1], a
+	ld a, [hl]
+	ld [wHPBuffer1], a
+	
+	ld a, MON_HP
+	call GetPartyParamLocation
+	ld a, [hli]
+	ld [wHPBuffer2 + 1], a
+	ld a, [hl]
+	ld [wHPBuffer2], a
+	pop af
+	pop hl
+
+	; Damaging the Pokémon
+	dec a
+	ld [hl], a
+	dec hl
+	ldh a, [hQuotient + 2]
+	ld [hl], a
+	
+	; More HP bar animation stuff
+	ld a, MON_HP
+	call GetPartyParamLocation
+	ld a, [hli]
+	ld [wHPBuffer3 + 1], a
+	ld a, [hl]
+	ld [wHPBuffer3], a
+	
+	ld de, SFX_DAMAGE
+	call WaitPlaySFX
+	
+	; Actual HP bar animation
+	ld a, [wCurPartyMon]
+	hlcoord 11, 0
+	ld bc, SCREEN_WIDTH * 2
+	call AddNTimes
+	ld a, $2
+	ld [wWhichHPBar], a
+	predef AnimateHPBar
+	
+	ld hl, .ShadyGuyDamageDone
+	call PrintText
+	jp .select_mon
+
+.error_damaging:
+	ld de, SFX_BUMP
+	call WaitPlaySFX
+
+    ld hl, .ShadyGuyDamageError
+	call PrintText
+	jp .select_mon
+	
+.Egg:
+	ld de, SFX_BUMP
+	call WaitPlaySFX
+
+    ld hl, .ShadyGuyEgg
+	call PrintText
+	jp .select_mon
+
+	
+.ShadyGuyExit:
+	call ReturnToMapWithSpeechTextbox
+	call EnableSpriteUpdates
+	ret
+	
+.ShadyGuyDamageError:
+	text_far _ShadyGuyDamageError
+	text_end
+	
+.ShadyGuyDealDamage:
+	text_far _ShadyGuyDealDamage
+	text_end	
+	
+.ShadyGuyDamageDone:
+	text_far _ShadyGuyDamageDone
+	text_end
+	
+.ShadyGuyEgg:
+	text_far _ShadyGuyEgg
+	text_end
+	
+HowMuchDamage:
+	ld hl, Damage_MenuHeader
+	call LoadMenuHeader
+	call Damage_Loop
+	ld a, [wItemQuantityChange]
+	ld d, a
+	ret
+
+Damage_Loop:
+	ld a, 99
+	ld [wItemQuantityChange], a
+.loop
+	call Damage_UpdateDamageDisplay		; update display
+	call Damage_InterpretJoypad     	; joy action
+	jr nc, .loop
+	cp -1
+	jr nz, .nope ; pressed B
+	scf
+	ret
+
+.nope
+	and a
+	ret
+	
+Damage_InterpretJoypad:
+	call JoyTextDelay_ForcehJoyDown ; get joypad
+	bit B_BUTTON_F, c
+	jr nz, .b
+	bit A_BUTTON_F, c
+	jr nz, .a
+	bit D_DOWN_F, c
+	jr nz, .down
+	bit D_UP_F, c
+	jr nz, .up
+	bit D_LEFT_F, c
+	jr nz, .left
+	bit D_RIGHT_F, c
+	jr nz, .right
+	and a
+	ret
+
+.b
+	ld a, -1
+	scf
+	ret
+
+.a
+	ld a, 0
+	scf
+	ret
+
+.down
+	ld hl, wItemQuantityChange
+	ld a, [hl]
+	dec a
+	dec a
+	cp 99
+	jr c, .finish_down
+	ld a, 0
+
+.finish_down
+	inc a
+	ld [hl], a
+	and a
+	ret
+
+.up
+	ld hl, wItemQuantityChange
+	ld a, [hl]
+	inc a
+	ld [hl], a
+	cp 99
+	jr c, .finish_up
+	ld [hl], 99
+
+.finish_up
+	and a
+	ret
+
+.left
+	ld a, [wItemQuantityChange]
+	sub 10
+	jr c, .load_01
+	jr z, .load_01
+	jr .finish_left
+
+.load_01
+	ld a, 1
+.finish_left
+	ld [wItemQuantityChange], a
+	and a
+	ret
+
+.right
+	ld a, [wItemQuantityChange]
+	add 10
+	cp 99
+	jr c, .finish_right
+	ld a, 99
+
+.finish_right
+	ld [wItemQuantityChange], a
+	and a
+	ret
+
+Damage_UpdateDamageDisplay:
+	call MenuBox
+	call MenuBoxCoord2Tile
+	ld de, SCREEN_WIDTH + 1
+	add hl, de
+	inc hl
+	inc hl
+	ld [hl], "<PERCENT>"
+	dec hl
+	dec hl
+	ld de, wItemQuantityChange
+	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
+	call PrintNum
+	ld a, [wMenuDataPointer]
+	ld e, a
+	ld a, [wMenuDataPointer + 1]
+	ld d, a
+	ld a, [wMenuDataBank]
+	call FarCall_de
+	ret
+	
+Damage_MenuHeader:
+	db MENU_BACKUP_TILES ; flags
+	menu_coords 15, 9, SCREEN_WIDTH - 1, TEXTBOX_Y - 1
+	dw NothingToDisplay
+	db 0 ; default option
+	
+NothingToDisplay:
+; Does nothing.
 	ret
 
 SetPlayerPalette:
