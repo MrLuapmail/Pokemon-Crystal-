@@ -1,4 +1,9 @@
 SelectMonFromParty:
+	call SelectTradeOrDayCareMonWithoutReturningToMap
+	call ReturnToMapWithSpeechTextbox
+	ret
+	
+SelectTradeOrDayCareMonWithoutReturningToMap:
 	call DisableSpriteUpdates
 	xor a
 	ld [wPartyMenuActionText], a
@@ -8,7 +13,6 @@ SelectMonFromParty:
 	call SetPalettes
 	call DelayFrame
 	call PartyMenuSelect
-	call ReturnToMapWithSpeechTextbox
 	ret
 
 SelectTradeOrDayCareMon:

@@ -1338,6 +1338,27 @@ _SavingRecordText::
 	text "SAVING RECORD…"
 	line "DON'T TURN OFF!"
 	done
+	
+_ShadyGuyDealDamage::
+	text "Stop damaging at "
+	line "which <PERCENT> of max HP?"
+	prompt	
+	
+_ShadyGuyDamageDone::
+	text "Damaging "
+	line "complete!"
+	prompt
+	
+_ShadyGuyDamageError::
+	text "Incorrect damage"
+	line "percentage."
+	prompt
+	
+_ShadyGuyEgg::
+	text "Wait,"
+	line "that's illegal."
+	prompt
+	
 
 _ReceiveItemText::
 	text_ram wPlayerName
