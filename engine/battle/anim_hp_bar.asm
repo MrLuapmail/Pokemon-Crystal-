@@ -372,17 +372,13 @@ ShortHPBar_CalcPixelFrame:
 	call AddNTimes
 
 	ld b, 0
-; This routine is buggy. If [wCurHPAnimMaxHP] * [wCurHPBarPixels] is
-; divisible by HP_BAR_LENGTH_PX, the loop runs one extra time.
-; To fix, uncomment the line below.
 .loop
 	ld a, l
 	sub HP_BAR_LENGTH_PX
 	ld l, a
 	ld a, h
 	sbc $0
-	ld h, a
-	; jr z, .done
+	jr z, .done
 	jr c, .done
 	inc b
 	jr .loop
