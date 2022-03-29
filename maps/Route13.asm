@@ -54,17 +54,6 @@ TrainerBirdKeeperBret:
 	closetext
 	end
 
-TrainerHikerKenny:
-	trainer HIKER, KENNY, EVENT_BEAT_HIKER_KENNY, HikerKennySeenText, HikerKennyBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext HikerKennyAfterBattleText
-	waitbutton
-	closetext
-	end
-
 Route13TrainerTips:
 	jumptext Route13TrainerTipsText
 
@@ -146,26 +135,6 @@ BirdKeeperBretAfterBattleText:
 	line "#MON get happy."
 	done
 
-HikerKennySeenText:
-	text "I should go to"
-	line "ROCK TUNNEL to get"
-	cont "myself an ONIX."
-	done
-
-HikerKennyBeatenText:
-	text "I lost…"
-	done
-
-HikerKennyAfterBattleText:
-	text "Geological fea-"
-	line "tures don't appear"
-	cont "to change."
-
-	para "But they actually"
-	line "change, little by"
-	cont "little."
-	done
-
 Route13TrainerTipsText:
 	text "TRAINER TIPS"
 
@@ -206,5 +175,4 @@ Route13_MapEvents:
 	object_event 37,  8, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerBirdKeeperPerry, -1
 	object_event 35, 10, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerBirdKeeperBret, -1
 	object_event  5,  5, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerPokefanmJoshua, -1
-	object_event 14, 10, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerHikerKenny, -1
 	object_event 33,  6, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerPokefanmAlex, -1

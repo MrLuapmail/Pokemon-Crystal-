@@ -26,17 +26,6 @@ TrainerBikerCharles:
 	closetext
 	end
 
-TrainerBikerRiley:
-	trainer BIKER, RILEY, EVENT_BEAT_BIKER_RILEY, BikerRileySeenText, BikerRileyBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext BikerRileyAfterBattleText
-	waitbutton
-	closetext
-	end
-
 TrainerBikerJoel:
 	trainer BIKER, JOEL, EVENT_BEAT_BIKER_JOEL, BikerJoelSeenText, BikerJoelBeatenText, 0, .Script
 
@@ -64,20 +53,6 @@ Route17HiddenMaxEther:
 
 Route17HiddenMaxElixer:
 	hiddenitem MAX_ELIXER, EVENT_ROUTE_17_HIDDEN_MAX_ELIXER
-
-BikerRileySeenText:
-	text "Hey, you! You're"
-	line "from JOHTO, huh?"
-	done
-
-BikerRileyBeatenText:
-	text "Whoa, you kick!"
-	done
-
-BikerRileyAfterBattleText:
-	text "Don't get cocky,"
-	line "you JOHTO punk!"
-	done
 
 BikerJoelSeenText:
 	text "Wow. That's a cool"
@@ -144,7 +119,6 @@ Route17_MapEvents:
 	bg_event  8, 78, BGEVENT_ITEM, Route17HiddenMaxElixer
 
 	def_object_events
-	object_event 14, 83, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 4, TrainerBikerRiley, -1
 	object_event  2, 81, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 1, TrainerBikerJoel, -1
 	object_event 17, 29, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerBikerGlenn, -1
 	object_event  5, 81, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 4, TrainerBikerCharles, -1

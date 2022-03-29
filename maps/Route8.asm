@@ -33,17 +33,6 @@ TrainerBikerHarris:
 	closetext
 	end
 
-TrainerBikerZeke:
-	trainer BIKER, ZEKE, EVENT_BEAT_BIKER_ZEKE, BikerZekeSeenText, BikerZekeBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext BikerZekeAfterBattleText
-	waitbutton
-	closetext
-	end
-
 TrainerSupernerdSam:
 	trainer SUPER_NERD, SAM, EVENT_BEAT_SUPER_NERD_SAM, SupernerdSamSeenText, SupernerdSamBeatenText, 0, .Script
 
@@ -111,23 +100,6 @@ BikerHarrisAfterBattleText:
 	line "punk from JOHTO…"
 	done
 
-BikerZekeSeenText:
-	text "We're the KANTO"
-	line "#MON FEDERA-"
-	cont "TION!"
-	cont "Right on!"
-	done
-
-BikerZekeBeatenText:
-	text "Yikes! Sorry!"
-	done
-
-BikerZekeAfterBattleText:
-	text "We'll try not to"
-	line "disturb anyone"
-	cont "from now on…"
-	done
-
 SupernerdSamSeenText:
 	text "How does the MAG-"
 	line "NET TRAIN work?"
@@ -186,7 +158,6 @@ Route8_MapEvents:
 	def_object_events
 	object_event  7,  5, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 5, TrainerBikerDwayne, -1
 	object_event  8,  6, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 5, TrainerBikerHarris, -1
-	object_event 10,  7, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 5, TrainerBikerZeke, -1
 	object_event 23,  2, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerSupernerdSam, -1
 	object_event 31, 12, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 4, TrainerSupernerdTom, -1
 	object_event 32,  8, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route8FruitTree, -1
