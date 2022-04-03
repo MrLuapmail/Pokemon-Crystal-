@@ -617,7 +617,7 @@ LoadPinkPage:
 	call PlaceString
 	call .CalcHPDVs
 	hlcoord 6, 10
-	ld de, wTempMonUnused
+	ld de, wTempMonHP
 	lb bc, 2, 3
 	call PrintNum
 	hlcoord 1, 15
@@ -752,8 +752,10 @@ LoadPinkPage:
 	ld a, [hl]
 	and 1
 	add b
-	ld [wTempMonUnused + 1], a
+	ld [wTempMonHP + 1], a
 	pop bc
+	xor a
+	ld [wTempMonHP], a
 	ret
 
 LoadGreenPage:
