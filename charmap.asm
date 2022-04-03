@@ -186,6 +186,7 @@
 	charmap "'s",        $d4
 	charmap "'t",        $d5
 	charmap "'v",        $d6
+	charmap "<PERCENT>", $d7
 
 	charmap "←",         $df
 	charmap "'",         $e0
