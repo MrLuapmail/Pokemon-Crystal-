@@ -678,7 +678,6 @@ KRIS EQU __trainer_class__
 	trainerclass GRUNTF ; 42
 	const GRUNTF_1
 	const GRUNTF_2
-	const GRUNTF_3
 	const GRUNTF_4
 	const GRUNTF_5
 
