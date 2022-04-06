@@ -316,7 +316,6 @@ KRIS EQU __trainer_class__
 	const KEN
 	const WADE2
 	const WADE3
-	const DOUG
 	const ARNIE2
 	const ARNIE3
 	const WADE4
