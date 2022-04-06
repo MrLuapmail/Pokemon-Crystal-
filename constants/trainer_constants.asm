@@ -192,7 +192,6 @@ KRIS EQU __trainer_class__
 	const NICK
 	const AARON
 	const PAUL
-	const CODY
 	const MIKE
 	const GAVEN1
 	const GAVEN2

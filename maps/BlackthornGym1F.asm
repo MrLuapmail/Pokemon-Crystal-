@@ -46,7 +46,6 @@ BlackthornGymClairScript:
 	waitbutton
 	closetext
 	setevent EVENT_BEAT_COOLTRAINERM_PAUL
-	setevent EVENT_BEAT_COOLTRAINERM_CODY
 	setevent EVENT_BEAT_COOLTRAINERM_MIKE
 	setevent EVENT_BEAT_COOLTRAINERF_FRAN
 	clearevent EVENT_MAHOGANY_MART_OWNERS
