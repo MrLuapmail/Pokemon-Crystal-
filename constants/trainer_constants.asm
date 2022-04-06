@@ -456,7 +456,6 @@ KRIS EQU __trainer_class__
 	const ERIK
 	const MICHAEL
 	const PARRY1
-	const TIMOTHY
 	const BAILEY
 	const ANTHONY3
 	const TIM
