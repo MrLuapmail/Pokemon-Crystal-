@@ -623,7 +623,6 @@ KRIS EQU __trainer_class__
 
 	trainerclass BOARDER ; 3a
 	const RONALD
-	const BRAD
 	const DOUGLAS
 
 	trainerclass POKEFANM ; 3b
