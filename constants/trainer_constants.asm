@@ -530,7 +530,6 @@ KRIS EQU __trainer_class__
 	const NORMAN
 	const MARK
 	const PHIL
-	const RICHARD
 	const GILBERT
 	const JARED
 	const RODNEY
