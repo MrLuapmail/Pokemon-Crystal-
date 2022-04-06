@@ -214,7 +214,6 @@ KRIS EQU __trainer_class__
 	const GWEN
 	const LOIS
 	const FRAN
-	const LOLA
 	const KATE
 	const IRENE
 	const KELLY
