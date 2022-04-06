@@ -369,7 +369,6 @@ KRIS EQU __trainer_class__
 	const WALTER
 	const TONY
 	const JEROME
-	const TUCKER
 	const RICK
 	const CAMERON
 	const SETH
