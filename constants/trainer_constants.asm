@@ -158,7 +158,6 @@ KRIS EQU __trainer_class__
 	const VANCE1
 	const HANK
 	const ROY
-	const BORIS
 	const JOSE1
 	const PETER
 	const JOSE2

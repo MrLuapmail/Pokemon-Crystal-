@@ -7,37 +7,8 @@ Route18_MapScripts:
 
 	def_callbacks
 
-TrainerBirdKeeperBoris:
-	trainer BIRD_KEEPER, BORIS, EVENT_BEAT_BIRD_KEEPER_BORIS, BirdKeeperBorisSeenText, BirdKeeperBorisBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext BirdKeeperBorisAfterBattleText
-	waitbutton
-	closetext
-	end
-
 Route18Sign:
 	jumptext Route18SignText
-
-BirdKeeperBorisSeenText:
-	text "If you're looking"
-	line "for #MON, you"
-
-	para "have to look in"
-	line "the tall grass."
-	done
-
-BirdKeeperBorisBeatenText:
-	text "Ayieee!"
-	done
-
-BirdKeeperBorisAfterBattleText:
-	text "Since you're so"
-	line "strong, it must be"
-	cont "fun to battle."
-	done
 
 Route18SignText:
 	text "ROUTE 18"
@@ -59,4 +30,3 @@ Route18_MapEvents:
 	bg_event  9,  5, BGEVENT_READ, Route18Sign
 
 	def_object_events
-	object_event 13, 10, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerBirdKeeperBoris, -1
