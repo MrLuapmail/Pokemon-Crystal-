@@ -32,17 +32,6 @@ TrainerBirdKeeperPerry:
 	closetext
 	end
 
-TrainerBirdKeeperBret:
-	trainer BIRD_KEEPER, BRET, EVENT_BEAT_BIRD_KEEPER_BRET, BirdKeeperBretSeenText, BirdKeeperBretBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext BirdKeeperBretAfterBattleText
-	waitbutton
-	closetext
-	end
-
 Route13TrainerTips:
 	jumptext Route13TrainerTipsText
 
@@ -88,24 +77,6 @@ BirdKeeperPerryAfterBattleText:
 	cont "trained."
 	done
 
-BirdKeeperBretSeenText:
-	text "Check out my #-"
-	line "MON. Just look at"
-
-	para "their coloring and"
-	line "their plumage."
-	done
-
-BirdKeeperBretBeatenText:
-	text "Shoot!"
-	line "Not good enough!"
-	done
-
-BirdKeeperBretAfterBattleText:
-	text "If you groom them,"
-	line "#MON get happy."
-	done
-
 Route13TrainerTipsText:
 	text "TRAINER TIPS"
 
@@ -144,5 +115,4 @@ Route13_MapEvents:
 
 	def_object_events
 	object_event 37,  8, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerBirdKeeperPerry, -1
-	object_event 35, 10, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerBirdKeeperBret, -1
 	object_event 33,  6, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerPokefanmAlex, -1

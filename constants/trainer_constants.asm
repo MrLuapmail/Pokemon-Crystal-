@@ -160,7 +160,6 @@ KRIS EQU __trainer_class__
 	const PETER
 	const JOSE2
 	const PERRY
-	const BRET
 	const JOSE3
 	const VANCE2
 	const VANCE3
