@@ -451,7 +451,6 @@ KRIS EQU __trainer_class__
 	const PARRY1
 	const ANTHONY3
 	const TIM
-	const NOLAND
 	const SIDNEY
 	const JIM
 	const DANIEL
