@@ -610,7 +610,6 @@ KRIS EQU __trainer_class__
 	const WILLIAM
 	const DEREK1
 	const ROBERT
-	const JOSHUA
 	const CARTER
 	const TREVOR
 	const BRANDON

@@ -21,17 +21,6 @@ TrainerPokefanmAlex:
 	closetext
 	end
 
-TrainerPokefanmJoshua:
-	trainer POKEFANM, JOSHUA, EVENT_BEAT_POKEFANM_JOSHUA, PokefanmJoshuaSeenText, PokefanmJoshuaBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext PokefanmJoshuaAfterBattleText
-	waitbutton
-	closetext
-	end
-
 TrainerBirdKeeperPerry:
 	trainer BIRD_KEEPER, PERRY, EVENT_BEAT_BIRD_KEEPER_PERRY, BirdKeeperPerrySeenText, BirdKeeperPerryBeatenText, 0, .Script
 
@@ -80,24 +69,6 @@ PokefanmAlexAfterBattleText:
 	text "Doesn't everyone"
 	line "wish to someday be"
 	cont "a king?"
-	done
-
-PokefanmJoshuaSeenText:
-	text "Nihihi! Would you"
-	line "like to battle my"
-	cont "PIKACHU gang?"
-	done
-
-PokefanmJoshuaBeatenText:
-	text "PI-PIKACHU!"
-	done
-
-PokefanmJoshuaAfterBattleText:
-	text "You look like you"
-	line "have many #MON,"
-
-	para "but PIKACHU is"
-	line "still the best."
 	done
 
 BirdKeeperPerrySeenText:
@@ -174,5 +145,4 @@ Route13_MapEvents:
 	def_object_events
 	object_event 37,  8, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerBirdKeeperPerry, -1
 	object_event 35, 10, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerBirdKeeperBret, -1
-	object_event  5,  5, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerPokefanmJoshua, -1
 	object_event 33,  6, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerPokefanmAlex, -1
