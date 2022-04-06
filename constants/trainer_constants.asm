@@ -272,7 +272,6 @@ KRIS EQU __trainer_class__
 	const GRUNTM_2
 	const GRUNTM_3
 	const GRUNTM_4
-	const GRUNTM_5
 	const GRUNTM_6
 	const GRUNTM_7
 	const GRUNTM_8

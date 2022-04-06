@@ -65,17 +65,6 @@ TrainerGruntM4:
 	closetext
 	end
 
-TrainerGruntM5:
-	trainer GRUNTM, GRUNTM_5, EVENT_BEAT_ROCKET_GRUNTM_5, GruntM5SeenText, GruntM5BeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext GruntM5AfterBattleText
-	waitbutton
-	closetext
-	end
-
 TrainerGruntM6:
 	trainer GRUNTM, GRUNTM_6, EVENT_BEAT_ROCKET_GRUNTM_6, GruntM6SeenText, GruntM6BeatenText, 0, .Script
 
@@ -408,26 +397,6 @@ GruntM4AfterBattleText:
 	cont "for our comeback!"
 	done
 
-GruntM5SeenText:
-	text "We're TEAM ROCKET,"
-	line "the exploiters of"
-	cont "#MON!"
-
-	para "We love being"
-	line "evil! Scared?"
-	done
-
-GruntM5BeatenText:
-	text "You think you're a"
-	line "hero?"
-	done
-
-GruntM5AfterBattleText:
-	text "We're not always"
-	line "evil. We just do"
-	cont "whatever we like."
-	done
-
 GruntM6SeenText:
 	text "Hey, hey! Keep out"
 	line "of our way!"
@@ -731,7 +700,6 @@ RadioTower2F_MapEvents:
 	object_event  6,  6, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, RadioTower2FSuperNerdScript, EVENT_GOLDENROD_CITY_CIVILIANS
 	object_event  9,  4, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, RadioTower2FTeacherScript, -1
 	object_event 13,  5, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 3, TrainerGruntM4, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event  1,  6, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 5, TrainerGruntM5, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	object_event 14,  1, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, TrainerGruntM6, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	object_event 16,  1, SPRITE_ROCKET_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerGruntF2, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	object_event  0,  1, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RadioTower2FBlackBelt1Script, EVENT_RADIO_TOWER_BLACKBELT_BLOCKS_STAIRS
