@@ -543,7 +543,6 @@ KRIS EQU __trainer_class__
 	const CINDY
 	const HOPE
 	const SHARON
-	const DEBRA
 	const GINA2
 	const ERIN1
 	const LIZ2
@@ -574,7 +573,6 @@ KRIS EQU __trainer_class__
 	const SID
 	const HARVEY
 	const DALE
-	const TED
 	const TODD2
 	const TODD3
 	const THOMAS
