@@ -134,7 +134,6 @@ KRIS EQU __trainer_class__
 	const JACK1
 	const KIPP
 	const ALAN1
-	const JOHNNY
 	const DANNY
 	const TOMMY
 	const DUDLEY
