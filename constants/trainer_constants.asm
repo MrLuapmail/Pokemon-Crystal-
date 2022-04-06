@@ -310,7 +310,6 @@ KRIS EQU __trainer_class__
 	const ALFRED
 
 	trainerclass SKIER ; 21
-	const ROXANNE
 	const CLARISSA
 
 	trainerclass TEACHER ; 22
