@@ -531,7 +531,6 @@ KRIS EQU __trainer_class__
 	const LIZ2
 	const LIZ3
 	const HEIDI
-	const EDNA
 	const GINA3
 	const TIFFANY1
 	const TIFFANY2
