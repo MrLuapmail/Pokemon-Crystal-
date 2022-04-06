@@ -102,17 +102,6 @@ TrainerGruntM8:
 	closetext
 	end
 
-TrainerGruntM9:
-	trainer GRUNTM, GRUNTM_9, EVENT_BEAT_ROCKET_GRUNTM_9, GruntM9SeenText, GruntM9BeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext GruntM9AfterBattleText
-	waitbutton
-	closetext
-	end
-
 TrainerScientistMarc:
 	trainer SCIENTIST, MARC, EVENT_BEAT_SCIENTIST_MARC, ScientistMarcSeenText, ScientistMarcBeatenText, 0, .Script
 
@@ -267,26 +256,6 @@ GruntM8AfterBattleText:
 	line "useless #MON!"
 	done
 
-GruntM9SeenText:
-	text "Why did the shut-"
-	line "ter open? Did you"
-
-	para "have something to"
-	line "do with this?"
-	done
-
-GruntM9BeatenText:
-	text "I'm done for!"
-	done
-
-GruntM9AfterBattleText:
-	text "What?! You made it"
-	line "past our men in"
-	cont "the UNDERGROUND?"
-
-	para "How could you?"
-	done
-
 ScientistMarcSeenText:
 	text "An unknown child"
 	line "wandering here?"
@@ -347,5 +316,4 @@ RadioTower3F_MapEvents:
 	object_event 11,  3, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, RadioTower3FCooltrainerFScript, -1
 	object_event  0,  1, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, TrainerGruntM7, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	object_event  1,  6, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 5, TrainerGruntM8, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event 16,  7, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 4, TrainerGruntM9, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	object_event 16,  1, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 5, TrainerScientistMarc, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
