@@ -325,7 +325,6 @@ KRIS EQU __trainer_class__
 	const WAYNE
 
 	trainerclass FISHER ; 25
-	const JUSTIN
 	const RALPH1
 	const KYLE
 	const HENRY
