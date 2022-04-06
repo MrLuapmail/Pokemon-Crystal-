@@ -31,17 +31,6 @@ TrainerPicnickerHope:
 	closetext
 	end
 
-TrainerPicnickerSharon:
-	trainer PICNICKER, SHARON, EVENT_BEAT_PICNICKER_SHARON, PicnickerSharonSeenText, PicnickerSharonBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext PicnickerSharonAfterBattleText
-	waitbutton
-	closetext
-	end
-
 MtMoonSquareSign:
 	jumptext MtMoonSquareSignText
 
@@ -97,20 +86,6 @@ PicnickerHopeAfterBattleText:
 	line "they be?"
 	done
 
-PicnickerSharonSeenText:
-	text "Um…"
-	line "I…"
-	done
-
-PicnickerSharonBeatenText:
-	text "…"
-	done
-
-PicnickerSharonAfterBattleText:
-	text "……I'll go train"
-	line "some more…"
-	done
-
 MtMoonSquareSignText:
 	text "MT.MOON SQUARE"
 
@@ -133,5 +108,4 @@ Route4_MapEvents:
 	def_object_events
 	object_event 12,  2, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerBirdKeeperHank, -1
 	object_event  4,  6, SPRITE_LASS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 4, TrainerPicnickerHope, -1
-	object_event 34,  5, SPRITE_LASS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 4, TrainerPicnickerSharon, -1
 	object_event 25,  8, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route4HPUp, EVENT_ROUTE_4_HP_UP

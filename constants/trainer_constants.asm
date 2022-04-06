@@ -522,7 +522,6 @@ KRIS EQU __trainer_class__
 	const KIM
 	const CINDY
 	const HOPE
-	const SHARON
 	const GINA2
 	const ERIN1
 	const LIZ2
