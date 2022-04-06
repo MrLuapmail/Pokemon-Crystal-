@@ -330,7 +330,6 @@ KRIS EQU __trainer_class__
 	trainerclass FISHER ; 25
 	const JUSTIN
 	const RALPH1
-	const ARNOLD
 	const KYLE
 	const HENRY
 	const MARVIN
@@ -369,7 +368,6 @@ KRIS EQU __trainer_class__
 	const TONY
 	const JEROME
 	const RICK
-	const CAMERON
 	const SETH
 	const JAMES
 	const LEWIS
