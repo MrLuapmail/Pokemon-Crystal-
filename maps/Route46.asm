@@ -132,17 +132,6 @@ Route46RematchGiftF:
 	jumpstd RematchGiftFScript
 	end
 
-TrainerHikerBailey:
-	trainer HIKER, BAILEY, EVENT_BEAT_HIKER_BAILEY, HikerBaileySeenText, HikerBaileyBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext HikerBaileyAfterBattleText
-	waitbutton
-	closetext
-	end
-
 Route46Sign:
 	jumptext Route46SignText
 
@@ -154,23 +143,6 @@ Route46FruitTree1:
 
 Route46FruitTree2:
 	fruittree FRUITTREE_ROUTE_46_2
-
-HikerBaileySeenText:
-	text "Awright! I'll show"
-	line "you the power of"
-	cont "mountain #MON!"
-	done
-
-HikerBaileyBeatenText:
-	text "Mercy! You showed"
-	line "me your power!"
-	done
-
-HikerBaileyAfterBattleText:
-	text "It's over. I don't"
-	line "mind. We HIKERS"
-	cont "are like that."
-	done
 
 PicnickerErin1SeenText:
 	text "I raise #MON"
@@ -229,7 +201,6 @@ Route46_MapEvents:
 	bg_event  9, 27, BGEVENT_READ, Route46Sign
 
 	def_object_events
-	object_event  7, 12, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, TrainerHikerBailey, -1
 	object_event  1, 15, SPRITE_LASS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 2, TrainerPicnickerErin1, -1
 	object_event  7,  5, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route46FruitTree1, -1
 	object_event  8,  6, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route46FruitTree2, -1
