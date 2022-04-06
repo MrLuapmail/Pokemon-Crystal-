@@ -3,5 +3,11 @@ AutomaticSpikesMaps:
 	map_id TEAM_ROCKET_BASE_B2F
 	map_id TEAM_ROCKET_BASE_B3F
 	map_id FUCHSIA_GYM
+	map_id RADIO_TOWER_1F
+	map_id RADIO_TOWER_2F
+	map_id RADIO_TOWER_3F
+	map_id RADIO_TOWER_4F
+	map_id RADIO_TOWER_5F
+	map_id GOLDENROD_UNDERGROUND_WAREHOUSE
 	db 0 ; end
 	
