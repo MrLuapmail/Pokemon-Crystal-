@@ -18,17 +18,6 @@ TrainerHikerJim:
 	closetext
 	end
 
-TrainerPokefanmRobert:
-	trainer POKEFANM, ROBERT, EVENT_BEAT_POKEFANM_ROBERT, PokefanmRobertSeenText, PokefanmRobertBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext PokefanmRobertAfterBattleText
-	waitbutton
-	closetext
-	end
-
 Route10Sign:
 	jumptext Route10SignText
 
@@ -46,25 +35,6 @@ HikerJimAfterBattleText:
 	cont "Ahahah-CHOO!"
 	done
 
-PokefanmRobertSeenText:
-	text "You like #MON,"
-	line "don't you?"
-
-	para "Me too!"
-	done
-
-PokefanmRobertBeatenText:
-	text "I'd have to say"
-	line "that's my loss."
-	done
-
-PokefanmRobertAfterBattleText:
-	text "Look what you did"
-	line "to my #MON…"
-
-	para "I won't forget"
-	line "this…"
-	done
 
 Route10SignText:
 	text "ROUTE 10"
@@ -86,4 +56,3 @@ Route10South_MapEvents:
 
 	def_object_events
 	object_event  7,  2, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerHikerJim, -1
-	object_event 17,  8, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerPokefanmRobert, -1

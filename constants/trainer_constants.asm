@@ -601,7 +601,6 @@ KRIS EQU __trainer_class__
 	trainerclass POKEFANM ; 3b
 	const WILLIAM
 	const DEREK1
-	const ROBERT
 	const CARTER
 	const TREVOR
 	const BRANDON
