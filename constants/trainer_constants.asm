@@ -124,7 +124,6 @@ KRIS EQU __trainer_class__
 	const JOEY2
 	const JOEY3
 	const WARREN
-	const JIMMY
 	const OWEN
 	const JASON
 	const JOEY4
