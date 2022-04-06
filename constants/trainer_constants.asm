@@ -263,7 +263,6 @@ KRIS EQU __trainer_class__
 	const BRENT3
 	const ISSAC
 	const DONALD
-	const ZACH
 	const BRENT4
 	const MILLER
 

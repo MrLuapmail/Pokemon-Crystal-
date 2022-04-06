@@ -273,17 +273,6 @@ TrainerCooltrainerfCybil:
 	closetext
 	end
 
-TrainerPokemaniacZach:
-	trainer POKEMANIAC, ZACH, EVENT_BEAT_POKEMANIAC_ZACH, PokemaniacZachSeenText, PokemaniacZachBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext PokemaniacZachAfterBattleText
-	waitbutton
-	closetext
-	end
-
 TrainerCooltrainermAllen:
 	trainer COOLTRAINERM, ALLEN, EVENT_BEAT_COOLTRAINERM_ALLEN, CooltrainermAllenSeenText, CooltrainermAllenBeatenText, 0, .Script
 
@@ -413,28 +402,6 @@ PsychicPhilAfterBattleText:
 	cont "on your side."
 	done
 
-PokemaniacZachSeenText:
-	text "I'll do anything"
-	line "to get my hands on"
-	cont "rare #MON!"
-	done
-
-PokemaniacZachBeatenText:
-	text "Oooh, your #MON"
-	line "are so appealing."
-	done
-
-PokemaniacZachAfterBattleText:
-	text "If a #MON has"
-	line "different colors"
-
-	para "from usual, it's"
-	line "more valuable."
-
-	para "What? You mean"
-	line "that's not true?"
-	done
-
 CooltrainermAllenSeenText:
 	text "I can tell you're"
 	line "a good trainer by"
@@ -519,7 +486,6 @@ Route44_MapEvents:
 	object_event 14, 14, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerFisherWilton1, -1
 	object_event 20, 11, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerFisherEdgar, -1
 	object_event  9,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerPsychicPhil, -1
-	object_event 29, 14, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerPokemaniacZach, -1
 	object_event 33,  8, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 2, TrainerBirdKeeperVance1, -1
 	object_event 49,  4, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 5, TrainerCooltrainermAllen, -1
 	object_event 50,  9, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 5, TrainerCooltrainerfCybil, -1
