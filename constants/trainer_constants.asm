@@ -402,7 +402,6 @@ KRIS EQU __trainer_class__
 	const EUGENE
 	const HUEY1
 	const TERRELL
-	const KENT
 	const ERNEST
 	const JEFF
 	const GARRETT
