@@ -496,7 +496,7 @@ HandleBerserkGene:
 	ld [hl], a
 	ld [wAttackMissed], a
 	ld [wEffectFailed], a
-	farcall BattleCommand_AttackUp2
+	farcall BattleCommand_AttackUp
 	pop af
 	pop hl
 	ld [hl], a
@@ -505,15 +505,9 @@ HandleBerserkGene:
 	call StdBattleTextbox
 	callfar BattleCommand_StatUpMessage
 	pop af
-	bit SUBSTATUS_CONFUSED, a
-	ret nz
 	xor a
 	ld [wNumHits], a
-	ld de, ANIM_CONFUSED
-	call Call_PlayBattleAnim_OnlyIfVisible
-	call SwitchTurnCore
-	ld hl, BecameConfusedText
-	jp StdBattleTextbox
+	jp SwitchTurnCore
 
 EnemyTriesToFlee:
 	ld a, [wLinkMode]
