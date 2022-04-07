@@ -1,5 +1,4 @@
 	object_const_def
-	const OLIVINELIGHTHOUSE4F_SAILOR
 	const OLIVINELIGHTHOUSE4F_LASS
 
 OlivineLighthouse4F_MapScripts:

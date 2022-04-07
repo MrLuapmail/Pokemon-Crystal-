@@ -1,7 +1,6 @@
 	object_const_def
 	const ROUTE4_YOUNGSTER
 	const ROUTE4_LASS1
-	const ROUTE4_LASS2
 	const ROUTE4_POKE_BALL
 
 Route4_MapScripts:

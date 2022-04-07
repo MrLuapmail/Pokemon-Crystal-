@@ -1,9 +1,7 @@
 	object_const_def
 	const ROUTE13_YOUNGSTER1
-	const ROUTE13_YOUNGSTER2
 	const ROUTE13_POKEFAN_M1
 	const ROUTE13_POKEFAN_M2
-	const ROUTE13_POKEFAN_M3
 
 Route13_MapScripts:
 	def_scene_scripts

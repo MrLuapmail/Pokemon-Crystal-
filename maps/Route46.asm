@@ -1,6 +1,4 @@
 	object_const_def
-	const ROUTE46_POKEFAN_M
-	const ROUTE46_YOUNGSTER
 	const ROUTE46_LASS
 	const ROUTE46_FRUIT_TREE1
 	const ROUTE46_FRUIT_TREE2
