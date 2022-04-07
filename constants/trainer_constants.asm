@@ -373,7 +373,6 @@ KRIS EQU __trainer_class__
 	const ELAINE
 	const PAULA
 	const KAYLEE
-	const SUSIE
 	const DENISE
 	const KARA
 	const WENDY
