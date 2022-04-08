@@ -35,17 +35,6 @@ TrainerSwimmerfLori:
 	closetext
 	end
 
-TrainerSwimmermCameron:
-	trainer SWIMMERM, CAMERON, EVENT_BEAT_SWIMMERM_CAMERON, SwimmermCameronSeenText, SwimmermCameronBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext SwimmermCameronAfterBattleText
-	waitbutton
-	closetext
-	end
-
 CinnabarGymSign:
 	jumptext CinnabarGymSignText
 
@@ -84,24 +73,6 @@ SwimmerfLoriAfterBattleText:
 	cont "you use in water."
 	done
 
-SwimmermCameronSeenText:
-	text "I guess it's im-"
-	line "possible to swim"
-
-	para "all the way to"
-	line "JOHTO."
-	done
-
-SwimmermCameronBeatenText:
-	text "Aiyah!"
-	done
-
-SwimmermCameronAfterBattleText:
-	text "Besides the sea, I"
-	line "can also swim in"
-	cont "ponds and rivers."
-	done
-
 CinnabarGymSignText:
 	text "What does this"
 	line "sign say?"
@@ -124,4 +95,3 @@ Route20_MapEvents:
 	def_object_events
 	object_event 25,  2, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerSwimmerfNicole, -1
 	object_event 44, 15, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerSwimmerfLori, -1
-	object_event 32, 16, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerSwimmermCameron, -1

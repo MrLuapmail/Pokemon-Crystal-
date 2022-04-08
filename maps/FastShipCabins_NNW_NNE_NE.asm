@@ -2,7 +2,6 @@
 	const FASTSHIPCABINS_NNW_NNE_NE_COOLTRAINER_M
 	const FASTSHIPCABINS_NNW_NNE_NE_COOLTRAINER_F
 	const FASTSHIPCABINS_NNW_NNE_NE_SUPER_NERD
-	const FASTSHIPCABINS_NNW_NNE_NE_POKEFAN_M
 	const FASTSHIPCABINS_NNW_NNE_NE_SAILOR
 	const FASTSHIPCABINS_NNW_NNE_NE_GENTLEMAN
 	const FASTSHIPCABINS_NNW_NNE_NE_PHARMACIST
@@ -41,17 +40,6 @@ TrainerPokemaniacEthan:
 	endifjustbattled
 	opentext
 	writetext PokemaniacEthanAfterBattleText
-	waitbutton
-	closetext
-	end
-
-TrainerHikerNoland:
-	trainer HIKER, NOLAND, EVENT_BEAT_HIKER_NOLAND, HikerNolandSeenText, HikerNolandBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext HikerNolandAfterBattleText
 	waitbutton
 	closetext
 	end
@@ -182,24 +170,6 @@ PokemaniacEthanAfterBattleText:
 	cont "programs!"
 	done
 
-HikerNolandSeenText:
-	text "Are you alone?"
-	line "Then let's battle!"
-	done
-
-HikerNolandBeatenText:
-	text "That's too much to"
-	line "handle!"
-	done
-
-HikerNolandAfterBattleText:
-	text "I wonder if there"
-	line "are any mountains"
-
-	para "worth climbing in"
-	line "KANTO?"
-	done
-
 SailorStanlySeenText:
 	text "Yeah, I'm a sail-"
 	line "or, all right."
@@ -283,7 +253,6 @@ FastShipCabins_NNW_NNE_NE_MapEvents:
 	object_event  4,  3, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 2, TrainerCooltrainermSean, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
 	object_event  1,  5, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerCooltrainerfCarol, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
 	object_event  1,  5, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerPokemaniacEthan, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
-	object_event  1, 25, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerHikerNoland, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
 	object_event  4, 26, SPRITE_SAILOR, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, FastShipLazySailorScript, EVENT_FAST_SHIP_CABINS_NNW_NNE_NE_SAILOR
 	object_event  7, 30, SPRITE_GENTLEMAN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerGentlemanEdward, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
 	object_event  2, 30, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 4, TrainerBurglarCorey, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND

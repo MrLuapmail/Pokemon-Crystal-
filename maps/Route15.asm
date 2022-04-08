@@ -2,7 +2,6 @@
 	const ROUTE15_YOUNGSTER1
 	const ROUTE15_YOUNGSTER2
 	const ROUTE15_YOUNGSTER3
-	const ROUTE15_YOUNGSTER4
 	const ROUTE15_TEACHER1
 	const ROUTE15_TEACHER2
 	const ROUTE15_POKE_BALL
@@ -52,17 +51,6 @@ TrainerSchoolboyTommy:
 	endifjustbattled
 	opentext
 	writetext SchoolboyTommyAfterBattleText
-	waitbutton
-	closetext
-	end
-
-TrainerSchoolboyJohnny:
-	trainer SCHOOLBOY, JOHNNY, EVENT_BEAT_SCHOOLBOY_JOHNNY, SchoolboyJohnnySeenText, SchoolboyJohnnyBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext SchoolboyJohnnyAfterBattleText
 	waitbutton
 	closetext
 	end
@@ -157,25 +145,6 @@ SchoolboyTommyAfterBattleText:
 	cont "Japanese class."
 	done
 
-SchoolboyJohnnySeenText:
-	text "We're on a field"
-	line "trip to LAVENDER"
-
-	para "RADIO TOWER for"
-	line "social studies."
-	done
-
-SchoolboyJohnnyBeatenText:
-	text "You're wickedly"
-	line "tough!"
-	done
-
-SchoolboyJohnnyAfterBattleText:
-	text "I'm tired of walk-"
-	line "ing. I need to"
-	cont "take a break."
-	done
-
 SchoolboyBillySeenText:
 	text "My favorite class"
 	line "is gym!"
@@ -214,7 +183,6 @@ Route15_MapEvents:
 	def_object_events
 	object_event 11,  9, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 4, TrainerSchoolboyKipp, -1
 	object_event 14, 11, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerSchoolboyTommy, -1
-	object_event 29, 10, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerSchoolboyJohnny, -1
 	object_event 25,  8, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerSchoolboyBilly, -1
 	object_event 24, 11, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerTeacherColette, -1
 	object_event  9,  7, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerTeacherHillary, -1

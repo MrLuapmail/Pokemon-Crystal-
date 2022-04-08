@@ -1,5 +1,4 @@
 	object_const_def
-	const OLIVINELIGHTHOUSE4F_SAILOR
 	const OLIVINELIGHTHOUSE4F_LASS
 
 OlivineLighthouse4F_MapScripts:
@@ -17,39 +16,6 @@ TrainerLassConnie:
 	waitbutton
 	closetext
 	end
-
-TrainerSailorKent:
-	trainer SAILOR, KENT, EVENT_BEAT_SAILOR_KENT, SailorKentSeenText, SailorKentBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext SailorKentAfterBattleText
-	waitbutton
-	closetext
-	end
-
-SailorKentSeenText:
-	text "JASMINE must be"
-	line "worried sick about"
-	cont "the #MON here."
-
-	para "She won't even"
-	line "smile these days."
-	done
-
-SailorKentBeatenText:
-	text "I can't manage a"
-	line "smile either…"
-	done
-
-SailorKentAfterBattleText:
-	text "Speaking of sick,"
-	line "I've heard there's"
-
-	para "a good PHARMACY in"
-	line "CIANWOOD."
-	done
 
 LassConnie1SeenText:
 	text "JASMINE is this"
@@ -99,5 +65,4 @@ OlivineLighthouse4F_MapEvents:
 	def_bg_events
 
 	def_object_events
-	object_event  7, 14, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerSailorKent, -1
 	object_event 11,  2, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerLassConnie, -1
