@@ -110,6 +110,7 @@ DoBattle:
 	call SpikesDamage
 
 .not_linked_2
+	farcall CheckAbleToSwitch
 	call StartAutomaticBattleWeather
 	call PlaceSpikes
 	jp BattleTurn
@@ -316,6 +317,8 @@ BattleTurn:
 	and a
 	jr nz, .quit
 
+	farcall DidEnemySwitch
+	farcall CheckAbleToSwitch
 	call HandleBetweenTurnEffects
 	ld a, [wBattleEnded]
 	and a

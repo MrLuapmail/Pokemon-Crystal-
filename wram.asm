@@ -480,7 +480,8 @@ wEnemyEvaLevel::  db
 
 wEnemyTurnsTaken::  db
 wPlayerTurnsTaken:: db
-	ds 1
+
+wEnemyConsecutiveSwitches:: db
 
 wPlayerSubstituteHP:: db
 wEnemySubstituteHP::  db

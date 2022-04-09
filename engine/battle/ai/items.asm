@@ -8,6 +8,10 @@ AI_SwitchOrTryItem:
 	ld a, [wLinkMode]
 	and a
 	ret nz
+	
+	ld a, [wPlayerTurnsTaken]
+	and a
+	ret z
 
 	farcall CheckEnemyLockedIn
 	ret nz
@@ -45,7 +49,6 @@ DontSwitch:
 	ret
 
 SwitchOften:
-	callfar CheckAbleToSwitch
 	ld a, [wEnemySwitchMonParam]
 	and $f0
 	jp z, DontSwitch
@@ -80,7 +83,6 @@ SwitchOften:
 	jp AI_TrySwitch
 
 SwitchRarely:
-	callfar CheckAbleToSwitch
 	ld a, [wEnemySwitchMonParam]
 	and $f0
 	jp z, DontSwitch
@@ -114,7 +116,6 @@ SwitchRarely:
 	jp AI_TrySwitch
 
 SwitchSometimes:
-	callfar CheckAbleToSwitch
 	ld a, [wEnemySwitchMonParam]
 	and $f0
 	jp z, DontSwitch
