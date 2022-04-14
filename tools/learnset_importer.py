@@ -75,7 +75,7 @@ def main():
         errors.append(f'Unknown pokemon "{unevolved}" has evolution')
       if evolved not in POKEMON:
         errors.append(f'Unknown pokemon "{unevolved}" is evolved to')
-      if unevolved not in evos:
+      if convert_data_name(unevolved) not in evos:
         evos[convert_data_name(unevolved)] = []
       method = row['Method']
       if method in ['Level', 'Hitmonchan', 'Hitmonlee', 'Hitmontop']:
