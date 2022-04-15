@@ -108,7 +108,7 @@ def main():
 			for j in range(6):
 				table.append((data[34+j][i], convert_data_name(data[34+j][i+1])))
 			for j in range(6):
-				table.append((data[42+j][i], convert_data_name(data[32+j][i+1])))
+				table.append((data[41+j][i], convert_data_name(data[41+j][i+1])))
 			headbutt_tables[headbutt_name] = table
 
 		rocksmash_name = data[47][i+1]
@@ -231,7 +231,7 @@ def main():
 			out += f'\tdb {headbutt_chances[i]}, {headbutt_tables[table][i][1]}, {headbutt_tables[table][i][0]}\n'
 		out += '\tdb -1\n; rare\n'
 		for i in range(6):
-			out += f'\tdb {headbutt_chances[i]}, {headbutt_tables[table][i][1]}, {headbutt_tables[table][i][0]}\n'
+			out += f'\tdb {headbutt_chances[i]}, {headbutt_tables[table][6+i][1]}, {headbutt_tables[table][6+i][0]}\n'
 		out += '\tdb -1'
 	for table in rocksmash_tables:
 		out += f'\n\nTreeMonSet_{table}:\n'
