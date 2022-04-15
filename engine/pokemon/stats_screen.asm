@@ -612,6 +612,11 @@ LoadPinkPage:
 	ld de, .OK_str
 	call PlaceString
 .done_status
+	ld a, [wTempMonHP]
+	ld b, a
+	ld a, [wTempMonHP + 1]
+	ld c, a
+	push bc
 	ld de, .HP_DVs
 	hlcoord 0, 10
 	call PlaceString
@@ -620,6 +625,11 @@ LoadPinkPage:
 	ld de, wTempMonHP
 	lb bc, 2, 3
 	call PrintNum
+	pop bc
+	ld a, c
+	ld [wTempMonHP + 1], a
+	ld a, b
+	ld [wTempMonHP], a
 	hlcoord 1, 15
 	predef PrintMonTypes
 	hlcoord 9, 8
