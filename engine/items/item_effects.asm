@@ -58,7 +58,7 @@ ItemEffects:
 	dw SuperRepelEffect    ; SUPER_REPEL
 	dw MaxRepelEffect      ; MAX_REPEL
 	dw DireHitEffect       ; DIRE_HIT
-	dw NoEffect            ; ITEM_2D
+	dw RepellentEffect     ; REPELLENT
 	dw RestoreHPEffect     ; FRESH_WATER
 	dw RestoreHPEffect     ; SODA_POP
 	dw RestoreHPEffect     ; LEMONADE
@@ -2157,6 +2157,36 @@ EscapeRopeEffect:
 	cp 1
 	call z, UseDisposableItem
 	ret
+	
+RepellentEffect:
+	ld a, [wRepelType]
+	cp REPELLENT
+	jr z, .stop_repel
+	
+	ld a, 255
+	ld [wRepelEffect], a
+	ld a, [wCurItem]
+	ld [wRepelType], a
+	
+	ld hl, ItemUsedText
+	call PrintText
+	call Play_SFX_FULL_HEAL
+	call WaitPressAorB_BlinkCursor
+	ret
+	
+.stop_repel
+	ld a, 0
+	ld [wRepelEffect], a
+	ld [wRepelType], a
+	ld hl, RepellentWoreOffText
+	call PrintText
+	call Play_SFX_FULL_HEAL
+	call WaitPressAorB_BlinkCursor
+	ret
+	
+RepellentWoreOffText:
+	text_far _RepellentWoreOffText
+	text_end
 
 SuperRepelEffect:
 	ld b, 200
@@ -2177,6 +2207,8 @@ UseRepel:
 
 	ld a, b
 	ld [wRepelEffect], a
+	ld a, [wCurItem]
+	ld [wRepelType], a
 	jp UseItemText
 
 RepelUsedEarlierIsStillInEffectText:
