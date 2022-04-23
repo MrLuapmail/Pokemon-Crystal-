@@ -540,7 +540,6 @@ KRIS EQU __trainer_class__
 	const TIFFANY4
 
 	trainerclass CAMPER ; 36
-	const ROLAND
 	const TODD1
 	const IVAN
 	const ELLIOT
