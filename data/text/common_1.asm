@@ -97,7 +97,14 @@ _GrewToLevelText::
 	text_promptbutton
 	text_end
 
-	text_end ; unreferenced
+_UseAnotherRepelText::
+	text "@"
+	text_ram wStringBuffer3
+	text "'s"
+	line "wore off."
+
+	para "Use another?"
+	done
 
 _CameToItsSensesText::
 	text_ram wStringBuffer1
@@ -1305,6 +1312,11 @@ _BugCatchingContestIsOverText::
 
 _RepelWoreOffText::
 	text "REPEL's effect"
+	line "wore off."
+	done
+	
+_RepellentWoreOffText::
+	text "REPELLENT's effect"
 	line "wore off."
 	done
 

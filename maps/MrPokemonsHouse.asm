@@ -117,6 +117,11 @@ MrPokemonsHouse_OakScript:
 	special FadeInQuickly
 	special RestartMapMusic
 	opentext
+	writetext MrPokemonsHouse_MrPokemonRepellentText
+	writetext MrPokemonsHouse_GotRepellentText
+	promptbutton
+	giveitem TRAINING_KIT
+	itemnotify
 	writetext MrPokemonText_ImDependingOnYou
 	waitbutton
 	closetext
@@ -188,6 +193,11 @@ MrPokemonsHouse_GotEggText:
 	text "<PLAYER> received"
 	line "MYSTERY EGG."
 	done
+	
+MrPokemonsHouse_GotRepellentText:
+	text "<PLAYER> received"
+	line "REPELLENT."
+	done
 
 MrPokemonIntroText3:
 	text "I know a couple"
@@ -224,6 +234,17 @@ MrPokemonsHouse_MrPokemonHealText:
 	para "Here. Your #MON"
 	line "should have some"
 	cont "rest."
+	done
+
+MrPokemonsHouse_MrPokemonRepellentText:
+	text "Take this item"
+	line "as well."
+
+	para "This will help"
+	line "repel wild #MON"
+	
+	para "and can be turned"
+	line "on and off."
 	done
 
 MrPokemonText_ImDependingOnYou:
