@@ -118,9 +118,10 @@ MrPokemonsHouse_OakScript:
 	special RestartMapMusic
 	opentext
 	writetext MrPokemonsHouse_MrPokemonRepellentText
+	waitbutton
 	writetext MrPokemonsHouse_GotRepellentText
 	promptbutton
-	giveitem TRAINING_KIT
+	giveitem REPELLENT
 	itemnotify
 	writetext MrPokemonText_ImDependingOnYou
 	waitbutton
