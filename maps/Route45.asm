@@ -2,7 +2,6 @@
 	const ROUTE45_POKEFAN_M1
 	const ROUTE45_POKEFAN_M2
 	const ROUTE45_POKEFAN_M3
-	const ROUTE45_POKEFAN_M4
 	const ROUTE45_BLACK_BELT
 	const ROUTE45_COOLTRAINER_M
 	const ROUTE45_COOLTRAINER_F
@@ -228,17 +227,6 @@ TrainerHikerParry:
 	setevent EVENT_GOT_IRON_FROM_PARRY
 	sjump Route45NumberAcceptedM
 
-TrainerHikerTimothy:
-	trainer HIKER, TIMOTHY, EVENT_BEAT_HIKER_TIMOTHY, HikerTimothySeenText, HikerTimothyBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext HikerTimothyAfterBattleText
-	waitbutton
-	closetext
-	end
-
 TrainerCooltrainermRyan:
 	trainer COOLTRAINERM, RYAN, EVENT_BEAT_COOLTRAINERM_RYAN, CooltrainermRyanSeenText, CooltrainermRyanBeatenText, 0, .Script
 
@@ -360,33 +348,6 @@ HikerParryAfterBattleText:
 
 	para "So, I just plow"
 	line "ahead with power!"
-	done
-
-HikerTimothySeenText:
-	text "Why do I climb"
-	line "mountains?"
-
-	para "Because they're"
-	line "there."
-
-	para "Why do I train"
-	line "#MON?"
-
-	para "Because they're"
-	line "there!"
-	done
-
-HikerTimothyBeatenText:
-	text "Losses…"
-	line "They're there too!"
-	done
-
-HikerTimothyAfterBattleText:
-	text "The best thing to"
-	line "ever happen to me"
-
-	para "was discovering"
-	line "#MON."
 	done
 
 HikerParryGivesIronText:
@@ -532,7 +493,6 @@ Route45_MapEvents:
 	object_event 12, 17, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 1, TrainerHikerErik, -1
 	object_event  5,  6, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, TrainerHikerMichael, -1
 	object_event  6, 32, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, TrainerHikerParry, -1
-	object_event 17, 82, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 1, TrainerHikerTimothy, -1
 	object_event  4, 32, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, TrainerBlackbeltKenji, -1
 	object_event  3, 11, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerCooltrainermRyan, -1
 	object_event  3,  6, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerCooltrainerfKelly, -1

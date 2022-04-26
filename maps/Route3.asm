@@ -31,17 +31,6 @@ TrainerYoungsterWarren:
 	closetext
 	end
 
-TrainerYoungsterJimmy:
-	trainer YOUNGSTER, JIMMY, EVENT_BEAT_YOUNGSTER_JIMMY, YoungsterJimmySeenText, YoungsterJimmyBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext YoungsterJimmyAfterBattleText
-	waitbutton
-	closetext
-	end
-
 TrainerFirebreatherBurt:
 	trainer FIREBREATHER, BURT, EVENT_BEAT_FIREBREATHER_BURT, FirebreatherBurtSeenText, FirebreatherBurtBeatenText, 0, .Script
 
@@ -88,23 +77,6 @@ YoungsterWarrenAfterBattleText:
 	line "take you on…"
 	done
 
-YoungsterJimmySeenText:
-	text "I can run like the"
-	line "wind!"
-	done
-
-YoungsterJimmyBeatenText:
-	text "Blown away!"
-	done
-
-YoungsterJimmyAfterBattleText:
-	text "I wear shorts the"
-	line "whole year round."
-
-	para "That's my fashion"
-	line "policy."
-	done
-
 FirebreatherBurtSeenText:
 	text "Step right up and"
 	line "take a look!"
@@ -144,5 +116,4 @@ Route3_MapEvents:
 	def_object_events
 	object_event 46, 10, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 2, TrainerFirebreatherOtis, -1
 	object_event 12,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerYoungsterWarren, -1
-	object_event 37,  6, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerYoungsterJimmy, -1
 	object_event 27, 11, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerFirebreatherBurt, -1

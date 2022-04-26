@@ -106,8 +106,19 @@ DamageMon:
 	ld [wHPBuffer2], a
 	pop af
 	pop hl
-
+	
+	ld b, a
+	ld a, [hRemainder]
+	and a
+	jr z, .damaging
+	
+	; If there is a remainder, carry it.
+	inc b
+	
+.damaging
+	
 	; Damaging the Pokémon
+	ld a, b
 	dec a
 	ld [hl], a
 	dec hl
@@ -141,8 +152,8 @@ DamageMon:
 .error_damaging:
 	ld de, SFX_BUMP
 	call WaitPlaySFX
-
-    ld hl, .ShadyGuyDamageError
+	
+	ld hl, .ShadyGuyDamageError
 	call PrintText
 	jp .select_mon
 	

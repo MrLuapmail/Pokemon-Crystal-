@@ -656,3 +656,17 @@ FindEnemyMonsWithAtLeastQuarterMaxHP:
 	and c
 	ld c, a
 	ret
+
+DidEnemySwitch:
+	ld a, [wEnemyIsSwitching]
+	and a
+	jr z, .enemy_didnt_switch
+	ld a, [wEnemyConsecutiveSwitches]
+	inc a
+	ld [wEnemyConsecutiveSwitches], a
+	ret
+.enemy_didnt_switch
+	xor a
+	ld [wEnemyConsecutiveSwitches], a
+	ret
+	

@@ -1,7 +1,6 @@
 	object_const_def
 	const ROUTE2_BUG_CATCHER1
 	const ROUTE2_BUG_CATCHER2
-	const ROUTE2_BUG_CATCHER3
 	const ROUTE2_POKE_BALL1
 	const ROUTE2_POKE_BALL2
 	const ROUTE2_POKE_BALL3
@@ -31,17 +30,6 @@ TrainerBugCatcherEd:
 	endifjustbattled
 	opentext
 	writetext BugCatcherEdAfterBattleText
-	waitbutton
-	closetext
-	end
-
-TrainerBugCatcherDoug:
-	trainer BUG_CATCHER, DOUG, EVENT_BEAT_BUG_CATCHER_DOUG, BugCatcherDougSeenText, BugCatcherDougBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext BugCatcherDougAfterBattleText
 	waitbutton
 	closetext
 	end
@@ -113,26 +101,6 @@ BugCatcherEdAfterBattleText:
 	cont "take a bath."
 	done
 
-BugCatcherDougSeenText:
-	text "Why don't girls"
-	line "like bug #MON?"
-	done
-
-BugCatcherDougBeatenText:
-	text "No good!"
-	done
-
-BugCatcherDougAfterBattleText:
-	text "Bug #MON squish"
-	line "like plush toys"
-
-	para "when you squeeze"
-	line "their bellies."
-
-	para "I love how they"
-	line "feel!"
-	done
-
 Route2SignText:
 	text "ROUTE 2"
 
@@ -167,7 +135,6 @@ Route2_MapEvents:
 	def_object_events
 	object_event  6, 34, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 5, TrainerBugCatcherRob, -1
 	object_event 11,  8, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerBugCatcherEd, -1
-	object_event  4, 40, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerBugCatcherDoug, -1
 	object_event  0, 29, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route2DireHit, EVENT_ROUTE_2_DIRE_HIT
 	object_event  2, 23, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route2MaxPotion, EVENT_ROUTE_2_MAX_POTION
 	object_event 19,  2, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route2Carbos, EVENT_ROUTE_2_CARBOS

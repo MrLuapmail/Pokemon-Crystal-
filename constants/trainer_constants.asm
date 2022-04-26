@@ -124,7 +124,6 @@ KRIS EQU __trainer_class__
 	const JOEY2
 	const JOEY3
 	const WARREN
-	const JIMMY
 	const OWEN
 	const JASON
 	const JOEY4
@@ -134,7 +133,6 @@ KRIS EQU __trainer_class__
 	const JACK1
 	const KIPP
 	const ALAN1
-	const JOHNNY
 	const DANNY
 	const TOMMY
 	const DUDLEY
@@ -158,12 +156,10 @@ KRIS EQU __trainer_class__
 	const VANCE1
 	const HANK
 	const ROY
-	const BORIS
 	const JOSE1
 	const PETER
 	const JOSE2
 	const PERRY
-	const BRET
 	const JOSE3
 	const VANCE2
 	const VANCE3
@@ -192,7 +188,6 @@ KRIS EQU __trainer_class__
 	const NICK
 	const AARON
 	const PAUL
-	const CODY
 	const MIKE
 	const GAVEN1
 	const GAVEN2
@@ -214,7 +209,6 @@ KRIS EQU __trainer_class__
 	const GWEN
 	const LOIS
 	const FRAN
-	const LOLA
 	const KATE
 	const IRENE
 	const KELLY
@@ -265,7 +259,6 @@ KRIS EQU __trainer_class__
 	const BRENT3
 	const ISSAC
 	const DONALD
-	const ZACH
 	const BRENT4
 	const MILLER
 
@@ -274,14 +267,11 @@ KRIS EQU __trainer_class__
 	const GRUNTM_2
 	const GRUNTM_3
 	const GRUNTM_4
-	const GRUNTM_5
 	const GRUNTM_6
 	const GRUNTM_7
 	const GRUNTM_8
-	const GRUNTM_9
 	const GRUNTM_10
 	const GRUNTM_11
-	const GRUNTM_12_UNUSED
 	const GRUNTM_13
 	const GRUNTM_14
 	const GRUNTM_15
@@ -291,15 +281,9 @@ KRIS EQU __trainer_class__
 	const GRUNTM_19
 	const GRUNTM_20
 	const GRUNTM_21
-	const GRUNTM_22_UNUSED
-	const GRUNTM_23_UNUSED
 	const GRUNTM_24
-	const GRUNTM_25
-	const GRUNTM_26_UNUSED
-	const GRUNTM_27_UNUSED
 	const GRUNTM_28
 	const GRUNTM_29
-	const GRUNTM_30_UNUSED
 	const GRUNTM_31
 
 	trainerclass GENTLEMAN ; 20
@@ -310,7 +294,6 @@ KRIS EQU __trainer_class__
 	const ALFRED
 
 	trainerclass SKIER ; 21
-	const ROXANNE
 	const CLARISSA
 
 	trainerclass TEACHER ; 22
@@ -333,7 +316,6 @@ KRIS EQU __trainer_class__
 	const KEN
 	const WADE2
 	const WADE3
-	const DOUG
 	const ARNIE2
 	const ARNIE3
 	const WADE4
@@ -343,9 +325,7 @@ KRIS EQU __trainer_class__
 	const WAYNE
 
 	trainerclass FISHER ; 25
-	const JUSTIN
 	const RALPH1
-	const ARNOLD
 	const KYLE
 	const HENRY
 	const MARVIN
@@ -383,9 +363,7 @@ KRIS EQU __trainer_class__
 	const WALTER
 	const TONY
 	const JEROME
-	const TUCKER
 	const RICK
-	const CAMERON
 	const SETH
 	const JAMES
 	const LEWIS
@@ -395,7 +373,6 @@ KRIS EQU __trainer_class__
 	const ELAINE
 	const PAULA
 	const KAYLEE
-	const SUSIE
 	const DENISE
 	const KARA
 	const WENDY
@@ -416,7 +393,6 @@ KRIS EQU __trainer_class__
 	const EUGENE
 	const HUEY1
 	const TERRELL
-	const KENT
 	const ERNEST
 	const JEFF
 	const GARRETT
@@ -463,11 +439,8 @@ KRIS EQU __trainer_class__
 	const ERIK
 	const MICHAEL
 	const PARRY1
-	const TIMOTHY
-	const BAILEY
 	const ANTHONY3
 	const TIM
-	const NOLAND
 	const SIDNEY
 	const JIM
 	const DANIEL
@@ -537,7 +510,6 @@ KRIS EQU __trainer_class__
 	const NORMAN
 	const MARK
 	const PHIL
-	const RICHARD
 	const GILBERT
 	const JARED
 	const RODNEY
@@ -549,14 +521,11 @@ KRIS EQU __trainer_class__
 	const KIM
 	const CINDY
 	const HOPE
-	const SHARON
-	const DEBRA
 	const GINA2
 	const ERIN1
 	const LIZ2
 	const LIZ3
 	const HEIDI
-	const EDNA
 	const GINA3
 	const TIFFANY1
 	const TIFFANY2
@@ -571,7 +540,6 @@ KRIS EQU __trainer_class__
 	const TIFFANY4
 
 	trainerclass CAMPER ; 36
-	const ROLAND
 	const TODD1
 	const IVAN
 	const ELLIOT
@@ -581,7 +549,6 @@ KRIS EQU __trainer_class__
 	const SID
 	const HARVEY
 	const DALE
-	const TED
 	const TODD2
 	const TODD3
 	const THOMAS
@@ -623,14 +590,11 @@ KRIS EQU __trainer_class__
 
 	trainerclass BOARDER ; 3a
 	const RONALD
-	const BRAD
 	const DOUGLAS
 
 	trainerclass POKEFANM ; 3b
 	const WILLIAM
 	const DEREK1
-	const ROBERT
-	const JOSHUA
 	const CARTER
 	const TREVOR
 	const BRANDON
@@ -683,7 +647,6 @@ KRIS EQU __trainer_class__
 	trainerclass GRUNTF ; 42
 	const GRUNTF_1
 	const GRUNTF_2
-	const GRUNTF_3
 	const GRUNTF_4
 	const GRUNTF_5
 

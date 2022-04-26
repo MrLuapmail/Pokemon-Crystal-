@@ -1,16 +1,15 @@
 	object_const_def
 	const ROUTE32_FISHER1
 	const ROUTE32_FISHER2
-	const ROUTE32_FISHER3
 	const ROUTE32_YOUNGSTER1
 	const ROUTE32_YOUNGSTER2
 	const ROUTE32_YOUNGSTER3
 	const ROUTE32_LASS1
 	const ROUTE32_COOLTRAINER_M
 	const ROUTE32_YOUNGSTER4
-	const ROUTE32_FISHER4
+	const ROUTE32_FISHER3
 	const ROUTE32_POKE_BALL1
-	const ROUTE32_FISHER5
+	const ROUTE32_FISHER4
 	const ROUTE32_FRIEDA
 	const ROUTE32_POKE_BALL2
 
@@ -131,28 +130,6 @@ _OfferToSellSlowpokeTail:
 
 .refused
 	writetext Text_RefusedToBuySlowpokeTail
-	waitbutton
-	closetext
-	end
-
-TrainerCamperRoland:
-	trainer CAMPER, ROLAND, EVENT_BEAT_CAMPER_ROLAND, CamperRolandSeenText, CamperRolandBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext CamperRolandAfterText
-	waitbutton
-	closetext
-	end
-
-TrainerFisherJustin:
-	trainer FISHER, JUSTIN, EVENT_BEAT_FISHER_JUSTIN, FisherJustinSeenText, FisherJustinBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext FisherJustinAfterText
 	waitbutton
 	closetext
 	end
@@ -612,25 +589,6 @@ Text_RefusedToBuySlowpokeTail:
 	line "Then scram. Shoo!"
 	done
 
-FisherJustinSeenText:
-	text "Whoa!"
-
-	para "You made me lose"
-	line "that fish!"
-	done
-
-FisherJustinBeatenText:
-	text "Sploosh!"
-	done
-
-FisherJustinAfterText:
-	text "Calm, collected…"
-	line "The essence of"
-
-	para "fishing and #-"
-	line "MON is the same."
-	done
-
 FisherRalph1SeenText:
 	text "I'm really good at"
 	line "both fishing and"
@@ -759,22 +717,6 @@ YoungsterGordonBeatenText:
 YoungsterGordonAfterText:
 	text "The grass is full"
 	line "of clingy things."
-	done
-
-CamperRolandSeenText:
-	text "That glance…"
-	line "It's intriguing."
-	done
-
-CamperRolandBeatenText:
-	text "Hmmm. This is"
-	line "disappointing."
-	done
-
-CamperRolandAfterText:
-	text "If you don't want"
-	line "to battle, just"
-	cont "avoid eye contact."
 	done
 
 PicnickerLiz1SeenText:
@@ -920,12 +862,10 @@ Route32_MapEvents:
 	bg_event 11, 40, BGEVENT_ITEM, Route32HiddenSuperPotion
 
 	def_object_events
-	object_event 12, 52, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerFisherJustin, -1
 	object_event 12, 55, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerFisherRalph1, -1
 	object_event 11, 47, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerFisherHenry, -1
 	object_event 12, 24, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerYoungsterAlbert, -1
 	object_event  4, 63, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerYoungsterGordon, -1
-	object_event  7, 41, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerCamperRoland, -1
 	object_event  9, 34, SPRITE_LASS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerPicnickerLiz1, -1
 	object_event 19,  8, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route32CooltrainerMScript, -1
 	object_event  5, 69, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerBirdKeeperPeter, -1

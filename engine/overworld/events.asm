@@ -932,7 +932,7 @@ CountStep:
 	ld a, PLAYEREVENT_HATCH
 	scf
 	ret
-
+	
 .whiteout ; unreferenced
 	ld a, PLAYEREVENT_WHITEOUT
 	scf
@@ -942,13 +942,26 @@ DoRepelStep:
 	ld a, [wRepelEffect]
 	and a
 	ret z
+	
+	cp 255 ;Repellent Check
+	ret z
 
+	and a
 	dec a
 	ld [wRepelEffect], a
 	ret nz
 
+	ld a, [wRepelType]
+	ld [wCurItem], a
+	ld hl, wNumItems
+	call CheckItem
+
 	ld a, BANK(RepelWoreOffScript)
 	ld hl, RepelWoreOffScript
+	jr nc, .got_script
+	ld a, BANK(UseAnotherRepelScript)
+	ld hl, UseAnotherRepelScript
+.got_script
 	call CallScript
 	scf
 	ret

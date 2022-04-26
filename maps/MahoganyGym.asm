@@ -1,6 +1,5 @@
 	object_const_def
 	const MAHOGANYGYM_PRYCE
-	const MAHOGANYGYM_BEAUTY1
 	const MAHOGANYGYM_ROCKER1
 	const MAHOGANYGYM_BEAUTY2
 	const MAHOGANYGYM_ROCKER2
@@ -35,10 +34,8 @@ MahoganyGymPryceScript:
 .FightDone:
 	checkevent EVENT_GOT_TM16_ICY_WIND
 	iftrue PryceScript_Defeat
-	setevent EVENT_BEAT_SKIER_ROXANNE
 	setevent EVENT_BEAT_SKIER_CLARISSA
 	setevent EVENT_BEAT_BOARDER_RONALD
-	setevent EVENT_BEAT_BOARDER_BRAD
 	setevent EVENT_BEAT_BOARDER_DOUGLAS
 	writetext PryceText_GlacierBadgeSpeech
 	promptbutton
@@ -68,17 +65,6 @@ MahoganyGymActivateRockets:
 .RadioTowerRockets:
 	jumpstd RadioTowerRocketsScript
 
-TrainerSkierRoxanne:
-	trainer SKIER, ROXANNE, EVENT_BEAT_SKIER_ROXANNE, SkierRoxanneSeenText, SkierRoxanneBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext SkierRoxanneAfterBattleText
-	waitbutton
-	closetext
-	end
-
 TrainerSkierClarissa:
 	trainer SKIER, CLARISSA, EVENT_BEAT_SKIER_CLARISSA, SkierClarissaSeenText, SkierClarissaBeatenText, 0, .Script
 
@@ -97,17 +83,6 @@ TrainerBoarderRonald:
 	endifjustbattled
 	opentext
 	writetext BoarderRonaldAfterBattleText
-	waitbutton
-	closetext
-	end
-
-TrainerBoarderBrad:
-	trainer BOARDER, BRAD, EVENT_BEAT_BOARDER_BRAD, BoarderBradSeenText, BoarderBradBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext BoarderBradAfterBattleText
 	waitbutton
 	closetext
 	end
@@ -257,29 +232,6 @@ BoarderRonaldAfterBattleText:
 	line "frozen."
 	done
 
-BoarderBradSeenText:
-	text "This GYM has a"
-	line "slippery floor."
-
-	para "It's fun, isn't"
-	line "it?"
-
-	para "But hey--we're"
-	line "not playing games"
-	cont "here!"
-	done
-
-BoarderBradBeatenText:
-	text "Do you see how"
-	line "serious we are?"
-	done
-
-BoarderBradAfterBattleText:
-	text "This GYM is great."
-	line "I love boarding"
-	cont "with my #MON!"
-	done
-
 BoarderDouglasSeenText:
 	text "I know PRYCE's"
 	line "secret."
@@ -299,27 +251,6 @@ BoarderDouglasAfterBattleText:
 
 	para "to strengthen his"
 	line "mind and body."
-	done
-
-SkierRoxanneSeenText:
-	text "To get to PRYCE,"
-	line "our GYM LEADER,"
-
-	para "you need to think"
-	line "before you skate."
-	done
-
-SkierRoxanneBeatenText:
-	text "I wouldn't lose to"
-	line "you in skiing!"
-	done
-
-SkierRoxanneAfterBattleText:
-	text "If you don't skate"
-	line "with precision,"
-
-	para "you won't get far"
-	line "in this GYM."
 	done
 
 SkierClarissaSeenText:
@@ -385,9 +316,7 @@ MahoganyGym_MapEvents:
 
 	def_object_events
 	object_event  5,  3, SPRITE_PRYCE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, MahoganyGymPryceScript, -1
-	object_event  6,  4, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerSkierRoxanne, -1
 	object_event  2, 13, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerBoarderRonald, -1
 	object_event  7, 13, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerSkierClarissa, -1
-	object_event  5,  9, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerBoarderBrad, -1
-	object_event  2,  4, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerBoarderDouglas, -1
+	object_event  2,  4, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerBoarderDouglas, -1
 	object_event  4, 14, SPRITE_GYM_GUIDE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, MahoganyGymGuideScript, -1

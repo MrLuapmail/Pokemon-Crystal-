@@ -1,5 +1,4 @@
 	object_const_def
-	const BLACKTHORNGYM2F_COOLTRAINER_M
 	const BLACKTHORNGYM2F_COOLTRAINER_F
 	const BLACKTHORNGYM2F_BOULDER1
 	const BLACKTHORNGYM2F_BOULDER2
@@ -56,17 +55,6 @@ BlackthornGym2F_MapScripts:
 BlackthornGymBoulder:
 	jumpstd StrengthBoulderScript
 
-TrainerCooltrainermCody:
-	trainer COOLTRAINERM, CODY, EVENT_BEAT_COOLTRAINERM_CODY, CooltrainermCodySeenText, CooltrainermCodyBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext CooltrainermCodyAfterBattleText
-	waitbutton
-	closetext
-	end
-
 TrainerCooltrainerfFran:
 	trainer COOLTRAINERF, FRAN, EVENT_BEAT_COOLTRAINERF_FRAN, CooltrainerfFranSeenText, CooltrainerfFranBeatenText, 0, .Script
 
@@ -77,28 +65,6 @@ TrainerCooltrainerfFran:
 	waitbutton
 	closetext
 	end
-
-CooltrainermCodySeenText:
-	text "It's not as if we"
-	line "all use dragon-"
-	cont "type #MON."
-	done
-
-CooltrainermCodyBeatenText:
-	text "Rats! If only I"
-	line "had a dragon!"
-	done
-
-CooltrainermCodyAfterBattleText:
-	text "Members of our"
-	line "dragon-user clan"
-
-	para "can use dragon"
-	line "#MON only after"
-
-	para "our MASTER allows"
-	line "it."
-	done
 
 CooltrainerfFranSeenText:
 	text "I can't allow a"
@@ -138,7 +104,6 @@ BlackthornGym2F_MapEvents:
 	def_bg_events
 
 	def_object_events
-	object_event  4,  1, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerCooltrainermCody, -1
 	object_event  4, 11, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerCooltrainerfFran, -1
 	object_event  8,  2, SPRITE_BOULDER, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BlackthornGymBoulder, EVENT_BOULDER_IN_BLACKTHORN_GYM_1
 	object_event  2,  3, SPRITE_BOULDER, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BlackthornGymBoulder, EVENT_BOULDER_IN_BLACKTHORN_GYM_2

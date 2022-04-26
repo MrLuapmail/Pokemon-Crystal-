@@ -1,9 +1,7 @@
 	object_const_def
 	const ROUTE13_YOUNGSTER1
-	const ROUTE13_YOUNGSTER2
 	const ROUTE13_POKEFAN_M1
 	const ROUTE13_POKEFAN_M2
-	const ROUTE13_POKEFAN_M3
 
 Route13_MapScripts:
 	def_scene_scripts
@@ -21,17 +19,6 @@ TrainerPokefanmAlex:
 	closetext
 	end
 
-TrainerPokefanmJoshua:
-	trainer POKEFANM, JOSHUA, EVENT_BEAT_POKEFANM_JOSHUA, PokefanmJoshuaSeenText, PokefanmJoshuaBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext PokefanmJoshuaAfterBattleText
-	waitbutton
-	closetext
-	end
-
 TrainerBirdKeeperPerry:
 	trainer BIRD_KEEPER, PERRY, EVENT_BEAT_BIRD_KEEPER_PERRY, BirdKeeperPerrySeenText, BirdKeeperPerryBeatenText, 0, .Script
 
@@ -39,17 +26,6 @@ TrainerBirdKeeperPerry:
 	endifjustbattled
 	opentext
 	writetext BirdKeeperPerryAfterBattleText
-	waitbutton
-	closetext
-	end
-
-TrainerBirdKeeperBret:
-	trainer BIRD_KEEPER, BRET, EVENT_BEAT_BIRD_KEEPER_BRET, BirdKeeperBretSeenText, BirdKeeperBretBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext BirdKeeperBretAfterBattleText
 	waitbutton
 	closetext
 	end
@@ -82,24 +58,6 @@ PokefanmAlexAfterBattleText:
 	cont "a king?"
 	done
 
-PokefanmJoshuaSeenText:
-	text "Nihihi! Would you"
-	line "like to battle my"
-	cont "PIKACHU gang?"
-	done
-
-PokefanmJoshuaBeatenText:
-	text "PI-PIKACHU!"
-	done
-
-PokefanmJoshuaAfterBattleText:
-	text "You look like you"
-	line "have many #MON,"
-
-	para "but PIKACHU is"
-	line "still the best."
-	done
-
 BirdKeeperPerrySeenText:
 	text "Agility is the key"
 	line "attribute of bird"
@@ -115,24 +73,6 @@ BirdKeeperPerryAfterBattleText:
 	text "Your #MON are"
 	line "remarkably well-"
 	cont "trained."
-	done
-
-BirdKeeperBretSeenText:
-	text "Check out my #-"
-	line "MON. Just look at"
-
-	para "their coloring and"
-	line "their plumage."
-	done
-
-BirdKeeperBretBeatenText:
-	text "Shoot!"
-	line "Not good enough!"
-	done
-
-BirdKeeperBretAfterBattleText:
-	text "If you groom them,"
-	line "#MON get happy."
 	done
 
 Route13TrainerTipsText:
@@ -173,6 +113,4 @@ Route13_MapEvents:
 
 	def_object_events
 	object_event 37,  8, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerBirdKeeperPerry, -1
-	object_event 35, 10, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerBirdKeeperBret, -1
-	object_event  5,  5, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerPokefanmJoshua, -1
 	object_event 33,  6, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerPokefanmAlex, -1

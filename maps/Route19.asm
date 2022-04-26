@@ -2,7 +2,6 @@
 	const ROUTE19_SWIMMER_GIRL
 	const ROUTE19_SWIMMER_GUY1
 	const ROUTE19_SWIMMER_GUY2
-	const ROUTE19_SWIMMER_GUY3
 	const ROUTE19_FISHER1
 	const ROUTE19_FISHER2
 
@@ -53,17 +52,6 @@ TrainerSwimmermJerome:
 	endifjustbattled
 	opentext
 	writetext SwimmermJeromeAfterBattleText
-	waitbutton
-	closetext
-	end
-
-TrainerSwimmermTucker:
-	trainer SWIMMERM, TUCKER, EVENT_BEAT_SWIMMERM_TUCKER, SwimmermTuckerSeenText, SwimmermTuckerBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext SwimmermTuckerAfterBattleText
 	waitbutton
 	closetext
 	end
@@ -122,24 +110,6 @@ SwimmermHaroldAfterBattleText:
 
 	para "feels like it will"
 	line "swallow you up."
-	done
-
-SwimmermTuckerSeenText:
-	text "Pant, pant…"
-	line "Just… a little…"
-
-	para "farther… to…"
-	line "FUCHSIA…"
-	done
-
-SwimmermTuckerBeatenText:
-	text "I'm drowning!"
-	done
-
-SwimmermTuckerAfterBattleText:
-	text "I… asked my girl-"
-	line "friend to swim to"
-	cont "FUCHSIA… Gasp…"
 	done
 
 SwimmerfDawnSeenText:
@@ -248,6 +218,5 @@ Route19_MapEvents:
 	object_event 10, 26, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerSwimmerfDawn, -1
 	object_event 16, 30, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerSwimmermHarold, -1
 	object_event 18, 24, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerSwimmermJerome, -1
-	object_event 10, 32, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerSwimmermTucker, -1
 	object_event  9,  5, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 1, Route19Fisher1Script, -1
 	object_event 11,  5, SPRITE_FISHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 1, Route19Fisher2Script, -1
