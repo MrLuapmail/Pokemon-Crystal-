@@ -1308,14 +1308,14 @@ BattleCommand_Stab:
 
 	; Special clause for Foresight
 	cp -2
-	jr nz, .SkipForesightOrPsybeamCheck
+	jr nz, .SkipForesightOrPsywaveCheck
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
 	call GetBattleVar
 	bit SUBSTATUS_IDENTIFIED, a
 	jr nz, .end
 	
 	cp -3
-	jr nz, .SkipForesightOrPsybeamCheck
+	jr nz, .SkipForesightOrPsywaveCheck
 	
 	; Special Clause for Psybeam
 	ld a, BATTLE_VARS_MOVE
@@ -1325,7 +1325,7 @@ BattleCommand_Stab:
 
 	jr .TypesLoop
 
-.SkipForesightOrPsybeamCheck:
+.SkipForesightOrPsywaveCheck:
 	cp b
 	jr nz, .SkipType
 	ld a, [hl]

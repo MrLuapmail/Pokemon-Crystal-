@@ -116,7 +116,7 @@ TypeMatchups:
 	
 	db -3 ; end (with Acid)
 
-; Psybeam hits Dark-types.
+; Psywave hits Dark-types.
 	
 	db PSYCHIC_TYPE, DARK,         NO_EFFECT
 
