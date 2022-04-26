@@ -1306,17 +1306,26 @@ BattleCommand_Stab:
 	cp -1
 	jr z, .end
 
-	; foresight
+	; Special clause for Foresight
 	cp -2
-	jr nz, .SkipForesightCheck
+	jr nz, .SkipForesightOrPsybeamCheck
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
 	call GetBattleVar
 	bit SUBSTATUS_IDENTIFIED, a
 	jr nz, .end
+	
+	cp -3
+	jr nz, .SkipForesightOrPsybeamCheck
+	
+	; Special Clause for Psybeam
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	cp PSYBEAM
+	jr nz, .end
 
 	jr .TypesLoop
 
-.SkipForesightCheck:
+.SkipForesightOrPsybeamCheck:
 	cp b
 	jr nz, .SkipType
 	ld a, [hl]
@@ -1390,7 +1399,7 @@ BattleCommand_Stab:
 .SkipType:
 	inc hl
 	inc hl
-	jr .TypesLoop
+	jP .TypesLoop
 
 .end
 	call BattleCheckTypeMatchup
@@ -1429,6 +1438,8 @@ CheckTypeMatchup:
 	cp -1
 	jr z, .End
 	cp -2
+	jr nz, .Next
+	cp -3
 	jr nz, .Next
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
 	call GetBattleVar
@@ -5911,6 +5922,27 @@ BattleCommand_Paralyze:
 	jp StdBattleTextbox
 
 .no_item_protection
+	ldh a, [hBattleTurn]
+	and a
+	jr z, .dont_sample_failure
+
+	ld a, [wLinkMode]
+	and a
+	jr nz, .dont_sample_failure
+
+	ld a, [wInBattleTowerBattle]
+	and a
+	jr nz, .dont_sample_failure
+
+	ld a, [wPlayerSubStatus5]
+	bit SUBSTATUS_LOCK_ON, a
+	jr nz, .dont_sample_failure
+
+	call BattleRandom
+	cp 25 percent + 1 ; 25% chance AI fails
+	jr c, .failed
+
+.dont_sample_failure
 	ld a, BATTLE_VARS_STATUS_OPP
 	call GetBattleVarAddr
 	and a
