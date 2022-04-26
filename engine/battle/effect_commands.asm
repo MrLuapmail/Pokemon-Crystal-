@@ -1320,7 +1320,7 @@ BattleCommand_Stab:
 	; Special Clause for Psybeam
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
-	cp PSYBEAM
+	cp PSYWAVE
 	jr nz, .end
 
 	jr .TypesLoop
