@@ -39,7 +39,7 @@ Marts:
 
 MartCherrygrove:
 	db 4 ; # items
-	db RAGE_CANDY_BAR
+	db 	
 	db ANTIDOTE
 	db PARLYZ_HEAL
 	db AWAKENING
@@ -48,7 +48,7 @@ MartCherrygrove:
 MartCherrygroveDex:
 	db 6 ; # items
 	db POKE_BALL
-	db RAGE_CANDY_BAR
+	db RAGECANDYBAR
 	db ANTIDOTE
 	db PARLYZ_HEAL
 	db AWAKENING
@@ -65,7 +65,7 @@ MartViolet:
 	db AWAKENING
 	db BURN_HEAL
 	db ICE_HEAL
-	db POKEDOLL
+	db POKE_DOLL
 	db FLOWER_MAIL
 	db -1 ; end
 
@@ -109,7 +109,7 @@ MartGoldenrod2F2:
 	db ESCAPE_ROPE
 	db REPEL
 	db REVIVE
-	db SLOWPOKE_TAIL
+	db SLOWPOKETAIL
 	db POKE_DOLL
 	db FLOWER_MAIL
 	db -1 ; end
@@ -118,7 +118,7 @@ MartGoldenrod3F:
 	db 8 ; # items
 	db FIRE_STONE
 	db WATER_STONE
-	db THUNDER_STONE
+	db THUNDERSTONE
 	db LEAF_STONE
 	db MOON_STONE
 	db SUN_STONE
@@ -294,18 +294,18 @@ MartCeladon2F1:
 	db GREAT_BALL
 	db ULTRA_BALL
 	db ESCAPE_ROPE
-	db SLOWPOKE_TAIL
+	db SLOWPOKETAIL
 	db ANTIDOTE
 	db BURN_HEAL
 	db ICE_HEAL
 	db AWAKENING
-	db PARALYZ_HEAL
+	db PARLYZ_HEAL
 	db -1 ; end
 
 MartCeladon2F2:
 	db 7 ; # items
 	db HYPER_POTION
-	db PARALYZ_HEAL
+	db PARLYZ_HEAL
 	db AWAKENING
 	db BURN_HEAL
 	db REVIVE
