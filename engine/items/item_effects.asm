@@ -63,7 +63,7 @@ ItemEffects:
 	dw RestoreHPEffect     ; SODA_POP
 	dw RestoreHPEffect     ; LEMONADE
 	dw XItemEffect         ; X_ATTACK
-	dw NoEffect            ; ITEM_32
+	dw PocketPCEffect	   ; POCKET_PC     
 	dw XItemEffect         ; X_DEFEND
 	dw XItemEffect         ; X_SPEED
 	dw XItemEffect         ; X_SPECIAL
@@ -2283,6 +2283,10 @@ XItemEffect:
 	ld [wCurPartyMon], a
 	ld c, HAPPINESS_USEDXITEM
 	farcall ChangeHappiness
+	ret
+
+PocketPCEffect:
+	farcall PocketPCFunction
 	ret
 
 INCLUDE "data/items/x_stats.asm"
