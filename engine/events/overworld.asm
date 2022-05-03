@@ -1633,7 +1633,7 @@ PocketPCFunction:
 	call QueueScript
 	ld a, TRUE
 	ret
-	
+
 .CheckIfRegistered:
 	ld a, [wUsingItemWithSelect]
 	and a
@@ -1641,7 +1641,7 @@ PocketPCFunction:
 	ld h, d
 	ld l, e
 	ret
-
+	
 BikeFunction:
 	call .TryBike
 	and $7f

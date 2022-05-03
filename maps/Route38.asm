@@ -16,6 +16,7 @@ TrainerBirdKeeperToby:
 	trainer BIRD_KEEPER, TOBY, EVENT_BEAT_BIRD_KEEPER_TOBY, BirdKeeperTobySeenText, BirdKeeperTobyBeatenText, 0, .Script
 
 .Script
+	clearevent EVENT_DISABLE_POCKET_PC
 	endifjustbattled
 	opentext
 	writetext BirdKeeperTobyAfterBattleText
@@ -27,11 +28,12 @@ TrainerSailorHarry:
 	trainer SAILOR, HARRY, EVENT_BEAT_SAILOR_HARRY, SailorHarrySeenText, SailorHarryBeatenText, 0, .Script
 
 .Script
+	setevent EVENT_DISABLE_POCKET_PC
 	endifjustbattled
 	opentext
 	writetext SailorHarryAfterBattleText
 	waitbutton
-	closetext
+	closetext	
 	end
 
 TrainerLassDana1:

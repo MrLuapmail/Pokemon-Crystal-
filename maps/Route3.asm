@@ -13,17 +13,19 @@ TrainerFirebreatherOtis:
 	trainer FIREBREATHER, OTIS, EVENT_BEAT_FIREBREATHER_OTIS, FirebreatherOtisSeenText, FirebreatherOtisBeatenText, 0, .Script
 
 .Script:
+	clearevent EVENT_DISABLE_POCKET_PC
 	endifjustbattled
 	opentext
 	writetext FirebreatherOtisAfterBattleText
 	waitbutton
-	closetext
+	closetext	
 	end
 
 TrainerYoungsterWarren:
 	trainer YOUNGSTER, WARREN, EVENT_BEAT_YOUNGSTER_WARREN, YoungsterWarrenSeenText, YoungsterWarrenBeatenText, 0, .Script
 
 .Script:
+	setevent EVENT_DISABLE_POCKET_PC
 	endifjustbattled
 	opentext
 	writetext YoungsterWarrenAfterBattleText

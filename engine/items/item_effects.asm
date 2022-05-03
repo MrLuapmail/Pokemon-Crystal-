@@ -2286,8 +2286,22 @@ XItemEffect:
 	ret
 
 PocketPCEffect:
+	ld de, EVENT_DISABLE_POCKET_PC
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	ld a, c
+	and a
+	jr nz, DisablePocketPCMessage
 	farcall PocketPCFunction
-	ret
+	ret  
+
+DisablePocketPCMessage:
+	ld hl, DisablePocketPCText
+	jp CantUseItemMessage
+	
+DisablePocketPCText:
+	text_far _DisablePocketPCText
+	text_end
 
 INCLUDE "data/items/x_stats.asm"
 
