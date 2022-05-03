@@ -495,7 +495,7 @@ _UnusedNothingHereText::
 _DisablePocketPCText::
 	text "The Pocket PC won't"
 	line "work in gauntlets."
-	done
+	prompt
 
 _CantGetOffBikeText::
 	text "You can't get off"
