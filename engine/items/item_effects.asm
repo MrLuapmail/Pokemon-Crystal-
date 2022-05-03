@@ -2790,19 +2790,6 @@ IsntTheTimeMessage:
 WontHaveAnyEffectMessage:
 	ld hl, ItemWontHaveEffectText
 	jr CantUseItemMessage
-
-BelongsToSomeoneElseMessage: ; unreferenced
-	ld hl, ItemBelongsToSomeoneElseText
-	jr CantUseItemMessage
-
-CyclingIsntAllowedMessage: ; unreferenced
-	ld hl, NoCyclingText
-	jr CantUseItemMessage
-
-CantGetOnYourBikeMessage: ; unreferenced
-	ld hl, ItemCantGetOnText
-	; fallthrough
-
 CantUseItemMessage:
 ; Item couldn't be used.
 	xor a
