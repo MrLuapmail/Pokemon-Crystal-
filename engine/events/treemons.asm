@@ -53,8 +53,6 @@ RockMonEncounter:
 	xor a
 	ret
 
-	db $05 ; ????
-
 GetTreeMonSet:
 ; Return carry and treemon set in a
 ; if the current map is in table hl.
@@ -126,43 +124,7 @@ GetTreeMon:
 	push hl
 	call GetTreeScore
 	pop hl
-	and a ; TREEMON_SCORE_BAD
-	jr z, .bad
-	cp TREEMON_SCORE_GOOD
-	jr z, .good
-	cp TREEMON_SCORE_RARE
-	jr z, .rare
-	ret
-
-.bad
-	; 10% chance of an encounter
-	ld a, 10
-	call RandomRange
-	and a
-	jr nz, NoTreeMon
 	jr SelectTreeMon
-
-.good
-	; 50% chance of an encounter
-	ld a, 10
-	call RandomRange
-	cp 5
-	jr nc, NoTreeMon
-	jr SelectTreeMon
-
-.rare
-	; 80% chance of an encounter
-	ld a, 10
-	call RandomRange
-	cp 8
-	jr nc, NoTreeMon
-	jr .skip
-.skip
-	ld a, [hli]
-	cp -1
-	jr nz, .skip
-	call SelectTreeMon
-	ret
 
 SelectTreeMon:
 ; Read a TreeMons table and pick one monster at random.
