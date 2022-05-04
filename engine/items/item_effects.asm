@@ -63,7 +63,7 @@ ItemEffects:
 	dw RestoreHPEffect     ; SODA_POP
 	dw RestoreHPEffect     ; LEMONADE
 	dw XItemEffect         ; X_ATTACK
-	dw NoEffect            ; ITEM_32
+	dw PocketPCEffect	   ; POCKET_PC     
 	dw XItemEffect         ; X_DEFEND
 	dw XItemEffect         ; X_SPEED
 	dw XItemEffect         ; X_SPECIAL
@@ -2285,6 +2285,24 @@ XItemEffect:
 	farcall ChangeHappiness
 	ret
 
+PocketPCEffect:
+	ld de, EVENT_DISABLE_POCKET_PC
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	ld a, c
+	and a
+	jr nz, DisablePocketPCMessage
+	farcall PocketPCFunction
+	ret  
+
+DisablePocketPCMessage:
+	ld hl, DisablePocketPCText
+	jp CantUseItemMessage
+	
+DisablePocketPCText:
+	text_far _DisablePocketPCText
+	text_end
+
 INCLUDE "data/items/x_stats.asm"
 
 PokeFluteEffect:
@@ -2772,19 +2790,6 @@ IsntTheTimeMessage:
 WontHaveAnyEffectMessage:
 	ld hl, ItemWontHaveEffectText
 	jr CantUseItemMessage
-
-BelongsToSomeoneElseMessage: ; unreferenced
-	ld hl, ItemBelongsToSomeoneElseText
-	jr CantUseItemMessage
-
-CyclingIsntAllowedMessage: ; unreferenced
-	ld hl, NoCyclingText
-	jr CantUseItemMessage
-
-CantGetOnYourBikeMessage: ; unreferenced
-	ld hl, ItemCantGetOnText
-	; fallthrough
-
 CantUseItemMessage:
 ; Item couldn't be used.
 	xor a

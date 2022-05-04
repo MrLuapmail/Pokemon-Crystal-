@@ -492,6 +492,11 @@ _UnusedNothingHereText::
 	line "nothing here."
 	prompt
 
+_DisablePocketPCText::
+	text "The Pocket PC won't"
+	line "work in gauntlets."
+	prompt
+
 _CantGetOffBikeText::
 	text "You can't get off"
 	line "here!"
