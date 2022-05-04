@@ -1399,7 +1399,7 @@ BattleCommand_Stab:
 .SkipType:
 	inc hl
 	inc hl
-	jP .TypesLoop
+	jp .TypesLoop
 
 .end
 	call BattleCheckTypeMatchup
