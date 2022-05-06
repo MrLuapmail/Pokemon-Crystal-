@@ -194,11 +194,12 @@ MartEcruteak:
 	db -1 ; end
 
 MartMahogany1:
-	db 4 ; # items
+	db 5 ; # items
 	db TINYMUSHROOM
 	db SLOWPOKETAIL
 	db GREAT_BALL
 	db SUPER_POTION
+	db POCKET_PC
 	db -1 ; end
 
 MartMahogany2:
@@ -211,7 +212,7 @@ MartMahogany2:
 	db PARLYZ_HEAL
 	db SUPER_REPEL
 	db REVIVE
-	db FLOWER_MAIL
+	db POCKET_PC
 	db -1 ; end
 
 MartBlackthorn:
