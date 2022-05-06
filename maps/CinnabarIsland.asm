@@ -14,6 +14,8 @@ CinnabarIsland_MapScripts:
 CinnabarIslandBlue:
 	faceplayer
 	opentext
+	checkevent ENGINE_VOLCANOBADGE
+	iffalse .GoToSeafomGym
 	writetext CinnabarIslandBlueText
 	waitbutton
 	closetext
@@ -21,6 +23,12 @@ CinnabarIslandBlue:
 	applymovement CINNABARISLAND_BLUE, CinnabarIslandBlueTeleport
 	disappear CINNABARISLAND_BLUE
 	clearevent EVENT_VIRIDIAN_GYM_BLUE
+	end
+
+.GoToSeafomGym:
+	writetext GoToSeafomGymText
+	waitbutton
+	closetext
 	end
 
 CinnabarIslandGymSign:
@@ -38,6 +46,10 @@ CinnabarIslandHiddenRareCandy:
 CinnabarIslandBlueTeleport:
 	teleport_from
 	step_end
+
+GoToSeafomGymText:
+	text "..."
+	done
 
 CinnabarIslandBlueText:
 	text "Who are you?"
@@ -140,4 +152,4 @@ CinnabarIsland_MapEvents:
 	bg_event  1, 16, BGEVENT_ITEM, CinnabarIslandHiddenRareCandy
 
 	def_object_events
-	object_event  7,  2, SPRITE_BLUE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CinnabarIslandBlue, EVENT_BLUE_IN_CINNABAR
+	object_event  9,  1, SPRITE_BLUE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CinnabarIslandBlue, EVENT_BLUE_IN_CINNABAR
