@@ -161,7 +161,7 @@ Moves:
 	move DIZZY_PUNCH,  EFFECT_CONFUSE_HIT,        70, NORMAL,       100, 10,  20
 	move SPORE,        EFFECT_SLEEP,               0, GRASS,        100, 15,   0
 	move FLASH,        EFFECT_ACCURACY_DOWN,       0, NORMAL,        80,  5,   0
-	move PSYWAVE,      EFFECT_LEVEL_DAMAGE,        1, PSYCHIC_TYPE, 100, 15,   0
+	move PSYWAVE,      EFFECT_LEVEL_DAMAGE,        1, BIRD,		    100, 15,   0
 	move SPLASH,       EFFECT_SPLASH,              0, NORMAL,       100,  5,   0
 	move ACID_ARMOR,   EFFECT_DEFENSE_UP_2,        0, POISON,       100,  2,   0
 	move CRABHAMMER,   EFFECT_NORMAL_HIT,         90, WATER,        100, 10,   0

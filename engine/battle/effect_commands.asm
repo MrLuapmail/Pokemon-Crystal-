@@ -1314,14 +1314,15 @@ BattleCommand_Stab:
 	bit SUBSTATUS_IDENTIFIED, a
 	jr nz, .end
 	
-	cp -3
-	jr nz, .SkipForesightOrPsywaveCheck
+	;Special cluase for Psywave
+	; cp -3
+	; jr nz, .SkipForesightOrPsywaveCheck
 	
-	; Special Clause for Psybeam
-	ld a, BATTLE_VARS_MOVE
-	call GetBattleVar
-	cp PSYWAVE
-	jr nz, .end
+	; ; Special Clause for Psybeam
+	; ld a, BATTLE_VARS_MOVE
+	; call GetBattleVar
+	; cp PSYWAVE
+	; jr nz, .end
 
 	jr .TypesLoop
 
