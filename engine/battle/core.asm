@@ -490,7 +490,6 @@ HandleBerserkGene:
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr
 	push af
-	set SUBSTATUS_CONFUSED, [hl]
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVarAddr
 	push hl
