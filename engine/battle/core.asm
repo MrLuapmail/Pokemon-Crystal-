@@ -490,7 +490,6 @@ HandleBerserkGene:
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr
 	push af
-	set SUBSTATUS_CONFUSED, [hl]
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVarAddr
 	push hl
@@ -8340,6 +8339,7 @@ FillEnemyMovesFromMoveIndicesBuffer: ; unreferenced
 ExitBattle:
 	call .HandleEndOfBattle
 	call CleanUpBattleRAM
+	call HealSleep
 	ret
 
 .HandleEndOfBattle:
@@ -8362,6 +8362,74 @@ ExitBattle:
 	predef EvolveAfterBattle
 	farcall GivePokerusAndConvertBerries
 	ret
+
+HealSleep:
+	ld a, [wBattleMode]
+	and a
+	jr nz, .in_battle
+	; overworld flute code was dummied out here
+
+.in_battle
+	xor a
+	ld [wPokeFluteCuredSleep], a
+
+	ld b, $ff ^ SLP
+
+	ld hl, wPartyMon1Status
+	call .CureSleep
+
+	ld a, [wBattleMode]
+	cp WILD_BATTLE
+	jr z, .skip_otrainer
+	ld hl, wOTPartyMon1Status
+	call .CureSleep
+.skip_otrainer
+
+	ld hl, wBattleMonStatus
+	ld a, [hl]
+	and b
+	ld [hl], a
+	ld hl, wEnemyMonStatus
+	ld a, [hl]
+	and b
+	ld [hl], a
+
+	ld a, [wPokeFluteCuredSleep]
+	and a
+	;ld hl, .PlayedFluteText
+	;jp z, PrintText
+	;ld hl, .PlayedTheFlute
+	;call PrintText
+
+	ld a, [wLowHealthAlarm]
+	and 1 << DANGER_ON_F
+	jr nz, .dummy
+	; more code was dummied out here
+.dummy
+	;ld hl, .FluteWakeUpText
+	;jp PrintText
+
+.CureSleep:
+	ld de, PARTYMON_STRUCT_LENGTH
+	ld c, PARTY_LENGTH
+.loop
+	ld a, [hl]
+	push af
+	and SLP
+	jr z, .not_asleep
+	ld a, TRUE
+	ld [wPokeFluteCuredSleep], a
+.not_asleep
+	pop af
+	and b
+	ld [hl], a
+	add hl, de
+	dec c
+	jr nz, .loop
+	ret
+
+.battle
+	jp PokeFluteTerminator
 
 CleanUpBattleRAM:
 	call BattleEnd_HandleRoamMons
