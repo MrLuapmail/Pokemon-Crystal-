@@ -3695,10 +3695,31 @@ BattleCommand_SleepTarget:
 
 .random_loop
 	call BattleRandom
-	and b
+	cp 26 percent
+	jr c, .two_turns
+	cp 51 percent
+	jr c, .three_turns
+	cp 76 percent
+	jr c, .four_turns
 	jr z, .random_loop
-	cp SLP
-	jr z, .random_loop
+	jp .five_turns
+
+.two_turns
+	ld a, 2
+	jr .continue
+
+.three_turns
+	ld a, 3
+	jr .continue
+
+.four_turns
+	ld a, 4
+	jr .continue
+
+.five_turns
+	ld a, 5
+
+.continue
 	inc a
 	ld [de], a
 	call UpdateOpponentInParty
