@@ -164,7 +164,7 @@ Moves:
 	move PSYWAVE,      EFFECT_LEVEL_DAMAGE,        1, BIRD,		    100, 15,   0
 	move SPLASH,       EFFECT_SPLASH,              0, NORMAL,       100,  5,   0
 	move ACID_ARMOR,   EFFECT_DEFENSE_UP_2,        0, POISON,       100,  2,   0
-	move CRABHAMMER,   EFFECT_NORMAL_HIT,         90, WATER,        100, 10,   0
+	move CRABHAMMER,   EFFECT_NORMAL_HIT,         120, WATER,        100, 10,   0
 	move EXPLOSION,    EFFECT_SELFDESTRUCT,      250, NORMAL,       100,  1,   0
 	move FURY_SWIPES,  EFFECT_MULTI_HIT,          18, NORMAL,       100, 15,   0
 	move BONEMERANG,   EFFECT_DOUBLE_HIT,         50, GROUND,       100, 10,   0
@@ -186,7 +186,7 @@ Moves:
 	move NIGHTMARE,    EFFECT_NIGHTMARE,           0, GHOST,        100, 15,   0
 	move FLAME_WHEEL,  EFFECT_FLAME_WHEEL,        60, FIRE,         100, 25,  10
 	move SNORE,        EFFECT_SNORE,              60, NORMAL,       100, 15,  30
-	move CURSE,        EFFECT_CURSE,               0, CURSE_TYPE,   100, 10,   0
+	move CURSE,        EFFECT_CURSE,               0, CURSE_TYPE,   100,  3,   0
 	move FLAIL,        EFFECT_REVERSAL,            1, NORMAL,       100, 15,   0
 	move CONVERSION2,  EFFECT_CONVERSION2,         0, NORMAL,       100,  3,   0
 	move AEROBLAST,    EFFECT_TRI_ATTACK,        120, FLYING,       100,  8,  20
