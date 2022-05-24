@@ -92,7 +92,7 @@ Moves:
 	move POISONPOWDER, EFFECT_POISON,              0, POISON,        85,  3,   0
 	move STUN_SPORE,   EFFECT_PARALYZE,            0, GRASS,         85,  3,   0
 	move SLEEP_POWDER, EFFECT_SLEEP,               0, GRASS,         75,  3,   0
-	move PETAL_DANCE,  EFFECT_CONFUSE_HIT,        80, GRASS,        100, 20,  10
+	move PETAL_DANCE,  EFFECT_CONFUSE_HIT,        90, GRASS,        100, 20,  10
 	move STRING_SHOT,  EFFECT_SPEED_DOWN,          0, BUG,          100, 40,   0
 	move DRAGON_RAGE,  EFFECT_STATIC_DAMAGE,      40, DRAGON,       100, 10,   0
 	move FIRE_SPIN,    EFFECT_TRAP_TARGET,        15, FIRE,         100, 15,   0
@@ -214,7 +214,7 @@ Moves:
 	move LOCK_ON,      EFFECT_LOCK_ON,             0, NORMAL,       100,  5,   0
 	move OUTRAGE,      EFFECT_RAMPAGE,            90, DRAGON,       100, 15,   0
 	move SANDSTORM,    EFFECT_SANDSTORM,           0, ROCK,         100, 10,   0
-	move GIGA_DRAIN,   EFFECT_LEECH_HIT,          60, GRASS,        100, 10,   0
+	move GIGA_DRAIN,   EFFECT_LEECH_HIT,          75, GRASS,        100, 10,   0
 	move ENDURE,       EFFECT_ENDURE,              0, NORMAL,       100, 10,   0
 	move CHARM,        EFFECT_ATTACK_DOWN_2,       0, NORMAL,       100,  3,   0
 	move ROLLOUT,      EFFECT_ROLLOUT,            30, ROCK,          90, 20,   0
