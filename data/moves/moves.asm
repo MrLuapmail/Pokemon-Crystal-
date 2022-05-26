@@ -54,7 +54,7 @@ Moves:
 	move TAIL_WHIP,    EFFECT_DEFENSE_DOWN,        0, NORMAL,       100,  3,   0
 	move POISON_STING, EFFECT_POISON_HIT,         15, POISON,       100, 35,  30
 	move TWINEEDLE,    EFFECT_POISON_MULTI_HIT,   25, BUG,          100, 20,  20
-	move PIN_MISSILE,  EFFECT_MULTI_HIT,          14, BUG,          100, 20,   0
+	move PIN_MISSILE,  EFFECT_MULTI_HIT,          20, BUG,          100, 20,   0
 	move LEER,         EFFECT_DEFENSE_DOWN,        0, NORMAL,       100,  2,   0
 	move BITE,         EFFECT_FLINCH_HIT,         60, DARK,         100, 25,  30
 	move GROWL,        EFFECT_ATTACK_DOWN,         0, NORMAL,       100,  2,   0
@@ -89,8 +89,8 @@ Moves:
 	move GROWTH,       EFFECT_SP_ATK_UP,           0, NORMAL,       100,  3,   0
 	move RAZOR_LEAF,   EFFECT_NORMAL_HIT,         55, GRASS,        100, 25,   0
 	move SOLARBEAM,    EFFECT_SOLARBEAM,         120, GRASS,        100, 10,   0
-	move POISONPOWDER, EFFECT_POISON,              0, POISON,        85,  3,   0
-	move STUN_SPORE,   EFFECT_PARALYZE,            0, GRASS,         85,  3,   0
+	move POISONPOWDER, EFFECT_POISON,              0, POISON,       100,  3,   0
+	move STUN_SPORE,   EFFECT_PARALYZE,            0, GRASS,        100,  3,   0
 	move SLEEP_POWDER, EFFECT_SLEEP,               0, GRASS,         75,  3,   0
 	move PETAL_DANCE,  EFFECT_CONFUSE_HIT,        90, GRASS,        100, 20,  10
 	move STRING_SHOT,  EFFECT_SPEED_DOWN,          0, BUG,          100, 40,   0
