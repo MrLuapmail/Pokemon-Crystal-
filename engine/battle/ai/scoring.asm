@@ -511,7 +511,6 @@ AI_Smart_LockOn:
 	jp AIDiscourageMove
 
 AI_Smart_Selfdestruct:
-; Selfdestruct, Explosion
 
 ; Unless this is the enemy's last Pokemon...
 	push hl
@@ -526,24 +525,32 @@ AI_Smart_Selfdestruct:
 	jr nz, .discourage
 
 .notlastmon
-; Greatly discourage this move if enemy's HP is above 50%.
-	call AICheckEnemyHalfHP
-	jr c, .discourage
-
-; Do nothing if enemy's HP is below 25%.
-	call AICheckEnemyQuarterHP
-	ret nc
-
-; If enemy's HP is between 25% and 50%,
-; over 90% chance to greatly discourage this move.
+; Greatly discourage this move if there's another move that can kill.
+	ld a, [wMovesThatOHKOPlayer]
+	and a
+	jr nz, .discourage
+	
+; 90% chance to greatly discourage this move if enemy's HP is full.
+	call AICheckEnemyMaxHP
+	jr c, .check_hp_2
+	
 	call Random
-	cp 8 percent
+	cp 90 percent + 1
+	jr c, .discourage
+	
+.check_hp_2
+; 75% chance to greatly discourage this move if enemy's HP is above 50% but is not full.
+	call AICheckEnemyHalfHP
 	ret c
-
+	
+	call Random
+	cp 75 percent + 1
+	ret nc
+	
 .discourage
-	inc [hl]
-	inc [hl]
-	inc [hl]
+	ld a, [hl]
+	add 10
+	ld [hl], a
 	ret
 
 AI_Smart_DreamEater:
@@ -2910,11 +2917,6 @@ AI_Aggressive:
 	ld a, [hl]
 	and a
 	jp z, .gotstrongestmove
-	
-	cp SELFDESTRUCT
-	jr z, .checkmove
-	cp EXPLOSION
-	jr z, .checkmove
 
 	push hl
 	push de
@@ -2923,7 +2925,7 @@ AI_Aggressive:
 	call AIGetEnemyMove
 	ld a, [wEnemyMoveStruct + MOVE_POWER]
 	and a
-	jr z, .nodamage
+	jr z, .next_move
 	call AIDamageCalc
 	pop hl
 	push hl
@@ -2956,7 +2958,7 @@ AI_Aggressive:
 	
 	push hl
 	push bc
-	ld hl, wEnemyAIMoveScores
+	ld hl, wEnemyAIMoveScores - 1
 	ld c, b
 	ld b, 0
 	add hl, bc
@@ -2972,7 +2974,7 @@ AI_Aggressive:
 	
 	push hl
 	push bc
-	ld hl, wEnemyAIMoveScores
+	ld hl, wEnemyAIMoveScores - 1
 	ld c, b
 	ld b, 0
 	add hl, bc
@@ -2980,21 +2982,10 @@ AI_Aggressive:
 	pop bc
 	pop hl
 	
-; Encourage moves that have no recoil.
-	
-	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
-	cp EFFECT_RECOIL_HIT
-	jr z, .check_damage
-	
-	push hl
-	push bc
-	ld hl, wEnemyAIMoveScores
-	ld c, b
-	ld b, 0
-	add hl, bc
-	dec [hl]
-	pop bc
-	pop hl
+	cp SELFDESTRUCT
+	jr z, .next_move
+	cp EXPLOSION
+	jr z, .next_move
 	
 .check_damage
 	inc hl
@@ -3013,7 +3004,7 @@ AI_Aggressive:
 	ld c, b
 	jp .checkmove
 
-.nodamage
+.next_move
 	pop bc
 	pop de
 	pop hl
