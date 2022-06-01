@@ -308,7 +308,6 @@ AI_Smart:
 
 AI_Smart_EffectHandlers:
 	dbw EFFECT_SLEEP,            AI_Smart_Sleep
-	dbw EFFECT_LEECH_HIT,        AI_Smart_LeechHit
 	dbw EFFECT_SELFDESTRUCT,     AI_Smart_Selfdestruct
 	dbw EFFECT_DREAM_EATER,      AI_Smart_DreamEater
 	dbw EFFECT_MIRROR_MOVE,      AI_Smart_MirrorMove
@@ -325,7 +324,6 @@ AI_Smart_EffectHandlers:
 	dbw EFFECT_RAZOR_WIND,       AI_Smart_RazorWind
 	dbw EFFECT_SUPER_FANG,       AI_Smart_SuperFang
 	dbw EFFECT_TRAP_TARGET,      AI_Smart_TrapTarget
-	dbw EFFECT_UNUSED_2B,        AI_Smart_Unused2B
 	dbw EFFECT_CONFUSE,          AI_Smart_Confuse
 	dbw EFFECT_SP_DEF_UP_2,      AI_Smart_SpDefenseUp2
 	dbw EFFECT_REFLECT,          AI_Smart_Reflect
@@ -406,40 +404,6 @@ AI_Smart_Sleep:
 	ret c
 	dec [hl]
 	dec [hl]
-	ret
-
-AI_Smart_LeechHit:
-	push hl
-	ld a, 1
-	ldh [hBattleTurn], a
-	callfar BattleCheckTypeMatchup
-	pop hl
-
-; 60% chance to discourage this move if not very effective.
-	ld a, [wTypeMatchup]
-	cp EFFECTIVE
-	jr c, .discourage
-
-; Do nothing if effectiveness is neutral.
-	ret z
-
-; Do nothing if enemy's HP is full.
-	call AICheckEnemyMaxHP
-	ret c
-
-; 80% chance to encourage this move otherwise.
-	call AI_80_20
-	ret c
-
-	dec [hl]
-	ret
-
-.discourage
-	call Random
-	cp 39 percent + 1
-	ret c
-
-	inc [hl]
 	ret
 
 AI_Smart_LockOn:
@@ -547,7 +511,6 @@ AI_Smart_LockOn:
 	jp AIDiscourageMove
 
 AI_Smart_Selfdestruct:
-; Selfdestruct, Explosion
 
 ; Unless this is the enemy's last Pokemon...
 	push hl
@@ -562,24 +525,32 @@ AI_Smart_Selfdestruct:
 	jr nz, .discourage
 
 .notlastmon
-; Greatly discourage this move if enemy's HP is above 50%.
-	call AICheckEnemyHalfHP
-	jr c, .discourage
-
-; Do nothing if enemy's HP is below 25%.
-	call AICheckEnemyQuarterHP
-	ret nc
-
-; If enemy's HP is between 25% and 50%,
-; over 90% chance to greatly discourage this move.
+; Greatly discourage this move if there's another move that can kill.
+	ld a, [wMovesThatOHKOPlayer]
+	and a
+	jr nz, .discourage
+	
+; 90% chance to greatly discourage this move if enemy's HP is full.
+	call AICheckEnemyMaxHP
+	jr c, .check_hp_2
+	
 	call Random
-	cp 8 percent
+	cp 90 percent + 1
+	jr c, .discourage
+	
+.check_hp_2
+; 75% chance to greatly discourage this move if enemy's HP is above 50% but is not full.
+	call AICheckEnemyHalfHP
 	ret c
-
+	
+	call Random
+	cp 75 percent + 1
+	ret nc
+	
 .discourage
-	inc [hl]
-	inc [hl]
-	inc [hl]
+	ld a, [hl]
+	add 10
+	ld [hl], a
 	ret
 
 AI_Smart_DreamEater:
@@ -972,12 +943,12 @@ AI_Smart_LeechSeed:
 
 AI_Smart_LightScreen:
 AI_Smart_Reflect:
-; Over 90% chance to discourage this move unless enemy's HP is full.
+; Over 50% chance to discourage this move unless enemy's HP is full.
 
 	call AICheckEnemyMaxHP
 	ret c
 	call Random
-	cp 8 percent
+	cp 50 percent + 1
 	ret c
 	inc [hl]
 	ret
@@ -1036,7 +1007,6 @@ AI_Smart_TrapTarget:
 	ret
 
 AI_Smart_RazorWind:
-AI_Smart_Unused2B:
 	ld a, [wEnemySubStatus1]
 	bit SUBSTATUS_PERISH, a
 	jr z, .no_perish_count
@@ -1559,6 +1529,15 @@ AI_Smart_Spite:
 	jp AIDiscourageMove
 
 AI_Smart_DestinyBond:
+; 33% chance to encourage this move.
+	call Random
+	cp 33 percent + 1
+	ret nc
+	
+	dec [hl]
+	dec [hl]
+	ret
+
 AI_Smart_Reversal:
 AI_Smart_SkullBash:
 ; Discourage this move if enemy's HP is above 25%.
@@ -2319,20 +2298,10 @@ AI_Smart_HiddenPower:
 	cp EFFECTIVE
 	jr c, .bad
 
-; Discourage Hidden Power if its base power	is lower than 50.
-	ld a, d
-	cp 50
-	jr c, .bad
-
 ; Encourage Hidden Power if super-effective.
 	ld a, [wTypeMatchup]
 	cp EFFECTIVE + 1
 	jr nc, .good
-
-; Encourage Hidden Power if its base power is 70.
-	ld a, d
-	cp 70
-	ret c
 
 .good
 	dec [hl]
@@ -2956,7 +2925,7 @@ AI_Aggressive:
 	call AIGetEnemyMove
 	ld a, [wEnemyMoveStruct + MOVE_POWER]
 	and a
-	jr z, .nodamage
+	jr z, .next_move
 	call AIDamageCalc
 	pop hl
 	push hl
@@ -2989,7 +2958,7 @@ AI_Aggressive:
 	
 	push hl
 	push bc
-	ld hl, wEnemyAIMoveScores
+	ld hl, wEnemyAIMoveScores - 1
 	ld c, b
 	ld b, 0
 	add hl, bc
@@ -3005,7 +2974,7 @@ AI_Aggressive:
 	
 	push hl
 	push bc
-	ld hl, wEnemyAIMoveScores
+	ld hl, wEnemyAIMoveScores - 1
 	ld c, b
 	ld b, 0
 	add hl, bc
@@ -3013,21 +2982,10 @@ AI_Aggressive:
 	pop bc
 	pop hl
 	
-; Encourage moves that have no recoil.
-	
-	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
-	cp EFFECT_RECOIL_HIT
-	jr z, .check_damage
-	
-	push hl
-	push bc
-	ld hl, wEnemyAIMoveScores
-	ld c, b
-	ld b, 0
-	add hl, bc
-	dec [hl]
-	pop bc
-	pop hl
+	cp SELFDESTRUCT
+	jr z, .next_move
+	cp EXPLOSION
+	jr z, .next_move
 	
 .check_damage
 	inc hl
@@ -3037,7 +2995,7 @@ AI_Aggressive:
 	cp e
 	ld a, [wCurDamage]
 	sbc d
-	jr c, .checkmove
+	jp c, .checkmove
 
 	ld a, [wCurDamage + 1]
 	ld e, a
@@ -3046,7 +3004,7 @@ AI_Aggressive:
 	ld c, b
 	jp .checkmove
 
-.nodamage
+.next_move
 	pop bc
 	pop de
 	pop hl
@@ -3131,19 +3089,60 @@ AIDamageCalc:
 	ld a, 1
 	ldh [hBattleTurn], a
 	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
+	cp EFFECT_MULTI_HIT
+	jr z, .multihit
+	cp EFFECT_DOUBLE_HIT
+	jr z, .doublehit
+	cp EFFECT_MAGNITUDE
+	jr z, .magnitude
+	cp EFFECT_REVERSAL
+	jr z, .reversal
+	
 	ld de, 1
 	ld hl, ConstantDamageEffects
 	call IsInArray
-	jr nc, .notconstant
+	jr nc, .regular_damage
 	farcall BattleCommand_ConstantDamage
 	ret
+	
+.multihit
+	ld b, 3
+	jr .multihit_boost
+.doublehit
+	; Multiply base power by 2
+	ld b, 2
+.multihit_boost
+	ld a, [wEnemyMoveStruct + MOVE_POWER]
+	ld c, a
+.multihit_loop
+	dec b
+	jr z, .regular_damage ; With proper BP, we can use regular calc now
+	add c
+	ld [wEnemyMoveStruct + MOVE_POWER], a
+	jr .multihit_loop
 
-.notconstant
+.reversal
+	farcall BattleCommand_ConstantDamage
+	jr .stab
+
+.hidden_power
+	farcall BattleCommand_HiddenPower
+	jr .damagecalc
+
+.magnitude
+	; Pretend that the base power is 70
+	ld a, 70
+	ld [wEnemyMoveStruct + MOVE_POWER], a
+	; fallthrough	
+.regular_damage
 	farcall EnemyAttackDamage
+.damagecalc
 	farcall BattleCommand_DamageCalc
+.stab
 	farcall BattleCommand_Stab
 	farcall BattleCommand_DamageVariation
 	ret
+
 	
 PursuitDamage:
 	call AICheckPlayerQuarterHP
@@ -3274,11 +3273,44 @@ AI_Status:
 	jr z, .typeimmunity
 	cp EFFECT_PARALYZE
 	jr z, .typeimmunity
+	cp EFFECT_LEECH_SEED
+	jr z, .grassimmunity
 
+; Discourage moves that inflict status ailments, confuse or lower stats 
+; against a subtitute.
+; This check also applies for Leech Seed and Swagger.
+	cp EFFECT_LEECH_SEED
+	jr z, .subs_check 
+	cp EFFECT_CONFUSE
+	jr z, .subs_check 
+
+; Stat-lowering moves
+	cp EFFECT_ATTACK_DOWN
+	jr c, .powercheck
+	cp EFFECT_EVASION_DOWN + 1
+	jr c, .subs_check
+
+	cp EFFECT_ATTACK_DOWN_2
+	jr c, .powercheck
+	cp EFFECT_EVASION_DOWN_2 + 1
+	jr c, .subs_check
+
+.powercheck
 	ld a, [wEnemyMoveStruct + MOVE_POWER]
+	ld c, a ; Store Move's Power in c.
 	and a
 	jr z, .checkmove
 
+	jr .typeimmunity
+	
+.grassimmunity
+	ld a, [wBattleMonType1]
+	cp GRASS
+	jp z, .immune
+	ld a, [wBattleMonType2]
+	cp GRASS
+	jr z, .immune
+	
 	jr .typeimmunity
 
 .poisonimmunity
@@ -3295,18 +3327,30 @@ AI_Status:
 	push de
 	ld a, 1
 	ldh [hBattleTurn], a
-	callfar BattleCheckTypeMatchup
+	farcall BattleCheckTypeMatchup
 	pop de
 	pop bc
 	pop hl
 
 	ld a, [wTypeMatchup]
 	and a
-	jr nz, .checkmove
+	jr z, .immune
+	; fallthrough
+
+; ** Substitute check starts here **
+.subs_check
+	ld a, BATTLE_VARS_SUBSTATUS4_OPP
+	call GetBattleVar
+	bit SUBSTATUS_SUBSTITUTE, a
+	jp z, .checkmove
+
+	ld a, c ; Load Move's Power back into a.
+	and a
+	jp nz, .checkmove
 
 .immune
 	call AIDiscourageMove
-	jr .checkmove
+	jp .checkmove
 
 
 AI_Risky:
