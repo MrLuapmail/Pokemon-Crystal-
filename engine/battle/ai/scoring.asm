@@ -2925,7 +2925,7 @@ AI_Aggressive:
 	call AIGetEnemyMove
 	ld a, [wEnemyMoveStruct + MOVE_POWER]
 	and a
-	jr z, .next_move
+	jr z, .no_damage
 	call AIDamageCalc
 	pop hl
 	push hl
@@ -2982,6 +2982,7 @@ AI_Aggressive:
 	pop bc
 	pop hl
 	
+	ld a, [hl]
 	cp SELFDESTRUCT
 	jr z, .next_move
 	cp EXPLOSION
@@ -3004,10 +3005,11 @@ AI_Aggressive:
 	ld c, b
 	jp .checkmove
 
-.next_move
+.no_damage
 	pop bc
 	pop de
 	pop hl
+.next_move
 	inc hl
 	jp .checkmove
 
