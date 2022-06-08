@@ -13,6 +13,7 @@ TrainerFirebreatherLyle:
 	trainer FIREBREATHER, LYLE, EVENT_BEAT_FIREBREATHER_LYLE, FirebreatherLyleSeenText, FirebreatherLyleBeatenText, 0, .Script
 
 .Script:
+	setevent EVENT_DISABLE_POCKET_PC
 	endifjustbattled
 	opentext
 	writetext FirebreatherLyleAfterBattleText
