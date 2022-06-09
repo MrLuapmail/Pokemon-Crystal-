@@ -532,7 +532,7 @@ AI_Smart_Selfdestruct:
 	
 ; 90% chance to greatly discourage this move if enemy's HP is full.
 	call AICheckEnemyMaxHP
-	jr c, .check_hp_2
+	jr nc, .check_hp_2
 	
 	call Random
 	cp 90 percent + 1
@@ -541,7 +541,7 @@ AI_Smart_Selfdestruct:
 .check_hp_2
 ; 75% chance to greatly discourage this move if enemy's HP is above 50% but is not full.
 	call AICheckEnemyHalfHP
-	ret c
+	ret nc
 	
 	call Random
 	cp 75 percent + 1
