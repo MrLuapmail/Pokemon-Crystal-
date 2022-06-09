@@ -487,7 +487,9 @@ wPlayerSubstituteHP:: db
 wEnemySubstituteHP::  db
 
 wUnusedPlayerLockedMove:: db
-	ds 1
+
+wPlayerDamageTakenThisTurn:: dw
+wEnemyDamageTakenThisTurn:: dw
 
 wCurPlayerMove:: db
 wCurEnemyMove::  db
@@ -497,7 +499,6 @@ wLinkBattleRNCount::
 	db
 
 wEnemyItemState:: db
-	ds 2
 wCurEnemyMoveNum:: db
 
 wEnemyHPAtTimeOfPlayerSwitch:: dw
@@ -505,7 +506,6 @@ wPayDayMoney:: ds 3
 
 wSafariMonAngerCount:: db ; unreferenced
 wSafariMonEating:: db
-	ds 1
 wEnemyBackupDVs:: dw ; used when enemy is transformed
 wAlreadyDisobeyed:: db
 
