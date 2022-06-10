@@ -201,13 +201,13 @@ AIScoringPointers:
 ; entries correspond to AI_* constants
 	dw AI_Basic
 	dw AI_Setup
+	dw AI_Aggressive
+	dw AI_Smart
+	dw AI_Status
 	dw AI_Types
 	dw AI_Offensive
-	dw AI_Smart
 	dw AI_Opportunist
-	dw AI_Aggressive
 	dw AI_Cautious
-	dw AI_Status
 	dw AI_Risky
 	dw AI_None
 	dw AI_None
