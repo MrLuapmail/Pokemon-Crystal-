@@ -2211,13 +2211,8 @@ BattleCommand_ApplyDamage:
 	ld de, wPlayerDamageTaken + 1
 	ldh a, [hBattleTurn]
 	and a
-	jr nz, .player_turn
+	jr nz, .got_damage_taken
 	ld de, wEnemyDamageTaken + 1
-	call CalcEnemyDamageTakenThisTurn
-	jr .got_damage_taken
-
-.player_turn
-	call CalcPlayerDamageTakenThisTurn
 
 .got_damage_taken
 	ld a, [wCurDamage + 1]
@@ -2236,20 +2231,6 @@ BattleCommand_ApplyDamage:
 	ld [de], a
 	inc de
 	ld [de], a
-	ret
-	
-CalcPlayerDamageTakenThisTurn:
-	ld a, [wCurDamage]
-	ld [wPlayerDamageTakenThisTurn], a
-	ld a, [wCurDamage + 1]
-	ld [wPlayerDamageTakenThisTurn + 1], a
-	ret
-	
-CalcEnemyDamageTakenThisTurn:
-	ld a, [wCurDamage]
-	ld [wEnemyDamageTakenThisTurn], a
-	ld a, [wCurDamage + 1]
-	ld [wEnemyDamageTakenThisTurn + 1], a
 	ret
 
 GetFailureResultText:

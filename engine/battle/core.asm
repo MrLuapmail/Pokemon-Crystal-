@@ -1061,13 +1061,55 @@ PlayerTurn_EndOpponentProtectEndureDestinyBond:
 	call SetPlayerTurn
 	call EndUserDestinyBond
 	callfar DoPlayerTurn
+	call CalcEnemyDamageTakenThisTurn
 	jp EndOpponentProtectEndureDestinyBond
 
 EnemyTurn_EndOpponentProtectEndureDestinyBond:
 	call SetEnemyTurn
 	call EndUserDestinyBond
 	callfar DoEnemyTurn
+	call CalcPlayerDamageTakenThisTurn
 	jp EndOpponentProtectEndureDestinyBond
+	
+CalcPlayerDamageTakenThisTurn:
+	ld a, [wCurDamage]
+	ld [wPlayerDamageTakenThisTurn], a
+	ld a, [wCurDamage + 1]
+	ld [wPlayerDamageTakenThisTurn + 1], a
+	and a
+	jr nz, .took_damage
+	ld a, [wCurDamage]
+	and a
+	jr nz, .took_damage
+	ld a, [wPlayerTurnsTookNoDamage]
+	inc a
+	ld [wPlayerTurnsTookNoDamage], a
+	ret
+	
+.took_damage
+	xor a
+	ld [wPlayerTurnsTookNoDamage], a
+	ret
+	
+CalcEnemyDamageTakenThisTurn:
+	ld a, [wCurDamage]
+	ld [wEnemyDamageTakenThisTurn], a
+	ld a, [wCurDamage + 1]
+	ld [wEnemyDamageTakenThisTurn + 1], a
+	and a
+	jr nz, .took_damage
+	ld a, [wCurDamage]
+	and a
+	jr nz, .took_damage
+	ld a, [wEnemyTurnsTookNoDamage]
+	inc a
+	ld [wEnemyTurnsTookNoDamage], a
+	ret
+	
+.took_damage
+	xor a
+	ld [wEnemyTurnsTookNoDamage], a
+	ret
 
 EndOpponentProtectEndureDestinyBond:
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
@@ -3713,6 +3755,7 @@ endr
 	ld [wEnemyTurnsTaken], a
 	ld [wEnemyDamageTakenThisTurn], a
 	ld [wEnemyDamageTakenThisTurn + 1], a
+	ld [wPlayerTurnsTookNoDamage], a
 	ld hl, wPlayerSubStatus5
 	res SUBSTATUS_CANT_RUN, [hl]
 	ret
@@ -4199,6 +4242,7 @@ endr
 	ld [wPlayerTurnsTaken], a
 	ld [wPlayerDamageTakenThisTurn], a
 	ld [wPlayerDamageTakenThisTurn + 1], a
+	ld [wEnemyTurnsTookNoDamage], a
 	ld hl, wEnemySubStatus5
 	res SUBSTATUS_CANT_RUN, [hl]
 	ret
@@ -5946,6 +5990,12 @@ ParseEnemyAction:
 	jr .struggle
 
 .enough_pp
+	; Randomize move to use if enemy can't damage player for at least 5 turns.
+	ld a, [wPlayerTurnsTookNoDamage]
+	cp 5
+	jr nc, .loop2
+
+	; Otherwise, don't randomize move selection.
 	ld a, [wBattleMode]
 	dec a
 	jr nz, .skip_load

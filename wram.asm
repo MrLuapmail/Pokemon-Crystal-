@@ -541,12 +541,14 @@ wEnemyScreens::
 wPlayerSafeguardCount:: db
 wPlayerLightScreenCount:: db
 wPlayerReflectCount:: db
-	ds 1
+
+wPlayerTurnsTookNoDamage:: db
 
 wEnemySafeguardCount:: db
 wEnemyLightScreenCount:: db
 wEnemyReflectCount:: db
-	ds 1
+
+wEnemyTurnsTookNoDamage:: db
 
 wMovesThatOHKOPlayer:: db
 
