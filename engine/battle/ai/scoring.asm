@@ -2302,6 +2302,7 @@ AI_Smart_HiddenPower:
 	ld a, [wTypeMatchup]
 	cp EFFECTIVE + 1
 	jr nc, .good
+	ret
 
 .good
 	dec [hl]
