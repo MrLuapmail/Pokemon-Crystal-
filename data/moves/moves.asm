@@ -217,7 +217,7 @@ Moves:
 	move GIGA_DRAIN,   EFFECT_LEECH_HIT,          75, GRASS,        100, 10,   0
 	move ENDURE,       EFFECT_ENDURE,              0, NORMAL,       100, 10,   0
 	move CHARM,        EFFECT_ATTACK_DOWN_2,       0, NORMAL,       100,  3,   0
-	move ROLLOUT,      EFFECT_ROLLOUT,            30, ROCK,          90, 20,   0
+	move ROLLOUT,      EFFECT_ROLLOUT,            30, ROCK,         100,  1,   0
 	move FALSE_SWIPE,  EFFECT_FALSE_SWIPE,        40, NORMAL,       100, 40,   0
 	move SWAGGER,      EFFECT_SWAGGER,             0, NORMAL,       100, 15, 100
 	move MILK_DRINK,   EFFECT_HEAL,                0, NORMAL,       100, 10,   0
@@ -259,9 +259,9 @@ Moves:
 	move PSYCH_UP,     EFFECT_PSYCH_UP,            0, NORMAL,       100,  1,   0
 	move EXTREMESPEED, EFFECT_PRIORITY_HIT,      100, NORMAL,       100,  8,   0
 	move ANCIENTPOWER, EFFECT_ALL_UP_HIT,        100, ROCK,         100,  8,  10
-	move SHADOW_BALL,  EFFECT_DEFENSE_DOWN_HIT,    80, GHOST,        100, 15,  20
+	move SHADOW_BALL,  EFFECT_DEFENSE_DOWN_HIT,    80, GHOST,       100, 15,  20
 	move FUTURE_SIGHT, EFFECT_FUTURE_SIGHT,       80, PSYCHIC_TYPE, 100, 15,   0
-	move ROCK_SMASH,   EFFECT_DEFENSE_DOWN_HIT,   20, FIGHTING,     100, 15,  50
+	move ROCK_SMASH,   EFFECT_DEFENSE_DOWN_HIT,   40, FIGHTING,     100, 15,  50
 	move WHIRLPOOL,    EFFECT_TRAP_TARGET,        15, WATER,         70, 15,   0
 	move BEAT_UP,      EFFECT_BEAT_UP,            10, DARK,         100, 10,   0
 	assert_table_length NUM_ATTACKS
