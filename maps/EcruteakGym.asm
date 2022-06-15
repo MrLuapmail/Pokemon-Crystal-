@@ -392,23 +392,23 @@ EcruteakGym_MapEvents:
 	warp_event  5, 17, ECRUTEAK_CITY, 10
 	warp_event  4, 14, ECRUTEAK_GYM, 4
 	warp_event  3,  4, ECRUTEAK_GYM, 3
-	warp_event  7,  9, ECRUTEAK_GYM, 3
+	warp_event  2,  6, ECRUTEAK_GYM, 3
 	warp_event  6,  0, ECRUTEAK_GYM, 3
 	warp_event  5,  1, ECRUTEAK_GYM, 3
 	warp_event  4,  2, ECRUTEAK_GYM, 3
-	warp_event  5,  3, ECRUTEAK_GYM, 3
+	warp_event  5,  4, ECRUTEAK_GYM, 3
 	warp_event  2,  0, ECRUTEAK_GYM, 3
 	warp_event  2,  4, ECRUTEAK_GYM, 3
 	warp_event  3,  0, ECRUTEAK_GYM, 3
 	warp_event  3,  2, ECRUTEAK_GYM, 3
-	warp_event  7,  4, ECRUTEAK_GYM, 3
-	warp_event  7,  3, ECRUTEAK_GYM, 3
+	warp_event  6,  2, ECRUTEAK_GYM, 3
+	warp_event  6,  3, ECRUTEAK_GYM, 3
 	warp_event  4,  8, ECRUTEAK_GYM, 3
 	warp_event  5,  8, ECRUTEAK_GYM, 3
 	warp_event  6,  5, ECRUTEAK_GYM, 3
-	warp_event  5,  4, ECRUTEAK_GYM, 3
+	warp_event  7,  0, ECRUTEAK_GYM, 3
 	warp_event  6,  7, ECRUTEAK_GYM, 3
-	warp_event  2,  9, ECRUTEAK_GYM, 3
+	warp_event  2,  8, ECRUTEAK_GYM, 3
 	warp_event  2, 10, ECRUTEAK_GYM, 3
 	warp_event  2, 11, ECRUTEAK_GYM, 3
 	warp_event  4, 10, ECRUTEAK_GYM, 3
@@ -416,7 +416,7 @@ EcruteakGym_MapEvents:
 	warp_event  3,  8, ECRUTEAK_GYM, 3
 	warp_event  3, 12, ECRUTEAK_GYM, 3
 	warp_event  5, 12, ECRUTEAK_GYM, 3
-	warp_event  5, 11, ECRUTEAK_GYM, 3
+	warp_event  3,  6, ECRUTEAK_GYM, 3
 	warp_event  7, 10, ECRUTEAK_GYM, 3
 	warp_event  6, 10, ECRUTEAK_GYM, 3
 	warp_event  7, 12, ECRUTEAK_GYM, 3
