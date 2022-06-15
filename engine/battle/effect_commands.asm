@@ -1440,8 +1440,8 @@ CheckTypeMatchup:
 	jr z, .End
 	cp -2
 	jr nz, .Next
-	cp -3
-	jr nz, .Next
+	;cp -3
+	;jr nz, .Next
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
 	call GetBattleVar
 	bit SUBSTATUS_IDENTIFIED, a
