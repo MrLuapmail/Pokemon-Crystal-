@@ -2298,17 +2298,18 @@ AI_Smart_HiddenPower:
 	cp EFFECTIVE
 	jr c, .bad
 
-; Encourage Hidden Power if super-effective.
+; Don't encourageor discourage Hidden Power if it's neutral.
 	ld a, [wTypeMatchup]
 	cp EFFECTIVE + 1
-	jr nc, .good
-	ret
-
-.good
+	ret c
+	
+; Encourage Hidden Power if super-effective.	
+	dec [hl]
 	dec [hl]
 	ret
 
 .bad
+	inc [hl]
 	inc [hl]
 	ret
 
