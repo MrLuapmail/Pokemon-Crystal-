@@ -332,7 +332,7 @@ def main():
 		if name not in data:
 			print(f'Unknown route: {name}')
 			continue
-		pattern = rf'\tmap {name}([^\n]+)FISHGROUP_\w+'
+		pattern = rf'\tmap {name},([^\n]+)FISHGROUP_\w+'
 		data = re.sub(pattern, rf'\tmap {name}\1FISHGROUP_{convert_data_name(routes[route]["fishing"])}', data)
 
 	path = 'maps.asm'
