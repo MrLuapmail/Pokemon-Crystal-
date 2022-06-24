@@ -545,12 +545,17 @@ AI_Smart_Selfdestruct:
 	
 	call Random
 	cp 75 percent + 1
-	ret nc
+	jr .encourage
 	
 .discourage
 	ld a, [hl]
 	add 10
 	ld [hl], a
+	jp AI_Aggressive_Except_Boom
+
+.encourage
+	dec [hl]
+	dec [hl]
 	ret
 
 AI_Smart_DreamEater:
@@ -2914,11 +2919,11 @@ AI_Aggressive:
 	inc b
 	ld a, b
 	cp NUM_MOVES + 1
-	jp z, .gotstrongestmove
+	jp z, Aggressive_Got_Strongest_Move
 
 	ld a, [hl]
 	and a
-	jp z, .gotstrongestmove
+	jp z, Aggressive_Got_Strongest_Move
 
 	push hl
 	push de
@@ -3015,7 +3020,7 @@ AI_Aggressive:
 	inc hl
 	jp .checkmove
 
-.gotstrongestmove
+Aggressive_Got_Strongest_Move:
 ; Nothing we can do if no attacks did damage.
 	ld a, c
 	and a
@@ -3039,24 +3044,23 @@ AI_Aggressive:
 ; Discourage this move if it is SPLASH.
 
 	ld a, [de]
-	inc de
-	inc hl
 	cp SPLASH
+	inc hl
 	jr z, .splash
-	
+
 	call AIGetEnemyMove
 	
 ; Ignore this move if it doesn't deal damage.
 
 	ld a, [wEnemyMoveStruct + MOVE_POWER]
 	and a
-	jr z, .checkmove2
+	jr z, .move_on
 
 ; Ignore this move if it is the highest damaging one.
 	ld a, b
 	cp c
 	ld a, [de]
-	jr z, .checkmove2
+	jr z, .move_on
 
 	call AIGetEnemyMove
 
@@ -3071,21 +3075,141 @@ AI_Aggressive:
 	pop bc
 	pop de
 	pop hl
-	jr c, .checkmove2
-
+	jr c, .move_on
 
 .discourage
 ; If we made it this far, discourage this move.
 	inc [hl]
+	inc [hl]
+	jr .checkmove2
+
+.move_on
+	inc de
 	jr .checkmove2
 	
 .splash
-	inc [hl]
+	inc de
 	inc [hl]
 	jr .discourage
 
 .done
 	ret
+
+AI_Aggressive_Except_Boom:
+; Use whatever does the most damage... except exploding moves.
+	ld hl, wEnemyMonMoves
+	ld bc, 0
+	ld de, 0
+	xor a
+	ld [wMovesThatOHKOPlayer], a
+.checkmove
+	inc b
+	ld a, b
+	cp NUM_MOVES + 1
+	jp z, Aggressive_Got_Strongest_Move
+
+	ld a, [hl]
+	and a
+	jp z, Aggressive_Got_Strongest_Move
+	cp SELFDESTRUCT
+	jr z, .next_move
+	cp EXPLOSION
+	jr z, .next_move
+
+	push hl
+	push de
+	push bc
+	ld a, [hl]
+	call AIGetEnemyMove
+	ld a, [wEnemyMoveStruct + MOVE_POWER]
+	and a
+	jr z, .no_damage
+	call AIDamageCalc
+	pop hl
+	push hl
+	ld a, [hl]
+	cp PURSUIT 
+	call z, PursuitDamage
+	pop bc
+	pop de
+	pop hl
+	
+	push hl
+	push de
+	push bc
+	call AIAggressiveCheckOHKO
+	pop bc
+	pop de
+	pop hl
+	
+; Encourage moves that can OHKO and have good accuracy.
+	cp 1
+	jr nz, .check_damage
+	
+	ld a, [wMovesThatOHKOPlayer]
+	inc a
+	ld [wMovesThatOHKOPlayer], a
+	
+	ld a, [wEnemyMoveStruct + MOVE_ACC]
+	cp 74 percent
+	jr c, .check_damage
+	
+	push hl
+	push bc
+	ld hl, wEnemyAIMoveScores - 1
+	ld c, b
+	ld b, 0
+	add hl, bc
+	dec [hl]
+	pop bc
+	pop hl
+	
+; Encourage moves that can OHKO and have perfect accuracy.
+
+	ld a, [wEnemyMoveStruct + MOVE_ACC]
+	cp 99 percent + 1
+	jr c, .check_damage
+	
+	push hl
+	push bc
+	ld hl, wEnemyAIMoveScores - 1
+	ld c, b
+	ld b, 0
+	add hl, bc
+	dec [hl]
+	pop bc
+	pop hl
+	
+	ld a, [hl]
+	cp SELFDESTRUCT
+	jr z, .next_move
+	cp EXPLOSION
+	jr z, .next_move
+	
+.check_damage
+	inc hl
+
+; Update current move if damage is highest so far
+	ld a, [wCurDamage + 1]
+	cp e
+	ld a, [wCurDamage]
+	sbc d
+	jp c, .checkmove
+
+	ld a, [wCurDamage + 1]
+	ld e, a
+	ld a, [wCurDamage]
+	ld d, a
+	ld c, b
+	jp .checkmove
+
+.no_damage
+	pop bc
+	pop de
+	pop hl
+.next_move
+	inc hl
+	jp .checkmove
 
 INCLUDE "data/battle/ai/reckless_moves.asm"
 
