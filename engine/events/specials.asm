@@ -24,14 +24,14 @@ DamageMon:
     cp EGG
     jp z, .Egg
 	
-	ld d, a
+	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1Species
 .find_target_mon
-	ld a, [hl]
-	cp d
+	and a
 	jr z, .damage
 	ld bc, PARTYMON_STRUCT_LENGTH
 	add hl, bc
+	dec a
 	jr .find_target_mon
 	
 .damage
@@ -333,14 +333,14 @@ PoisonMon:
     cp EGG
     jp z, .Egg
 	
-	ld d, a
+	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1Species
 .find_target_mon
-	ld a, [hl]
-	cp d
+	and a
 	jr z, .poison
 	ld bc, PARTYMON_STRUCT_LENGTH
 	add hl, bc
+	dec a
 	jr .find_target_mon
 	
 .poison
@@ -406,14 +406,14 @@ ParalyzeMon:
     cp EGG
     jp z, .Egg
 	
-	ld d, a
+	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1Species
 .find_target_mon
-	ld a, [hl]
-	cp d
+	and a
 	jr z, .paralyze
 	ld bc, PARTYMON_STRUCT_LENGTH
 	add hl, bc
+	dec a
 	jr .find_target_mon
 	
 .paralyze
