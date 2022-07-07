@@ -148,7 +148,7 @@ Moves:
 	move AMNESIA,      EFFECT_SP_DEF_UP_2,         0, PSYCHIC_TYPE, 100,  2,   0
 	move KINESIS,      EFFECT_ACCURACY_DOWN,       0, PSYCHIC_TYPE, 100,  3,   0
 	move SOFTBOILED,   EFFECT_HEAL,                0, NORMAL,       100, 10,   0
-	move HI_JUMP_KICK, EFFECT_JUMP_KICK,          85, FIGHTING,      90, 20,   0
+	move HI_JUMP_KICK, EFFECT_JUMP_KICK,          110, FIGHTING,    100, 20,   0
 	move GLARE,        EFFECT_PARALYZE,            0, NORMAL,       100,  3,   0
 	move DREAM_EATER,  EFFECT_DREAM_EATER,       100, PSYCHIC_TYPE, 100, 15,   0
 	move POISON_GAS,   EFFECT_POISON,              0, POISON,       100,  3,   0
@@ -250,7 +250,7 @@ Moves:
 	move SYNTHESIS,    EFFECT_HEAL,                0, GRASS,        100, 10,   0
 	move MOONLIGHT,    EFFECT_HEAL,                0, NORMAL,       100,  5,   0
 	move HIDDEN_POWER, EFFECT_HIDDEN_POWER,        1, NORMAL,       100, 15,   0
-	move CROSS_CHOP,   EFFECT_NORMAL_HIT,        100, FIGHTING,      80,  8,   0
+	move CROSS_CHOP,   EFFECT_NORMAL_HIT,        100, FIGHTING,     100,  8,   0
 	move TWISTER,      EFFECT_TWISTER,            40, DRAGON,       100, 20,  20
 	move RAIN_DANCE,   EFFECT_RAIN_DANCE,          0, WATER,         90,  5,   0
 	move SUNNY_DAY,    EFFECT_SUNNY_DAY,           0, FIRE,          90,  5,   0
