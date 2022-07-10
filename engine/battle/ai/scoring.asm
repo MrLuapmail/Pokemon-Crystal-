@@ -545,7 +545,7 @@ AI_Smart_Selfdestruct:
 	
 	call Random
 	cp 75 percent + 1
-	jr .encourage
+	jr nc, .encourage
 	
 .discourage
 	ld a, [hl]
