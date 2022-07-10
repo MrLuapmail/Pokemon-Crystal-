@@ -537,6 +537,7 @@ AI_Smart_Selfdestruct:
 	call Random
 	cp 90 percent + 1
 	jr c, .discourage
+	ret
 	
 .check_hp_2
 ; 75% chance to greatly discourage this move if enemy's HP is above 50% but is not full.
