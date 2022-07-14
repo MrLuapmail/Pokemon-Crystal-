@@ -53,7 +53,7 @@ Moves:
 	move DOUBLE_EDGE,  EFFECT_RECOIL_HIT,        120, NORMAL,       100, 15,   0
 	move TAIL_WHIP,    EFFECT_DEFENSE_DOWN,        0, NORMAL,       100,  3,   0
 	move POISON_STING, EFFECT_POISON_HIT,         15, POISON,       100, 35,  30
-	move TWINEEDLE,    EFFECT_POISON_MULTI_HIT,   25, BUG,          100, 20,  20
+	move TWINEEDLE,    EFFECT_POISON_MULTI_HIT,   35, BUG,          100, 20,  20
 	move PIN_MISSILE,  EFFECT_MULTI_HIT,          20, BUG,          100, 20,   0
 	move LEER,         EFFECT_DEFENSE_DOWN,        0, NORMAL,       100,  2,   0
 	move BITE,         EFFECT_FLINCH_HIT,         60, DARK,         100, 25,  30
@@ -107,7 +107,7 @@ Moves:
 	move TOXIC,        EFFECT_TOXIC,               0, POISON,       100, 10,   0
 	move CONFUSION,    EFFECT_CONFUSE_HIT,        50, PSYCHIC_TYPE, 100, 25,  10
 	move PSYCHIC_M,    EFFECT_SP_DEF_DOWN_HIT,    90, PSYCHIC_TYPE, 100, 10,  10
-	move HYPNOSIS,     EFFECT_SLEEP,               0, PSYCHIC_TYPE, 70,  20,   0
+	move HYPNOSIS,     EFFECT_SLEEP,               0, PSYCHIC_TYPE, 70,   5,   0
 	move MEDITATE,     EFFECT_ATTACK_UP,           0, PSYCHIC_TYPE, 100,  2,   0
 	move AGILITY,      EFFECT_SPEED_UP_2,          0, PSYCHIC_TYPE, 100,  2,   0
 	move QUICK_ATTACK, EFFECT_PRIORITY_HIT,       40, NORMAL,       100, 30,   0
@@ -117,7 +117,7 @@ Moves:
 	move MIMIC,        EFFECT_MIMIC,               0, NORMAL,       100, 10,   0
 	move SCREECH,      EFFECT_DEFENSE_DOWN_2,      0, NORMAL,       100,  2,   0
 	move DOUBLE_TEAM,  EFFECT_EVASION_UP,          0, NORMAL,       100,  3,   0
-	move RECOVER,      EFFECT_HEAL,                0, NORMAL,       100, 20,   0
+	move RECOVER,      EFFECT_HEAL,                0, NORMAL,       100, 10,   0
 	move HARDEN,       EFFECT_DEFENSE_UP,          0, NORMAL,       100,  5,   0
 	move MINIMIZE,     EFFECT_EVASION_UP,          0, NORMAL,       100,  3,   0
 	move SMOKESCREEN,  EFFECT_ACCURACY_DOWN,       0, NORMAL,       100,  3,   0
@@ -154,12 +154,12 @@ Moves:
 	move POISON_GAS,   EFFECT_POISON,              0, POISON,       100,  3,   0
 	move BARRAGE,      EFFECT_MULTI_HIT,          15, NORMAL,       100, 20,   0
 	move LEECH_LIFE,   EFFECT_LEECH_HIT,          40, BUG,          100, 15,   0
-	move LOVELY_KISS,  EFFECT_SLEEP,               0, NORMAL,        90, 10,   0
+	move LOVELY_KISS,  EFFECT_SLEEP,               0, NORMAL,        90,  5,   0
 	move SKY_ATTACK,   EFFECT_RECOIL_HIT,        120, FLYING,       100,  5,  10
 	move TRANSFORM,    EFFECT_TRANSFORM,           0, NORMAL,       100, 10,   0
 	move BUBBLE,       EFFECT_SPEED_DOWN_HIT,     20, WATER,        100, 30,  10
 	move DIZZY_PUNCH,  EFFECT_CONFUSE_HIT,        70, NORMAL,       100, 10,  20
-	move SPORE,        EFFECT_SLEEP,               0, GRASS,        100, 15,   0
+	move SPORE,        EFFECT_SLEEP,               0, GRASS,        100,  5,   0
 	move FLASH,        EFFECT_ACCURACY_DOWN,       0, NORMAL,        80,  5,   0
 	move PSYWAVE,      EFFECT_LEVEL_DAMAGE,        1, BIRD,		    100, 15,   0
 	move SPLASH,       EFFECT_SPLASH,              0, NORMAL,       100,  5,   0
@@ -222,7 +222,7 @@ Moves:
 	move SWAGGER,      EFFECT_SWAGGER,             0, NORMAL,       100, 15, 100
 	move MILK_DRINK,   EFFECT_HEAL,                0, NORMAL,       100, 10,   0
 	move SPARK,        EFFECT_PARALYZE_HIT,       65, ELECTRIC,     100, 20,  30
-	move FURY_CUTTER,  EFFECT_FURY_CUTTER,        20, BUG,          100, 20,   0
+	move FURY_CUTTER,  EFFECT_FURY_CUTTER,        15, BUG,          100, 20,   0
 	move STEEL_WING,   EFFECT_DEFENSE_UP_HIT,     80, STEEL,        100, 25,  10
 	move MEAN_LOOK,    EFFECT_MEAN_LOOK,           0, NORMAL,       100,  5,   0
 	move ATTRACT,      EFFECT_ATTRACT,             0, NORMAL,       100,  5,   0
@@ -232,7 +232,7 @@ Moves:
 	move PRESENT,      EFFECT_PRESENT,             1, NORMAL,        90, 15,   0
 	move FRUSTRATION,  EFFECT_NORMAL_HIT,        102, NORMAL,       100, 20,   0
 	move SAFEGUARD,    EFFECT_SAFEGUARD,           0, NORMAL,       100, 25,   0
-	move PAIN_SPLIT,   EFFECT_PAIN_SPLIT,          0, NORMAL,       100, 20,   0
+	move PAIN_SPLIT,   EFFECT_PAIN_SPLIT,          0, NORMAL,       100,  5,   0
 	move SACRED_FIRE,  EFFECT_SACRED_FIRE,       120, FIRE,         100, 10,  50
 	move MAGNITUDE,    EFFECT_MAGNITUDE,           1, GROUND,       100, 30,   0
 	move DYNAMICPUNCH, EFFECT_CONFUSE_HIT,       100, FIGHTING,      50,  5, 100
