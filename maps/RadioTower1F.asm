@@ -266,7 +266,7 @@ RadioTower1FLuckyNumberManPerfectMatchText:
 	line "prize winner!"
 
 	para "You have won a"
-	line "MASTER BALL!"
+	line "BERRY!"
 	done
 
 RadioTower1FLuckyNumberManOkayMatchText:
@@ -275,8 +275,8 @@ RadioTower1FLuckyNumberManOkayMatchText:
 	cont "three numbers!"
 
 	para "You've won second"
-	line "prize, an EXP."
-	cont "SHARE!"
+	line "prize, a RAGE"
+	cont "CANDY BAR!"
 	done
 
 RadioTower1FLuckyNumberManWeakMatchText:
@@ -285,7 +285,7 @@ RadioTower1FLuckyNumberManWeakMatchText:
 	cont "two numbers."
 
 	para "You've won third"
-	line "prize, a PP UP."
+	line "prize, an EON MAIL!"
 	done
 
 RadioTower1FLuckyNumberManNoneOfYourIDNumbersMatchText:
