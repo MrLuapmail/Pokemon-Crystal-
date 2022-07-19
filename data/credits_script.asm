@@ -84,35 +84,35 @@ CreditsScript:
 	db       ASUKA_IWASHITA, 3
 	db     TETSUYA_WATANABE, 4
 
-	db CREDITS_WAIT, 8
+	db CREDITS_WAIT, 16
 
 	db         CREDIT_MUSIC, 0
 	db       JUNICHI_MASUDA, 1
 	db        MORIKAZU_AOKI, 2
 	db          GO_ICHINOSE, 3
 
-	db CREDITS_WAIT, 8
+	db CREDITS_WAIT, 12
 
 	db CREDIT_SOUND_EFFECTS, 0
 	db        MORIKAZU_AOKI, 1
 	db       JUNICHI_MASUDA, 2
 	db     TETSUYA_WATANABE, 3
 
-	db CREDITS_WAIT, 8
+	db CREDITS_WAIT, 12
 
 	db          GAME_DESIGN, 0
 	db       JUNICHI_MASUDA, 1
 	db     SHIGEKI_MORIMOTO, 2
 	db        KOHJI_NISHINO, 3
 
-	db CREDITS_WAIT, 8
+	db CREDITS_WAIT, 12
 
 	db          GAME_DESIGN, 0
 	db         TETSUJI_OOTA, 1
 	db          HITOMI_SATO, 2
 	db     KENJI_MATSUSHIMA, 3
 
-	db CREDITS_WAIT, 8
+	db CREDITS_WAIT, 12
 
 	db        GAME_SCENARIO, 0
 	db       JUNICHI_MASUDA, 1
@@ -120,7 +120,7 @@ CreditsScript:
 	db  TOSHINOBU_MATSUMIYA, 3
 	db     KENJI_MATSUSHIMA, 4
 
-	db CREDITS_WAIT, 8
+	db CREDITS_WAIT, 16
 
 	db         POKEDEX_TEXT, 1
 	db  TOSHINOBU_MATSUMIYA, 2
@@ -131,7 +131,7 @@ CreditsScript:
 	db       SOUSUKE_TAMADA, 2
 	db        TAKENORI_OOTA, 3
 
-	db CREDITS_WAIT, 8
+	db CREDITS_WAIT, 12
 
 	db    PARAMETRIC_DESIGN, 1
 	db        KOHJI_NISHINO, 2
@@ -150,20 +150,20 @@ CreditsScript:
 	db         TETSUJI_OOTA, 2
 	db        NOBUHIRO_SEYA, 3
 
-	db CREDITS_WAIT, 8
+	db CREDITS_WAIT, 12
 
 	db      MAP_DATA_DESIGN, 1
 	db         TETSUJI_OOTA, 2
 	db      KAZUHITO_SEKINE, 3
 
-	db CREDITS_WAIT, 8
+	db CREDITS_WAIT, 12
 
 	db           MAP_DESIGN, 0
 	db         TETSUJI_OOTA, 1
 	db        KOHJI_NISHINO, 2
 	db        NOBUHIRO_SEYA, 3
 
-	db CREDITS_WAIT, 8
+	db CREDITS_WAIT, 12
 
 	db         COORDINATION, 1
 	db      HIROYUKI_ZINNAI, 2
@@ -175,7 +175,7 @@ CreditsScript:
 	db       SATOSHI_YAMATO, 2
 	db     SHIGERU_MIYAMOTO, 3
 
-	db CREDITS_WAIT, 8
+	db CREDITS_WAIT, 12
 
 	db            PRODUCERS, 1
 	db   TSUNEKAZU_ISHIHARA, 2
@@ -198,19 +198,19 @@ CreditsScript:
 	db          GAIL_TILDEN, 2
 	db        HIRO_NAKAMURA, 3
 
-	db CREDITS_WAIT, 8
+	db CREDITS_WAIT, 12
 
 	db      US_COORDINATION, 1
 	db       JUNICHI_MASUDA, 2
 	db        SETH_MCMAHILL, 3
 
-	db CREDITS_WAIT, 8
+	db CREDITS_WAIT, 12
 
 	db      US_COORDINATION, 1
 	db     HIROTO_ALEXANDER, 2
 	db     TERESA_LILLYGREN, 3
 
-	db CREDITS_WAIT, 8
+	db CREDITS_WAIT, 12
 
 	db     TEXT_TRANSLATION, 1
 	db        NOB_OGASAWARA, 2
@@ -221,13 +221,13 @@ CreditsScript:
 	db      TERUKI_MURAKAWA, 2
 	db      KAZUYOSHI_OSAWA, 3
 
-	db CREDITS_WAIT, 8
+	db CREDITS_WAIT, 12
 
 	db         PAAD_TESTING, 1
 	db       THOMAS_HERTZOG, 2
 	db         ERIK_JOHNSON, 3
 
-	db CREDITS_WAIT, 8
+	db CREDITS_WAIT, 12
 
 	db      PRODUCT_TESTING, 0
 	db             PLANNING, 1
@@ -240,7 +240,7 @@ CreditsScript:
 	db       HIROAKI_TAMURA, 3
 	db    NORIAKI_SAKAGUCHI, 4
 
-	db CREDITS_WAIT, 8
+	db CREDITS_WAIT, 12
 
 	db      PRODUCT_TESTING, 0
 	db NCL_SUPER_MARIO_CLUB, 1
@@ -248,7 +248,7 @@ CreditsScript:
 	db         ATSUSHI_TADA, 3
 	db          MIYUKI_SATO, 4
 
-	db CREDITS_WAIT, 8
+	db CREDITS_WAIT, 16
 
 	db       SPECIAL_THANKS, 0
 	db     KIMIKO_NAKAMICHI, 1
@@ -261,7 +261,7 @@ CreditsScript:
 	db           AI_MASHIMA, 2
 	db      KUNIMI_KAWAMURA, 3
 
-	db CREDITS_WAIT, 8
+	db CREDITS_WAIT, 12
 
 	db       SPECIAL_THANKS, 0
 	db    MIKIHIRO_ISHIKAWA, 1
@@ -273,6 +273,11 @@ CreditsScript:
 	db     HIROSHI_YAMAUCHI, 2
 
 	db CREDITS_WAIT, 8
+
+; Clear the banner.
+	db CREDITS_CLEAR
+	
+	db CREDITS_WAIT, 1
 	
 	; Update the banner.
 	db CREDITS_SCENE, 2 ; Ditto
@@ -290,7 +295,7 @@ CreditsScript:
 	; Update the banner.
 	db CREDITS_SCENE, 1 ; Smoochum
 
-	db       CRYSTAL_KAIZO_PLUS_STAFF, 2
+	db       CRYSTAL_KAIZO_PLUS_STAFF, 1
 
 	db CREDITS_WAIT, 6
 
@@ -300,7 +305,7 @@ CreditsScript:
 	db CREDITS_WAIT, 8
 
 	db    CKK_ASST_PROJECT_MANAGEMENT, 1
-	db                         MANNAT, 2
+	db                         MANNAT, 3
 
 	db CREDITS_WAIT, 8
 
@@ -324,27 +329,27 @@ CreditsScript:
 	db CREDITS_WAIT, 8
 
 	db  CKK_GAME_TESTER_THEORYCRAFTER, 0
-	db          QUESTIONABLE_SPECIMEN, 1
-	db                         DEKZEH, 3
-	db                       REFINERY, 4
+	db          QUESTIONABLE_SPECIMEN, 2
+	db                         DEKZEH, 4
 
 	db CREDITS_WAIT, 8
 
 	db  CKK_GAME_TESTER_THEORYCRAFTER, 0
-	db          			 	 REJE, 1
-	db                        RUNABUN, 2
-	db                      SAFETYMAN, 3
+	db                       REFINERY, 2
+	db          			 	 REJE, 3
+	db                        RUNABUN, 4
 
 	db CREDITS_WAIT, 8
 
-	db  CKK_GAME_TESTER_THEORYCRAFTER, 1
-	db          		   NOT_SUICUU, 2
-	db          		       BURITO, 3
+	db  CKK_GAME_TESTER_THEORYCRAFTER, 0
+	db                      SAFETYMAN, 2
+	db          		   NOT_SUICUU, 3
+	db          		       BURITO, 4
 
 	db CREDITS_WAIT, 8
 
-	db  	   	  CKK_LEAD_PROGRAMMER, 1
-	db                         KDLPRO, 2
+	db  	   	    CKK_SHOWDOWN_CALC, 1
+	db                   TOXICENDUSER, 2
 
 	db CREDITS_WAIT, 8
 
