@@ -370,7 +370,6 @@ AI_Smart_EffectHandlers:
 	dbw EFFECT_MORNING_SUN,      AI_Smart_MorningSun
 	dbw EFFECT_SYNTHESIS,        AI_Smart_Synthesis
 	dbw EFFECT_MOONLIGHT,        AI_Smart_Moonlight
-	dbw EFFECT_HIDDEN_POWER,     AI_Smart_HiddenPower
 	dbw EFFECT_RAIN_DANCE,       AI_Smart_RainDance
 	dbw EFFECT_SUNNY_DAY,        AI_Smart_SunnyDay
 	dbw EFFECT_BELLY_DRUM,       AI_Smart_BellyDrum
@@ -2289,36 +2288,6 @@ AI_Smart_RapidSpin:
 	dec [hl]
 	ret
 
-AI_Smart_HiddenPower:
-	push hl
-	ld a, 1
-	ldh [hBattleTurn], a
-
-; Calculate Hidden Power's type and base power based on enemy's DVs.
-	callfar HiddenPowerDamage
-	callfar BattleCheckTypeMatchup
-	pop hl
-
-; Discourage Hidden Power if not very effective.
-	ld a, [wTypeMatchup]
-	cp EFFECTIVE
-	jr c, .bad
-
-; Don't encourageor discourage Hidden Power if it's neutral.
-	ld a, [wTypeMatchup]
-	cp EFFECTIVE + 1
-	ret c
-	
-; Encourage Hidden Power if super-effective.	
-	dec [hl]
-	dec [hl]
-	ret
-
-.bad
-	inc [hl]
-	inc [hl]
-	ret
-
 AI_Smart_RainDance:
 ; Greatly discourage this move if it would favour the player type-wise.
 ; Particularly, if the player is a Water-type.
@@ -3226,6 +3195,8 @@ AIDamageCalc:
 	jr z, .magnitude
 	cp EFFECT_REVERSAL
 	jr z, .reversal
+	cp EFFECT_HIDDEN_POWER
+	jr z, .hidden_power
 	
 	ld de, 1
 	ld hl, ConstantDamageEffects
@@ -3255,7 +3226,7 @@ AIDamageCalc:
 	jr .stab
 
 .hidden_power
-	farcall BattleCommand_HiddenPower
+	farcall HiddenPowerDamage
 	jr .damagecalc
 
 .magnitude
