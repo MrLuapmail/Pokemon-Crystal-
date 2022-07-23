@@ -24,14 +24,14 @@ DamageMon:
     cp EGG
     jp z, .Egg
 	
-	ld d, a
+	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1Species
 .find_target_mon
-	ld a, [hl]
-	cp d
+	and a
 	jr z, .damage
 	ld bc, PARTYMON_STRUCT_LENGTH
 	add hl, bc
+	dec a
 	jr .find_target_mon
 	
 .damage
@@ -318,6 +318,142 @@ Damage_MenuHeader:
 	menu_coords 15, 9, SCREEN_WIDTH - 1, TEXTBOX_Y - 1
 	dw NothingToDisplay
 	db 0 ; default option
+
+
+PoisonOrParaDone:
+	text_far _PoisonOrParaComplete
+	text_end
+
+PoisonMon:
+	call DisableSpriteUpdates
+.select_mon
+    farcall SelectTradeOrDayCareMonWithoutReturningToMap
+    jp c, .PoisonExit
+    ld a, [wCurPartySpecies]
+    cp EGG
+    jp z, .Egg
+	
+	ld a, [wCurPartyMon]
+	ld hl, wPartyMon1Species
+.find_target_mon
+	and a
+	jr z, .poison
+	ld bc, PARTYMON_STRUCT_LENGTH
+	add hl, bc
+	dec a
+	jr .find_target_mon
+	
+.poison
+	ld a, [hl]
+	ld [wCurSpecies], a
+	call GetBaseData
+
+	ld a, [wBaseType1]
+	cp POISON
+	jr z, .PoisonImmune
+	ld a, [wBaseType2]
+	cp POISON
+	jr z, .PoisonImmune
+
+	ld bc, MON_STATUS
+	add hl, bc
+	ld a, [hl]
+	and a
+	jr nz, .CantInflictPsn
+	set PSN, [hl]
+	ld hl, PoisonOrParaDone
+	call PrintText
+	jp .select_mon
+
+.PoisonImmune:
+	ld hl, .PoisonImmuneText
+	call PrintText
+	jp .select_mon
+
+.CantInflictPsn:
+	ld hl, CantInflictStatusText
+	call PrintText
+	jp .select_mon
+
+.Egg:
+	ld de, SFX_BUMP
+	call WaitPlaySFX
+
+    ld hl, .PoisonEgg
+	call PrintText
+	jp .select_mon
+
+.PoisonImmuneText:
+	text_far _PoisonImmune
+	text_end
+
+
+.PoisonEgg:
+	text_far _PoisonEgg
+	text_end
+
+.PoisonExit:
+	call ReturnToMapWithSpeechTextbox
+	call EnableSpriteUpdates
+	ret
+
+ParalyzeMon:
+	call DisableSpriteUpdates
+.select_mon
+    farcall SelectTradeOrDayCareMonWithoutReturningToMap
+    jp c, .ParalyzeExit
+    ld a, [wCurPartySpecies]
+    cp EGG
+    jp z, .Egg
+	
+	ld a, [wCurPartyMon]
+	ld hl, wPartyMon1Species
+.find_target_mon
+	and a
+	jr z, .paralyze
+	ld bc, PARTYMON_STRUCT_LENGTH
+	add hl, bc
+	dec a
+	jr .find_target_mon
+	
+.paralyze
+	ld bc, MON_STATUS
+	add hl, bc
+	ld a, [hl]
+	and a
+	jr nz, .CantInflictPara
+
+	set PAR, [hl]
+	ld hl, PoisonOrParaDone
+	call PrintText
+	jp .select_mon	
+
+.CantInflictPara:
+	ld hl, CantInflictStatusText
+	call PrintText
+	jp .select_mon
+
+.Egg:
+	ld de, SFX_BUMP
+	call WaitPlaySFX
+
+    ld hl, .ParalyzeEgg
+	call PrintText
+	jp .select_mon
+
+.ParalyzeEgg:
+	text_far _ParalyzeEgg
+	text_end
+	
+.ParalyzeExit:
+	call ReturnToMapWithSpeechTextbox
+	call EnableSpriteUpdates
+	ret
+
+CantInflictStatusText:
+	text_far _CantInflictStatus
+	text_end
+
 	
 NothingToDisplay:
 ; Does nothing.

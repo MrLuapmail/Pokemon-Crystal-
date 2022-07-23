@@ -738,8 +738,8 @@ TeamRocketBaseB1F_MapEvents:
 	; Walking in front of one triggers two Rocket Grunts.
 	coord_event 24,  2, SCENE_DEFAULT, SecurityCamera1a
 	coord_event 24,  3, SCENE_DEFAULT, SecurityCamera1b
-	coord_event  6,  2, SCENE_DEFAULT, SecurityCamera2a
-	coord_event  6,  3, SCENE_DEFAULT, SecurityCamera2b
+	coord_event  0, 17, SCENE_DEFAULT, SecurityCamera2a
+	coord_event  0, 17, SCENE_DEFAULT, SecurityCamera2b
 	coord_event 24,  6, SCENE_DEFAULT, SecurityCamera3a
 	coord_event 24,  7, SCENE_DEFAULT, SecurityCamera3b
 	coord_event 22, 16, SCENE_DEFAULT, SecurityCamera4

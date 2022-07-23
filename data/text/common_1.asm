@@ -1370,7 +1370,31 @@ _ShadyGuyEgg::
 	text "Wait,"
 	line "that's illegal."
 	prompt
-	
+
+_PoisonOrParaComplete::
+	text "The status have"
+	line "been inflicted."
+	prompt
+
+_PoisonImmune::
+	text "That one is"
+	line "immune."
+	prompt
+
+_PoisonEgg::
+	text "I can't poison"
+	line "an egg."
+	prompt
+
+_CantInflictStatus::
+	text "Sorry, I can't"
+	line "inflict status."
+	prompt
+
+_ParalyzeEgg::
+	text "I can't really"
+	line "shock an egg."
+	prompt
 
 _ReceiveItemText::
 	text_ram wPlayerName

@@ -183,3 +183,5 @@ SpecialsPointers::
 	add_special InitialSetDSTFlag
 	add_special InitialClearDSTFlag
 	add_special DamageMon
+	add_special PoisonMon
+	add_special ParalyzeMon
