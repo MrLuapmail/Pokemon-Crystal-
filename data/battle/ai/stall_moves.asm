@@ -34,3 +34,4 @@ StallMoves:
 	db CONVERSION
 	db SUBSTITUTE
 	db -1 ; end
+	
