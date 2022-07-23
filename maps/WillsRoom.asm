@@ -53,6 +53,7 @@ WillScript_Battle:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_ELITE_4_WILL
+	setevent EVENT_DISABLE_POCKET_PC
 	opentext
 	writetext WillScript_WillDefeatText
 	waitbutton

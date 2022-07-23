@@ -398,7 +398,7 @@ ElmScript_NoRoomForEverstone:
 ElmGiveMasterBallScript:
 	writetext ElmGiveMasterBallText1
 	promptbutton
-	verbosegiveitem MASTER_BALL
+	verbosegiveitem RAGECANDYBAR
 	iffalse .notdone
 	setevent EVENT_GOT_MASTER_BALL_FROM_ELM
 	writetext ElmGiveMasterBallText2
@@ -1169,24 +1169,10 @@ ElmGiveMasterBallText1:
 	done
 
 ElmGiveMasterBallText2:
-	text "The MASTER BALL is"
-	line "the best!"
+	text "Get"
+	line "ragecandybar'd"
 
-	para "It's the ultimate"
-	line "BALL! It'll catch"
-
-	para "any #MON with-"
-	line "out fail."
-
-	para "It's given only to"
-	line "recognized #MON"
-	cont "researchers."
-
-	para "I think you can"
-	line "make much better"
-
-	para "use of it than I"
-	line "can, <PLAY_G>!"
+	para "idiot!"
 	done
 
 ElmGiveTicketText1:
