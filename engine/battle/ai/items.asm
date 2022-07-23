@@ -56,7 +56,7 @@ SwitchOften:
 	cp $10
 	jr nz, .not_10
 	call Random
-	cp 50 percent + 1
+	cp 20 percent + 1
 	jr c, .switch
 	jp DontSwitch
 .not_10
@@ -64,14 +64,14 @@ SwitchOften:
 	cp $20
 	jr nz, .not_20
 	call Random
-	cp 79 percent - 1
+	cp 50 percent - 1
 	jr c, .switch
 	jp DontSwitch
 .not_20
 
 	; $30
 	call Random
-	cp 4 percent
+	cp 20 percent + 1
 	jp c, DontSwitch
 
 .switch

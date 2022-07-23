@@ -178,6 +178,11 @@ CheckAbleToSwitch:
 	ld [wEnemySwitchMonParam], a
 	call FindAliveEnemyMons
 	ret c
+	
+	; Switch if enemy can't deal damage to player for 5 turns
+	ld a, [wPlayerTurnsTookNoDamage]
+	cp 5
+	jp nc, .switch
 
 	ld a, [wEnemySubStatus1]
 	bit SUBSTATUS_PERISH, a
@@ -189,10 +194,7 @@ CheckAbleToSwitch:
 
 	; Perish count is 1
 
-	call FindAliveEnemyMons
-	call FindEnemyMonsWithAtLeastQuarterMaxHP
-	call FindEnemyMonsThatResistPlayer
-	call FindAliveEnemyMonsWithASuperEffectiveMove
+	call FindMonToSwitchResistSE
 
 	ld a, e
 	cp 2
@@ -274,11 +276,8 @@ CheckAbleToSwitch:
 	ld a, [wEnemyAISwitchScore]
 	cp 10
 	ret nc
-
-	call FindAliveEnemyMons
-	call FindEnemyMonsWithAtLeastQuarterMaxHP
-	call FindEnemyMonsThatResistPlayer
-	call FindAliveEnemyMonsWithASuperEffectiveMove
+	
+	call FindMonToSwitchResistSE
 
 	ld a, e
 	cp $2
@@ -287,6 +286,39 @@ CheckAbleToSwitch:
 	ld a, [wEnemyAISwitchScore]
 	add $10
 	ld [wEnemySwitchMonParam], a
+	ret
+	
+.switch
+	ld a, [wLastPlayerCounterMove]
+	and a
+	jr z, .try_find_again
+	call FindEnemyMonsImmuneToLastCounterMove
+	
+	ld a, e
+	cp $2
+	jr z, .try_find_again
+
+	ld a, [wEnemyAISwitchScore]
+	and a
+	jr z, .try_find_again
+	
+	add $10
+	ld [wEnemySwitchMonParam], a
+	ret
+	
+.try_find_again
+	call FindMonToSwitchResistSE
+	
+	ld a, [wEnemyAISwitchScore]
+	add $10
+	ld [wEnemySwitchMonParam], a
+	ret
+	
+FindMonToSwitchResistSE:
+	call FindAliveEnemyMons
+	call FindEnemyMonsWithAtLeastQuarterMaxHP
+	call FindEnemyMonsThatResistPlayer
+	call FindAliveEnemyMonsWithASuperEffectiveMove
 	ret
 
 FindAliveEnemyMons:

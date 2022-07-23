@@ -69,10 +69,10 @@ TypeMatchups:
 	db FLYING,       BUG,          SUPER_EFFECTIVE
 	db FLYING,       ROCK,         NOT_VERY_EFFECTIVE
 	db FLYING,       STEEL,        NOT_VERY_EFFECTIVE
+	db PSYCHIC_TYPE, DARK,         NO_EFFECT
 	db PSYCHIC_TYPE, FIGHTING,     SUPER_EFFECTIVE
 	db PSYCHIC_TYPE, POISON,       SUPER_EFFECTIVE
 	db PSYCHIC_TYPE, PSYCHIC_TYPE, NOT_VERY_EFFECTIVE
-	db PSYCHIC_TYPE, DARK,         NO_EFFECT
 	db PSYCHIC_TYPE, STEEL,        NOT_VERY_EFFECTIVE
 	db BUG,          FIRE,         NOT_VERY_EFFECTIVE
 	db BUG,          GRASS,        SUPER_EFFECTIVE
@@ -114,5 +114,11 @@ TypeMatchups:
 ; Foresight removes Ghost's immunities.
 	db NORMAL,       GHOST,        NO_EFFECT
 	db FIGHTING,     GHOST,        NO_EFFECT
+	
+; 	db -3 ; end (with Psywave)
+
+;  Psywave hits Dark-types.
+	
+; 	db PSYCHIC_TYPE, DARK,         NO_EFFECT
 
 	db -1 ; end

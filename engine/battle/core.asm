@@ -490,7 +490,17 @@ HandleBerserkGene:
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr
 	push af
-	set SUBSTATUS_CONFUSED, [hl]
+	 	set SUBSTATUS_CONFUSED, [hl]
+ 	ldh a, [hBattleTurn]
+ 	and a
+ 	ld hl, wPlayerConfuseCount
+ 	jr z, .set_confuse_count
+ 	ld hl, wEnemyConfuseCount
+.set_confuse_count
+ 	call BattleRandom
+ 	and %11
+ 	add 2
+ 	ld [hl], a
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVarAddr
 	push hl
@@ -499,7 +509,7 @@ HandleBerserkGene:
 	ld [hl], a
 	ld [wAttackMissed], a
 	ld [wEffectFailed], a
-	farcall BattleCommand_AttackUp
+	farcall BattleCommand_AttackUp2
 	pop af
 	pop hl
 	ld [hl], a
@@ -1051,13 +1061,55 @@ PlayerTurn_EndOpponentProtectEndureDestinyBond:
 	call SetPlayerTurn
 	call EndUserDestinyBond
 	callfar DoPlayerTurn
+	call CalcEnemyDamageTakenThisTurn
 	jp EndOpponentProtectEndureDestinyBond
 
 EnemyTurn_EndOpponentProtectEndureDestinyBond:
 	call SetEnemyTurn
 	call EndUserDestinyBond
 	callfar DoEnemyTurn
+	call CalcPlayerDamageTakenThisTurn
 	jp EndOpponentProtectEndureDestinyBond
+	
+CalcPlayerDamageTakenThisTurn:
+	ld a, [wCurDamage]
+	ld [wPlayerDamageTakenThisTurn], a
+	ld a, [wCurDamage + 1]
+	ld [wPlayerDamageTakenThisTurn + 1], a
+	and a
+	jr nz, .took_damage
+	ld a, [wCurDamage]
+	and a
+	jr nz, .took_damage
+	ld a, [wPlayerTurnsTookNoDamage]
+	inc a
+	ld [wPlayerTurnsTookNoDamage], a
+	ret
+	
+.took_damage
+	xor a
+	ld [wPlayerTurnsTookNoDamage], a
+	ret
+	
+CalcEnemyDamageTakenThisTurn:
+	ld a, [wCurDamage]
+	ld [wEnemyDamageTakenThisTurn], a
+	ld a, [wCurDamage + 1]
+	ld [wEnemyDamageTakenThisTurn + 1], a
+	and a
+	jr nz, .took_damage
+	ld a, [wCurDamage]
+	and a
+	jr nz, .took_damage
+	ld a, [wEnemyTurnsTookNoDamage]
+	inc a
+	ld [wEnemyTurnsTookNoDamage], a
+	ret
+	
+.took_damage
+	xor a
+	ld [wEnemyTurnsTookNoDamage], a
+	ret
 
 EndOpponentProtectEndureDestinyBond:
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
@@ -3701,6 +3753,9 @@ endr
 	ld [wPlayerWrapCount], a
 	ld [wEnemyWrapCount], a
 	ld [wEnemyTurnsTaken], a
+	ld [wEnemyDamageTakenThisTurn], a
+	ld [wEnemyDamageTakenThisTurn + 1], a
+	ld [wPlayerTurnsTookNoDamage], a
 	ld hl, wPlayerSubStatus5
 	res SUBSTATUS_CANT_RUN, [hl]
 	ret
@@ -4185,6 +4240,9 @@ endr
 	ld [wEnemyWrapCount], a
 	ld [wPlayerWrapCount], a
 	ld [wPlayerTurnsTaken], a
+	ld [wPlayerDamageTakenThisTurn], a
+	ld [wPlayerDamageTakenThisTurn + 1], a
+	ld [wEnemyTurnsTookNoDamage], a
 	ld hl, wEnemySubStatus5
 	res SUBSTATUS_CANT_RUN, [hl]
 	ret
@@ -5932,6 +5990,12 @@ ParseEnemyAction:
 	jr .struggle
 
 .enough_pp
+	; Randomize move to use if enemy can't damage player for at least 5 turns.
+	ld a, [wPlayerTurnsTookNoDamage]
+	cp 5
+	jr nc, .loop2
+
+	; Otherwise, don't randomize move selection.
 	ld a, [wBattleMode]
 	dec a
 	jr nz, .skip_load
@@ -8340,6 +8404,7 @@ FillEnemyMovesFromMoveIndicesBuffer: ; unreferenced
 ExitBattle:
 	call .HandleEndOfBattle
 	call CleanUpBattleRAM
+	call HealSleep
 	ret
 
 .HandleEndOfBattle:
@@ -8362,6 +8427,74 @@ ExitBattle:
 	predef EvolveAfterBattle
 	farcall GivePokerusAndConvertBerries
 	ret
+
+HealSleep:
+	ld a, [wBattleMode]
+	and a
+	jr nz, .in_battle
+	; overworld flute code was dummied out here
+
+.in_battle
+	xor a
+	ld [wPokeFluteCuredSleep], a
+
+	ld b, $ff ^ SLP
+
+	ld hl, wPartyMon1Status
+	call .CureSleep
+
+	ld a, [wBattleMode]
+	cp WILD_BATTLE
+	jr z, .skip_otrainer
+	ld hl, wOTPartyMon1Status
+	call .CureSleep
+.skip_otrainer
+
+	ld hl, wBattleMonStatus
+	ld a, [hl]
+	and b
+	ld [hl], a
+	ld hl, wEnemyMonStatus
+	ld a, [hl]
+	and b
+	ld [hl], a
+
+	ld a, [wPokeFluteCuredSleep]
+	and a
+	;ld hl, .PlayedFluteText
+	;jp z, PrintText
+	;ld hl, .PlayedTheFlute
+	;call PrintText
+
+	ld a, [wLowHealthAlarm]
+	and 1 << DANGER_ON_F
+	jr nz, .dummy
+	; more code was dummied out here
+.dummy
+	;ld hl, .FluteWakeUpText
+	;jp PrintText
+
+.CureSleep:
+	ld de, PARTYMON_STRUCT_LENGTH
+	ld c, PARTY_LENGTH
+.loop
+	ld a, [hl]
+	push af
+	and SLP
+	jr z, .not_asleep
+	ld a, TRUE
+	ld [wPokeFluteCuredSleep], a
+.not_asleep
+	pop af
+	and b
+	ld [hl], a
+	add hl, de
+	dec c
+	jr nz, .loop
+	ret
+
+.battle
+	jp PokeFluteTerminator
 
 CleanUpBattleRAM:
 	call BattleEnd_HandleRoamMons

@@ -39,12 +39,12 @@ ItemEffects:
 	dw EvoStoneEffect      ; THUNDERSTONE
 	dw EvoStoneEffect      ; WATER_STONE
 	dw RestoreKitEffect    ; RESTORE_KIT
-	dw VitaminEffect       ; HP_UP
-	dw VitaminEffect       ; PROTEIN
-	dw VitaminEffect       ; IRON
-	dw VitaminEffect       ; CARBOS
+	dw NoEffect		       ; HP_UP
+	dw NoEffect		       ; PROTEIN
+	dw NoEffect		       ; IRON
+	dw NoEffect		       ; CARBOS
 	dw NoEffect            ; LUCKY_PUNCH
-	dw VitaminEffect       ; CALCIUM
+	dw NoEffect		       ; CALCIUM
 	dw RareCandyEffect     ; RARE_CANDY
 	dw XAccuracyEffect     ; X_ACCURACY
 	dw EvoStoneEffect      ; LEAF_STONE
@@ -63,7 +63,7 @@ ItemEffects:
 	dw RestoreHPEffect     ; SODA_POP
 	dw RestoreHPEffect     ; LEMONADE
 	dw XItemEffect         ; X_ATTACK
-	dw PocketPCEffect	   ; POCKET_PC     
+	dw PocketPCEffect      ; POCKET_PC     
 	dw XItemEffect         ; X_DEFEND
 	dw XItemEffect         ; X_SPEED
 	dw XItemEffect         ; X_SPECIAL
@@ -75,7 +75,7 @@ ItemEffects:
 	dw GoodRodEffect       ; GOOD_ROD
 	dw NoEffect            ; SILVER_LEAF
 	dw SuperRodEffect      ; SUPER_ROD
-	dw RestorePPEffect     ; PP_UP
+	dw NoEffect	  	       ; PP_UP
 	dw RestorePPEffect     ; ETHER
 	dw RestorePPEffect     ; MAX_ETHER
 	dw RestorePPEffect     ; ELIXER

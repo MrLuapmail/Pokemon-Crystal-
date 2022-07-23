@@ -1306,17 +1306,27 @@ BattleCommand_Stab:
 	cp -1
 	jr z, .end
 
-	; foresight
+	; Special clause for Foresight
 	cp -2
-	jr nz, .SkipForesightCheck
+	jr nz, .SkipForesightOrPsywaveCheck
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
 	call GetBattleVar
 	bit SUBSTATUS_IDENTIFIED, a
 	jr nz, .end
+	
+	;Special cluase for Psywave
+	; cp -3
+	; jr nz, .SkipForesightOrPsywaveCheck
+	
+	; ; Special Clause for Psybeam
+	; ld a, BATTLE_VARS_MOVE
+	; call GetBattleVar
+	; cp PSYWAVE
+	; jr nz, .end
 
 	jr .TypesLoop
 
-.SkipForesightCheck:
+.SkipForesightOrPsywaveCheck:
 	cp b
 	jr nz, .SkipType
 	ld a, [hl]
@@ -1390,7 +1400,7 @@ BattleCommand_Stab:
 .SkipType:
 	inc hl
 	inc hl
-	jr .TypesLoop
+	jp .TypesLoop
 
 .end
 	call BattleCheckTypeMatchup
@@ -1430,6 +1440,8 @@ CheckTypeMatchup:
 	jr z, .End
 	cp -2
 	jr nz, .Next
+	;cp -3
+	;jr nz, .Next
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
 	call GetBattleVar
 	bit SUBSTATUS_IDENTIFIED, a
@@ -3683,10 +3695,31 @@ BattleCommand_SleepTarget:
 
 .random_loop
 	call BattleRandom
-	and b
+	cp 26 percent
+	jr c, .two_turns
+	cp 51 percent
+	jr c, .three_turns
+	cp 76 percent
+	jr c, .four_turns
 	jr z, .random_loop
-	cp SLP
-	jr z, .random_loop
+	jp .five_turns
+
+.two_turns
+	ld a, 2
+	jr .continue
+
+.three_turns
+	ld a, 3
+	jr .continue
+
+.four_turns
+	ld a, 4
+	jr .continue
+
+.five_turns
+	ld a, 5
+
+.continue
 	inc a
 	ld [de], a
 	call UpdateOpponentInParty
