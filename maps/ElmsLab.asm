@@ -1169,24 +1169,10 @@ ElmGiveMasterBallText1:
 	done
 
 ElmGiveMasterBallText2:
-	text "The Rage Candy Bar is"
-	line "the best!"
+	text "Get"
+	line "ragecandybar'd"
 
-	para "It's the ultimate"
-	line "SNACK! It'll make"
-
-	para "you rage with-"
-	line "out fail."
-
-	para "It's given only to"
-	line "recognized #MON"
-	cont "researchers."
-
-	para "I think you can"
-	line "make much better"
-
-	para "use of it than I"
-	line "can, <PLAY_G>!"
+	para "idiot!"
 	done
 
 ElmGiveTicketText1:
