@@ -115,33 +115,6 @@ DayCareManIntroText:
 	ret
 
 DayCareAskDepositPokemon:
-	ld a, [wPartyCount]
-	cp 2
-	jr c, .OnlyOneMon
-	ld a, DAYCARETEXT_WHICH_ONE
-	call PrintDayCareText
-	ld b, PARTYMENUACTION_GIVE_MON
-	farcall SelectTradeOrDayCareMon
-	jr c, .Declined
-	ld a, [wCurPartySpecies]
-	cp EGG
-	jr z, .Egg
-	farcall CheckCurPartyMonFainted
-	jr c, .OutOfUsableMons
-	ld hl, wPartyMon1Item
-	ld bc, PARTYMON_STRUCT_LENGTH
-	ld a, [wCurPartyMon]
-	call AddNTimes
-	ld d, [hl]
-	farcall ItemIsMail
-	jr c, .HoldingMail
-	ld hl, wPartyMonNicknames
-	ld a, [wCurPartyMon]
-	call GetNickname
-	and a
-	ret
-
-.Declined:
 	ld a, DAYCARETEXT_OH_FINE
 	scf
 	ret
@@ -387,29 +360,8 @@ DayCareManOutside:
 	text_end
 
 .AskGiveEgg:
-	ld hl, .FoundAnEggText
-	call PrintText
-	call YesNoBox
-	jr c, .Declined
-	ld a, [wPartyCount]
-	cp PARTY_LENGTH
-	jr nc, .PartyFull
-	call DayCare_GiveEgg
-	ld hl, wDayCareMan
-	res DAYCAREMAN_HAS_EGG_F, [hl]
-	call DayCare_InitBreeding
-	ld hl, .ReceivedEggText
-	call PrintText
-	ld de, SFX_GET_EGG
-	call PlaySFX
-	ld c, 120
-	call DelayFrames
-	ld hl, .TakeGoodCareOfEggText
-	jr .Load0
-
-.Declined:
 	ld hl, .IllKeepItThanksText
-
+	
 .Load0:
 	call PrintText
 	xor a ; FALSE
