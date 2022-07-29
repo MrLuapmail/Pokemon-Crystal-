@@ -10,7 +10,7 @@ move: MACRO
 	db \7 percent ; effect chance
 ENDM
 
-Moves:F
+Moves:
 ; entries correspond to move ids (see constants/move_constants.asm)
 	table_width MOVE_LENGTH, Moves
 	move POUND,        EFFECT_NORMAL_HIT,         40, NORMAL,       100, 35,   0
