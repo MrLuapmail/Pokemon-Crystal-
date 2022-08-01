@@ -44,7 +44,7 @@ CeladonPrizeRoom_tmcounterloop:
 	getitemname STRING_BUFFER_3, TM_DOUBLE_TEAM
 	scall CeladonPrizeRoom_askbuy
 	iffalse CeladonPrizeRoom_CancelPurchaseScript
-	giveitem TM_DOUBLE_TEAM
+	giveitem RAGECANDYBAR
 	iffalse CeladonPrizeRoom_notenoughroom
 	takecoins CELADONGAMECORNERPRIZEROOM_TM32_COINS
 	sjump CeladonPrizeRoom_purchased
@@ -55,7 +55,10 @@ CeladonPrizeRoom_tmcounterloop:
 	getitemname STRING_BUFFER_3, TM_PSYCHIC_M
 	scall CeladonPrizeRoom_askbuy
 	iffalse CeladonPrizeRoom_CancelPurchaseScript
+	checkevent EVENT_GOT_PSYCHIC
+	iftrue CeladonPrizeRoom_AlreadyBoughtTMScript
 	giveitem TM_PSYCHIC_M
+	setevent EVENT_GOT_PSYCHIC 
 	iffalse CeladonPrizeRoom_notenoughroom
 	takecoins CELADONGAMECORNERPRIZEROOM_TM29_COINS
 	sjump CeladonPrizeRoom_purchased
@@ -66,7 +69,10 @@ CeladonPrizeRoom_tmcounterloop:
 	getitemname STRING_BUFFER_3, TM_HYPER_BEAM
 	scall CeladonPrizeRoom_askbuy
 	iffalse CeladonPrizeRoom_CancelPurchaseScript
+	checkevent EVENT_GOT_HYPER_BEAM
+	iftrue CeladonPrizeRoom_AlreadyBoughtTMScript
 	giveitem TM_HYPER_BEAM
+	setevent EVENT_GOT_HYPER_BEAM
 	iffalse CeladonPrizeRoom_notenoughroom
 	takecoins CELADONGAMECORNERPRIZEROOM_TM15_COINS
 	sjump CeladonPrizeRoom_purchased
@@ -96,6 +102,12 @@ CeladonPrizeRoom_notenoughcoins:
 
 CeladonPrizeRoom_notenoughroom:
 	writetext CeladonPrizeRoom_NotEnoughRoomText
+	waitbutton
+	closetext
+	end
+
+CeladonPrizeRoom_AlreadyBoughtTMScript
+	writetext CeladonPrizeRoom_AlreadyBoughtTMText
 	waitbutton
 	closetext
 	end
@@ -272,6 +284,11 @@ CeladonPrizeRoom_NotEnoughCoinsText:
 CeladonPrizeRoom_NotEnoughRoomText:
 	text "You have no room"
 	line "for it."
+	done
+
+CeladonPrizeRoom_AlreadyBoughtTMText:
+	text "You already bought"
+	line "this TM."
 	done
 
 CeladonPrizeRoom_ComeAgainText:
