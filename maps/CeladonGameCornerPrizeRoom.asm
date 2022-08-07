@@ -106,7 +106,7 @@ CeladonPrizeRoom_notenoughroom:
 	closetext
 	end
 
-CeladonPrizeRoom_AlreadyBoughtTMScript
+CeladonPrizeRoom_AlreadyBoughtTMScript:
 	writetext CeladonPrizeRoom_AlreadyBoughtTMText
 	waitbutton
 	closetext

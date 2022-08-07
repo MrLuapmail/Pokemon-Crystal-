@@ -377,7 +377,7 @@ GoldenrodGameCornerPrizeVendorNoMoreRoomText:
 	line "carry any more."
 	done
 
-GoldenrodGameCornerPrizeMonVendorAlreadyBoughtTMText
+GoldenrodGameCornerPrizeMonVendorAlreadyBoughtTMText:
 	text "You've already"
 	line "bought the TM."
 	done
