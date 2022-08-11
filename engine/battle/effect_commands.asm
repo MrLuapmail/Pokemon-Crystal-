@@ -5764,6 +5764,10 @@ BattleCommand_Recoil:
 	jr z, .got_hp
 	ld hl, wEnemyMonMaxHP
 .got_hp
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	cp STRUGGLE
+	jr nz, .not_struggle
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	ld d, a
@@ -5780,6 +5784,24 @@ BattleCommand_Recoil:
 	or c
 	jr nz, .min_damage
 	inc c
+	jr .min_damage
+	
+.not_struggle
+; get 1/3 damage or 1 HP, whichever is higher	
+	ld a, [wCurDamage]
+	ldh [hDividend + 0], a
+	ld a, [wCurDamage + 1]
+	ldh [hDividend + 1], a
+	ld a, 3
+	ldh [hDivisor], a
+	ld b, 2
+	call Divide
+	ldh a, [hQuotient + 2]
+	ld b, a
+	ldh a, [hQuotient + 3]
+	ld c, a
+	or b
+	jr nz, .min_damage
 .min_damage
 	ld a, [hli]
 	ld [wHPBuffer1 + 1], a
