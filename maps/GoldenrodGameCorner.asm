@@ -80,7 +80,10 @@ GoldenrodGameCornerTMVendor_LoopScript:
 	getitemname STRING_BUFFER_3, TM_THUNDER
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
+	checkevent EVENT_GOT_THUNDER
+	iftrue GoldenrodGameCornerPrizeMonVendor_AlreadyBoughtTMScript
 	giveitem TM_THUNDER
+	setevent EVENT_GOT_THUNDER
 	iffalse GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
 	takecoins GOLDENRODGAMECORNER_TM25_COINS
 	sjump GoldenrodGameCornerTMVendor_FinishScript
@@ -91,7 +94,10 @@ GoldenrodGameCornerTMVendor_LoopScript:
 	getitemname STRING_BUFFER_3, TM_BLIZZARD
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
+	checkevent EVENT_GOT_BLIZZARD
+	iftrue GoldenrodGameCornerPrizeMonVendor_AlreadyBoughtTMScript
 	giveitem TM_BLIZZARD
+	setevent EVENT_GOT_BLIZZARD
 	iffalse GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
 	takecoins GOLDENRODGAMECORNER_TM14_COINS
 	sjump GoldenrodGameCornerTMVendor_FinishScript
@@ -102,7 +108,10 @@ GoldenrodGameCornerTMVendor_LoopScript:
 	getitemname STRING_BUFFER_3, TM_FIRE_BLAST
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
+	checkevent EVENT_GOT_FIRE_BLAST
+	iftrue GoldenrodGameCornerPrizeMonVendor_AlreadyBoughtTMScript
 	giveitem TM_FIRE_BLAST
+	setevent EVENT_GOT_FIRE_BLAST
 	iffalse GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
 	takecoins GOLDENRODGAMECORNER_TM38_COINS
 	sjump GoldenrodGameCornerTMVendor_FinishScript
@@ -132,6 +141,12 @@ GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript:
 
 GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript:
 	writetext GoldenrodGameCornerPrizeVendorNoMoreRoomText
+	waitbutton
+	closetext
+	end
+
+GoldenrodGameCornerPrizeMonVendor_AlreadyBoughtTMScript:
+	writetext GoldenrodGameCornerPrizeMonVendorAlreadyBoughtTMText
 	waitbutton
 	closetext
 	end
@@ -360,6 +375,11 @@ GoldenrodGameCornerPrizeVendorNeedMoreCoinsText:
 GoldenrodGameCornerPrizeVendorNoMoreRoomText:
 	text "Sorry. You can't"
 	line "carry any more."
+	done
+
+GoldenrodGameCornerPrizeMonVendorAlreadyBoughtTMText:
+	text "You've already"
+	line "bought the TM."
 	done
 
 GoldenrodGameCornerPrizeVendorQuitText:
