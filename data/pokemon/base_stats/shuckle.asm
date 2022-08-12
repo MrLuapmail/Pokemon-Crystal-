@@ -1,6 +1,6 @@
 	db SHUCKLE ; 213
 
-	db  60,  10, 230,  05,  05, 230
+	db  60,  05, 230,  05,  05, 230
 	;   hp  atk  def  spd  sat  sdf
 
 	db BUG, ROCK ; type
@@ -13,7 +13,7 @@
 	db 5 ; unknown 2
 	INCBIN "gfx/pokemon/shuckle/front.dimensions"
 	dw NULL, NULL ; unused (beta front/back pics)
-	db GROWTH_SLOW ; growth rate
+	db GROWTH_FAST ; growth rate
 	dn EGG_BUG, EGG_BUG ; egg groups
 
 	; tm/hm learnset

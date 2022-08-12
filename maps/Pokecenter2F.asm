@@ -4,6 +4,7 @@
 	const POKECENTER2F_TIME_CAPSULE_RECEPTIONIST
 	const POKECENTER2F_OFFICER
 	const POKECENTER2F_SHADY_GUY
+	const POKECENTER2F_STATUS_GUY
 
 Pokecenter2F_MapScripts:
 	def_scene_scripts
@@ -634,6 +635,54 @@ ShadyDamageGuy:
 	closetext
 	end
 
+OldStatusMan:
+	faceplayer
+	opentext
+	writetext Text_OldStatusMan1
+	waitbutton
+	writetext Text_OldStatusMan2
+	waitbutton
+.select_status
+	writetext Text_OldStatusSelect
+	loadmenu .StatusMenuHeader
+	verticalmenu
+	closewindow
+	ifequal STATUS_POISON, .PoisonMon
+	ifequal STATUS_PARALYZE, .ParalyzeMon
+	sjump .GoodbyeOldMan
+
+.PoisonMon:
+	setval STATUS_POISON
+	writetext Text_PoisonMon
+	special PoisonMon
+	sjump .select_status
+
+.ParalyzeMon:
+	setval STATUS_PARALYZE
+	writetext Text_ParalyzeMon
+	special ParalyzeMon
+	sjump .select_status
+
+.GoodbyeOldMan:
+	writetext Text_OldStatusGoodbye
+	waitbutton
+	closetext
+	end
+
+
+.StatusMenuHeader:
+	db MENU_BACKUP_TILES ; flags
+	menu_coords 0, 3, 15, TEXTBOX_Y - 1
+	dw .MenuData
+	db 1 ; default option
+
+.MenuData:
+	db STATICMENU_CURSOR ; flags
+	db 3 ; items
+	db "POISON@"
+	db "PARALYZE@"
+	db "CANCEL@"
+
 Pokecenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight:
 	slow_step UP
 	slow_step LEFT
@@ -827,6 +876,43 @@ Text_ShadyGuyExit:
 	line "just come back."
 	done
 
+Text_OldStatusMan1:
+	text "Hello..."
+	line "young trainer..."
+	done
+
+Text_OldStatusMan2:
+	text "I can shock or"
+	line "or poison your"
+	cont "#MON..."
+	done
+
+Text_OldStatusSelect:
+	text "What status would "
+	line "you like..."
+	done
+
+Text_OldStatusGoodbye:
+	text "Okay then, young"
+	line "lad..."
+	cont "Take care..."
+	done
+
+Text_PoisonMon:
+	text "Okay... Which one"
+	line "should we poison?"
+	done
+
+Text_ParalyzeMon:
+	text "Okay... Which one"
+	line "should we shock?"
+	done
+
+Text_OldStatusChoose:
+	text "Which would you"
+	line "choose..."
+	done
+
 Text_BattleReceptionistMobile:
 	text "Would you like to"
 	line "battle over a GAME"
@@ -841,11 +927,6 @@ Text_TradeReceptionistMobile:
 
 	para "LINK cable or by"
 	line "mobile phone?"
-	done
-
-Text_ThisWayToMobileRoom: ; unreferenced
-	text "This way to the"
-	line "MOBILE ROOM."
 	done
 
 Text_BattleReceptionistIntro:
@@ -1072,4 +1153,5 @@ Pokecenter2F_MapEvents:
 	object_event 13,  3, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_TimeCapsule, -1
 	object_event  1,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Pokecenter2FOfficerScript, EVENT_MYSTERY_GIFT_DELIVERY_GUY
 	object_event 15,  7, SPRITE_UNUSED_GUY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ShadyDamageGuy, -1
+	object_event 12,  6, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OldStatusMan, -1
 	

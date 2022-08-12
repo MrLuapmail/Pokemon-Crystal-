@@ -21,12 +21,12 @@ CreditsScript:
 	db             DIRECTOR, 1
 	db       SATOSHI_TAJIRI, 2
 
-	db CREDITS_WAIT, 12
+	db CREDITS_WAIT, 8
 
 	db           CODIRECTOR, 1
 	db       JUNICHI_MASUDA, 2
 
-	db CREDITS_WAIT, 12
+	db CREDITS_WAIT, 8
 
 	db          PROGRAMMERS, 0
 	db       SOUSUKE_TAMADA, 1
@@ -34,19 +34,19 @@ CreditsScript:
 	db         KEITA_KAGAYA, 3
 	db    YOSHINORI_MATSUDA, 4
 
-	db CREDITS_WAIT, 12
+	db CREDITS_WAIT, 8
 
 	db          PROGRAMMERS, 0
 	db     SHIGEKI_MORIMOTO, 1
 	db     TETSUYA_WATANABE, 2
 	db        TAKENORI_OOTA, 3
 
-	db CREDITS_WAIT, 12
+	db CREDITS_WAIT, 8
 
 	db    GRAPHICS_DIRECTOR, 1
 	db         KEN_SUGIMORI, 2
 
-	db CREDITS_WAIT, 12
+	db CREDITS_WAIT, 8
 
 	db       MONSTER_DESIGN, 0
 	db         KEN_SUGIMORI, 1
@@ -55,20 +55,20 @@ CreditsScript:
 	db     HIRONOBU_YOSHIDA, 4
 	db         SATOSHI_OOTA, 5
 
-	db CREDITS_WAIT, 12
+	db CREDITS_WAIT, 8
 
 	db       MONSTER_DESIGN, 0
 	db       ATSUKO_NISHIDA, 1
 	db          MUNEO_SAITO, 2
 	db       RENA_YOSHIKAWA, 3
 
-	db CREDITS_WAIT, 12
+	db CREDITS_WAIT, 8
 
 	db    POKEMON_ANIMATION, 1
 	db     HIRONOBU_YOSHIDA, 2
 	db          JUN_OKUTANI, 3
 
-	db CREDITS_WAIT, 12
+	db CREDITS_WAIT, 8
 
 ; Clear the banner.
 	db CREDITS_CLEAR
@@ -84,7 +84,7 @@ CreditsScript:
 	db       ASUKA_IWASHITA, 3
 	db     TETSUYA_WATANABE, 4
 
-	db CREDITS_WAIT, 12
+	db CREDITS_WAIT, 16
 
 	db         CREDIT_MUSIC, 0
 	db       JUNICHI_MASUDA, 1
@@ -120,12 +120,12 @@ CreditsScript:
 	db  TOSHINOBU_MATSUMIYA, 3
 	db     KENJI_MATSUSHIMA, 4
 
-	db CREDITS_WAIT, 12
+	db CREDITS_WAIT, 16
 
 	db         POKEDEX_TEXT, 1
 	db  TOSHINOBU_MATSUMIYA, 2
 
-	db CREDITS_WAIT, 12
+	db CREDITS_WAIT, 8
 
 	db     TOOL_PROGRAMMING, 1
 	db       SOUSUKE_TAMADA, 2
@@ -136,7 +136,7 @@ CreditsScript:
 	db    PARAMETRIC_DESIGN, 1
 	db        KOHJI_NISHINO, 2
 
-	db CREDITS_WAIT, 12
+	db CREDITS_WAIT, 8
 
 ; Clear the banner.
 	db CREDITS_CLEAR
@@ -168,7 +168,7 @@ CreditsScript:
 	db         COORDINATION, 1
 	db      HIROYUKI_ZINNAI, 2
 
-	db CREDITS_WAIT, 12
+	db CREDITS_WAIT, 8
 
 	db            PRODUCERS, 0
 	db         SATORU_IWATA, 1
@@ -180,7 +180,7 @@ CreditsScript:
 	db            PRODUCERS, 1
 	db   TSUNEKAZU_ISHIHARA, 2
 
-	db CREDITS_WAIT, 12
+	db CREDITS_WAIT, 8
 
 ; Clear the banner.
 	db CREDITS_CLEAR
@@ -192,7 +192,7 @@ CreditsScript:
 
 	db     US_VERSION_STAFF, 2
 
-	db CREDITS_WAIT, 9
+	db CREDITS_WAIT, 6
 
 	db      US_COORDINATION, 1
 	db          GAIL_TILDEN, 2
@@ -215,7 +215,7 @@ CreditsScript:
 	db     TEXT_TRANSLATION, 1
 	db        NOB_OGASAWARA, 2
 
-	db CREDITS_WAIT, 12
+	db CREDITS_WAIT, 8
 
 	db          PROGRAMMERS, 1
 	db      TERUKI_MURAKAWA, 2
@@ -232,7 +232,7 @@ CreditsScript:
 	db      PRODUCT_TESTING, 0
 	db             PLANNING, 1
 
-	db CREDITS_WAIT, 12
+	db CREDITS_WAIT, 8
 
 	db      PRODUCT_TESTING, 0
 	db       KEITA_NAKAMURA, 1
@@ -248,13 +248,13 @@ CreditsScript:
 	db         ATSUSHI_TADA, 3
 	db          MIYUKI_SATO, 4
 
-	db CREDITS_WAIT, 12
+	db CREDITS_WAIT, 16
 
 	db       SPECIAL_THANKS, 0
 	db     KIMIKO_NAKAMICHI, 1
 	db           AKITO_MORI, 2
 
-	db CREDITS_WAIT, 12
+	db CREDITS_WAIT, 8
 
 	db       SPECIAL_THANKS, 0
 	db        GAKUZI_NOMOTO, 1
@@ -267,16 +267,114 @@ CreditsScript:
 	db    MIKIHIRO_ISHIKAWA, 1
 	db   HIDEYUKI_HASHIMOTO, 2
 
-	db CREDITS_WAIT, 12
+	db CREDITS_WAIT, 8
 
 	db   EXECUTIVE_PRODUCER, 1
 	db     HIROSHI_YAMAUCHI, 2
 
-	db CREDITS_WAIT, 12
+	db CREDITS_WAIT, 8
+
+; Clear the banner.
+	db CREDITS_CLEAR
+	
+	db CREDITS_WAIT, 1
+	
+	; Update the banner.
+	db CREDITS_SCENE, 2 ; Ditto
+
+	db        CRYSTAL_KAIZO, 1
+	db    CRYSTAL_KAIZO_DEV, 2
+
+	db CREDITS_WAIT, 9
+
+; Clear the banner.
+	db CREDITS_CLEAR
+	
+	db CREDITS_WAIT, 1
+	
+	; Update the banner.
+	db CREDITS_SCENE, 1 ; Smoochum
+
+	db       CRYSTAL_KAIZO_PLUS_STAFF, 1
+
+	db CREDITS_WAIT, 6
+
+	db         CKK_PROJECT_MANAGEMENT, 1
+	db                       LUAPMAIL, 2
+
+	db CREDITS_WAIT, 8
+
+	db    CKK_ASST_PROJECT_MANAGEMENT, 1
+	db                         MANNAT, 3
+
+	db CREDITS_WAIT, 8
+
+	db  	   	  CKK_LEAD_PROGRAMMER, 1
+	db                         KDLPRO, 2
+
+	db CREDITS_WAIT, 8
+
+	db  	 		  CKK_PROGRAMMERS, 0
+	db                         XAVION, 1
+	db                         DEKZEH, 2
+	db                     NOT_SUICUU, 3
+
+	db CREDITS_WAIT, 8
+
+	db  	 		  CKK_PROGRAMMERS, 0
+	db                          ZUILS, 1
+	db                       MARIL300, 2
+	db                        SILVION, 3
+
+	db CREDITS_WAIT, 8
+
+	db  CKK_GAME_TESTER_THEORYCRAFTER, 0
+	db          QUESTIONABLE_SPECIMEN, 2
+	db                         DEKZEH, 4
+
+	db CREDITS_WAIT, 8
+
+	db  CKK_GAME_TESTER_THEORYCRAFTER, 0
+	db                       REFINERY, 2
+	db          			 	 REJE, 3
+	db                        RUNABUN, 4
+
+	db CREDITS_WAIT, 8
+
+	db  CKK_GAME_TESTER_THEORYCRAFTER, 0
+	db                      SAFETYMAN, 2
+	db          		   NOT_SUICUU, 3
+	db          		       BURITO, 4
+
+	db CREDITS_WAIT, 8
+
+	db  	   	    CKK_SHOWDOWN_CALC, 1
+	db                   TOXICENDUSER, 2
+
+	db CREDITS_WAIT, 8
+
+	db  	   	 BUILT_ON_POKECRYSTAL, 1
+	db                           PRET, 3
+
+	db CREDITS_WAIT, 8
+
+	db  	   	   SPECIAL_THANKS_CKK, 1
+	db                          PCHAL, 2
+
+	db CREDITS_WAIT, 8
+
+	db  	   	       FAREWELL_MSG_1, 0
+
+	db CREDITS_WAIT, 8
+
+	db  	   	       FAREWELL_MSG_2, 1
+
+	db CREDITS_WAIT, 8
 
 	db            COPYRIGHT, 1
 
 	db CREDITS_WAIT, 9
+	
 
 ; Display "The End" graphic.
 	db CREDITS_THEEND

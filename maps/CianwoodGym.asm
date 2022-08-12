@@ -88,6 +88,7 @@ TrainerBlackbeltYoshi:
 	trainer BLACKBELT_T, YOSHI, EVENT_BEAT_BLACKBELT_YOSHI, BlackbeltYoshiSeenText, BlackbeltYoshiBeatenText, 0, .Script
 
 .Script:
+	setevent EVENT_DISABLE_POCKET_PC
 	endifjustbattled
 	opentext
 	writetext BlackbeltYoshiAfterText
@@ -121,6 +122,7 @@ TrainerBlackbeltLung:
 	trainer BLACKBELT_T, LUNG, EVENT_BEAT_BLACKBELT_LUNG, BlackbeltLungSeenText, BlackbeltLungBeatenText, 0, .Script
 
 .Script:
+	clearevent EVENT_DISABLE_POCKET_PC
 	endifjustbattled
 	opentext
 	writetext BlackbeltLungAfterText

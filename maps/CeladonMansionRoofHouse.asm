@@ -23,7 +23,7 @@ CeladonMansionRoofHousePharmacistScript:
 .Night:
 	writetext CeladonMansionRoofHousePharmacistStoryText
 	promptbutton
-	verbosegiveitem TM_CURSE
+	verbosegiveitem RAGECANDYBAR
 	iffalse .NoRoom
 	setevent EVENT_GOT_TM03_CURSE
 .GotCurse:
@@ -105,13 +105,14 @@ CeladonMansionRoofHousePharmacistStoryText:
 	done
 
 CeladonMansionRoofHousePharmacistCurseText:
-	text "TM03 is CURSE."
+	text "You thought you"
+	line "were getting the"
 
-	para "It's a terrifying"
-	line "move that slowly"
+	para "tm for curse!"
+	line "But you got"
 
-	para "whittles down the"
-	line "victim's HP."
+	para "ragecandybar'd"
+	line "instead!"
 	done
 
 CeladonMansionRoofHouse_MapEvents:

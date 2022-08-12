@@ -1,6 +1,6 @@
 	db ZAPDOS ; 145
 
-	db  90,  90,  85, 100, 125,  90
+	db  90,  95,  90, 105, 125,  95
 	;   hp  atk  def  spd  sat  sdf
 
 	db ELECTRIC, FLYING ; type
