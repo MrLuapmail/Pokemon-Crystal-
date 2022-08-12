@@ -443,16 +443,16 @@ RadioTower2FBuenaShowIntroductionText:
 
 	para "Do you know about"
 	line "a radio program"
-	cont "called CLOUDCHASING?"
+	cont "called CLOUtCHASING?"
 
 	para "If you can tell me"
 	line "the source of"
 
 	para "the cringe, you"
-	line "will earn cloud."
+	line "will earn clout."
 
 	para "Save up that"
-	line "cloud and trade"
+	line "clout and trade"
 
 	para "it at that sweet"
 	line "young lady over"
