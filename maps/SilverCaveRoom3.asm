@@ -10,6 +10,7 @@ TrainerE4Will:
 	trainer WILL, WILL2, EVENT_BEAT_REMATCH_WILL, RematchWillSeenText, RematchWillBeatenText, 0, .Script
 
 .Script:
+	setevent EVENT_DISABLE_POCKET_PC
 	endifjustbattled
 	opentext
 	writetext RematchWillAfterBattleText
