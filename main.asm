@@ -689,6 +689,12 @@ INCLUDE "engine/events/battle_tower/load_trainer.asm"
 INCLUDE "engine/events/odd_egg.asm"
 
 
+SECTION "Newbox", ROMX
+
+;INCLUDE "engine/pokemon/bills_pc_new.asm"
+;INCLUDE "engine/pokemon/bills_pc_ui.asm"
+
+
 SECTION "Stadium 2 Checksums", ROMX[$7DE0], BANK[$7F]
 
 ; The end of the ROM is taken up by checksums of the content, apparently used

@@ -3092,7 +3092,9 @@ wMountMoonSquareSceneID::                         db
 wMobileTradeRoomSceneID::                         db
 wMobileBattleRoomSceneID::                        db
 
-	ds 49
+wPCMon:: newboxmon_struct wPCMon
+
+	ds 2
 
 ; fight counts
 wJackFightCount::    db
