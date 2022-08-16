@@ -1819,10 +1819,20 @@ wDefaultSpawnpoint:: db
 SECTION UNION "Miscellaneous WRAM 1", WRAMX
 
 ; mon buffer
+UNION
+wBufferMon:: party_struct wBufferMon
 wBufferMonNickname:: ds MON_NAME_LENGTH
 wBufferMonOT:: ds NAME_LENGTH
-wBufferMon:: party_struct wBufferMon
-	ds 8
+NEXTU
+wEncodedBufferMon:: savemon_struct wEncodedBufferMon
+ENDU
+
+; Points towards box + slot if using GetStorageBoxMon. Slot set to 0 if empty.
+wBufferMonBox:: db
+wBufferMonSlot:: db
+
+	ds 6
+
 wMonOrItemNameBuffer:: ds NAME_LENGTH
 	ds NAME_LENGTH
 
@@ -3092,9 +3102,7 @@ wMountMoonSquareSceneID::                         db
 wMobileTradeRoomSceneID::                         db
 wMobileBattleRoomSceneID::                        db
 
-wPCMon:: newboxmon_struct wPCMon
-
-	ds 2
+	ds 49
 
 ; fight counts
 wJackFightCount::    db

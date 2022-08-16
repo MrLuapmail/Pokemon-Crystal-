@@ -29,7 +29,7 @@ box_struct: MACRO
 \1BoxEnd::
 ENDM
 
-newboxmon_struct: MACRO
+savemon_struct: MACRO
 \1Species::        db
 \1Item::           db
 \1Moves::          ds NUM_MOVES
@@ -51,10 +51,25 @@ newboxmon_struct: MACRO
 \1CaughtGender::
 \1CaughtLocation:: db
 \1Level::          db
+\1SpeciesAlt::     db ; holds the alternative species byte (to handle eggs)
 \1Nickname::       ds MON_NAME_LENGTH - 1 ; terminator is implicit
 \1OT::             ds PLAYER_NAME_LENGTH - 1 ; terminator is implicit
-\1SpeciesAlt::     db ; holds the alternative species byte (to handle eggs)
 \1BoxEnd::
+ENDM
+
+MACRO pokedb
+\1Mons::
+	for n, 1, \2 + 1
+	\1Mon{d:n}:: savemon_struct \1Mon{d:n}
+	endr
+\1End::
+ENDM
+
+MACRO newbox
+\1Entries:: ds MONS_PER_BOX
+\1Banks::   flag_array MONS_PER_BOX
+\1Name::    ds BOX_NAME_LENGTH
+\1Theme::   db
 ENDM
 
 party_struct: MACRO
