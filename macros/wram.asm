@@ -42,7 +42,7 @@ savemon_struct: MACRO
 \1SpdExp::         dw
 \1SpcExp::         dw
 \1DVs::            dw
-\1PPUp::           db
+\1PPUps::          db
 \1Happiness::      db
 \1PokerusStatus::  db
 \1CaughtData::
@@ -51,10 +51,10 @@ savemon_struct: MACRO
 \1CaughtGender::
 \1CaughtLocation:: db
 \1Level::          db
-\1SpeciesAlt::     db ; holds the alternative species byte (to handle eggs)
+\1AltSpecies::     db ; holds the alternative species byte (to handle eggs)
 \1Nickname::       ds MON_NAME_LENGTH - 1 ; terminator is implicit
 \1OT::             ds PLAYER_NAME_LENGTH - 1 ; terminator is implicit
-\1BoxEnd::
+\1End::
 ENDM
 
 MACRO pokedb

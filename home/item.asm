@@ -50,6 +50,14 @@ ReceiveItem::
 	pop bc
 	ret
 
+ItemIsMail_a::
+	push hl
+	push de
+	push bc
+	ld d, a
+	farcall ItemIsMail
+	jp PopBCDEHL
+
 CheckItem::
 	push hl
 	push de

@@ -2289,12 +2289,12 @@ endr
 	push de
 	ld a, [wMenuSelection]
 	dec a
-	call GetBoxName
+	call GetOldBoxName
 	pop hl
 	call PlaceString
 	ret
 
-GetBoxName:
+GetOldBoxName:
 	ld bc, BOX_NAME_LENGTH
 	ld hl, wBoxNames
 	call AddNTimes
@@ -2397,7 +2397,7 @@ BillsPC_PrintBoxName:
 	call PlaceString
 	ld a, [wCurBox]
 	and $f
-	call GetBoxName
+	call GetOldBoxName
 	hlcoord 11, 2
 	call PlaceString
 	ret
@@ -2459,7 +2459,7 @@ BillsPC_ChangeBoxSubmenu:
 	call LoadFontsBattleExtra
 	ld a, [wMenuSelection]
 	dec a
-	call GetBoxName
+	call GetOldBoxName
 	ld e, l
 	ld d, h
 	ld hl, wBoxNameBuffer
@@ -2467,7 +2467,7 @@ BillsPC_ChangeBoxSubmenu:
 	call InitString
 	ld a, [wMenuSelection]
 	dec a
-	call GetBoxName
+	call GetOldBoxName
 	ld de, wBoxNameBuffer
 	call CopyName2
 	ret

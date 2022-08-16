@@ -2936,6 +2936,18 @@ ComputeMaxPP:
 	pop bc
 	ret
 
+RestoreBufferPP:
+	ld hl, wBufferMonMoves
+	ld de, wBufferMonPP
+	ld a, [wMenuCursorY]
+	push af
+	ld a, BUFFERMON
+	ld [wMonType], a
+	call _RestoreAllPP
+	pop af
+	ld [wMenuCursorY], a
+	ret
+
 RestoreAllPP:
 	ld a, MON_PP
 	call GetPartyParamLocation
@@ -2944,8 +2956,10 @@ RestoreAllPP:
 	call GetPartyParamLocation
 	pop de
 	xor a ; PARTYMON
-	ld [wMenuCursorY], a
 	ld [wMonType], a
+	; fallthrough
+_RestoreAllPP:
+	ld [wMenuCursorY], a
 	ld c, NUM_MOVES
 .loop
 	ld a, [hli]
@@ -2997,6 +3011,10 @@ GetMaxPPOfMove:
 	jr z, .got_nonpartymon ; TEMPMON
 
 	ld hl, wBattleMonMoves ; WILDMON
+	dec a
+	jr z, .got_nonpartymon
+
+	ld hl, wBufferMonMoves ; BUFFERMON
 
 .got_nonpartymon ; BOXMON, TEMPMON, WILDMON
 	call GetMthMoveOfCurrentMon

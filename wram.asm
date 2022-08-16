@@ -1821,6 +1821,7 @@ SECTION UNION "Miscellaneous WRAM 1", WRAMX
 ; mon buffer
 UNION
 wBufferMon:: party_struct wBufferMon
+wBufferMonAltSpecies:: db ; the 2nd (usually redundant) species byte, for eggs
 wBufferMonNickname:: ds MON_NAME_LENGTH
 wBufferMonOT:: ds NAME_LENGTH
 NEXTU
@@ -1831,7 +1832,7 @@ ENDU
 wBufferMonBox:: db
 wBufferMonSlot:: db
 
-	ds 6
+	ds 5
 
 wMonOrItemNameBuffer:: ds NAME_LENGTH
 	ds NAME_LENGTH
@@ -3511,6 +3512,15 @@ wMagnetTrainPlayerSpriteInitX:: db
 
 wLYOverridesBackup:: ds SCREEN_HEIGHT_PX
 wLYOverridesBackupEnd::
+
+
+SECTION "Used Storage", WRAMX
+
+wPokeDB1UsedEntries:: flag_array MONDB_ENTRIES
+wPokeDB1UsedEntriesEnd::
+
+wPokeDB2UsedEntries:: flag_array MONDB_ENTRIES
+wPokeDB2UsedEntriesEnd::
 
 
 SECTION "Battle Animations", WRAMX

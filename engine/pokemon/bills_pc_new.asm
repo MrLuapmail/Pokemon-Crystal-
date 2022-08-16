@@ -99,12 +99,12 @@ SwapStorageBoxSlots:
 	dec a
 	ld [wCurPartyMon], a
 
-	; Is the party slot occupied? Also writes the partymon to wTempMon.
+	; Is the party slot occupied? Also writes the partymon to wBufferMon.
 	call GetStorageBoxMon
 	jr z, .not_last_healthy
 
 	; Check if the partymon is holding Mail. We can't store Mail in a Box.
-	ld a, [wTempMonItem]
+	ld a, [wBufferMonItem]
 	call ItemIsMail_a
 	ld a, 5
 	jr c, .pop_bcde_and_return
@@ -125,7 +125,7 @@ SwapStorageBoxSlots:
 
 	; Try to allocate a new pokedb pointer, unless the party slot was empty.
 	ld de, 0 ; in case we're blanking the box slot
-	ld a, [wTempMonSlot]
+	ld a, [wBufferMonSlot]
 	and a
 	call nz, NewStoragePointer
 	jr nc, .found_new_pokedb
@@ -238,7 +238,7 @@ SwapPartyMons:
 DoMailSwap:
 	; Swap Mail
 	ld a, BANK(sPartyMon1Mail)
-	call GetSRAMBank
+	call OpenSRAM
 	ld hl, sPartyMon1Mail
 	ld bc, MAIL_STRUCT_LENGTH
 	call DoPartySwap
@@ -251,34 +251,34 @@ DoPartySwap:
 	push de
 	push hl
 	ld a, d
-	rst AddNTimes
+	call AddNTimes
 	ld a, e
 	ld d, h
 	ld e, l
 	pop hl
-	rst AddNTimes
+	call AddNTimes
 	; Now hl and de points to which bytes to swap
 
 	push de
 	ld de, wSwitchMonBuffer
 	push bc
 	push hl
-	rst CopyBytes
+	call CopyBytes
 	pop de
 	pop bc
 	pop hl
 	push hl
 	push bc
-	rst CopyBytes
+	call CopyBytes
 	pop bc
 	pop de
 	ld hl, wSwitchMonBuffer
-	rst CopyBytes
+	call CopyBytes
 	pop de
 	ret
 
 NewStorageBoxPointer:
-; Sets bcde to an unused box storage location. Preserves wTempMon. Returns:
+; Sets bcde to an unused box storage location. Preserves wBufferMon. Returns:
 ; nc|z: Active box has free space
 ; nc|nz: Active box full, space found elsewhere
 ; c|z: Storage System filled completely.
@@ -291,7 +291,7 @@ NewStorageBoxPointer:
 	ld a, [wCurBox]
 	inc a
 	ld b, a
-	ld d, NUM_BOXES
+	ld d, NUM_NEWBOXES
 .outer_loop
 	ld c, 1
 .inner_loop
@@ -307,7 +307,7 @@ NewStorageBoxPointer:
 	jr nz, .inner_loop
 	ld a, b
 	inc b
-	cp NUM_BOXES
+	cp NUM_NEWBOXES
 	jr nz, .dont_wrap_box
 	ld b, 1
 .dont_wrap_box
@@ -340,7 +340,7 @@ NewStorageBoxPointer:
 
 NewStoragePointer:
 ; Sets de to an unused pokedb entry. Returns c if none was found.
-; Preserves wTempMon.
+; Preserves wBufferMon.
 	; Try twice, flushing the database if the first one failed.
 	call .GetStorage
 	ret nc
@@ -370,8 +370,15 @@ NewStoragePointer:
 FlushStorageSystem:
 ; Frees up orphaned pokedb entries and reallocates used entries. Beware of soft-
 ; resets and make sure this process completes before loading up a game.
+	ldh a, [rSVBK]
+	push af
 	ld a, BANK(wPokeDB1UsedEntries)
-	call StackCallInWRAMBankA
+	ldh [rSVBK], a
+	call .Function
+	pop af
+	ldh [rSVBK], a
+	ret
+
 .Function:
 	push hl
 	push de
@@ -381,7 +388,7 @@ FlushStorageSystem:
 	xor a
 	ld hl, wPokeDB1UsedEntries
 	ld bc, wPokeDB2UsedEntriesEnd - wPokeDB1UsedEntries
-	rst ByteFill
+	call ByteFill
 
 	; Now, set flags as per box usage.
 	ld b, 1
@@ -396,7 +403,7 @@ FlushStorageSystem:
 	jr nz, .inner_loop
 	ld a, b
 	inc b
-	cp NUM_BOXES * 2 ; current + backup
+	cp NUM_NEWBOXES * 2 ; current + backup
 	jr nz, .outer_loop
 	jp PopBCDEHL
 
@@ -405,18 +412,18 @@ GetStorageBoxPointer:
 	; Ensure that we're dealing with an actual box and not a partymon.
 	ld a, b
 	and a
-	ld a, ERR_NEWBOX
-	jp z, Crash
+.crash
+	jr z, .crash
 
 	ld a, BANK(sNewBox1)
-	call GetSRAMBank
+	call OpenSRAM
 
 	push hl
 	push bc
 	ld a, b
 	ld hl, sNewBox1Entries - (sNewBox2 - sNewBox1)
 	ld bc, sNewBox2 - sNewBox1
-	rst AddNTimes
+	call AddNTimes
 	pop bc
 	push bc
 	dec c
@@ -432,7 +439,7 @@ GetStorageBoxPointer:
 	dec c
 	ld d, 1 ; will cause a useless bankswitch in flag checking, but that's OK
 	ld b, CHECK_FLAG
-	predef FlagPredef
+	predef SmallFarFlagAction
 	pop bc
 	jr z, .got_bank
 	inc d
@@ -441,16 +448,16 @@ GetStorageBoxPointer:
 	jp CloseSRAM
 
 UpdateStorageBoxMonFromTemp:
-; Updates storage pointed to by wTempMonBox+wTempMonSlot with content in
-; wTempMon. If this is part of a Box, this allocates a new entry.
+; Updates storage pointed to by wBufferMonBox+wBufferMonSlot with content in
+; wBufferMon. If this is part of a Box, this allocates a new entry.
 ; Returns z if successful.
 	; Just run a simple copy if we're updating the party.
-	ld a, [wTempMonSlot]
+	ld a, [wBufferMonSlot]
 	ld c, a
-	ld a, [wTempMonBox]
+	ld a, [wBufferMonBox]
 	ld b, a
 	and a
-	jr z, CopyBetweenPartyAndTemp
+	jp z, CopyBetweenPartyAndTemp
 
 	; Otherwise, we need to allocate a new box entry.
 	; Erase the current entry before trying to find a new one.
@@ -499,13 +506,13 @@ SetStorageBoxPointer:
 
 	; We're dealing with a box, so set box pointer appropriately.
 	ld a, BANK(sNewBox1)
-	call GetSRAMBank
+	call OpenSRAM
 
 	; Get the correct box.
 	ld a, b
 	ld hl, sNewBox1Entries - (sNewBox2 - sNewBox1)
 	ld bc, sNewBox2 - sNewBox1
-	rst AddNTimes
+	call AddNTimes
 	pop bc
 	push bc
 
@@ -527,7 +534,7 @@ SetStorageBoxPointer:
 	jr z, .got_flag_action
 	ld b, SET_FLAG
 .got_flag_action
-	predef FlagPredef
+	predef SmallFarFlagAction
 	jr .done
 
 .party
@@ -577,17 +584,17 @@ CopyBetweenPartyAndTemp:
 ; If bit 0 of b is set, copies from party to temp, otherwise the reverse.
 	dec c
 	ld hl, wPartyMon1
-	ld de, wTempMon
+	ld de, wBufferMon
 	ld a, PARTYMON_STRUCT_LENGTH
 	call .Copy
 
 	ld hl, wPartyMonNicknames
-	ld de, wTempMonNickname
+	ld de, wBufferMonNickname
 	ld a, MON_NAME_LENGTH
 	call .Copy
 
 	ld hl, wPartyMonOTs
-	ld de, wTempMonOT
+	ld de, wBufferMonOT
 	ld a, NAME_LENGTH
 	call .Copy
 
@@ -605,7 +612,7 @@ CopyBetweenPartyAndTemp:
 .got_party
 	ld b, 0
 	push af
-	rst AddNTimes
+	call AddNTimes
 	pop af
 	pop bc
 	push bc
@@ -613,12 +620,12 @@ CopyBetweenPartyAndTemp:
 	bit 0, b
 	call z, SwapHLDE
 	ld b, 0
-	rst CopyBytes
+	call CopyBytes
 	pop bc
 	ret
 
 AddStorageMon:
-; Adds wTempMon to storage pointed to with de. Does nothing if e is 0, meaning
+; Adds wBufferMon to storage pointed to with de. Does nothing if e is 0, meaning
 ; a null entry. Returns a fatal error (crash) if the entry is occupied.
 	; Do nothing if we're pointing towards null storage.
 	ld a, e
@@ -627,8 +634,8 @@ AddStorageMon:
 
 	; Allocate the entry. Return a fatal error if the entry was already set.
 	call AllocateStorageFlag
-	ld a, ERR_NEWBOX
-	jp nz, Crash
+.crash
+	jr nz, .crash
 	push hl
 	push de
 	push bc
@@ -636,17 +643,17 @@ AddStorageMon:
 	; Encode the tempmon for adding, but decode it afterwards to leave it in
 	; the same state.
 	push de
-	call EncodeTempMon
+	call EncodeBufferMon
 	pop de
 	call OpenPokeDB
 
 	ld d, h
 	ld e, l
-	ld hl, wEncodedTempMon
+	ld hl, wEncodedBufferMon
 	ld bc, SAVEMON_STRUCT_LENGTH
-	rst CopyBytes
+	call CopyBytes
 
-	call DecodeTempMon
+	call DecodeBufferMon
 	call CloseSRAM
 	jp PopBCDEHL
 
@@ -654,59 +661,24 @@ OpenPokeDB:
 ; Opens pokedb bank and sets hl to relevant entry in de.
 	ld a, d
 	dec a
-	ld hl, .Bank1Pointers
+	ld a, BANK(sNewBoxMons1)
 	jr z, .got_bank
-	ld hl, .Bank2Pointers
+	ld a, BANK(sNewBoxMons2)
 .got_bank
-	ld a, e
-	dec a
-	sub MONDB_ENTRIES_A
-	call nc, .NextPointer
-	; for optimization purposes, pointer list is A -> C -> B
-	sub MONDB_ENTRIES_B
-	call c, .NextPointer
-
-	ld a, [hli]
-	call GetSRAMBank
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
+	call OpenSRAM
+	ld hl, sNewBoxMons1
 	ld bc, SAVEMON_STRUCT_LENGTH
 	ld a, e
 	dec a
-	rst AddNTimes
+	call AddNTimes
 	ret
 
-.NextPointer:
-	inc hl
-	inc hl
-	inc hl
-	ret
-
-MACRO pokedb_section
-	db BANK(\1)
-	dw (\1) - (\2) * SAVEMON_STRUCT_LENGTH
-ENDM
-
-.Bank1Pointers:
-	; Because we want to point starting from entry 0, and e ends up being above
-	; MONDB_ENTRIES_A (and beyond) for section C and B, include the offset.
-	; This means that for example e=len(A)+1 points to the first entry in
-	; pokedb section B.
-	pokedb_section sBoxMons1AMons, 0
-	pokedb_section sBoxMons1CMons, MONDB_ENTRIES_A + MONDB_ENTRIES_B
-	pokedb_section sBoxMons1BMons, MONDB_ENTRIES_A
-.Bank2Pointers:
-	pokedb_section sBoxMons2AMons, 0
-	pokedb_section sBoxMons2CMons, MONDB_ENTRIES_A + MONDB_ENTRIES_B
-	pokedb_section sBoxMons2BMons, MONDB_ENTRIES_A
-
-EncodeTempMon:
-; Encodes party_struct wTempMon in-place to savemon_struct wEncodedTempMon.
+EncodeBufferMon:
+; Encodes party_struct wBufferMon in-place to savemon_struct wEncodedBufferMon.
 ; Bytes identical to both structs do not need encoding.
 
 	; Convert 4 PP bytes to 1 PP Up byte.
-	ld hl, wTempMonPP
+	ld hl, wBufferMonPP
 	ld b, NUM_MOVES
 	ld d, h
 	ld e, l
@@ -722,30 +694,24 @@ EncodeTempMon:
 	jr nz, .loop
 
 	; Shift everything after PP Ups backwards.
-	ld hl, wTempMonHappiness
-	ld de, wEncodedTempMonHappiness
-	ld bc, wEncodedTempMonExtra - wEncodedTempMonHappiness
-	rst CopyBytes
-
-	; Move Extra bytes.
-	; de == wEncodedTempMonExtra
-	ld hl, wTempMonExtra
-	ld bc, 3
-	rst CopyBytes
+	ld hl, wBufferMonHappiness
+	ld de, wEncodedBufferMonHappiness
+	ld bc, wEncodedBufferMonNickname - wEncodedBufferMonHappiness
+	call CopyBytes
 
 	; Move name-related bytes.
-	ld hl, wTempMonNickname
-	ld de, wEncodedTempMonNickname
+	ld hl, wBufferMonNickname
+	ld de, wEncodedBufferMonNickname
 	ld bc, MON_NAME_LENGTH - 1
-	rst CopyBytes
-	ld hl, wTempMonOT
-	ld de, wEncodedTempMonOT
+	call CopyBytes
+	ld hl, wBufferMonOT
+	ld de, wEncodedBufferMonOT
 	ld bc, PLAYER_NAME_LENGTH - 1
-	rst CopyBytes
+	call CopyBytes
 
 	; Convert nickname+OT characters into reversible 7bit.
-	ld hl, wEncodedTempMonNickname
-	ld b, wEncodedTempMonEnd - wEncodedTempMonNickname
+	ld hl, wEncodedBufferMonNickname
+	ld b, wEncodedBufferMonEnd - wEncodedBufferMonNickname
 .charmap_loop
 	ld a, [hl]
 	; " " ($7f) -> $7a
@@ -768,12 +734,12 @@ EncodeTempMon:
 	dec b
 	jr nz, .charmap_loop
 	; fallthrough
-ChecksumTempMon:
-; Calculate and write a checksum and to TempMon. Use a nonzero baseline to
+ChecksumBufferMon:
+; Calculate and write a checksum and to BufferMon. Use a nonzero baseline to
 ; avoid a complete null content from having 0 as a checksum.
 ; Returns z if an existing checksum is identical to the written checksum.
 	; boxmon struct + 3 extra bytes (normally placed after OT)
-	ld bc, wEncodedTempMon
+	ld bc, wEncodedBufferMon
 	ld hl, 127
 	lb de, SAVEMON_NICKNAME, 0
 	call .DoChecksum
@@ -781,7 +747,7 @@ ChecksumTempMon:
 	; nickname + OT. This skips one CRC multiplier due to a double-increase.
 	; Counterintuitive but harmless (originally a mistake, but fixing would
 	; needlessly break saves...).
-	ld bc, wEncodedTempMonNickname
+	ld bc, wEncodedBufferMonNickname
 	ld d, $80 | (SAVEMON_STRUCT_LENGTH - SAVEMON_NICKNAME)
 	call .DoChecksum
 
@@ -792,7 +758,7 @@ ChecksumTempMon:
 	; Checksum is 16bit, further ones are padded with zeroes.
 	; The padding being nonzero is also counted as invalid.
 	ld b, 0 ; used for checksum error detection
-	ld hl, wEncodedTempMonNickname
+	ld hl, wEncodedBufferMonNickname
 	ld c, SAVEMON_STRUCT_LENGTH - SAVEMON_NICKNAME
 .WriteChecksum:
 	ld a, [hl]
@@ -828,26 +794,20 @@ ChecksumTempMon:
 	ld b, 0
 	ld c, a
 	ld a, e
-	rst AddNTimes
+	call AddNTimes
 	pop bc
 	jr .DoChecksum
 
-DecodeTempMon:
-; Decodes TempMon. Returns nz. Sets carry in case of invalid checksum.
+DecodeBufferMon:
+; Decodes BufferMon. Returns nz. Sets carry in case of invalid checksum.
 	; First, run a checksum check. Don't use the result until we've done
 	; character replacements back to their original state
-	call ChecksumTempMon
+	call ChecksumBufferMon
 	push af
 
-	; Move extra data back
-	ld hl, wEncodedTempMonExtra
-	ld de, wTempMonExtra
-	ld bc, 3
-	rst CopyBytes
-
 	; Reverse the 7bit character encoding back to its original state.
-	ld hl, wEncodedTempMonNickname
-	ld b, wEncodedTempMonEnd - wEncodedTempMonNickname
+	ld hl, wEncodedBufferMonNickname
+	ld b, wEncodedBufferMonEnd - wEncodedBufferMonNickname
 .charmap_loop
 	ld a, [hl]
 	or $80
@@ -871,9 +831,9 @@ DecodeTempMon:
 	jr nz, .charmap_loop
 
 	; Copy nickname and OT back to its original place. We need to do this backwards
-	; due to overlap between wEncodedTempMon(Nickname|OT) and wTempMon(Nickname|OT).
-	ld hl, wEncodedTempMonOT + PLAYER_NAME_LENGTH - 2
-	ld de, wTempMonOT + PLAYER_NAME_LENGTH - 1
+	; due to overlap between wEncodedBufferMon(Nickname|OT) and wBufferMon(Nickname|OT).
+	ld hl, wEncodedBufferMonOT + PLAYER_NAME_LENGTH - 2
+	ld de, wBufferMonOT + PLAYER_NAME_LENGTH - 1
 	lb bc, 2, PLAYER_NAME_LENGTH - 1
 
 .outer_loop
@@ -889,14 +849,14 @@ DecodeTempMon:
 
 	; If this is the first time we leave the loop, do mon nickname now.
 	dec b
-	ld de, wTempMonNickname + MON_NAME_LENGTH - 1
+	ld de, wBufferMonNickname + MON_NAME_LENGTH - 1
 	ld c, MON_NAME_LENGTH - 1
 	jr nz, .outer_loop
 
 	; Shift data past PP to leave room for PP data.
-	ld hl, wEncodedTempMonLevel
-	ld de, wTempMonLevel
-	lb bc, NUM_MOVES, wEncodedTempMonLevel - wEncodedTempMonPPUps
+	ld hl, wEncodedBufferMonAltSpecies
+	ld de, wBufferMonAltSpecies
+	lb bc, NUM_MOVES, wEncodedBufferMonAltSpecies - wEncodedBufferMonPPUps
 .reverse_copybytes_loop
 	ld a, [hld]
 	ld [de], a
@@ -920,9 +880,10 @@ DecodeTempMon:
 	pop af
 	jr z, SetTempPartyMonData
 
-	ld hl, BadEggRLE
-	ld de, wTempMon
-	call CopyRLE
+	ld hl, BadEgg
+	ld de, wBufferMon
+	ld bc, BadEggEnd - BadEgg
+	call CopyBytes
 	call SetTempPartyMonData
 	scf
 	ret
@@ -931,29 +892,23 @@ INCLUDE "data/pc/bad_egg.asm"
 
 SetTempPartyMonData:
 	; Calculate stats
-	ld a, [wTempMonSpecies]
+	ld a, [wBufferMonSpecies]
 	ld [wCurSpecies], a
-	ld a, [wTempMonForm]
-	ld [wCurForm], a
 	call GetBaseData
-	ld hl, wTempMonOT + PLAYER_NAME_LENGTH
-	ld a, [hl]
-	and HYPER_TRAINING_MASK
-	inc a
-	ld b, a
-	ld hl, wTempMonEVs - 1
-	ld de, wTempMonMaxHP
-	ld a, [wTempMonLevel]
+	ld b, TRUE
+	ld hl, wBufferMonStatExp - 1
+	ld de, wBufferMonMaxHP
+	ld a, [wBufferMonLevel]
 	ld [wCurPartyLevel], a
-	predef CalcPkmnStats
+	predef CalcMonStats
 
 	; Reset status condition
 	xor a
-	ld [wTempMonStatus], a
+	ld [wBufferMonStatus], a
 
 	; Set HP to full
-	ld hl, wTempMonMaxHP
-	ld de, wTempMonHP
+	ld hl, wBufferMonMaxHP
+	ld de, wBufferMonHP
 	ld a, [hli]
 	ld [de], a
 	inc de
@@ -961,18 +916,18 @@ SetTempPartyMonData:
 	ld [de], a
 
 	; Eggs have 0 current HP
-	ld hl, wTempMonIsEgg
-	bit MON_IS_EGG_F, [hl]
-	jr z, .not_egg
+	ld hl, wBufferMonAltSpecies
+	cp EGG
+	jr nz, .not_egg
 	xor a
 	ld [de], a
 	dec de
 	ld [de], a
 
 .not_egg
-	ld hl, wTempMonMoves
-	ld de, wTempMonPP
-	farcall RestoreTempPP
+	ld hl, wBufferMonMoves
+	ld de, wBufferMonPP
+	farcall RestoreBufferPP
 	or 1
 	ret
 
@@ -1006,8 +961,19 @@ CheckFreeDatabaseEntries:
 	; fallthrough
 _CheckFreeDatabaseEntries:
 	; Now, count used entries.
+	ldh a, [rSVBK]
+	push bc
+	push af
 	ld a, BANK(wPokeDB1UsedEntries)
-	call StackCallInWRAMBankA
+	ldh [rSVBK], a
+	call .Function
+	ld c, a
+	pop af
+	ldh [rSVBK], a
+	ld a, c
+	pop bc
+	ret
+
 .Function:
 	ld hl, wPokeDB1UsedEntries
 	call .CountEntries
@@ -1031,29 +997,31 @@ _CheckFreeDatabaseEntries:
 InitializeBoxes:
 ; Initializes the Storage System boxes as empty with default names and themes.
 	ld a, BANK(sNewBox1)
-	call GetSRAMBank
-	ld b, NUM_BOXES
+	call OpenSRAM
+	ld b, NUM_NEWBOXES
 	ld hl, sNewBox1
 .name_loop
 	push bc
 	ld e, b
 	ld bc, sNewBox1Name - sNewBox1
 	xor a
-	rst ByteFill
+	call ByteFill
 	push hl
 	push de
 	ld de, .Box
 	call CopyName2
 	dec hl
 	pop de
-	ld a, NUM_BOXES + 1
+	ld a, NUM_NEWBOXES + 1
 	sub e
-	ld e, a
-	ld d, 0
-	push bc
-	lb bc, PRINTNUM_LEFTALIGN, 2
-	call PrintNumFromReg
-	pop bc
+	sub 10
+	add "0" + 10
+	jr c, .next
+	ld [hl], "1"
+	inc hl
+	sub 10
+.next
+	ld [hli], a
 	ld [hl], "@"
 	pop hl
 	ld c, sNewBox2 - sNewBox1Name
@@ -1069,7 +1037,7 @@ InitializeBoxes:
 	; MONDB_ENTRIES since that would lead to odd behaviour when trying to check
 	; flags in FlushStorageSystem (which needs to care about both active and
 	; backup boxes).
-	ld b, NUM_BOXES
+	ld b, NUM_NEWBOXES
 	ld hl, sBackupNewBox1Entries
 .outer_backup_loop
 	ld c, MONS_PER_BOX
@@ -1108,7 +1076,7 @@ InitializeBoxes:
 	jp FlushStorageSystem
 
 .Box:
-	rawchar "Box @"
+	db "Box @"
 
 INCLUDE "data/pc/default_box_themes.asm"
 
@@ -1116,11 +1084,11 @@ _PointBoxTheme:
 ; Return's [wCurBox]'s theme pointer in hl.
 ; Also opens [wCurBox]'s SRAM bank.
 	ld a, BANK(sNewBox1)
-	call GetSRAMBank
+	call OpenSRAM
 	ld hl, sNewBox1Theme
 	ld a, [wCurBox]
 	ld bc, sNewBox2 - sNewBox1
-	rst AddNTimes
+	call AddNTimes
 	ret
 
 GetBoxTheme:
@@ -1163,34 +1131,34 @@ CopyBoxName:
 ; c=0: Copy from box b to string buffer 1.
 ; c=1: Copy from string buffer 1 to box b.
 	ld a, BANK(sNewBox1)
-	call GetSRAMBank
+	call OpenSRAM
 	ld hl, sNewBox1Name
 	ld a, b
 	dec a
 	push bc
 	ld bc, sNewBox2 - sNewBox1
-	rst AddNTimes
+	call AddNTimes
 	pop bc
 	ld de, wStringBuffer1
 	dec c
 	call z, SwapHLDE
 	ld bc, BOX_NAME_LENGTH
-	rst CopyBytes
+	call CopyBytes
 	jp CloseSRAM
 
 PrevStorageBoxMon:
-; Reads wTempMonBox+wTempMonSlot and attempts to load a previous mon.
+; Reads wBufferMonBox+wBufferMonSlot and attempts to load a previous mon.
 ; Returns nz upon success, otherwise z. If there is no previous mon,
-; wTempMonBox+wTempMonSlot is unchanged.
+; wBufferMonBox+wBufferMonSlot is unchanged.
 	push bc
-	ld a, [wTempMonSlot]
+	ld a, [wBufferMonSlot]
 	ld b, a
 	ld c, a
 .loop
 	dec c
 	jr z, .restore_slot
 	push bc
-	ld a, [wTempMonBox]
+	ld a, [wBufferMonBox]
 	ld b, a
 	call GetStorageBoxMon
 	pop bc
@@ -1198,17 +1166,17 @@ PrevStorageBoxMon:
 	jr .loop
 .restore_slot
 	ld a, b
-	ld [wTempMonSlot], a
+	ld [wBufferMonSlot], a
 .done
 	pop bc
 	ret
 
 NextStorageBoxMon:
-; Reads wTempMonBox+wTempMonSlot and attempts to load the next mon.
+; Reads wBufferMonBox+wBufferMonSlot and attempts to load the next mon.
 ; Returns nz upon success, otherwise z. If there is no next mon,
-; wTempMonBox+wTempMonSlot is unchanged.
+; wBufferMonBox+wBufferMonSlot is unchanged.
 	push bc
-	ld a, [wTempMonSlot]
+	ld a, [wBufferMonSlot]
 	ld b, a
 	ld c, a
 .loop
@@ -1218,36 +1186,36 @@ NextStorageBoxMon:
 	jr z, .restore_slot
 .get_storage
 	push bc
-	ld a, [wTempMonBox]
+	ld a, [wBufferMonBox]
 	ld b, a
 	call GetStorageBoxMon
 	pop bc
 	jr nz, .done
 
 	; If we're dealing with a party, we ran past the amount of mons we have.
-	ld a, [wTempMonBox]
+	ld a, [wBufferMonBox]
 	and $7f
 	jr nz, .loop
 	; fallthrough
 .restore_slot
 	ld a, b
-	ld [wTempMonSlot], a
+	ld [wBufferMonSlot], a
 .done
 	pop bc
 	ret
 
 GetStorageBoxMon:
-; Reads storage bank+entry from box b slot c and put it in wTempMon.
+; Reads storage bank+entry from box b slot c and put it in wBufferMon.
 ; This function supports handling the OT party by setting b to $80.
-; If there is a checksum error, put Bad Egg data in wTempMon instead.
+; If there is a checksum error, put Bad Egg data in wBufferMon instead.
 ; Returns c in case of a Bad Egg, z if the requested mon doesn't exist,
 ; nz|nc otherwise. If b==0, read from party list. c is 1-indexed.
 	xor a
-	ld [wTempMonSlot], a
+	ld [wBufferMonSlot], a
 
 	; Check if we're reading party or box data.
 	ld a, b
-	ld [wTempMonBox], a
+	ld [wBufferMonBox], a
 	and $7f
 	jr z, .read_party
 	push de
@@ -1256,7 +1224,7 @@ GetStorageBoxMon:
 	pop de
 	ret z
 	ld a, c
-	ld [wTempMonSlot], a
+	ld [wBufferMonSlot], a
 	ret
 
 .read_party
@@ -1271,7 +1239,7 @@ GetStorageBoxMon:
 	ret
 .party_not_empty
 	ld a, c
-	ld [wTempMonSlot], a
+	ld [wBufferMonSlot], a
 	push hl
 	push de
 	push bc
@@ -1279,17 +1247,15 @@ GetStorageBoxMon:
 	call CopyBetweenPartyAndTemp
 
 	; Calculate stats
-	ld a, [wTempMonSpecies]
+	ld a, [wBufferMonSpecies]
 	ld [wCurSpecies], a
-	ld a, [wTempMonForm]
-	ld [wCurForm], a
 	call GetBaseData
 	or 1
 	jp PopBCDEHL
 
 GetStorageMon:
-; Reads storage bank d, entry e and put it in wTempMon.
-; If there is a checksum error, put Bad Egg data in wTempMon instead.
+; Reads storage bank d, entry e and put it in wBufferMon.
+; If there is a checksum error, put Bad Egg data in wBufferMon instead.
 ; Returns c in case of a Bad Egg, z if the requested mon doesn't exist,
 ; nz|nc otherwise.
 	push hl
@@ -1300,14 +1266,14 @@ GetStorageMon:
 
 	call OpenPokeDB
 
-	; Write to wEncodedTempMon and then decode it.
-	ld de, wEncodedTempMon
+	; Write to wEncodedBufferMon and then decode it.
+	ld de, wEncodedBufferMon
 	ld bc, SAVEMON_STRUCT_LENGTH
-	rst CopyBytes
+	call CopyBytes
 
 	; Decode the result. This also returns a Bad Egg failsafe on a checksum
 	; error.
-	call DecodeTempMon
+	call DecodeBufferMon
 .done
 	call CloseSRAM
 	jp PopBCDEHL
@@ -1321,7 +1287,7 @@ AllocateStorageFlag:
 	ret
 
 IsStorageUsed:
-; Returns z if the given storage slot is unused. Preserves wTempMon.
+; Returns z if the given storage slot is unused. Preserves wBufferMon.
 	ld a, CHECK_FLAG
 	jr StorageFlagAction
 _AllocateStorageFlag:
@@ -1350,8 +1316,19 @@ StorageFlagAction:
 	jp PopBCDEHL
 
 .do_it
+	ldh a, [rSVBK]
+	push bc
+	push af
 	ld a, BANK(wPokeDB1UsedEntries)
-	call StackCallInWRAMBankA
+	ldh [rSVBK], a
+	call .Function
+	ld c, a
+	pop af
+	ldh [rSVBK], a
+	ld a, c
+	pop bc
+	ret
+
 .Function:
 	ld a, d
 	dec a
@@ -1362,22 +1339,22 @@ StorageFlagAction:
 	ld c, e
 	dec c
 	ld d, 0
-	predef_jump FlagPredef
+	predef_jump SmallFarFlagAction
 
 Special_CurBoxFullCheck:
-; Returns [hScriptVar] = zero if wTempMonBox == wCurBox
-; Returns [hScriptVar] = nonzero if wTempMonBox != wCurBox
+; Returns [wScriptVar] = zero if wBufferMonBox == wCurBox
+; Returns [wScriptVar] = nonzero if wBufferMonBox != wCurBox
 	call CurBoxFullCheck
-	ldh [hScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 CurBoxFullCheck:
-; Requires wTempMonBox to have sent mon box (returned in b)
-; Returns z if wTempMonBox == wCurBox (or wTempMonBox = 0)
-; Returns nz if wTempMonBox != wCurBox
+; Requires wBufferMonBox to have sent mon box (returned in b)
+; Returns z if wBufferMonBox == wCurBox (or wBufferMonBox = 0)
+; Returns nz if wBufferMonBox != wCurBox
 ;   Also returns name of old wCurBox in wStringBuffer1
-;   and sets wCurBox to wTempMonBox in this case
-	ld a, [wTempMonBox]
+;   and sets wCurBox to wBufferMonBox in this case
+	ld a, [wBufferMonBox]
 	and a
 	ret z
 	dec a

@@ -691,7 +691,7 @@ INCLUDE "engine/events/odd_egg.asm"
 
 SECTION "Newbox", ROMX
 
-;INCLUDE "engine/pokemon/bills_pc_new.asm"
+INCLUDE "engine/pokemon/bills_pc_new.asm"
 ;INCLUDE "engine/pokemon/bills_pc_ui.asm"
 
 

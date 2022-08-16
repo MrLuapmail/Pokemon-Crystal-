@@ -105,7 +105,18 @@ sCheckValue2:: db ; loaded with SAVE_CHECK_VALUE_2, used to check save corruptio
 
 SECTION "Active Box", SRAM
 
+UNION
 sBox:: box sBox
+NEXTU
+for n, 1, NUM_NEWBOXES + 1
+sNewBox{d:n}:: newbox sNewBox{d:n}
+endr
+sNewBoxEnd::
+
+for n, 1, NUM_NEWBOXES + 1
+sBackupNewBox{d:n}:: newbox sBackupNewBox{d:n}
+endr
+ENDU
 
 	ds $100
 
@@ -184,13 +195,21 @@ ENDM
 
 SECTION "Boxes 1-7", SRAM
 
+UNION
 ; sBox1 - sBox7
 	boxes 7
+NEXTU
+sNewBoxMons1:: pokedb sNewBoxMons1, MONDB_ENTRIES
+ENDU
 
 SECTION "Boxes 8-14", SRAM
 
+UNION
 ; sBox8 - sBox14
 	boxes 7
+NEXTU
+sNewBoxMons2:: pokedb sNewBoxMons2, MONDB_ENTRIES
+ENDU
 
 ; All 14 boxes fit exactly within 2 SRAM banks
 	assert box_n == NUM_BOXES, \
