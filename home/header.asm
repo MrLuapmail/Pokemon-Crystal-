@@ -59,7 +59,7 @@ SECTION "vblank", ROM0[$0040]
 	jp VBlank
 
 SECTION "lcd", ROM0[$0048]
-	jp LCD
+	jr hFunctionJump
 
 SECTION "timer", ROM0[$0050]
 	jp MobileTimer

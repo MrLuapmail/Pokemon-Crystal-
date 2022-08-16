@@ -2208,7 +2208,7 @@ BillsPC_InitGFX:
 	call EnableLCD
 	ret
 
-PCSelectLZ: INCBIN "gfx/pc/pc.2bpp.lz"
+PCSelectLZ: INCBIN "gfx/pc/pc_old.2bpp.lz"
 PCMailGFX:  INCBIN "gfx/pc/pc_mail.2bpp"
 
 PCString_ChooseaPKMN: db "Choose a <PK><MN>.@"

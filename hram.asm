@@ -175,4 +175,10 @@ hDebugRoomMenuPage::
 endc
 hClockResetTrigger:: db
 
-	ds 19
+hLCDInterruptFunction::
+hFunctionJump::     db ; $c3 jp
+hFunctionTarget::
+hFunctionTargetLo:: db
+hFunctionTargetHi:: db
+
+	ds 16

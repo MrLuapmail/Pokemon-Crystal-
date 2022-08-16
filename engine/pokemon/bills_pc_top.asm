@@ -1,4 +1,4 @@
-_BillsPC:
+_OldBillsPC:
 	call .CheckCanUsePC
 	ret c
 	call .LogIn

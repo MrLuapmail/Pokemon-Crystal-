@@ -34,7 +34,7 @@ DEF NUM_PC_MODES EQU const_value
 _BillsPC:
 	call .CheckCanUsePC
 	ret c
-	ld hl, wOptions1
+	ld hl, wOptions
 	ld a, [hl]
 	push af
 	set NO_TEXT_SCROLL, [hl]
@@ -53,8 +53,13 @@ _BillsPC:
 	ldh [hFunctionTargetHi], a
 
 	call ReturnToMapFromSubmenu
+
+	; Re-enable LCD interrupt, to return the game to its previous state.
+	ld hl, rIE
+	set LCD_STAT, [hl]
+
 	pop af
-	ld [wOptions1], a
+	ld [wOptions], a
 	jp CloseSubmenu
 
 .CheckCanUsePC:
@@ -71,6 +76,45 @@ _BillsPC:
 	text_far _PCGottaHavePokemonText
 	text_end
 
+BillsPC_LoadUI:
+	ret
+
+UseBillsPC:
+	call ClearTilemap
+	call ClearPalettes
+	farcall WipeAttrmap
+	call ClearSprites
+	call ClearSpriteAnims
+	ld a, [wVramState]
+	res 0, a
+	ld [wVramState], a
+
+	; the UI needs CGB Doublespeed to work as it should.
+	ldh a, [rIE]
+	push af
+	call DoubleSpeed
+	pop af
+	ldh [rIE], a
+	call BillsPC_LoadUI
+
+	xor a ; PC_MENU_MODE
+;	call _BillsPC_SetCursorMode
+
+	; Default cursor data (top left of storage, not holding anything)
+	ld a, $12
+	ld [wBillsPC_CursorPos], a
+	xor a
+	ld [wBillsPC_CursorHeldSlot], a
+
+	; restore regular speed
+	ldh a, [rIE]
+	push af
+	call NormalSpeed
+	pop af
+	ldh [rIE], a
+	ret
+
+if 0
 BillsPC_LoadUI:
 	ld a, 1
 	ldh [rVBK], a
@@ -175,9 +219,9 @@ BillsPC_RefreshTheme:
 	jr _BillsPC_GetCGBLayout
 
 UseBillsPC:
-	call ClearTileMap
+	call ClearTilemap
 	call ClearPalettes
-	farcall WipeAttrMap
+	farcall WipeAttrmap
 	call ClearSprites
 	call ClearSpriteAnims
 	ld a, [wVramState]
@@ -215,10 +259,10 @@ UseBillsPC:
 	ld bc, 10
 	ld a, VRAM_BANK_1
 	push bc
-	rst ByteFill
+	call ByteFill
 	pop bc
 	hlcoord 10, 3, wAttrmap ; Mon's item
-	rst ByteFill
+	call ByteFill
 
 	; Storage box
 	hlcoord 7, 4
@@ -235,7 +279,7 @@ UseBillsPC:
 	hlcoord 8, 5, wAttrmap
 	ld bc, 11
 	ld a, 7
-	rst ByteFill
+	call ByteFill
 
 	; initialize icon graphics + palettes (tilemaps are set up later)
 	ld a, 1
@@ -304,7 +348,7 @@ UseBillsPC:
 	call ManageBoxes
 
 	; Finished with storage system. Cleanup
-	call ClearTileMap
+	call ClearTilemap
 	jp ClearPalettes
 
 .Box:
@@ -340,7 +384,7 @@ UseBillsPC:
 	ld b, 0
 	push bc
 	push hl
-	rst ByteFill
+	call ByteFill
 	dec a
 	ld [hl], a
 	pop hl
@@ -348,7 +392,7 @@ UseBillsPC:
 	add hl, bc
 	pop bc
 	ld a, 1
-	rst ByteFill
+	call ByteFill
 	ret
 
 .WriteIconTilemap:
@@ -506,7 +550,7 @@ BillsPC_PrintBoxName:
 	hlcoord 9, 5
 	ld a, " "
 	ld bc, 9
-	rst ByteFill
+	call ByteFill
 
 	; Write new box name
 	ld a, [wCurBox]
@@ -531,7 +575,7 @@ BillsPC_PrintBoxName:
 	ld b, 0
 	hlcoord 9, 5
 	add hl, bc
-	rst PlaceString
+	call PlaceString
 	ret
 
 SetPartyIcons:
@@ -540,7 +584,7 @@ SetPartyIcons:
 	xor a
 	ld hl, wBillsPC_PartyList
 	ld bc, PARTY_LENGTH * 2
-	rst ByteFill
+	call ByteFill
 
 	ld hl, vTiles4 tile $00
 	ld a, PARTY_LENGTH
@@ -562,7 +606,7 @@ SetBoxIcons:
 	xor a
 	ld hl, wBillsPC_BoxList
 	ld bc, MONS_PER_BOX * 2
-	rst ByteFill
+	call ByteFill
 
 	ld hl, vTiles4 tile $18
 	ld a, MONS_PER_BOX
@@ -637,7 +681,7 @@ BillsPC_GetMonIconAddr:
 	ld a, 2
 	ld b, 0
 	dec c
-	rst AddNTimes
+	call AddNTimes
 	pop bc
 	pop de
 	ret
@@ -654,7 +698,7 @@ BillsPC_GetMonTileAddr:
 	ld a, 4 tiles
 	ld b, 0
 	dec c
-	rst AddNTimes
+	call AddNTimes
 	pop bc
 	pop de
 	ret
@@ -747,7 +791,7 @@ BillsPC_HideModeIcon:
 .got_mode_area
 	ld bc, 20
 	xor a
-	rst ByteFill
+	call ByteFill
 	ret
 
 BillsPC_HideCursor:
@@ -758,7 +802,7 @@ BillsPC_HideCursor:
 	ld c, 20
 .got_bytecount
 	xor a
-	rst ByteFill
+	call ByteFill
 	ret
 
 BillsPC_UpdateCursorLocation:
@@ -771,12 +815,12 @@ BillsPC_UpdateCursorLocation:
 	ld hl, wShadowOAMSprite30
 	ld de, wStringBuffer3
 	ld bc, 8
-	rst CopyBytes
+	call CopyBytes
 	farcall PlaySpriteAnimations
 	ld hl, wStringBuffer3
 	ld de, wShadowOAMSprite30
 	ld bc, 8
-	rst CopyBytes
+	call CopyBytes
 	jp PopBCDEHL
 
 BillsPC_GetCursorHeldSlot:
@@ -1019,7 +1063,7 @@ _GetCursorMon:
 	ld hl, wStringBuffer1
 	ld de, wStringBuffer2
 	ld bc, ITEM_NAME_LENGTH
-	rst CopyBytes
+	call CopyBytes
 
 .delay_loop
 	; Delay first before finishing frontpic. Retry if it puts us too late.
@@ -1054,7 +1098,7 @@ _GetCursorMon:
 	ld bc, 10 tiles
 	xor a
 	push hl
-	rst ByteFill
+	call ByteFill
 	pop hl
 	ld de, wStringBuffer1
 	call GetMonItemUnlessCursor
@@ -1144,7 +1188,7 @@ _GetCursorMon:
 	; Nickname
 	hlcoord 8, 0
 	ld de, wTempMonNickname
-	rst PlaceString
+	call PlaceString
 
 	; If we're dealing with an egg, we're done now.
 	ld a, [wTempMonIsEgg]
@@ -1161,7 +1205,7 @@ _GetCursorMon:
 	ld [hli], a
 	call GetPokemonName
 	ld de, wStringBuffer1
-	rst PlaceString
+	call PlaceString
 
 	; Level
 	hlcoord 0, 8
@@ -1764,7 +1808,7 @@ BillsPC_MoveIconData:
 	ld hl, wOBPals1 palette $0 + 2
 	ld de, wOBPals1 palette $5 + 2
 .got_len
-	rst CopyBytes
+	call CopyBytes
 	pop de
 	pop bc
 	ret
@@ -1820,7 +1864,7 @@ BillsPC_MoveIconData:
 	ld c, b
 	ld b, 0
 	dec a
-	rst AddNTimes
+	call AddNTimes
 	jr .got_addr
 
 .held
@@ -2291,7 +2335,7 @@ BillsPC_MoveItem:
 	ld bc, 10 tiles
 	xor a
 	push hl
-	rst ByteFill
+	call ByteFill
 	pop hl
 	ld de, wStringBuffer1
 	call PlaceVWFString
@@ -2905,7 +2949,7 @@ BillsPC_Release:
 	ld hl, wTempMonNickname
 	ld de, wStringBuffer1
 	ld bc, MON_NAME_LENGTH
-	rst CopyBytes
+	call CopyBytes
 
 	; Then release the mon.
 	call BillsPC_GetCursorSlot
@@ -2969,7 +3013,7 @@ BillsPC_Rename:
 	jr z, .abort
 	ld de, wStringBuffer1
 	ld bc, BOX_NAME_LENGTH
-	rst CopyBytes
+	call CopyBytes
 	ld a, [wCurBox]
 	inc a
 	ld b, a
@@ -3044,7 +3088,7 @@ endr
 	ld d, [hl]
 	ld e, a
 	pop hl
-	rst PlaceString
+	call PlaceString
 	ret
 
 .PreviewTheme:
@@ -3594,3 +3638,4 @@ BillsPC_CursorPosValid:
 	xor a
 	ld a, b
 	ret
+endc

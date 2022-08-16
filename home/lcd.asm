@@ -9,7 +9,7 @@ Function547:: ; unreferenced
 	ldh [c], a
 	ret
 
-LCD::
+LCDGeneric::
 	push af
 	ldh a, [hLCDCPointer]
 	and a
