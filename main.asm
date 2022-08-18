@@ -313,6 +313,11 @@ INCLUDE "engine/gfx/sprites.asm"
 INCLUDE "engine/gfx/mon_icons.asm"
 
 
+SECTION "Mon Icons", ROMX
+
+INCLUDE "gfx/icons.asm"
+
+
 SECTION "bank24", ROMX
 
 INCLUDE "engine/phone/phone.asm"
@@ -693,6 +698,11 @@ SECTION "Newbox", ROMX
 
 INCLUDE "engine/pokemon/bills_pc_new.asm"
 INCLUDE "engine/pokemon/bills_pc_ui.asm"
+
+
+SECTION "Prism tilemap copy functions", ROMX
+
+INCLUDE "engine/gfx/copy_tilemap_at_once.asm"
 
 
 SECTION "Stadium 2 Checksums", ROMX[$7DE0], BANK[$7F]

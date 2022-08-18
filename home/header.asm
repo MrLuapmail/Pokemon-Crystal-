@@ -23,7 +23,7 @@ Bankswitch::
 
 SECTION "rst18", ROM0[$0018]
 BetterFarCall::
-	rst RstBetterFarCall
+	jp RstBetterFarCall
 
 SECTION "rst20", ROM0[$0020]
 	rst $38

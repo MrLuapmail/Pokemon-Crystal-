@@ -257,6 +257,10 @@ GetGender:
 	and a
 	jr z, .PartyMon
 
+	ld hl, wBufferMonDVs
+	cp BUFFERMON
+	jr z, .DVs
+
 ; 1: OTPartyMon
 	ld hl, wOTPartyMon1DVs
 	dec a

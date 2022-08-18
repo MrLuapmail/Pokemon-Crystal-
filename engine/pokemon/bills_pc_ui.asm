@@ -31,10 +31,32 @@ DEF NUM_PC_MODES EQU const_value
 	const BOXMENU_BAGITEM
 	const BOXMENU_GIVEITEM
 
+; Stubbed functions
+PrepareFrontpic:
+GetMonPalInBCDE:
+GetStorageMini_a:
+VaryBGPalByTempMonDVs:
+GetPaddedFrontpicAddress:
+PlaceVWFString:
+PlaceFrontpicAtHL:
+_OpenPartyStats:
+GetStorageMini:
+GetStorageMask:
+_ManagePokemonMoves:
+PCGiveItem:
+TakeMail:
+PCPickItem:
+BillsPC_PreviewTheme:
+	ret
+
+; Unfinished constants
+	const POKERUS_CURED
+	const POKERUS_MASK
+
 _BillsPC:
 	call .CheckCanUsePC
 	ret c
-	ld hl, wOptions1
+	ld hl, wOptions
 	ld a, [hl]
 	push af
 	set NO_TEXT_SCROLL, [hl]
@@ -54,7 +76,7 @@ _BillsPC:
 
 	call ReturnToMapFromSubmenu
 	pop af
-	ld [wOptions1], a
+	ld [wOptions], a
 	jp CloseSubmenu
 
 .CheckCanUsePC:
@@ -150,10 +172,10 @@ BillsPC_LoadUI:
 	dec [hl]
 
 	; Gender symbols and shiny star
-	ld hl, BattleExtrasGFX
-	ld de, vTiles2 tile $41
-	lb bc, BANK(BattleExtrasGFX), 3
-	call DecompressRequest2bpp
+;	ld hl, BattleExtrasGFX
+;	ld de, vTiles2 tile $41
+;	lb bc, BANK(BattleExtrasGFX), 3
+;	call DecompressRequest2bpp
 
 	; Box frame tiles and Pokérus symbol
 	ld hl, BillsPC_TileGFX
@@ -166,8 +188,8 @@ BillsPC_LoadUI:
 	ld [wBillsPC_ApplyThemePals], a
 	; fallthrough
 _BillsPC_GetCGBLayout:
-	ld a, CGB_BILLS_PC
-	jp GetCGBLayout
+	ld a, SCGB_BILLS_PC
+	jp GetSGBLayout
 
 BillsPC_RefreshTheme:
 	ld a, 1
@@ -175,11 +197,11 @@ BillsPC_RefreshTheme:
 	jr _BillsPC_GetCGBLayout
 
 UseBillsPC:
-	call ClearTileMap
+	call ClearTilemap
 	call ClearPalettes
-	newfarcall WipeAttrMap
+	newfarcall WipeAttrmap
 	call ClearSprites
-	call ClearSpriteAnims
+	farcall ClearSpriteAnims
 	ld a, [wVramState]
 	res 0, a
 	ld [wVramState], a
@@ -304,7 +326,7 @@ UseBillsPC:
 	call ManageBoxes
 
 	; Finished with storage system. Cleanup
-	call ClearTileMap
+	call ClearTilemap
 	jp ClearPalettes
 
 .Box:
@@ -398,6 +420,28 @@ UseBillsPC:
 	add hl, bc
 	pop bc
 	ret
+
+BillsPC_ApplyTilemap::
+; Tell VBlank to update BG Map
+	ld a, 1
+	ldh [hBGMapMode], a
+	ld a, [wSpriteUpdatesEnabled]
+	and a
+	ld b, 3
+	jr nz, SafeCopyTilemapAtOnce
+	ld b, 1 << 3 | 3
+	; fallthrough
+SafeCopyTilemapAtOnce::
+; copies the tile&attr map at once
+; without any tearing
+; input:
+; b: 0 = no palette copy
+;    1 = copy raw palettes
+;    2 = set palettes and copy
+;    3 = use whatever was in hCGBPalUpdate
+; bit 2: if set, clear hOAMUpdate
+; bit 3: if set, only update tilemap
+	newfarjp _SafeCopyTilemapAtOnce
 
 BillsPC_BlankTiles:
 ; Used as input to blank a*4 tiles (mon icons typically use 4 tiles).
@@ -687,7 +731,7 @@ WriteIconPaletteData:
 	push de
 	push bc
 	ld bc, wBufferMonDVs
-	predef CheckShininess
+	newfarcall CheckShininess
 	ld a, [wBufferMonSpecies]
 	ld c, a
 	ld b, 1
@@ -1065,7 +1109,7 @@ _GetCursorMon:
 	; Colors
 	ld bc, wBufferMonDVs
 	ld a, [wBufferMonSpecies]
-	newfarcall FarGetMonNormalOrShinyPalettePointer
+	newfarcall GetMonNormalOrShinyPalettePointer
 	ld de, wBillsPC_PokepicPal
 	push de
 	ld b, 4
@@ -1118,8 +1162,6 @@ _GetCursorMon:
 	; Species name
 	ld a, [wBufferMonSpecies]
 	ld [wNamedObjectIndex], a
-	ld a, [wBufferMonForm]
-	ld [wNamedObjectIndex+1], a
 	hlcoord 8, 1
 	ld a, "/"
 	ld [hli], a
@@ -1132,7 +1174,7 @@ _GetCursorMon:
 	call PrintLevel
 
 	; Gender
-	ld a, TEMPMON
+	ld a, BUFFERMON
 	ld [wMonType], a
 	newfarcall GetGender
 	hlcoord 4, 8
@@ -1147,10 +1189,13 @@ _GetCursorMon:
 
 	; Shiny
 	push hl
-	newfarcall GetShininess
+	push bc
+	ld bc, wBufferMonDVs
+	newfarcall CheckShininess
+	pop bc
 	pop hl
 	inc hl
-	jr z, .not_shiny
+	jr nc, .not_shiny
 	ld [hl], $43
 .not_shiny
 	ld a, [wBufferMonPokerusStatus]
@@ -1575,10 +1620,7 @@ BillsPC_SetIcon:
 	inc a ; Will set zero if we're dealing with held/quick slot.
 	push af
 	ld a, [de]
-	inc de
 	ld [wCurIcon], a
-	ld a, [de]
-	ld [wCurIconForm], a
 	push hl
 	call BillsPC_SetPals
 	call DelayFrame
@@ -2412,69 +2454,15 @@ _BillsPC_BagItem:
 	jr nc, BillsPC_PrintText
 	xor a
 	ld [wBufferMonItem], a
-	call BillsPC_UpdateStorage_CheckMewtwo
+	call BillsPC_UpdateStorage
 	jp GetCursorMon
 
-BillsPC_UpdateStorage_CheckMewtwo:
-; Updates storage and potentially switches Mewtwo form if item changed.
+BillsPC_UpdateStorage:
+; Updates storage with registers preserved.
 	push hl
 	push de
 	push bc
-	ld a, [wBufferMonSpecies]
-	ld [wCurPartySpecies], a
-	ld de, wBufferMonItem
-	ld hl, wBufferMonForm
-	ld a, [hl]
-	ld b, a
-	push bc
-	newfarcall _UpdateMewtwoForm
 	call UpdateStorageBoxMonFromTemp
-	pop bc
-	ld a, [wBufferMonForm]
-	cp b
-	jr z, .done
-
-	; Check if we should reload the icon. If the mon is in another box, don't
-	; bother.
-	ld a, [wCurBox]
-	inc a
-	ld b, a
-	ld a, [wBufferMonBox]
-	and a
-	jr z, .update
-	cp b
-	jr nz, .done
-
-.update
-	; Reload icon
-	xor a
-	ldh [hBGMapMode], a
-	inc a
-	ldh [rVBK], a
-
-	ld a, [wBufferMonBox]
-	ld b, a
-	ld a, [wBufferMonSlot]
-	ld c, a
-
-	call BillsPC_GetMonIconAddr
-	ld a, [wBufferMonSpecies]
-	ld [hli], a
-	ld [wCurIcon], a
-	ld a, [wBufferMonForm]
-	ld [hld], a
-	ld [wCurIconForm], a
-	call BillsPC_GetMonTileAddr
-	push bc
-	newfarcall GetStorageMini
-	pop bc
-	call WriteIconPaletteData
-
-	xor a
-	ldh [rVBK], a
-	inc a
-	ldh [hBGMapMode], a
-.done
 	jp PopBCDEHL
 
 BillsPC_CantPutMailIntoPackText:
@@ -2514,7 +2502,7 @@ BillsPC_Menu:
 	call ExitMenu
 	jr .closemenu_loop
 .menus_closed
-	call ApplyTilemap
+	call BillsPC_ApplyTilemap
 	pop af
 	ret c
 	ld a, [wMenuSelection]
@@ -2676,9 +2664,7 @@ BillsPC_CanReleaseMon:
 	jr z, .hm_check_done
 	push hl
 	push bc
-	ld hl, HMMoves
-	ld de, 1
-	call IsInArray
+	call IsHMMove
 	pop bc
 	pop hl
 	ld a, 3
@@ -2695,54 +2681,6 @@ BillsPC_CanReleaseMon:
 .done
 	and a
 	ret
-
-RemoveStorageBoxMon_MaybeRespawn:
-; Respawns a roaming beast if you're releasing your own beast.
-	push hl
-	push de
-	push bc
-	; Check if we are in fact the OT. Doesn't care for the "treat as OT" option
-	; because that would be a bit silly in this particular case.
-	ld hl, wBufferMonID
-	ld a, [wPlayerID]
-	cp [hl]
-	jr nz, .done
-	inc hl
-	ld a, [wPlayerID + 1]
-	cp [hl]
-	jr nz, .done
-
-	ld hl, wBufferMonOT
-	ld de, wPlayerName
-.loop
-	ld a, [de]
-	cp [hl]
-	inc de
-	inc hl
-	jr nz, .done
-	cp "@"
-	jr nz, .loop
-
-	; This is ours. Check which, if any, beast we should respawn.
-	ld a, [wBufferMonSpecies]
-	cp RAIKOU
-	jr nz, .not_raikou
-	newfarcall RespawnRoamingRaikou
-	jr .done
-.not_raikou
-	cp ENTEI
-	jr nz, .not_entei
-	newfarcall RespawnRoamingEntei
-	jr .done
-.not_entei
-	cp SUICUNE
-	jr nz, .done
-	newfarcall RespawnRoamingSuicune
-.done
-	pop bc
-	pop de
-	pop hl
-	jp RemoveStorageBoxMon
 
 BillsPC_ReleaseAll:
 	call BillsPC_HideModeIcon
@@ -2774,7 +2712,7 @@ BillsPC_ReleaseAll:
 	jr nz, .failed_release
 	inc d
 	push de
-	call RemoveStorageBoxMon_MaybeRespawn
+	call RemoveStorageBoxMon
 	lb de, -1, -1
 	push bc
 	call BillsPC_MoveIconData
@@ -2874,7 +2812,7 @@ BillsPC_Release:
 	; Then release the mon.
 	call BillsPC_GetCursorSlot
 	push bc
-	call RemoveStorageBoxMon_MaybeRespawn
+	call RemoveStorageBoxMon
 
 	; Print message and reload current cursor mon.
 	ld hl, .WasReleasedOutside
@@ -3157,7 +3095,7 @@ BillsPC_SwapStorage:
 .compose_check_done
 	ld [wBufferMonItem], a
 	ld [wCurItem], a
-	call BillsPC_UpdateStorage_CheckMewtwo
+	call BillsPC_UpdateStorage
 	ld a, 1
 	ld [wItemQuantityChange], a
 	ld hl, wNumItems
@@ -3209,13 +3147,13 @@ BillsPC_SwapStorage:
 	; No mail is about to be sent to storage, so proceed with the item move.
 	ld [hl], e
 	push hl
-	call BillsPC_UpdateStorage_CheckMewtwo
+	call BillsPC_UpdateStorage
 	pop hl
 	pop de
 	pop bc
 	call GetStorageBoxMon
 	ld [hl], d
-	call BillsPC_UpdateStorage_CheckMewtwo
+	call BillsPC_UpdateStorage
 	xor a
 	jr .done
 
