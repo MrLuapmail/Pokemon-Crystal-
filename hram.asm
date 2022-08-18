@@ -24,7 +24,7 @@ hSeconds:: db
 
 hVBlankCounter:: db
 
-	ds 1
+hFarCallSavedA:: db
 
 hROMBank:: db
 hVBlank:: db
@@ -175,10 +175,14 @@ hDebugRoomMenuPage::
 endc
 hClockResetTrigger:: db
 
+hFarCallSavedHL::
+hFarCallSavedL:: db
+hFarCallSavedH:: db
+
 hLCDInterruptFunction::
 hFunctionJump::     db ; $c3 jp
 hFunctionTarget::
 hFunctionTargetLo:: db
 hFunctionTargetHi:: db
 
-	ds 16
+	ds 14

@@ -22,7 +22,8 @@ Bankswitch::
 	ret
 
 SECTION "rst18", ROM0[$0018]
-	rst $38
+BetterFarCall::
+	rst RstBetterFarCall
 
 SECTION "rst20", ROM0[$0020]
 	rst $38
@@ -50,6 +51,7 @@ PopBCDEHL::
 	pop bc
 	pop de
 	pop hl
+DoNothing::
 	ret
 
 

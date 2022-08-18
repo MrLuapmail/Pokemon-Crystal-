@@ -301,7 +301,7 @@ _WithdrawPKMN:
 	dw .Init
 	dw .Joypad
 	dw .PrepSubmenu
-	dw BillsPC_Withdraw
+	dw BillsPC_OldWithdraw
 	dw BillsPC_EndJumptableLoop
 
 .Init:
@@ -383,7 +383,7 @@ _WithdrawPKMN:
 	call BillsPC_IncrementJumptableIndex
 	ret
 
-BillsPC_Withdraw:
+BillsPC_OldWithdraw:
 	ld hl, .MenuHeader
 	call CopyMenuHeader
 	ld a, [wMenuCursorY]
@@ -2234,7 +2234,7 @@ _ChangeBox:
 .loop
 	xor a
 	ldh [hBGMapMode], a
-	call BillsPC_PrintBoxName
+	call BillsPC_PrintOldBoxName
 	call BillsPC_PlaceChooseABoxString
 	ld hl, _ChangeBox_MenuHeader
 	call CopyMenuHeader
@@ -2387,7 +2387,7 @@ GetBoxCount:
 	dba sBox14
 	assert_table_length NUM_BOXES
 
-BillsPC_PrintBoxName:
+BillsPC_PrintOldBoxName:
 	hlcoord 0, 0
 	ld b, 2
 	ld c, 18

@@ -34,7 +34,7 @@ DEF NUM_PC_MODES EQU const_value
 _BillsPC:
 	call .CheckCanUsePC
 	ret c
-	ld hl, wOptions
+	ld hl, wOptions1
 	ld a, [hl]
 	push af
 	set NO_TEXT_SCROLL, [hl]
@@ -53,13 +53,8 @@ _BillsPC:
 	ldh [hFunctionTargetHi], a
 
 	call ReturnToMapFromSubmenu
-
-	; Re-enable LCD interrupt, to return the game to its previous state.
-	ld hl, rIE
-	set LCD_STAT, [hl]
-
 	pop af
-	ld [wOptions], a
+	ld [wOptions1], a
 	jp CloseSubmenu
 
 .CheckCanUsePC:
@@ -76,45 +71,6 @@ _BillsPC:
 	text_far _PCGottaHavePokemonText
 	text_end
 
-BillsPC_LoadUI:
-	ret
-
-UseBillsPC:
-	call ClearTilemap
-	call ClearPalettes
-	farcall WipeAttrmap
-	call ClearSprites
-	call ClearSpriteAnims
-	ld a, [wVramState]
-	res 0, a
-	ld [wVramState], a
-
-	; the UI needs CGB Doublespeed to work as it should.
-	ldh a, [rIE]
-	push af
-	call DoubleSpeed
-	pop af
-	ldh [rIE], a
-	call BillsPC_LoadUI
-
-	xor a ; PC_MENU_MODE
-;	call _BillsPC_SetCursorMode
-
-	; Default cursor data (top left of storage, not holding anything)
-	ld a, $12
-	ld [wBillsPC_CursorPos], a
-	xor a
-	ld [wBillsPC_CursorHeldSlot], a
-
-	; restore regular speed
-	ldh a, [rIE]
-	push af
-	call NormalSpeed
-	pop af
-	ldh [rIE], a
-	ret
-
-if 0
 BillsPC_LoadUI:
 	ld a, 1
 	ldh [rVBK], a
@@ -219,9 +175,9 @@ BillsPC_RefreshTheme:
 	jr _BillsPC_GetCGBLayout
 
 UseBillsPC:
-	call ClearTilemap
+	call ClearTileMap
 	call ClearPalettes
-	farcall WipeAttrmap
+	newfarcall WipeAttrMap
 	call ClearSprites
 	call ClearSpriteAnims
 	ld a, [wVramState]
@@ -348,7 +304,7 @@ UseBillsPC:
 	call ManageBoxes
 
 	; Finished with storage system. Cleanup
-	call ClearTilemap
+	call ClearTileMap
 	jp ClearPalettes
 
 .Box:
@@ -583,7 +539,7 @@ SetPartyIcons:
 	; Blank current list
 	xor a
 	ld hl, wBillsPC_PartyList
-	ld bc, PARTY_LENGTH * 2
+	ld bc, PARTY_LENGTH
 	call ByteFill
 
 	ld hl, vTiles4 tile $00
@@ -605,7 +561,7 @@ SetBoxIcons:
 	; Blank current list
 	xor a
 	ld hl, wBillsPC_BoxList
-	ld bc, MONS_PER_BOX * 2
+	ld bc, MONS_PER_BOX
 	call ByteFill
 
 	ld hl, vTiles4 tile $18
@@ -632,22 +588,14 @@ PCIconLoop:
 .not_holding
 	call GetStorageBoxMon
 	jr z, .blank
-	ld a, [wTempMonIsEgg]
-	bit MON_IS_EGG_F, a
-	ld a, [wTempMon]
-	jr z, .got_curicon
-	ld a, EGG
-.got_curicon
+	ld a, [wBufferMon]
 	ld [wCurIcon], a
-	ld [hli], a
-	ld a, [wTempMonForm]
-	ld [wCurIconForm], a
 	ld [hli], a
 	ld a, e
 	push hl
 	push de
 	push bc
-	farcall GetStorageMini_a
+	newfarcall GetStorageMini_a
 	pop bc
 	pop de
 	pop hl
@@ -678,7 +626,7 @@ BillsPC_GetMonIconAddr:
 	jr z, .got_tile_base
 	ld hl, wBillsPC_BoxList
 .got_tile_base
-	ld a, 2
+	ld a, 1
 	ld b, 0
 	dec c
 	call AddNTimes
@@ -738,17 +686,15 @@ WriteIconPaletteData:
 	push hl
 	push de
 	push bc
-	ld a, [wTempMonIsEgg]
-	bit MON_IS_EGG_F, a
-	ld a, [wTempMonSpecies]
-	jr z, .got_species
-	ld a, EGG
-.got_species
+	ld bc, wBufferMonDVs
+	predef CheckShininess
+	ld a, [wBufferMonSpecies]
 	ld c, a
-	ld a, [wTempMonForm]
-	ld b, a
-	ld a, [wTempMonShiny]
-	farcall GetMonPalInBCDE
+	ld b, 1
+	jr c, .got_shininess
+	dec b
+.got_shininess
+	newfarcall GetMonPalInBCDE
 	ld h, b
 	ld l, c
 	pop bc
@@ -757,7 +703,6 @@ WriteIconPaletteData:
 	call BillsPC_GetMonPalAddr
 	pop bc
 
-if !DEF(MONOCHROME)
 	ld a, c
 	ld [hli], a
 	ld a, b
@@ -766,18 +711,6 @@ if !DEF(MONOCHROME)
 	ld [hli], a
 	ld a, d
 	ld [hld], a
-	dec hl
-	dec hl
-	farcall VaryBGPalByTempMonDVs
-else
-	ld [hl], LOW(PAL_MONOCHROME_WHITE) ; no-optimize *hl++|*hl-- = N
-	inc hl
-	ld [hl], HIGH(PAL_MONOCHROME_WHITE) ; no-optimize *hl++|*hl-- = N
-	inc hl
-	ld [hl], LOW(PAL_MONOCHROME_LIGHT) ; no-optimize *hl++|*hl-- = N
-	inc hl
-	ld [hl], HIGH(PAL_MONOCHROME_LIGHT)
-endc
 	jp PopBCDEHL
 
 BillsPC_HideCursorAndMode:
@@ -785,9 +718,9 @@ BillsPC_HideCursorAndMode:
 	; fallthrough
 BillsPC_HideModeIcon:
 	call BillsPC_CheckBagDisplay
-	ld hl, wShadowOAMSprite05
+	ld hl, wVirtualOAMSprite05
 	jr z, .got_mode_area
-	ld hl, wShadowOAMSprite12
+	ld hl, wVirtualOAMSprite12
 .got_mode_area
 	ld bc, 20
 	xor a
@@ -796,7 +729,7 @@ BillsPC_HideModeIcon:
 
 BillsPC_HideCursor:
 	call BillsPC_CheckBagDisplay
-	ld hl, wShadowOAM
+	ld hl, wVirtualOAM
 	ld bc, 48
 	jr nz, .got_bytecount
 	ld c, 20
@@ -812,13 +745,13 @@ BillsPC_UpdateCursorLocation:
 	ldh a, [rLY]
 	cp $60
 	call nc, DelayFrame
-	ld hl, wShadowOAMSprite30
+	ld hl, wVirtualOAMSprite30
 	ld de, wStringBuffer3
 	ld bc, 8
 	call CopyBytes
-	farcall PlaySpriteAnimations
+	newfarcall PlaySpriteAnimations
 	ld hl, wStringBuffer3
-	ld de, wShadowOAMSprite30
+	ld de, wVirtualOAMSprite30
 	ld bc, 8
 	call CopyBytes
 	jp PopBCDEHL
@@ -945,7 +878,6 @@ CheckPartyShift:
 
 .CheckBlankIcon:
 	; a = [wBillsPC_PartyList + a * 2]
-	add a
 	add LOW(wBillsPC_PartyList)
 	ld l, a
 	adc HIGH(wBillsPC_PartyList)
@@ -1003,7 +935,7 @@ _GetCursorMon:
 	call GetStorageBoxMon
 	jr nz, .not_clear
 	ld a, -1
-	ld [wShadowOAMSprite30], a
+	ld [wVirtualOAMSprite30], a
 	; fallthrough
 .clear
 	; Clear existing data
@@ -1030,7 +962,7 @@ _GetCursorMon:
 	ret
 .reset_item
 	ld a, -1
-	ld [wShadowOAMSprite30], a
+	ld [wVirtualOAMSprite30], a
 	or 1
 	ret
 
@@ -1038,20 +970,13 @@ _GetCursorMon:
 	; Prepare frontpic. Split into decompression + loading to make sure we
 	; refresh the pokepic and the palette in a single frame (decompression
 	; is unpredictable, but bpp copy can be relied upon).
-	ld a, [wTempMonForm]
-	ld [wCurForm], a
 	ld d, a
-	ld a, [wTempMonSpecies]
-	assert MON_IS_EGG == MON_FORM
-	bit MON_IS_EGG_F, d
-	jr z, .not_egg
-	ld a, EGG
-.not_egg
+	ld a, [wBufferMonSpecies]
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
 	call GetBaseData
 	ld de, vTiles2
-	farcall PrepareFrontpic
+	newfarcall PrepareFrontpic
 
 	push hl
 	ld a, "@"
@@ -1138,14 +1063,9 @@ _GetCursorMon:
 	call FillBoxWithByte
 
 	; Colors
-	ld bc, wTempMonPersonality
-	ld a, [wTempMonIsEgg]
-	bit MON_IS_EGG_F, a
-	ld a, EGG
-	jr nz, .egg
-	ld a, [wTempMonSpecies]
-.egg
-	farcall GetMonNormalOrShinyPalettePointer
+	ld bc, wBufferMonDVs
+	ld a, [wBufferMonSpecies]
+	newfarcall FarGetMonNormalOrShinyPalettePointer
 	ld de, wBillsPC_PokepicPal
 	push de
 	ld b, 4
@@ -1159,10 +1079,10 @@ _GetCursorMon:
 	jr nz, .loop
 
 	pop hl
-	farcall VaryBGPalByTempMonDVs
+	newfarcall VaryBGPalByTempMonDVs
 
 	; Show or hide item icon
-	ld hl, wShadowOAMSprite30
+	ld hl, wVirtualOAMSprite30
 	call GetMonItemUnlessCursor
 	ld [hl], -1
 	jr z, .item_icon_done
@@ -1187,18 +1107,18 @@ _GetCursorMon:
 
 	; Nickname
 	hlcoord 8, 0
-	ld de, wTempMonNickname
+	ld de, wBufferMonNickname
 	call PlaceString
 
 	; If we're dealing with an egg, we're done now.
-	ld a, [wTempMonIsEgg]
-	bit MON_IS_EGG_F, a
-	ret nz
+	ld a, [wBufferMonAltSpecies]
+	cp EGG
+	ret z
 
 	; Species name
-	ld a, [wTempMonSpecies]
+	ld a, [wBufferMonSpecies]
 	ld [wNamedObjectIndex], a
-	ld a, [wTempMonForm]
+	ld a, [wBufferMonForm]
 	ld [wNamedObjectIndex+1], a
 	hlcoord 8, 1
 	ld a, "/"
@@ -1214,7 +1134,7 @@ _GetCursorMon:
 	; Gender
 	ld a, TEMPMON
 	ld [wMonType], a
-	farcall GetGender
+	newfarcall GetGender
 	hlcoord 4, 8
 	jr c, .genderless
 	ld a, $41
@@ -1227,13 +1147,13 @@ _GetCursorMon:
 
 	; Shiny
 	push hl
-	farcall GetShininess
+	newfarcall GetShininess
 	pop hl
 	inc hl
 	jr z, .not_shiny
 	ld [hl], $43
 .not_shiny
-	ld a, [wTempMonPokerusStatus]
+	ld a, [wBufferMonPokerusStatus]
 	and POKERUS_MASK
 	inc hl
 	jr z, .did_pokerus
@@ -1328,7 +1248,7 @@ ManageBoxes:
 	jr c, .confirm_ok
 	cp $21 ; Bag location.
 	jr z, .confirm_ok
-	ld a, [wTempMonItem]
+	ld a, [wBufferMonItem]
 	and a
 	jr z, .loop
 
@@ -1610,7 +1530,7 @@ BillsPC_MenuJumptable:
 
 BillsPC_Stats:
 	call BillsPC_PrepareTransistion
-	farcall _OpenPartyStats
+	newfarcall _OpenPartyStats
 	jp BillsPC_ReturnFromTransistion
 
 BillsPC_CursorPick1:
@@ -1666,10 +1586,10 @@ BillsPC_SetIcon:
 	pop af
 	jr nz, .mask_done
 
-	farcall GetStorageMask
+	newfarcall GetStorageMask
 
 .mask_done
-	farjp GetStorageMini
+	newfarjp GetStorageMini
 
 BillsPC_MoveIconData:
 ; Copies icon data from slot bc to slot de, then blanks slot bc.
@@ -1857,7 +1777,7 @@ BillsPC_MoveIconData:
 	ld hl, wBillsPC_PartyList
 	; fallthrough
 .get_ext_addr
-	ld b, 2
+	ld b, 1
 	; fallthrough
 .addntimes
 	ld a, c
@@ -2178,12 +2098,12 @@ BillsPC_PrepareTransistion:
 	jp ClearSprites
 
 BillsPC_Moves:
-	ld a, [wTempMonIsEgg]
-	bit MON_IS_EGG_F, a
+	ld a, [wBufferMonAltSpecies]
+	cp EGG
 	ld hl, .CantCheckEggMoves
-	jp nz, BillsPC_PrintText
+	jp z, BillsPC_PrintText
 	call BillsPC_PrepareTransistion
-	farcall _ManagePokemonMoves
+	newfarcall _ManagePokemonMoves
 	jr BillsPC_ReturnFromTransistion
 
 .CantCheckEggMoves:
@@ -2208,7 +2128,7 @@ BillsPC_GetStorageSpace:
 	call YesNoBox
 	push af
 	jr c, .menutext_abort
-	farcall ForceGameSave
+	newfarcall ForceGameSave
 	ld hl, BillsPC_GameSaved
 	call PrintText
 	; fallthrough
@@ -2235,7 +2155,7 @@ BillsPC_GiveItem:
 
 .entries_not_full
 	call BillsPC_PrepareTransistion
-	farcall PCGiveItem
+	newfarcall PCGiveItem
 	; fallthrough
 
 BillsPC_ReturnFromTransistion:
@@ -2251,7 +2171,7 @@ GetMonItemUnlessCursor:
 	pop de
 	ld a, 0
 	ret z
-	ld a, [wTempMonItem]
+	ld a, [wBufferMonItem]
 	and a
 	ret
 
@@ -2272,7 +2192,7 @@ BillsPC_BlankCursorItem:
 ; Blanks cursor item and swap icon. Assumes vbk1.
 	; Remove held item icon.
 	ld a, -1
-	ld [wShadowOAMSprite31], a
+	ld [wVirtualOAMSprite31], a
 
 	; Blank cursor item name. Only uses 10 tiles, but this is ok.
 	ld hl, vTiles5 tile $3b
@@ -2289,11 +2209,11 @@ BillsPC_IsHoldingItem:
 
 BillsPC_TakeMail:
 ; Returns carry if mail is taken.
-	ld a, [wTempMonSlot]
+	ld a, [wBufferMonSlot]
 	dec a
 	ld [wCurPartyMon], a
 	call BillsPC_HideCursorAndMode
-	farcall TakeMail
+	newfarcall TakeMail
 
 	; Preserve return flags.
 	push af
@@ -2302,11 +2222,11 @@ BillsPC_TakeMail:
 	ret
 
 BillsPC_ReadMail:
-	ld a, [wTempMonSlot]
+	ld a, [wBufferMonSlot]
 	dec a
 	ld [wCurPartyMon], a
 	call BillsPC_PrepareTransistion
-	farcall ReadPartyMonMail
+	newfarcall ReadPartyMonMail
 	jr BillsPC_ReturnFromTransistion
 
 BillsPC_MoveItem:
@@ -2319,7 +2239,7 @@ BillsPC_MoveItem:
 	jr nz, .not_on_pack
 
 	call BillsPC_PrepareTransistion
-	farcall PCPickItem
+	newfarcall PCPickItem
 	push af
 	call BillsPC_ReturnFromTransistion
 	pop af
@@ -2357,7 +2277,7 @@ BillsPC_MoveItem:
 .entries_not_full
 	; Mark current cursor slot for movement.
 	call GetStorageBoxMon
-	ld a, [wTempMonItem]
+	ld a, [wBufferMonItem]
 	ld [wBillsPC_CursorItem], a
 	; fallthrough
 .got_cursor_item
@@ -2377,7 +2297,7 @@ BillsPC_MoveItem:
 	ldh [hBGMapMode], a
 
 	; Load held item icon
-	ld hl, wShadowOAMSprite31
+	ld hl, wVirtualOAMSprite31
 	ld a, 32
 	ld [hli], a
 	ld a, 72
@@ -2422,7 +2342,7 @@ BillsPC_LoadCursorItemIcon:
 BillsPC_BagItem:
 	; If we're dealing with a Box mon, we must have at least 1 free pokedb
 	; entry.
-	ld a, [wTempMonItem]
+	ld a, [wBufferMonItem]
 	ld b, a
 	push bc
 	call BillsPC_GetCursorSlot
@@ -2457,12 +2377,12 @@ _BillsPC_BagItem:
 .entries_not_full
 	call GetStorageBoxMon
 	call .do_it
-	ld a, [wTempMonItem]
+	ld a, [wBufferMonItem]
 	and a
 	ret
 
 .do_it
-	ld a, [wTempMonItem]
+	ld a, [wBufferMonItem]
 	ld [wCurItem], a
 
 	; Check if this is a Mail (can be invoked when placing using Item Mode).
@@ -2480,18 +2400,18 @@ _BillsPC_BagItem:
 	ret nz
 
 	; This lets the function know that the removal succeeded.
-	ld [wTempMonItem], a
+	ld [wBufferMonItem], a
 	ret
 
 .put_in_pack
 	ld a, 1
-	ld [wItemQuantityChangeBuffer], a
+	ld [wItemQuantityChange], a
 	ld hl, wNumItems
 	call ReceiveItem
 	ld hl, BillsPC_PackFullText
 	jr nc, BillsPC_PrintText
 	xor a
-	ld [wTempMonItem], a
+	ld [wBufferMonItem], a
 	call BillsPC_UpdateStorage_CheckMewtwo
 	jp GetCursorMon
 
@@ -2500,17 +2420,17 @@ BillsPC_UpdateStorage_CheckMewtwo:
 	push hl
 	push de
 	push bc
-	ld a, [wTempMonSpecies]
+	ld a, [wBufferMonSpecies]
 	ld [wCurPartySpecies], a
-	ld de, wTempMonItem
-	ld hl, wTempMonForm
+	ld de, wBufferMonItem
+	ld hl, wBufferMonForm
 	ld a, [hl]
 	ld b, a
 	push bc
-	farcall _UpdateMewtwoForm
+	newfarcall _UpdateMewtwoForm
 	call UpdateStorageBoxMonFromTemp
 	pop bc
-	ld a, [wTempMonForm]
+	ld a, [wBufferMonForm]
 	cp b
 	jr z, .done
 
@@ -2519,7 +2439,7 @@ BillsPC_UpdateStorage_CheckMewtwo:
 	ld a, [wCurBox]
 	inc a
 	ld b, a
-	ld a, [wTempMonBox]
+	ld a, [wBufferMonBox]
 	and a
 	jr z, .update
 	cp b
@@ -2532,21 +2452,21 @@ BillsPC_UpdateStorage_CheckMewtwo:
 	inc a
 	ldh [rVBK], a
 
-	ld a, [wTempMonBox]
+	ld a, [wBufferMonBox]
 	ld b, a
-	ld a, [wTempMonSlot]
+	ld a, [wBufferMonSlot]
 	ld c, a
 
 	call BillsPC_GetMonIconAddr
-	ld a, [wTempMonSpecies]
+	ld a, [wBufferMonSpecies]
 	ld [hli], a
 	ld [wCurIcon], a
-	ld a, [wTempMonForm]
+	ld a, [wBufferMonForm]
 	ld [hld], a
 	ld [wCurIconForm], a
 	call BillsPC_GetMonTileAddr
 	push bc
-	farcall GetStorageMini
+	newfarcall GetStorageMini
 	pop bc
 	call WriteIconPaletteData
 
@@ -2605,14 +2525,14 @@ BillsPC_Item:
 	call BillsPC_HideCursorAndMode
 
 	; Eggs can't be given items.
-	ld a, [wTempMonIsEgg]
-	bit MON_IS_EGG_F, a
+	ld a, [wBufferMonAltSpecies]
+	cp EGG
 	ld hl, BillsPC_EggsCantHoldItemsText
-	jp nz, BillsPC_PrintText
+	jp z, BillsPC_PrintText
 
 	; Give a slightly different menu depending on whether the mon is holding
 	; an item right now or not and whether or not it's Mail.
-	ld a, [wTempMonItem]
+	ld a, [wBufferMonItem]
 	and a
 	ld hl, .ItCanHoldAnItem
 	ld de, .NoItemMenu
@@ -2637,7 +2557,7 @@ BillsPC_Item:
 	done
 
 .ItCanHoldAnItem:
-	text_ram wTempMonNickname
+	text_ram wBufferMonNickname
 	text " can"
 	line "hold an item."
 	done
@@ -2708,7 +2628,7 @@ BillsPC_EggsCantHoldItemsText:
 	prompt
 
 BillsPC_CanReleaseMon:
-; Verifies if the given mon in box b, slot c, can be released. Sets wTempMon.
+; Verifies if the given mon in box b, slot c, can be released. Sets wBufferMon.
 ; Returns the following in a:
 ; 0: Can release
 ; 1: Can't release last healthy mon
@@ -2739,16 +2659,16 @@ BillsPC_CanReleaseMon:
 	; fallthrough
 .not_last_healthy
 	; Can't release Eggs.
-	ld a, [wTempMonIsEgg]
-	bit MON_IS_EGG_F, a
+	ld a, [wBufferMonAltSpecies]
+	cp EGG
 	ld a, 2
-	ret nz
+	ret z
 
 	; Ensure that the mon doesn't know any HMs.
 	push de
 	push hl
 	push bc
-	ld hl, wTempMonMoves
+	ld hl, wBufferMonMoves
 	ld b, NUM_MOVES
 .loop
 	ld a, [hli]
@@ -2783,7 +2703,7 @@ RemoveStorageBoxMon_MaybeRespawn:
 	push bc
 	; Check if we are in fact the OT. Doesn't care for the "treat as OT" option
 	; because that would be a bit silly in this particular case.
-	ld hl, wTempMonID
+	ld hl, wBufferMonID
 	ld a, [wPlayerID]
 	cp [hl]
 	jr nz, .done
@@ -2792,7 +2712,7 @@ RemoveStorageBoxMon_MaybeRespawn:
 	cp [hl]
 	jr nz, .done
 
-	ld hl, wTempMonOT
+	ld hl, wBufferMonOT
 	ld de, wPlayerName
 .loop
 	ld a, [de]
@@ -2804,20 +2724,20 @@ RemoveStorageBoxMon_MaybeRespawn:
 	jr nz, .loop
 
 	; This is ours. Check which, if any, beast we should respawn.
-	ld a, [wTempMonSpecies]
+	ld a, [wBufferMonSpecies]
 	cp RAIKOU
 	jr nz, .not_raikou
-	farcall RespawnRoamingRaikou
+	newfarcall RespawnRoamingRaikou
 	jr .done
 .not_raikou
 	cp ENTEI
 	jr nz, .not_entei
-	farcall RespawnRoamingEntei
+	newfarcall RespawnRoamingEntei
 	jr .done
 .not_entei
 	cp SUICUNE
 	jr nz, .done
-	farcall RespawnRoamingSuicune
+	newfarcall RespawnRoamingSuicune
 .done
 	pop bc
 	pop de
@@ -2945,8 +2865,8 @@ BillsPC_Release:
 	jr c, .done
 
 	; Copy mon nick to a string buffer, since SetStorageBoxPointer might
-	; mangle wTempMon.
-	ld hl, wTempMonNickname
+	; mangle wBufferMon.
+	ld hl, wBufferMonNickname
 	ld de, wStringBuffer1
 	ld bc, MON_NAME_LENGTH
 	call CopyBytes
@@ -2987,7 +2907,7 @@ BillsPC_Release:
 .ReallyReleaseMon:
 	text "Really release"
 	line ""
-	text_ram wTempMonNickname
+	text_ram wBufferMonNickname
 	text "?"
 	done
 
@@ -3004,7 +2924,7 @@ BillsPC_Rename:
 	call BillsPC_PrepareTransistion
 	ld b, $4 ; box
 	ld de, wStringBuffer2
-	farcall NamingScreen
+	newfarcall NamingScreen
 	ld hl, wStringBuffer2
 
 	; Abort if no name was entered.
@@ -3098,9 +3018,9 @@ endr
 	cp -1
 	jr z, .current_theme
 	dec a
-	farjp BillsPC_PreviewTheme
+	newfarjp BillsPC_PreviewTheme
 .current_theme
-	farjp _CGB_BillsPC
+	newfarjp _CGB_BillsPC
 
 INCLUDE "data/pc/theme_names.asm"
 
@@ -3166,10 +3086,10 @@ BillsPC_SwapStorage:
 	; fallthrough
 .entries_not_full
 	; Don't allow Eggs to hold items.
-	ld a, [wTempMonIsEgg]
-	bit MON_IS_EGG_F, a
+	ld a, [wBufferMonAltSpecies]
+	cp EGG
 	ld a, 7
-	jp nz, .failed
+	jp z, .failed
 
 	; Movement from the bag needs special handling.
 	ld a, e
@@ -3190,7 +3110,7 @@ BillsPC_SwapStorage:
 	; If the mon in question is already holding an item, we need to verify that
 	; we have room for this new item in the bag and that it isn't Mail, which
 	; we want to prevent users from accidentally erasing.
-	ld a, [wTempMonItem]
+	ld a, [wBufferMonItem]
 	and a
 	ld [wCurItem], a
 	jr z, .dest_is_itemless
@@ -3202,7 +3122,7 @@ BillsPC_SwapStorage:
 
 	; Try to add the user's current item into the bag.
 	ld a, 1
-	ld [wItemQuantityChangeBuffer], a
+	ld [wItemQuantityChange], a
 	ld hl, wNumItems
 	call ReceiveItem
 	ld a, 9
@@ -3217,13 +3137,13 @@ BillsPC_SwapStorage:
 	jr nc, .compose_check_done
 
 	push af
-	ld a, [wTempMonSlot]
+	ld a, [wBufferMonSlot]
 	dec a
 	ld [wCurPartyMon], a
-	ld a, [wTempMonSpecies]
+	ld a, [wBufferMonSpecies]
 	ld [wCurPartySpecies], a
 	call BillsPC_PrepareTransistion
-	farcall ComposeMailMessage
+	newfarcall ComposeMailMessage
 	call BillsPC_ReturnFromTransistion
 
 	; reload cursor item icon
@@ -3235,11 +3155,11 @@ BillsPC_SwapStorage:
 	pop af
 
 .compose_check_done
-	ld [wTempMonItem], a
+	ld [wBufferMonItem], a
 	ld [wCurItem], a
 	call BillsPC_UpdateStorage_CheckMewtwo
 	ld a, 1
-	ld [wItemQuantityChangeBuffer], a
+	ld [wItemQuantityChange], a
 	ld hl, wNumItems
 	call TossItem
 	xor a
@@ -3257,7 +3177,7 @@ BillsPC_SwapStorage:
 	; Swap items.
 	push de
 	push bc
-	ld hl, wTempMonItem
+	ld hl, wBufferMonItem
 	ld b, d
 	ld c, e
 	call GetStorageBoxMon
@@ -3362,7 +3282,7 @@ BillsPC_SwapStorage:
 	jr c, .menutext_abort
 
 	; Just re-run this function.
-	farcall ForceGameSave
+	newfarcall ForceGameSave
 	ld hl, BillsPC_GameSaved
 	call PrintText
 	call BillsPC_UpdateCursorLocation
@@ -3453,7 +3373,6 @@ BillsPC_PlaceHeldMon:
 	; Check if the slot is blank.
 	ld a, c
 	dec a
-	add a
 	inc b
 	dec b
 	ld hl, wBillsPC_PartyList
@@ -3638,4 +3557,3 @@ BillsPC_CursorPosValid:
 	xor a
 	ld a, b
 	ret
-endc

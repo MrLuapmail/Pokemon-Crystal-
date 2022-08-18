@@ -1,14 +1,5 @@
 ; LCD handling
 
-Function547:: ; unreferenced
-	ldh a, [hLCDCPointer]
-	cp LOW(rSCX)
-	ret nz
-	ld c, a
-	ld a, [wLYOverrides]
-	ldh [c], a
-	ret
-
 LCDGeneric::
 	push af
 	ldh a, [hLCDCPointer]
