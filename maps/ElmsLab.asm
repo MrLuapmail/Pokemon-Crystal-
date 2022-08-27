@@ -414,6 +414,12 @@ ElmGiveTicketScript:
 	setevent EVENT_GOT_SS_TICKET_FROM_ELM
 	writetext ElmGiveTicketText2
 	waitbutton
+	writetext ElmGiveRainbowWingText1
+	promptbutton
+	verbosegiveitem RAINBOW_WING
+	writetext ElmGiveRainbowWingText2
+	promptbutton
+	setevent EVENT_GOT_RAINBOW_WING
 	closetext
 	end
 
@@ -1203,6 +1209,19 @@ ElmGiveTicketText2:
 
 	para "Give my regards to"
 	line "PROF.OAK in KANTO!"
+	done
+
+ElmGiveRainbowWingText1:
+	text "Here's another"
+	line "gift that will "
+
+	para "help you find the"
+	line "fabled legendary"
+	cont "in Tin Tower."
+	done
+
+ElmGiveRainbowWingText2:
+	text "Good luck!"
 	done
 
 ElmsLabMonEggText: ; unreferenced
