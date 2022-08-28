@@ -72,6 +72,14 @@ _BillsPC:
 	ldh [hFunctionTargetLo], a
 	ld a, HIGH(LCDGeneric)
 	ldh [hFunctionTargetHi], a
+	set LCD_STAT, [hl]
+
+	; Restore regular speed.
+	ldh a, [rIE]
+	push af
+	call DoubleSpeed
+	pop af
+	ldh [rIE], a
 
 	call ReturnToMapFromSubmenu
 	pop af
@@ -205,6 +213,13 @@ UseBillsPC:
 	res 0, a
 	ld [wVramState], a
 
+	; the UI needs CGB Doublespeed to work as it should.
+	ldh a, [rIE]
+	push af
+	call DoubleSpeed
+	pop af
+	ldh [rIE], a
+
 	call BillsPC_LoadUI
 
 	xor a ; PC_MENU_MODE
@@ -261,8 +276,8 @@ UseBillsPC:
 	; initialize icon graphics + palettes (tilemaps are set up later)
 	ld a, 1
 	ldh [rVBK], a
-;	call SetPartyIcons
-;	call SetBoxIconsAndName
+	call SetPartyIcons
+	call SetBoxIconsAndName
 	xor a
 	ldh [rVBK], a
 
@@ -592,6 +607,7 @@ SetPartyIcons:
 	ld hl, vTiles4 tile $00
 	ld a, PARTY_LENGTH
 	call BillsPC_BlankTiles
+	ret
 
 _SetPartyIcons:
 	; Write party members
@@ -614,6 +630,7 @@ SetBoxIcons:
 	ld hl, vTiles4 tile $18
 	ld a, MONS_PER_BOX
 	call BillsPC_BlankTiles
+	ret
 
 _SetBoxIcons:
 	; Write box members
