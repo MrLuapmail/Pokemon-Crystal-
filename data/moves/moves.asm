@@ -80,7 +80,7 @@ Moves:
 	move DRILL_PECK,   EFFECT_NORMAL_HIT,         80, FLYING,       100, 20,   0
 	move SUBMISSION,   EFFECT_NORMAL_HIT,         80, FIGHTING,     100, 25,   0
 	move LOW_KICK,     EFFECT_FLINCH_HIT,         50, FIGHTING,     100, 20,  30
-	move COUNTER,      EFFECT_COUNTER,             1, FIGHTING,     100, 20,   0
+	move COUNTER,      EFFECT_COUNTER,             1, FIGHTING,     100,  1,   0
 	move SEISMIC_TOSS, EFFECT_LEVEL_DAMAGE,        1, FIGHTING,     100, 20,   0
 	move STRENGTH,     EFFECT_NORMAL_HIT,         80, NORMAL,       100, 15,   0
 	move ABSORB,       EFFECT_LEECH_HIT,          20, GRASS,        100, 20,   0
@@ -255,7 +255,7 @@ Moves:
 	move RAIN_DANCE,   EFFECT_RAIN_DANCE,          0, WATER,         90,  5,   0
 	move SUNNY_DAY,    EFFECT_SUNNY_DAY,           0, FIRE,          90,  5,   0
 	move CRUNCH,       EFFECT_SP_DEF_DOWN_HIT,    80, DARK,         100, 15,  20
-	move MIRROR_COAT,  EFFECT_MIRROR_COAT,         1, PSYCHIC_TYPE, 100, 20,   0
+	move MIRROR_COAT,  EFFECT_MIRROR_COAT,         1, PSYCHIC_TYPE, 100,  1,   0
 	move PSYCH_UP,     EFFECT_PSYCH_UP,            0, NORMAL,       100,  1,   0
 	move EXTREMESPEED, EFFECT_PRIORITY_HIT,      100, NORMAL,       100,  8,   0
 	move ANCIENTPOWER, EFFECT_ALL_UP_HIT,        100, ROCK,         100,  8,  10
