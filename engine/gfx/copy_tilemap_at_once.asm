@@ -97,6 +97,159 @@ _CopyTilemapAtOnce::
 	ldh [hBGMapMode], a
 	ret
 
+DEF HALF_HEIGHT EQU SCREEN_HEIGHT / 2
+
+_UpdateBGMap::
+; Double-speed version of UpdateBGMap. Not in home, since only newbox needs it.
+
+	ldh a, [hBGMapMode]
+	and $7f
+	ret z
+
+; BG Map 0
+	dec a ; 1
+	jr z, .DoTiles
+	dec a ; 2
+	jr z, .DoAttributes
+
+; BG Map 1
+	ld hl, vBGMap1
+	dec a
+	jr z, .DoBGMap1Tiles
+	dec a
+	jr z, .DoBGMap1Attributes
+; Update from a specific row
+; does not update hBGMapHalf
+	dec a
+	bccoord 0, 0
+	jr z, .DoCustomSourceTiles
+	dec a
+	ret nz
+	bccoord 0, 0, wAttrmap
+	ld a, 1
+	ldh [rVBK], a
+	call .DoCustomSourceTiles
+	xor a
+	ldh [rVBK], a
+	ret
+
+.DoCustomSourceTiles
+	ld [hSPBuffer], sp
+	xor a
+	ld h, a
+	ld d, a
+	ldh a, [hBGMapHalf] ; multiply by 20 to get the tilemap offset
+	ld l, a
+	ld e, a
+	add hl, hl ; hl = hl * 2
+	add hl, hl ; hl = hl * 4
+	add hl, de ; hl = (hl*4) + de
+	add hl, hl ; hl = (5*hl)*2
+	add hl, hl ; hl = (5*hl)*4
+	add hl, bc
+	ld sp, hl
+	ldh a, [hBGMapHalf] ; multiply by 32 to get the bg map offset
+	; assumes [hBGMapHalf] < 16
+	swap a
+	add a
+	ld l, a
+	ld h, 0
+	ldh a, [hBGMapAddress]
+	add l
+	ld l, a
+	ldh a, [hBGMapAddress + 1]
+	adc h
+	ld h, a
+	ldh a, [hTilesPerCycle]
+	jr .startCustomCopy
+
+.DoAttributes
+	ldh a, [hBGMapAddress + 1]
+	ld h, a
+	ldh a, [hBGMapAddress]
+	ld l, a
+.DoBGMap1Attributes
+	ld a, 1
+	ldh [rVBK], a
+	call .CopyAttributes
+	xor a
+	ldh [rVBK], a
+	ret
+
+.CopyAttributes
+	ld [hSPBuffer], sp
+
+; Which half?
+	ldh a, [hBGMapHalf]
+	and a ; 0
+	jr z, .AttributeMapTop
+; bottom row
+	coord sp, 0, 9, wAttrmap
+	ld de, HALF_HEIGHT * BG_MAP_WIDTH
+	add hl, de
+; Next time: top half
+	xor a
+	jr .startCopy
+.AttributeMapTop
+	coord sp, 0, 0, wAttrmap
+; Next time: bottom half
+	jr .AttributeMapTopContinue
+
+.DoTiles
+	ldh a, [hBGMapAddress + 1]
+	ld h, a
+	ldh a, [hBGMapAddress]
+	ld l, a
+
+.DoBGMap1Tiles
+	ld [hSPBuffer], sp
+; Which half?
+	ldh a, [hBGMapHalf]
+	and a ; 0
+	jr z, .TileMapTop
+; bottom row
+	coord sp, 0, 9
+	ld de, HALF_HEIGHT * BG_MAP_WIDTH
+	add hl, de
+; Next time: top half
+	xor a
+	jr .startCopy
+.TileMapTop
+	coord sp, 0, 0
+; Next time: bottom half
+.AttributeMapTopContinue
+	inc a
+.startCopy
+; Which half to update next time
+	ldh [hBGMapHalf], a
+; Rows of tiles in a half
+	ld a, SCREEN_HEIGHT / 2
+.startCustomCopy
+; Discrepancy between wTilemap and BGMap
+	ld bc, BG_MAP_WIDTH - (SCREEN_WIDTH - 1)
+.row
+; Copy a row of 20 tiles
+rept (SCREEN_WIDTH / 2) - 1
+	pop de
+	ld [hl], e
+	inc l
+	ld [hl], d
+	inc l
+endr
+	pop de
+	ld [hl], e
+	inc l
+	ld [hl], d
+
+	add hl, bc
+	dec a
+	jr nz, .row
+
+	ld sp, hSPBuffer
+	pop hl
+	ld sp, hl
+	ret
+
 VBlankSafeCopyTilemapAtOnce::
 	ldh a, [hSCX]
 	ldh [rSCX], a
@@ -108,14 +261,14 @@ VBlankSafeCopyTilemapAtOnce::
 	ldh [rWX], a
 	call UpdateCGBPals
 ; values for the bg map update part should already be loaded
-	call UpdateBGMap
+	call _UpdateBGMap
 ; specify the values for attr map update
 	ldh a, [hBGMapMode]
 	bit 7, a
 	jr nz, .skipAttr
 	ld a, 6
 	ldh [hBGMapMode], a
-	call UpdateBGMap
+	call _UpdateBGMap
 .skipAttr
 	call hTransferVirtualOAM
 	ldh a, [hBGMapMode]

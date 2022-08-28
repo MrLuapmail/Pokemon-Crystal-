@@ -136,6 +136,7 @@ hWX::            db
 hWY::            db
 hTilesPerCycle:: db
 hBGMapMode::     db
+hBGMapHalf:: ; used in newbox
 hBGMapThird::    db
 hBGMapAddress::  dw
 

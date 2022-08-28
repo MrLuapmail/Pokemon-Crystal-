@@ -24,7 +24,9 @@ LCDGeneric::
 	reti
 
 LCDBillsPC1::
+	reti
 	; Write boxmon palettes
+	push af
 	ldh a, [rSTAT]
 	bit rSTAT_LYC_CMP, a
 	jr z, .donepc
@@ -71,6 +73,7 @@ endr
 	reti
 
 LCDBillsPC2::
+	push af
 	push hl
 	push bc
 	ld c, LOW(rBGPD)
@@ -144,6 +147,7 @@ endr
 
 LCDBillsPC3:
 ; Writes white or box background to color0 for BG3
+	push af
 	push hl
 	push bc
 	push de

@@ -262,8 +262,8 @@ UseBillsPC:
 	; initialize icon graphics + palettes (tilemaps are set up later)
 	ld a, 1
 	ldh [rVBK], a
-	call SetPartyIcons
-	call SetBoxIconsAndName
+;	call SetPartyIcons
+;	call SetBoxIconsAndName
 	xor a
 	ldh [rVBK], a
 
@@ -320,10 +320,13 @@ UseBillsPC:
 	set LCD_STAT, [hl]
 
 	; Display data about current Pokémon pointed to by cursor
-	call GetCursorMon
+;	call GetCursorMon
 
 	; Begin storage system interaction
-	call ManageBoxes
+;	call ManageBoxes
+
+	ld c, 240
+	call DelayFrames
 
 	; Finished with storage system. Cleanup
 	call ClearTilemap
