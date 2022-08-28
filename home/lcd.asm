@@ -24,7 +24,6 @@ LCDGeneric::
 	reti
 
 LCDBillsPC1::
-	reti
 	; Write boxmon palettes
 	push af
 	ldh a, [rSTAT]

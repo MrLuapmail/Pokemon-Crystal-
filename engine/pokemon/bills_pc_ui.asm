@@ -46,7 +46,6 @@ _ManagePokemonMoves:
 PCGiveItem:
 TakeMail:
 PCPickItem:
-BillsPC_PreviewTheme:
 	ret
 
 ; Unfinished constants
@@ -188,7 +187,7 @@ BillsPC_LoadUI:
 	ld [wBillsPC_ApplyThemePals], a
 	; fallthrough
 _BillsPC_GetCGBLayout:
-	ld a, SCGB_BILLS_PC
+	ld b, SCGB_BILLS_PC
 	jp GetSGBLayout
 
 BillsPC_RefreshTheme:
@@ -312,11 +311,12 @@ UseBillsPC:
 	call SafeCopyTilemapAtOnce
 
 	; Set up for HBlank palette switching
+	ld hl, rIE
+	res LCD_STAT, [hl]
 	ld a, LOW(LCDBillsPC1)
 	ldh [hFunctionTargetLo], a
 	ld a, HIGH(LCDBillsPC1)
 	ldh [hFunctionTargetHi], a
-	ld hl, rIE
 	set LCD_STAT, [hl]
 
 	; Display data about current Pokémon pointed to by cursor
