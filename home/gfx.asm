@@ -61,7 +61,7 @@ SafeHDMATransfer::
 
 	ld a, c
 	ldh [rHDMA5], a
-	ret
+	jr .done
 
 .lcd_enabled
 	push de
@@ -91,12 +91,14 @@ SafeHDMATransfer::
 	sub 5
 	ld c, a
 	jr nc, .loop
+	ei
 	pop de
+.done
 	pop af
 	rst Bankswitch
 	pop af
 	ldh [hBGMapMode], a
-	reti
+	ret
 
 UpdatePlayerSprite::
 	farcall _UpdatePlayerSprite
@@ -185,40 +187,41 @@ FarCopyBytesDouble:
 	rst Bankswitch
 	ret
 
-Request2bpp::
-; Load 2bpp at b:de to occupy c tiles of hl.
-	; Try to use GDMA in CGB mode.
+CheckGDMA:
+; Check if we can use GDMA. Return carry if we can.
 	ldh a, [hCGB]
 	and a
-	jr z, .regular
-
-	; Otherwise, check if we can use GDMA.
+	ret z
 
 	; The 4 least significant bits must be zero.
 	ld a, e
 	or l
 	and $f
-	jr nz, .regular ; de and/or hl isn't a multiple of 16.
+	ret nz
 
 	; Must be a copy from non-VRAM to VRAM.
 	ld a, d
 	sub $80
 	cp $20
-	jr c, .regular ; copying from VRAM
+	ccf
+	ret nc
 	ld a, h
 	sub $80
 	cp $20
-	jr nc, .regular ; copying to non-VRAM
+	ret nc
 
 	; Must not be a copy of >$80 tiles
 	ld a, c
 	dec a
 	add a
-	jr c, .regular
+	ccf
+	ret
 
-	jp SafeHDMATransfer
+Request2bpp::
+; Load 2bpp at b:de to occupy c tiles of hl.
+	call CheckGDMA
+	jp c, SafeHDMATransfer
 
-.regular
 	ldh a, [hBGMapMode]
 	push af
 	xor a
@@ -373,6 +376,9 @@ Get2bpp::
 	; fallthrough
 
 Copy2bpp:
+	call CheckGDMA
+	jp c, SafeHDMATransfer
+
 	push hl
 	ld h, d
 	ld l, e

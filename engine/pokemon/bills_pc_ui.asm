@@ -34,13 +34,11 @@ DEF NUM_PC_MODES EQU const_value
 ; Stubbed functions
 PrepareFrontpic:
 GetMonPalInBCDE:
-GetStorageMini_a:
 VaryBGPalByTempMonDVs:
 GetPaddedFrontpicAddress:
 PlaceVWFString:
 PlaceFrontpicAtHL:
 _OpenPartyStats:
-GetStorageMini:
 GetStorageMask:
 _ManagePokemonMoves:
 PCGiveItem:
@@ -619,7 +617,6 @@ SetPartyIcons:
 	ld hl, vTiles4 tile $00
 	ld a, PARTY_LENGTH
 	call BillsPC_BlankTiles
-	ret
 
 _SetPartyIcons:
 	; Write party members
@@ -671,7 +668,7 @@ PCIconLoop:
 	push hl
 	push de
 	push bc
-	newfarcall GetStorageMini_a
+	newfarcall GetStorageIcon_a
 	pop bc
 	pop de
 	pop hl
@@ -1653,7 +1650,7 @@ BillsPC_SetIcon:
 	call BillsPC_SetPals
 	call DelayFrame
 	pop hl
-	newfarjp GetStorageMini
+	newfarjp GetStorageIcon
 
 BillsPC_MoveIconData:
 ; Copies icon data from slot bc to slot de, then blanks slot bc.

@@ -2,6 +2,8 @@ LoadOverworldMonIcon:
 	ld a, e
 	call ReadMonMenuIcon
 	ld [wCurIcon], a
+	; fallthrough
+_LoadOverworldMonIcon:
 	ld l, a
 	ld h, 0
 	add hl, hl
@@ -489,6 +491,27 @@ GetGFXUnlessMobile:
 	cp LINK_MOBILE
 	jp nz, Request2bpp
 	jp Get2bppViaHDMA
+
+GetStorageIcon_a:
+; Load frame 1 icon graphics into VRAM starting from tile a
+	ld l, a ; no-optimize hl|bc|de = a * 16 (rept)
+	ld h, 0
+rept 4
+	add hl, hl
+endr
+	ld de, vTiles0
+	add hl, de
+	; fallthrough
+GetStorageIcon:
+	push hl
+
+	push hl
+	ld a, [wCurIcon]
+	call _LoadOverworldMonIcon
+	ld c, 4
+	pop hl
+	pop hl
+	newfarjp BillsPC_SafeGet2bpp
 
 FreezeMonIcons:
 	ld hl, wSpriteAnimationStructs
