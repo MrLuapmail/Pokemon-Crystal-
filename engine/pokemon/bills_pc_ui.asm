@@ -208,7 +208,7 @@ UseBillsPC:
 	call ClearPalettes
 	newfarcall WipeAttrmap
 	call ClearSprites
-	farcall ClearSpriteAnims
+	newfarcall ClearSpriteAnims
 	ld a, [wVramState]
 	res 0, a
 	ld [wVramState], a
@@ -335,13 +335,10 @@ UseBillsPC:
 	set LCD_STAT, [hl]
 
 	; Display data about current Pokémon pointed to by cursor
-;	call GetCursorMon
+	call GetCursorMon
 
 	; Begin storage system interaction
-;	call ManageBoxes
-
-	ld c, 240
-	call DelayFrames
+	call ManageBoxes
 
 	; Finished with storage system. Cleanup
 	call ClearTilemap
