@@ -77,7 +77,7 @@ _BillsPC:
 	; Restore regular speed.
 	ldh a, [rIE]
 	push af
-	call DoubleSpeed
+	call NormalSpeed
 	pop af
 	ldh [rIE], a
 
@@ -977,9 +977,9 @@ BillsPC_SetBoxArrows:
 
 .box_cursors
 	hlcoord 8, 5
-	ld [hl], "◀"
+	ld [hl], "←"
 	hlcoord 18, 5
-	ld [hl], "▶"
+	ld [hl], "→"
 	ret
 
 _GetCursorMon:
