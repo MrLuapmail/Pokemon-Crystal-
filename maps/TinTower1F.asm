@@ -27,12 +27,12 @@ TinTower1F_MapScripts:
 	end
 
 .NPCsCallback:
-	checkevent EVENT_GOT_RAINBOW_WING
-	iftrue .GotRainbowWing
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iffalse .FaceBeasts
 	special BeastsCheck
 	iffalse .FaceBeasts
+	checkevent EVENT_GOT_RAINBOW_WING
+	iftrue .GotRainbowWing
 	clearevent EVENT_TIN_TOWER_1F_WISE_TRIO_2
 	setevent EVENT_TIN_TOWER_1F_WISE_TRIO_1
 .GotRainbowWing:
@@ -190,7 +190,7 @@ TinTower1FSage5Script:
 	checkevent EVENT_FOUGHT_HO_OH
 	iftrue .FoughtHoOh
 	checkevent EVENT_GOT_RAINBOW_WING
-	iftrue .GotRainbowWing
+	iftrue .NoRainbowWing
 	writetext TinTower1FSage5Text1
 	promptbutton
 	verbosegiveitem RAINBOW_WING
@@ -204,7 +204,7 @@ TinTower1FSage5Script:
 	setevent EVENT_GOT_RAINBOW_WING
 	closetext
 	opentext
-.GotRainbowWing:
+.NoRainbowWing:
 	writetext TinTower1FSage5Text2
 	waitbutton
 	closetext
@@ -423,12 +423,14 @@ TinTower1FSage4Text1:
 	done
 
 TinTower1FSage5Text1:
-	text "This will protect"
-	line "you. Take it."
+	text "Ooh! The Rainbow"
+	line "Wing! You may go."
 	done
 
 TinTower1FSage5Text2:
-	text "Now, go."
+	text "You need to have"
+	line "an special item"
+	cont "to go upstairs."
 	done
 
 TinTower1FSage6Text1:
