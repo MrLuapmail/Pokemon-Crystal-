@@ -210,7 +210,7 @@ Request2bpp::
 	cp $20
 	jr nc, .regular ; copying to non-VRAM
 
-	; Must not be a copy of >80 tiles
+	; Must not be a copy of >$80 tiles
 	ld a, c
 	dec a
 	add a
