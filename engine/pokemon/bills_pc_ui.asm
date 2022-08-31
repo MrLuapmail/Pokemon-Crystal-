@@ -113,7 +113,7 @@ BillsPC_LoadUI:
 	ld c, 1
 	push hl
 	push de
-	call Get2bpp
+	call BillsPC_Get2bpp
 	pop de
 	pop hl
 	ld bc, 1 tiles
@@ -126,7 +126,7 @@ BillsPC_LoadUI:
 	ld de, BillsPC_CursorGFX
 	ld hl, vTiles3 tile $04
 	lb bc, BANK(BillsPC_CursorGFX), 3
-	call Get2bpp
+	call BillsPC_Get2bpp
 
 	; Blank held cursor mini + item icons.
 	ld hl, vTiles3 tile $08
@@ -139,7 +139,7 @@ BillsPC_LoadUI:
 	ld hl, vTiles3 tile $1c
 	ld de, HeldItemIcons
 	lb bc, BANK(HeldItemIcons), 2
-	call Get2bpp
+	call BillsPC_Get2bpp
 
 	; Cursor mode and Pack sprites
 	ld hl, BillsPC_ObjGFX
@@ -535,17 +535,6 @@ else
 	MONOCHROME_RGB_TWO
 endc
 
-BillsPC_SafeRequest1bppInWRA6::
-	ldh a, [hROMBank]
-	ld b, a
-	call RunFunctionInWRA6
-.Function:
-	ldh a, [rLY]
-	cp $40
-	jp c, Get1bpp
-	call DelayFrame
-	jr .Function
-
 BillsPC_SafeRequest2bppInWRA6::
 	ldh a, [hROMBank]
 	ld b, a
@@ -559,6 +548,32 @@ BillsPC_SafeGet2bpp:
 	jp c, Get2bpp
 	call DelayFrame
 	jr BillsPC_SafeGet2bpp
+
+BillsPC_Get2bpp:
+; Get2bpp using GDMA.
+	; Check if we can actually use GDMA for this.
+
+	; The 4 least significant bits must be zero.
+	ld a, e
+	or l
+	and $f
+	jr nz, .get2bpp ; de and/or hl isn't a multiple of 16.
+
+	; Must be a copy from non-VRAM to VRAM.
+	ld a, d
+	sub $80
+	cp $20
+	jr c, .get2bpp ; copying from VRAM
+	ld a, h
+	sub $80
+	cp $20
+	jr nc, .get2bpp ; copying to non-VRAM
+
+	; Valid case. Apply GDMA.
+	jp SafeHDMATransfer
+
+.get2bpp
+	jp Get2bpp
 
 BillsPC_PrintBoxName:
 ; Writes name of current Box to box name area in storage system
@@ -1075,7 +1090,7 @@ _GetCursorMon:
 	ldh [rSVBK], a
 	call GetPaddedFrontpicAddress
 	lb bc, BANK(_GetCursorMon), 7 * 7
-	call Get2bpp
+	call BillsPC_Get2bpp
 	pop af
 	ldh [rSVBK], a
 	xor a
@@ -1097,7 +1112,7 @@ _GetCursorMon:
 	ld hl, vTiles5 tile $31
 	ld de, wBillsPC_ItemVWF
 	ld c, 10
-	call Get2bpp
+	call BillsPC_Get2bpp
 	pop af
 	and a
 	ld de, vTiles3 tile $00
@@ -1110,7 +1125,7 @@ _GetCursorMon:
 .got_item_tile
 	ld hl, vTiles3 tile $20
 	ld c, 1
-	call Get2bpp
+	call BillsPC_Get2bpp
 	xor a
 	ldh [rVBK], a
 
@@ -1632,22 +1647,12 @@ BillsPC_CursorPick2:
 
 BillsPC_SetIcon:
 ; Writes icon tiles to hl depending on species data in de. Assumes vbk1.
-; If b is -1, also write icon mask data.
-	ld a, b
-	inc a ; Will set zero if we're dealing with held/quick slot.
-	push af
 	ld a, [de]
 	ld [wCurIcon], a
 	push hl
 	call BillsPC_SetPals
 	call DelayFrame
 	pop hl
-	pop af
-	jr nz, .mask_done
-
-	newfarcall GetStorageMask
-
-.mask_done
 	newfarjp GetStorageMini
 
 BillsPC_MoveIconData:
