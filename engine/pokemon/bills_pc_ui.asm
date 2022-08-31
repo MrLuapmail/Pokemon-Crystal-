@@ -639,7 +639,6 @@ SetBoxIcons:
 	ld hl, vTiles4 tile $18
 	ld a, MONS_PER_BOX
 	call BillsPC_BlankTiles
-	ret
 
 _SetBoxIcons:
 	; Write box members
@@ -661,7 +660,7 @@ PCIconLoop:
 .not_holding
 	call GetStorageBoxMon
 	jr z, .blank
-	ld a, [wBufferMon]
+	ld a, [wBufferMonAltSpecies]
 	ld [wCurIcon], a
 	ld [hli], a
 	ld a, e

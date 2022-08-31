@@ -598,6 +598,10 @@ CopyBetweenPartyAndTemp:
 	ld a, NAME_LENGTH
 	call .Copy
 
+	ld hl, wPartySpecies
+	ld de, wBufferMonAltSpecies
+	ld a, 1
+	; fallthrough
 .Copy:
 ; Copies c bytes from hl+c*a to de if b is 1, otherwise the reverse.
 	push bc
@@ -856,7 +860,10 @@ DecodeBufferMon:
 	; Shift data past PP to leave room for PP data.
 	ld hl, wEncodedBufferMonAltSpecies
 	ld de, wBufferMonAltSpecies
-	lb bc, NUM_MOVES, wEncodedBufferMonAltSpecies - wEncodedBufferMonPPUps
+	ld a, [hld]
+	ld [de], a
+	ld de, wBufferMonLevel
+	lb bc, NUM_MOVES, wEncodedBufferMonLevel - wEncodedBufferMonPPUps
 .reverse_copybytes_loop
 	ld a, [hld]
 	ld [de], a
