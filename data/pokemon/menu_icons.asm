@@ -250,7 +250,5 @@ MonMenuIcons:
 	db ICON_LUGIA       ; LUGIA
 	db ICON_HO_OH       ; HO_OH
 	db ICON_CELEBI      ; CELEBI
-	db ICON_METAGROSS   ; METAGROSS
-	db ICON_GHOST       ; GHOST
 	db ICON_EGG         ; EGG
 	
