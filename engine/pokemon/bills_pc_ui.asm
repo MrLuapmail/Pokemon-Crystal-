@@ -32,12 +32,9 @@ DEF NUM_PC_MODES EQU const_value
 	const BOXMENU_GIVEITEM
 
 ; Stubbed functions
-PrepareFrontpic:
 GetMonPalInBCDE:
 VaryBGPalByTempMonDVs:
-GetPaddedFrontpicAddress:
 PlaceVWFString:
-PlaceFrontpicAtHL:
 _OpenPartyStats:
 GetStorageMask:
 _ManagePokemonMoves:
@@ -1042,8 +1039,7 @@ _GetCursorMon:
 	; Prepare frontpic. Split into decompression + loading to make sure we
 	; refresh the pokepic and the palette in a single frame (decompression
 	; is unpredictable, but bpp copy can be relied upon).
-	ld d, a
-	ld a, [wBufferMonSpecies]
+	ld a, [wBufferMonAltSpecies]
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
 	call GetBaseData
@@ -1084,7 +1080,6 @@ _GetCursorMon:
 	push af
 	ld a, BANK(wDecompressScratch)
 	ldh [rSVBK], a
-	call GetPaddedFrontpicAddress
 	lb bc, BANK(_GetCursorMon), 7 * 7
 	call BillsPC_Get2bpp
 	pop af
@@ -1175,7 +1170,7 @@ _GetCursorMon:
 
 	; Poképic tilemap
 	hlcoord 0, 0
-	call PlaceFrontpicAtHL
+	newfarcall PlaceFrontpicAtHL
 
 	; Nickname
 	hlcoord 8, 0
