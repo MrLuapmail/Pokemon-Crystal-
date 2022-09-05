@@ -159,11 +159,11 @@ BillsPC_LoadUI:
 	pop hl
 	dec [hl]
 
-	; Gender symbols and shiny star
-;	ld hl, BattleExtrasGFX
-;	ld de, vTiles2 tile $41
-;	lb bc, BANK(BattleExtrasGFX), 3
-;	call DecompressRequest2bpp
+	; Shiny star
+	ld de, StatsScreenPageTilesGFX + 14 tiles
+	ld hl, vTiles2 tile $43
+	lb bc, BANK(StatsScreenPageTilesGFX), 1
+	call Get2bpp
 
 	; Box frame tiles and Pokérus symbol
 	ld hl, BillsPC_TileGFX
@@ -1188,10 +1188,10 @@ _GetCursorMon:
 	newfarcall GetGender
 	hlcoord 4, 8
 	jr c, .genderless
-	ld a, $41
+	ld a, "♂"
 	jr nz, .male
 	; female
-	inc a
+	ld a, "♀"
 .male
 	ld [hl], a
 .genderless
