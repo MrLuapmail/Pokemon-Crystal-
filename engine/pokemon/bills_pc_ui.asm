@@ -32,7 +32,6 @@ DEF NUM_PC_MODES EQU const_value
 	const BOXMENU_GIVEITEM
 
 ; Stubbed functions
-VaryBGPalByTempMonDVs:
 PlaceVWFString:
 _OpenPartyStats:
 GetStorageMask:
@@ -191,6 +190,7 @@ UseBillsPC:
 	newfarcall WipeAttrmap
 	call ClearSprites
 	newfarcall ClearSpriteAnims
+	call LoadFontsBattleExtra
 	ld a, [wVramState]
 	res 0, a
 	ld [wVramState], a
@@ -971,9 +971,9 @@ BillsPC_SetBoxArrows:
 
 .box_cursors
 	hlcoord 8, 5
-	ld [hl], "←"
+	ld [hl], "◀"
 	hlcoord 18, 5
-	ld [hl], "→"
+	ld [hl], "▶"
 	ret
 
 _GetCursorMon:
@@ -1132,7 +1132,6 @@ _GetCursorMon:
 	jr nz, .loop
 
 	pop hl
-	newfarcall VaryBGPalByTempMonDVs
 
 	; Show or hide item icon
 	ld hl, wVirtualOAMSprite30
@@ -1180,7 +1179,8 @@ _GetCursorMon:
 
 	; Level
 	hlcoord 0, 8
-	call PrintLevel
+	ld a, [wBufferMonLevel]
+	call _PrintLevel
 
 	; Gender
 	ld a, BUFFERMON
@@ -1208,12 +1208,12 @@ _GetCursorMon:
 	ld [hl], $43
 .not_shiny
 	ld a, [wBufferMonPokerusStatus]
-	and POKERUS_MASK
+	and a
 	inc hl
 	jr z, .did_pokerus
 	; TODO: smiley face if cured (use shiny color + custom color 3?)
 	ld [hl], "."
-	cp POKERUS_CURED
+	and $f
 	jr z, .did_pokerus
 	ld [hl], $40 ; Rs
 .did_pokerus

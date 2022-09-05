@@ -209,6 +209,7 @@ PrintLevel::
 ; Print wTempMonLevel at hl
 
 	ld a, [wTempMonLevel]
+_PrintLevel::
 	ld [hl], "<LV>"
 	inc hl
 
