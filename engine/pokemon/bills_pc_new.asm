@@ -234,6 +234,11 @@ SwapPartyMons:
 	ld c, NAME_LENGTH
 	call DoPartySwap
 
+	; Swap alt species
+	ld hl, wPartySpecies
+	ld c, 1
+	call DoPartySwap
+
 	; fallthrough
 DoMailSwap:
 	; Swap Mail
