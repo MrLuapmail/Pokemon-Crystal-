@@ -99,22 +99,10 @@ BillsPC_LoadUI:
 	ldh [rVBK], a
 
 	; Reserve 4 blank tiles for empty slots
-	ld a, 4
-	ld hl, vTiles3
-.blank_loop
-	ld de, vTiles5 tile $7f
-	push af
-	ld c, 1
-	push hl
-	push de
-	call BillsPC_Get2bpp
-	pop de
-	pop hl
-	ld bc, 1 tiles
-	add hl, bc
-	pop af
-	dec a
-	jr nz, .blank_loop
+	xor a
+	ld hl, wBillsPC_Blank2bppTiles
+	ld bc, 4 tiles
+	call ByteFill
 
 	; Load cursor tiles.
 	ld de, BillsPC_CursorGFX
@@ -454,7 +442,7 @@ SafeCopyTilemapAtOnce::
 
 BillsPC_BlankTiles:
 ; Used as input to blank a*4 tiles (mon icons typically use 4 tiles).
-	ld de, vTiles3 tile $00 ; Reserved blank tiles.
+	ld de, wBillsPC_Blank2bppTiles
 	ld bc, 4 tiles
 .loop
 	push hl
@@ -1104,7 +1092,7 @@ _GetCursorMon:
 	call BillsPC_Get2bpp
 	pop af
 	and a
-	ld de, vTiles3 tile $00
+	ld de, wBillsPC_Blank2bppTiles
 	jr z, .got_item_tile
 	ld d, a
 	call ItemIsMail
@@ -1671,7 +1659,7 @@ BillsPC_MoveIconData:
 	; Check if we're loading or unloading the icon
 	ld a, [wBillsPC_QuickFrames]
 	and a
-	ld de, vTiles3 tile $00 ; Blank.
+	ld de, wBillsPC_Blank2bppTiles
 	jr z, .got_item_tile
 	cp PCANIM_QUICKFRAMES - 1
 	jr nz, .quick_ok
