@@ -108,6 +108,41 @@ _FinishMenuMonIconColor:
 	pop hl
 	ret
 
+GetMonPalInBCDE:
+; Sets BCDE to mon icon palette.
+; Input: c = species, b = shininess (1=true, 0=false)
+	ld hl, MonMenuIconPals
+	dec c
+
+	; This sets z if mon is shiny.
+	dec b
+	ld b, 0
+	add hl, bc
+	ld a, [hl]
+	jr z, .shiny
+	swap a
+.shiny
+	and $f
+
+	; Now we have the target color. Get the palette (+ 2 to avoid white).
+	ld hl, PartyMenuOBPals + 2
+	ld bc, 1 palettes
+	call AddNTimes
+
+	push hl
+	ld a, BANK(PartyMenuOBPals)
+	call GetFarWord
+	ld b, h
+	ld c, l
+	pop hl
+	inc hl
+	inc hl
+	ld a, BANK(PartyMenuOBPals)
+	call GetFarWord
+	ld d, h
+	ld e, l
+	ret
+
 GetMenuMonIconPalette:
 	ld c, l
 	ld b, h

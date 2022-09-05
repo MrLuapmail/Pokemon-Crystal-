@@ -889,11 +889,11 @@ wBillsPC_PartyPals5:: ds 2 * 2 * 2
 wBillsPC_MonPals5:: ds 2 * 2 * 4
 
 ; Species lists
-wBillsPC_PartyList:: ds 6 * 2
-wBillsPC_BoxList:: ds 20 * 2
+wBillsPC_PartyList:: ds 6
+wBillsPC_BoxList:: ds 20
 
-wBillsPC_HeldIcon:: dw
-wBillsPC_QuickIcon:: dw
+wBillsPC_HeldIcon:: db
+wBillsPC_QuickIcon:: db
 
 ; Cursor data
 wBillsPC_CursorItem:: db ; what item is selected.

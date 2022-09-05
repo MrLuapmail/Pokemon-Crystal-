@@ -32,7 +32,6 @@ DEF NUM_PC_MODES EQU const_value
 	const BOXMENU_GIVEITEM
 
 ; Stubbed functions
-GetMonPalInBCDE:
 VaryBGPalByTempMonDVs:
 PlaceVWFString:
 _OpenPartyStats:
@@ -675,7 +674,6 @@ PCIconLoop:
 	; Fill storage species slot with a blank species.
 	xor a
 	ld [hli], a
-	ld [hli], a
 
 .next
 	ld a, e
@@ -757,7 +755,7 @@ WriteIconPaletteData:
 	push bc
 	ld bc, wBufferMonDVs
 	newfarcall CheckShininess
-	ld a, [wBufferMonSpecies]
+	ld a, [wBufferMonAltSpecies]
 	ld c, a
 	ld b, 1
 	jr c, .got_shininess
@@ -946,7 +944,7 @@ CheckPartyShift:
 	jr .outer_loop
 
 .CheckBlankIcon:
-	; a = [wBillsPC_PartyList + a * 2]
+	; a = [wBillsPC_PartyList + a]
 	add LOW(wBillsPC_PartyList)
 	ld l, a
 	adc HIGH(wBillsPC_PartyList)
@@ -1729,7 +1727,6 @@ BillsPC_MoveIconData:
 	call .GetAddr
 	xor a
 	ld [hli], a
-	ld [hli], a
 	ld a, 2
 	call .GetAddr
 
@@ -1772,7 +1769,7 @@ BillsPC_MoveIconData:
 	ld e, l
 	pop hl
 	and a
-	ld bc, 2
+	ld bc, 1
 	jr nz, .got_len
 
 	call BillsPC_IsHoldingItem
