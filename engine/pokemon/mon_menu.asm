@@ -238,14 +238,22 @@ GiveTakePartyMonItem:
 	ret
 
 .GiveItem:
-	farcall DepositSellInitPackBuffers
+	call GetItemToGive
+	ret z
+	jp TryGiveItemToPartymon
 
+.quit
+	ret
+
+GetItemToGive:
+; Returns nz if we got an item to give.
+	farcall DepositSellInitPackBuffers
 .loop
 	farcall DepositSellPack
 
 	ld a, [wPackUsedItem]
 	and a
-	jr z, .quit
+	ret z
 
 	ld a, [wCurPocket]
 	cp KEY_ITEM_POCKET
@@ -256,16 +264,13 @@ GiveTakePartyMonItem:
 	and a
 	jr nz, .next
 
-	call TryGiveItemToPartymon
-	jr .quit
+	or 1
+	ret
 
 .next
 	ld hl, ItemCantHeldText
 	call MenuTextboxBackup
 	jr .loop
-
-.quit
-	ret
 
 TryGiveItemToPartymon:
 	call SpeechTextbox

@@ -34,16 +34,10 @@ DEF NUM_PC_MODES EQU const_value
 ; Stubbed functions
 PlaceVWFString:
 _OpenPartyStats:
-GetStorageMask:
 _ManagePokemonMoves:
 PCGiveItem:
 TakeMail:
-PCPickItem:
 	ret
-
-; Unfinished constants
-	const POKERUS_CURED
-	const POKERUS_MASK
 
 _BillsPC:
 	call .CheckCanUsePC
@@ -2280,7 +2274,7 @@ BillsPC_MoveItem:
 	jr nz, .not_on_pack
 
 	call BillsPC_PrepareTransistion
-	newfarcall PCPickItem
+	newfarcall GetItemToGive
 	push af
 	call BillsPC_ReturnFromTransistion
 	pop af
@@ -3448,6 +3442,10 @@ BillsPC_RestoreUI:
 	call _BillsPC_SetCursorMode
 	call BillsPC_ApplyPals
 	call GetCursorMon
+
+	; Delay before doing the tilemap copy. This avoids a rare case where
+	; palettes are updated before the tilemap is for a frame.
+	call DelayFrame
 	ld b, 2
 	call SafeCopyTilemapAtOnce
 
