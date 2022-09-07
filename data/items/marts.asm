@@ -39,7 +39,7 @@ Marts:
 
 MartCherrygrove:
 	db 4 ; # items
-	db RAGECANDYBAR	
+	db RAGECANDYBAR
 	db ANTIDOTE
 	db PARLYZ_HEAL
 	db AWAKENING

@@ -94,6 +94,8 @@ _BillsPC:
 	text_end
 
 BillsPC_LoadUI:
+	call LoadFontsBattleExtra
+
 	ld a, 1
 	ldh [rVBK], a
 
@@ -190,7 +192,6 @@ UseBillsPC:
 	newfarcall WipeAttrmap
 	call ClearSprites
 	newfarcall ClearSpriteAnims
-	call LoadFontsBattleExtra
 	ld a, [wVramState]
 	res 0, a
 	ld [wVramState], a
@@ -3428,7 +3429,7 @@ endc
 BillsPC_RestoreUI:
 	call ClearPalettes
 	call ClearSprites
-	call ClearSpriteAnims
+	newfarcall ClearSpriteAnims
 
 	; This needs to be done in case a frontpic anim overwrote data here.
 	ld a, 1
