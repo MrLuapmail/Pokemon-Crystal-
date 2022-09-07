@@ -1,6 +1,5 @@
 LoadOverworldMonIcon:
 	ld a, e
-	call ReadMonMenuIcon
 	ld [wCurIcon], a
 	; fallthrough
 _LoadOverworldMonIcon:
@@ -312,7 +311,6 @@ InitPartyMenuIcon:
 	ld d, 0
 	add hl, de
 	ld a, [hl]
-	call ReadMonMenuIcon
 	ld [wCurIcon], a
 	call GetMemIconGFX
 	ldh a, [hObjectStructIndex]
@@ -370,7 +368,6 @@ NamingScreen_InitAnimatedMonIcon:
 	ld hl, wTempMonDVs
 	call SetMenuMonIconColor
 	ld a, [wTempIconSpecies]
-	call ReadMonMenuIcon
 	ld [wCurIcon], a
 	xor a
 	call GetIconGFX
@@ -387,7 +384,6 @@ MoveList_InitAnimatedMonIcon:
 	call GetPartyParamLocation
 	call SetMenuMonIconColor
 	ld a, [wTempIconSpecies]
-	call ReadMonMenuIcon
 	ld [wCurIcon], a
 	xor a
 	call GetIconGFX
@@ -402,7 +398,6 @@ MoveList_InitAnimatedMonIcon:
 
 Trade_LoadMonIconGFX:
 	ld a, [wTempIconSpecies]
-	call ReadMonMenuIcon
 	ld [wCurIcon], a
 	ld a, $62
 	ld [wCurIconTile], a
@@ -416,7 +411,6 @@ GetSpeciesIcon:
 	call GetPartyParamLocation
 	call SetMenuMonIconColor
 	ld a, [wTempIconSpecies]
-	call ReadMonMenuIcon
 	ld [wCurIcon], a
 	pop de
 	ld a, e
@@ -436,7 +430,6 @@ GetSpeciesIcon:
 FlyFunction_GetMonIcon:
 	push de
 	ld a, [wTempIconSpecies]
-	call ReadMonMenuIcon
 	ld [wCurIcon], a
 	pop de
 	ld a, e
@@ -446,7 +439,6 @@ FlyFunction_GetMonIcon:
 GetMonIconDE: ; unreferenced
 	push de
 	ld a, [wTempIconSpecies]
-	call ReadMonMenuIcon
 	ld [wCurIcon], a
 	pop de
 	call GetIcon_de
@@ -539,12 +531,9 @@ endr
 	; fallthrough
 GetStorageIcon:
 	push hl
-
-	push hl
 	ld a, [wCurIcon]
 	call _LoadOverworldMonIcon
 	ld c, 4
-	pop hl
 	pop hl
 	newfarjp BillsPC_SafeGet2bpp
 
@@ -632,22 +621,6 @@ HoldSwitchmonIcon:
 	dec e
 	jr nz, .loop
 	ret
-
-ReadMonMenuIcon:
-	cp EGG
-	jr z, .egg
-	dec a
-	ld hl, MonMenuIcons
-	ld e, a
-	ld d, 0
-	add hl, de
-	ld a, [hl]
-	ret
-.egg
-	ld a, ICON_EGG
-	ret
-
-INCLUDE "data/pokemon/menu_icons.asm"
 
 INCLUDE "data/pokemon/menu_icon_pals.asm"
 

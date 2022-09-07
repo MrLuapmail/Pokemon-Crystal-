@@ -251,4 +251,5 @@ IconPointers:
 	dw LugiaIcon
 	dw HoOhIcon
 	dw CelebiIcon
+	dw EggIcon ; unused
 	dw EggIcon
