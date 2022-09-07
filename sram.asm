@@ -116,6 +116,7 @@ sNewBoxEnd::
 for n, 1, NUM_NEWBOXES + 1
 sBackupNewBox{d:n}:: newbox sBackupNewBox{d:n}
 endr
+sBackupNewBoxEnd::
 ENDU
 
 	ds $100
