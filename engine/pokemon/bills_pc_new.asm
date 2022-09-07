@@ -897,6 +897,7 @@ DecodeBufferMon:
 	ld bc, BadEggEnd - BadEgg
 	call CopyBytes
 	call SetTempPartyMonData
+	or 1
 	scf
 	ret
 

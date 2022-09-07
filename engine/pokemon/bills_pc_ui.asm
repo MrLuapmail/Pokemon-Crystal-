@@ -1117,7 +1117,7 @@ _GetCursorMon:
 
 	; Colors
 	ld bc, wBufferMonDVs
-	ld a, [wBufferMonSpecies]
+	ld a, [wBufferMonAltSpecies]
 	newfarcall GetMonNormalOrShinyPalettePointer
 	ld de, wBillsPC_PokepicPal
 	push de
