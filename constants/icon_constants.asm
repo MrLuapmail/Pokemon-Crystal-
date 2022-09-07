@@ -252,8 +252,6 @@
 	const ICON_LUGIA       ; LUGIA
 	const ICON_HO_OH       ; HO_OH
 	const ICON_CELEBI      ; CELEBI
-	const ICON_METAGROSS   ; METAGROSS
-	const ICON_GHOST       ; A_MAROWAK
 	const ICON_EGG         ; EGG
 NUM_ICONS EQU const_value - 1
 
