@@ -705,8 +705,11 @@ EncodeBufferMon:
 	; Shift everything after PP Ups backwards.
 	ld hl, wBufferMonHappiness
 	ld de, wEncodedBufferMonHappiness
-	ld bc, wEncodedBufferMonNickname - wEncodedBufferMonHappiness
+	ld bc, wEncodedBufferMonAltSpecies - wEncodedBufferMonHappiness
 	call CopyBytes
+
+	ld a, [wBufferMonAltSpecies]
+	ld [wEncodedBufferMonAltSpecies], a
 
 	; Move name-related bytes.
 	ld hl, wBufferMonNickname
@@ -723,15 +726,15 @@ EncodeBufferMon:
 	ld b, wEncodedBufferMonEnd - wEncodedBufferMonNickname
 .charmap_loop
 	ld a, [hl]
-	; " " ($7f) -> $7a
-	ld c, $7a | ~%01111111
+	; " " ($7f) -> $40
+	ld c, $40 | ~%01111111
 	cp " "
 	jr z, .replace
-	; "@" ($53) -> $7b
+	; "@" ($53) -> $41
 	inc c
 	cp "@"
 	jr z, .replace
-	; "<START>" ($00) -> $7c
+	; "<START>" ($00) -> $42
 	inc c
 	and a ; cp "<START>"
 	jr nz, .removebit
@@ -747,7 +750,7 @@ ChecksumBufferMon:
 ; Calculate and write a checksum and to BufferMon. Use a nonzero baseline to
 ; avoid a complete null content from having 0 as a checksum.
 ; Returns z if an existing checksum is identical to the written checksum.
-	; boxmon struct + 3 extra bytes (normally placed after OT)
+	; savemon struct except for nickname
 	ld bc, wEncodedBufferMon
 	ld hl, 127
 	lb de, SAVEMON_NICKNAME, 0
@@ -820,7 +823,7 @@ DecodeBufferMon:
 .charmap_loop
 	ld a, [hl]
 	or $80
-	sub $fa
+	sub $c0
 	ld c, " "
 	jr z, .replace
 	dec a
@@ -830,7 +833,7 @@ DecodeBufferMon:
 	jr z, .replace_a ; a is "<START>" ($00) iff the zero flag is set
 
 	; Reverse the previous decrements
-	add $fc
+	add $c2
 .replace_a
 	ld c, a
 .replace
@@ -863,6 +866,7 @@ DecodeBufferMon:
 	jr nz, .outer_loop
 
 	; Shift data past PP to leave room for PP data.
+	; AltSpecies is after stats when decoded, so handle that first separately.
 	ld hl, wEncodedBufferMonAltSpecies
 	ld de, wBufferMonAltSpecies
 	ld a, [hld]
@@ -897,7 +901,6 @@ DecodeBufferMon:
 	ld bc, BadEggEnd - BadEgg
 	call CopyBytes
 	call SetTempPartyMonData
-	or 1
 	scf
 	ret
 

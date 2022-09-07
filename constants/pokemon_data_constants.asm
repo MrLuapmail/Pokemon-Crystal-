@@ -121,11 +121,11 @@ SAVEMON_ID                 rw
 SAVEMON_EXP                rb 3
 SAVEMON_STAT_EXP           rw NUM_EXP_STATS
 rsset SAVEMON_STAT_EXP
-SAVEMON_HP_EXP             rb
-SAVEMON_ATK_EXP            rb
-SAVEMON_DEF_EXP            rb
-SAVEMON_SPD_EXP            rb
-SAVEMON_SPC_EXP            rb
+SAVEMON_HP_EXP             rw
+SAVEMON_ATK_EXP            rw
+SAVEMON_DEF_EXP            rw
+SAVEMON_SPD_EXP            rw
+SAVEMON_SPC_EXP            rw
 SAVEMON_DVS                rw
 ; savemon_struct is identical to party_struct before this point
 SAVEMON_PP_UPS             rb
