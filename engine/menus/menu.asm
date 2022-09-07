@@ -276,15 +276,30 @@ MobileMenuJoypad:
 _NoYesBox::
 	ld hl, .NoYesMenuHeader
 	call CopyMenuHeader
+	lb bc, SCREEN_WIDTH - 6, 7
+	ld a, b
+	ld [wMenuBorderLeftCoord], a
+	add 5
+	ld [wMenuBorderRightCoord], a
+	ld a, c
+	ld [wMenuBorderTopCoord], a
+	add 4
+	ld [wMenuBorderBottomCoord], a
+	call PushWindow
 	call VerticalMenu
+	push af
+	ld c, $f
+	call DelayFrames
+	call CloseWindow
+	pop af
 	ret c
 	ld a, [wMenuCursorY]
 	cp 2
 	ret
 
 .NoYesMenuHeader:
-	db 0 ; flags
-	menu_coords 14, 7, SCREEN_WIDTH - 1, TEXTBOX_Y - 1
+	db MENU_BACKUP_TILES ; flags
+	menu_coords 10, 5, 15, 9
 	dw .MenuData
 	db 1 ; default option
 

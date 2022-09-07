@@ -2473,7 +2473,7 @@ BillsPC_PackFullText:
 	prompt
 
 BillsPC_MovedToPackText:
-	text "Moved "
+	text "Moved @"
 	text_ram wStringBuffer1
 	text ""
 	line "to Bag."
@@ -2537,12 +2537,14 @@ BillsPC_Item:
 	jr BillsPC_Menu
 
 .ItemIsSelected:
+	text "@"
 	text_ram wStringBuffer2
 	text " is"
 	line "selected."
 	done
 
 .ItCanHoldAnItem:
+	text "@"
 	text_ram wBufferMonNickname
 	text " can"
 	line "hold an item."
@@ -2636,7 +2638,7 @@ BillsPC_CanReleaseMon:
 	push hl
 	push de
 	push bc
-	call CheckCurPartyMonFainted
+	newfarcall CheckCurPartyMonFainted
 	pop bc
 	pop de
 	pop hl
@@ -2769,7 +2771,7 @@ BillsPC_ReleaseAll:
 	prompt
 
 .ReleasedXMon:
-	text "Released "
+	text "Released @"
 	text_decimal wTextDecimalByte, 1, 2
 	line "#mon."
 	prompt
@@ -2842,16 +2844,17 @@ BillsPC_Release:
 
 .ReallyReleaseMon:
 	text "Really release"
-	line ""
+	line "@"
 	text_ram wBufferMonNickname
 	text "?"
 	done
 
 .WasReleasedOutside:
+	text "@"
 	text_ram wStringBuffer1
 	text " was"
 	line "released outside."
-	cont "Bye, "
+	cont "Bye, @"
 	text_ram wStringBuffer1
 	text "!"
 	prompt
