@@ -24,10 +24,10 @@ reading the newbox metadata.
 Each individual "newbox" box is 0x21, or 33 bytes, long. It contains the
 following data:
 
-0x00-0x13: Database pointers for the species
-0x14-0x16: Bitflags for which of the 2 databases the given entry uses
-0x17-0x1F: Box name (9 characters in GSC character format, no string terminator)
-0x20: Box theme
+* 0x00-0x13: Database pointers for the species
+* 0x14-0x16: Bitflags for which of the 2 databases the given entry uses
+* 0x17-0x1F: Box name (9 characters in GSC character format, no string terminator)
+* 0x20: Box theme
 
 The pointers contains either 0, for a blank slot, or 1-174, corresponding to
 a database entry. Each entry has a corresponding bitflag, which is unset if
@@ -37,6 +37,7 @@ the game looks up the lowest entry not marked as used, and thus over time the
 pointer list can become somewhat haphazardly ordered). Thus, the pointers
 should not be relied on to be in any particular order. This is a major reason
 as to why you shouldn't try to reference pokedb Pokémon directly.
+
 For blank slots, the bitflag has no impact (and may be set if the slot used to
 reference a Pokémon from storage database 2) and should be ignored.
 
@@ -80,23 +81,23 @@ The theme order is as follows:
 Each individual pokedb entry is 0x2F, or 47 bytes, long. It contains the
 following data:
 
-0x00: Species
-0x01: Item
-0x02-0x05: Moves
-0x06-0x07: OT ID
-0x08-0x0A: Experience
-0x0B-0x14: Stat experience (HP, Attack, Defense, Speed, Special)
-0x15-0x16: DVs
-0x17: PP Up data
-0x18: Friendship/Egg cycles
-0x19: Pokérus data
-0x1A: Caught time and level
-0x1B: OT gender and caught location
-0x1C: Level
-0x1D: "Alt" species
-0x1E-0x27: Nickname excluding terminator
-0x28-0x2E: OT name excluding terminator (only 7 bytes are stored)
-0x1E-0x2E also contains the checksum.
+* 0x00: Species
+* 0x01: Item
+* 0x02-0x05: Moves
+* 0x06-0x07: OT ID
+* 0x08-0x0A: Experience
+* 0x0B-0x14: Stat experience (HP, Attack, Defense, Speed, Special)
+* 0x15-0x16: DVs
+* 0x17: PP Up data
+* 0x18: Friendship/Egg cycles
+* 0x19: Pokérus data
+* 0x1A: Caught time and level
+* 0x1B: OT gender and caught location
+* 0x1C: Level
+* 0x1D: "Alt" species
+* 0x1E-0x27: Nickname excluding terminator
+* 0x28-0x2E: OT name excluding terminator (only 7 bytes are stored)
+* 0x1E-0x2E also contains the checksum.
 
 Data in 0x00-0x16 is identical to a regular GSC Pokémon.
 
