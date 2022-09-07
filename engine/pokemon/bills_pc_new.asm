@@ -1335,7 +1335,6 @@ StorageFlagAction:
 	ld a, BANK(wPokeDB1UsedEntries)
 	ldh [rSVBK], a
 	call .Function
-	ld c, a
 	pop af
 	ldh [rSVBK], a
 	ld a, c
