@@ -904,7 +904,6 @@ wBillsPC_CursorDestBox:: db ; 0 for party, 1-16 otherwise
 wBillsPC_CursorDestSlot:: db ; 0 for release, or 1-20 (1-6 if party)
 wBillsPC_CursorMode:: db ; 0 for regular mode (red), 1 for swap mode (blue), 2 for item mode (green)
 wBillsPC_CursorAnimFlag:: db ; manage cursor behaviour
-wBillsPC_ItemVWF:: ds 10 tiles
 
 ; Quick-move sprite data.
 wBillsPC_QuickFrom::
@@ -927,6 +926,7 @@ wBillsPC_ApplyThemePals:: db ; used by _CGB_BillsPC
 wBillsPC_Blank2bppTiles::
 ; Since we need GDMA for fast blank copy, reserve blank tiles here.
 	ds 4 tiles
+wBillsPC_ItemVWF:: ds 10 tiles
 
 SECTION UNION "Overworld Map", WRAM0
 

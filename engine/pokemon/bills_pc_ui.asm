@@ -1062,6 +1062,7 @@ _GetCursorMon:
 	ld a, BANK(wDecompressScratch)
 	ldh [rSVBK], a
 	lb bc, BANK(_GetCursorMon), 7 * 7
+	ld de, wDecompressScratch
 	call BillsPC_Get2bpp
 	pop af
 	ldh [rSVBK], a
@@ -1090,7 +1091,7 @@ _GetCursorMon:
 	ld de, wBillsPC_Blank2bppTiles
 	jr z, .got_item_tile
 	ld d, a
-	call ItemIsMail
+	call ItemIsMail_a
 	ld de, vTiles3 tile $1c
 	jr c, .got_item_tile
 	ld de, vTiles3 tile $1d
@@ -2367,7 +2368,7 @@ BillsPC_LoadCursorItemIcon:
 
 	ld a, [wBillsPC_CursorItem]
 	ld d, a
-	call ItemIsMail
+	call ItemIsMail_a
 	ld de, HeldItemIcons ; mail icon
 	jr c, .got_item_tile
 	ld de, HeldItemIcons tile 1 ; regular item icon
@@ -2422,7 +2423,7 @@ _BillsPC_BagItem:
 
 	; Check if this is a Mail (can be invoked when placing using Item Mode).
 	ld d, a
-	call ItemIsMail
+	call ItemIsMail_a
 	jr nc, .put_in_pack
 
 	call BillsPC_TakeMail
@@ -2519,7 +2520,7 @@ BillsPC_Item:
 	ld de, .NoItemMenu
 	jr z, .got_menu
 	ld d, a
-	call ItemIsMail
+	call ItemIsMail_a
 	ld hl, .ItemIsSelected
 	ld de, .ItemMenu
 	jr nc, .got_menu
@@ -3036,7 +3037,7 @@ BillsPC_SwapStorage:
 	jr z, .mail_ok
 	ld a, [wBillsPC_CursorItem]
 	ld d, a
-	call ItemIsMail
+	call ItemIsMail_a
 	ld a, 6
 	jp c, .failed
 
@@ -3050,7 +3051,7 @@ BillsPC_SwapStorage:
 	jr z, .dest_is_itemless
 
 	ld d, a
-	call ItemIsMail
+	call ItemIsMail_a
 	ld a, 8
 	jp c, .failed
 
@@ -3067,7 +3068,7 @@ BillsPC_SwapStorage:
 	ld a, [wBillsPC_CursorItem]
 	ld [wCurItem], a
 	ld d, a
-	call ItemIsMail
+	call ItemIsMail_a
 	jr nc, .compose_check_done
 
 	push af
@@ -3127,7 +3128,8 @@ BillsPC_SwapStorage:
 
 	; Check if item d is a mail about to be given to a storage mon.
 	and a
-	call nz, ItemIsMail
+	ld a, d
+	call nz, ItemIsMail_a
 	ld a, 6
 	jr c, .item_failed
 	push de
@@ -3136,7 +3138,8 @@ BillsPC_SwapStorage:
 	ld a, b
 	ld d, e
 	and a
-	call nz, ItemIsMail
+	ld a, d
+	call nz, ItemIsMail_a
 	ld a, 6
 	jr c, .pop_de_item_failed
 
