@@ -1090,7 +1090,6 @@ _GetCursorMon:
 	and a
 	ld de, wBillsPC_Blank2bppTiles
 	jr z, .got_item_tile
-	ld d, a
 	call ItemIsMail_a
 	ld de, vTiles3 tile $1c
 	jr c, .got_item_tile
@@ -2254,6 +2253,8 @@ BillsPC_TakeMail:
 	; Preserve return flags.
 	push af
 	call GetCursorMon
+	ld a, 1
+	ldh [hBGMapMode], a
 	pop af
 	ret
 
@@ -2367,7 +2368,6 @@ BillsPC_LoadCursorItemIcon:
 	lb bc, BANK(HeldItemIcons), 1
 
 	ld a, [wBillsPC_CursorItem]
-	ld d, a
 	call ItemIsMail_a
 	ld de, HeldItemIcons ; mail icon
 	jr c, .got_item_tile
@@ -3069,6 +3069,7 @@ BillsPC_SwapStorage:
 	ld [wCurItem], a
 	ld d, a
 	call ItemIsMail_a
+	ld a, d
 	jr nc, .compose_check_done
 
 	push af
