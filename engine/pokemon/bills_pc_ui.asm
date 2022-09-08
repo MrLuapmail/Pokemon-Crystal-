@@ -35,8 +35,6 @@ DEF NUM_PC_MODES EQU const_value
 PlaceVWFString:
 _OpenPartyStats:
 _ManagePokemonMoves:
-PCGiveItem:
-TakeMail:
 	ret
 
 _BillsPC:
