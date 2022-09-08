@@ -32,7 +32,6 @@ DEF NUM_PC_MODES EQU const_value
 	const BOXMENU_GIVEITEM
 
 ; Stubbed functions
-PlaceVWFString:
 _OpenPartyStats:
 _ManagePokemonMoves:
 	ret

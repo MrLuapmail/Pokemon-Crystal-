@@ -705,6 +705,11 @@ SECTION "Prism tilemap copy functions", ROMX
 INCLUDE "engine/gfx/copy_tilemap_at_once.asm"
 
 
+SECTION "VWF", ROMX
+
+INCLUDE "engine/gfx/vwf.asm"
+
+
 SECTION "Stadium 2 Checksums", ROMX[$7DE0], BANK[$7F]
 
 ; The end of the ROM is taken up by checksums of the content, apparently used
