@@ -583,6 +583,11 @@ SetStorageBoxPointer:
 	; Then delete the partymon.
 	ld hl, wPartyCount
 	dec [hl]
+	ld c, [hl]
+	ld b, 0
+	ld hl, wPartySpecies
+	add hl, bc
+	ld [hl], -1
 	jr .done
 
 .not_empty
