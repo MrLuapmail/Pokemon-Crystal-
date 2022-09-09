@@ -32,7 +32,6 @@ DEF NUM_PC_MODES EQU const_value
 	const BOXMENU_GIVEITEM
 
 ; Stubbed functions
-_OpenPartyStats:
 _ManagePokemonMoves:
 	ret
 
@@ -1576,6 +1575,8 @@ BillsPC_MenuJumptable:
 
 BillsPC_Stats:
 	call BillsPC_PrepareTransistion
+	ld a, TEMPMON ; yes, not BUFFERMON (stats screen treats this as wBufferMon)
+	ld [wMonType], a
 	newfarcall _OpenPartyStats
 	jp BillsPC_ReturnFromTransistion
 

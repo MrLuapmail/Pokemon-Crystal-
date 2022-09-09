@@ -650,11 +650,13 @@ TakeMail:
 	text_end
 
 OpenPartyStats:
-	call LoadStandardMenuHeader
-	call ClearSprites
 ; PartyMon
 	xor a
 	ld [wMonType], a
+	; fallthrough
+_OpenPartyStats:
+	call LoadStandardMenuHeader
+	call ClearSprites
 	call LowVolume
 	predef StatsScreenInit
 	call MaxVolume

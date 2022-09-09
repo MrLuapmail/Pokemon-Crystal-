@@ -799,25 +799,6 @@ BillsPC_EndJumptableLoop:
 	set 7, [hl]
 	ret
 
-_StatsScreenDPad:
-	ld a, [wBillsPC_NumMonsOnScreen]
-	ld d, a
-	ld a, [wBillsPC_NumMonsInBox]
-	and a
-	jr z, .empty
-	dec a
-	cp $1
-	jr z, .empty
-	ld e, a
-	ld a, [hl]
-	and D_UP
-	jr nz, BillsPC_PressUp
-	ld a, [hl]
-	and D_DOWN
-	jr nz, BillsPC_PressDown
-.empty
-	jp BillsPC_JoypadDidNothing
-
 Withdraw_UpDown:
 	ld hl, hJoyLast
 	ld a, [wBillsPC_NumMonsOnScreen]
@@ -1657,40 +1638,6 @@ BillsPC_StatsScreen:
 	predef StatsScreenInit
 	call BillsPC_InitGFX
 	call MaxVolume
-	ret
-
-StatsScreenDPad:
-	ld hl, hJoyPressed
-	ld a, [hl]
-	and A_BUTTON | B_BUTTON | D_RIGHT | D_LEFT
-	ld [wMenuJoypad], a
-	jr nz, .pressed_a_b_right_left
-	ld a, [hl]
-	and D_DOWN | D_UP
-	ld [wMenuJoypad], a
-	jr nz, .pressed_down_up
-	jr .pressed_a_b_right_left
-
-.pressed_down_up
-	call _StatsScreenDPad
-	and a
-	jr z, .did_nothing
-	call BillsPC_GetSelectedPokemonSpecies
-	ld [wTempSpecies], a
-	call BillsPC_LoadMonStats
-	ld a, [wTempSpecies]
-	ld [wCurPartySpecies], a
-	ld [wCurSpecies], a
-	ld hl, wTempMonDVs
-	predef GetUnownLetter
-	call GetBaseData
-	call BillsPC_CopyMon
-.pressed_a_b_right_left
-	ret
-
-.did_nothing
-	xor a
-	ld [wMenuJoypad], a
 	ret
 
 BillsPC_CopyMon:
