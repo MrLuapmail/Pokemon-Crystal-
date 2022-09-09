@@ -2770,6 +2770,7 @@ BillsPC_ReleaseAll:
 .ReleasedXMon:
 	text "Released @"
 	text_decimal wTextDecimalByte, 1, 2
+	text ""
 	line "#mon."
 	prompt
 
