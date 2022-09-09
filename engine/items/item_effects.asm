@@ -2978,6 +2978,7 @@ RestoreAllPP:
 	ld [wMonType], a
 	; fallthrough
 _RestoreAllPP:
+	xor a
 	ld [wMenuCursorY], a
 	ld c, NUM_MOVES
 .loop
