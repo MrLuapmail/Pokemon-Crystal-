@@ -467,7 +467,7 @@ StatsScreen_InitUpperHalf:
 .NicknamePointers:
 	dw wPartyMonNicknames
 	dw wOTPartyMonNicknames
-	dw sBoxMonNicknames
+	dw wBufferMonNickname ; unused
 	dw wBufferMonNickname ; unused
 	dw wBufferMonNickname ; unused
 	dw wBufferMonNickname
@@ -852,7 +852,7 @@ LoadBluePage:
 .OTNamePointers:
 	dw wPartyMonOTs
 	dw wOTPartyMonOTs
-	dw sBoxMonOTs
+	dw wBufferMonOT ; unused
 	dw wBufferMonOT ; unused
 	dw wBufferMonOT ; unused
 	dw wBufferMonOT
@@ -945,8 +945,8 @@ StatsScreen_GetAnimationParam:
 .Jumptable:
 	dw .PartyMon
 	dw .OTPartyMon
-	dw .BoxMon
-	dw .Tempmon
+	dw .BoxMon ; unused
+	dw .Tempmon ; unused
 	dw .Wildmon
 	dw .Buffermon
 
@@ -964,20 +964,6 @@ StatsScreen_GetAnimationParam:
 	ret
 
 .BoxMon:
-	ld hl, sBoxMons
-	ld bc, PARTYMON_STRUCT_LENGTH
-	ld a, [wCurPartyMon]
-	call AddNTimes
-	ld b, h
-	ld c, l
-	ld a, BANK(sBoxMons)
-	call OpenSRAM
-	call .CheckEggFaintedFrzSlp
-	push af
-	call CloseSRAM
-	pop af
-	ret
-
 .Buffermon:
 .Tempmon:
 	ld bc, wTempMonSpecies
