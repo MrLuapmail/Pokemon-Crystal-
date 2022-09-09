@@ -42,6 +42,10 @@ _BillsPC:
 	ld a, [hl]
 	push af
 	set NO_TEXT_SCROLL, [hl]
+	ldh a, [hMapAnims]
+	push af
+	xor a
+	ldh [hMapAnims], a
 	ld a, 71
 	ldh [rLYC], a
 	call LoadStandardMenuHeader
@@ -65,6 +69,8 @@ _BillsPC:
 	ldh [rIE], a
 
 	call ReturnToMapFromSubmenu
+	pop af
+	ldh [hMapAnims], a
 	pop af
 	ld [wOptions], a
 	jp CloseSubmenu
