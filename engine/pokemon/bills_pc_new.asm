@@ -1,3 +1,32 @@
+CheckCurPartyMonFainted:
+	ld hl, wPartyMon1HP
+	ld de, PARTYMON_STRUCT_LENGTH
+	ld b, $0
+.loop
+	ld a, [wCurPartyMon]
+	cp b
+	jr z, .skip
+	ld a, [hli]
+	or [hl]
+	jr nz, .notfainted
+	dec hl
+
+.skip
+	inc b
+	ld a, [wPartyCount]
+	cp b
+	jr z, .done
+	add hl, de
+	jr .loop
+
+.done
+	scf
+	ret
+
+.notfainted
+	and a
+	ret
+
 SwapStorageBoxSlots:
 ; Swaps slots from de to bc. Preserves de, while bc is changed to a proper slot
 ; if c is 0, otherwise preserved. Equivalent to bc->de except c may be 0 to mean

@@ -32,6 +32,19 @@ CopyMonToTempMon:
 .done
 	ret
 
+CopyBoxmonToTempMon:
+	ld a, [wCurPartyMon]
+	ld hl, sBoxMon1Species
+	ld bc, BOXMON_STRUCT_LENGTH
+	call AddNTimes
+	ld de, wTempMonSpecies
+	ld bc, BOXMON_STRUCT_LENGTH
+	ld a, BANK(sBoxMon1Species)
+	call OpenSRAM
+	call CopyBytes
+	call CloseSRAM
+	ret
+
 CalcBufferMonStats:
 	ld bc, wBufferMon
 	jr _TempMonStatsCalculation
