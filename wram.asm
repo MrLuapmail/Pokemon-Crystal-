@@ -1899,7 +1899,7 @@ ENDU
 wBufferMonBox:: db
 wBufferMonSlot:: db
 
-	ds 5
+wLuckyNumberDigitsBuffer:: ds 5
 
 wMonOrItemNameBuffer:: ds NAME_LENGTH
 	ds NAME_LENGTH
@@ -1985,12 +1985,6 @@ wNumRadioLinesPrinted:: db
 wOaksPKMNTalkSegmentCounter:: db
 	ds 5
 wRadioText:: ds 2 * SCREEN_WIDTH
-
-
-SECTION UNION "Miscellaneous WRAM 1", WRAMX
-
-; lucky number show
-wLuckyNumberDigitsBuffer:: ds 5
 
 
 SECTION UNION "Miscellaneous WRAM 1", WRAMX
@@ -3208,9 +3202,7 @@ wEventFlags:: flag_array NUM_EVENTS
 
 wCurBox:: db
 
-	ds 2
-
-wBoxNames:: ds BOX_NAME_LENGTH * NUM_BOXES
+	ds 128 ; unused, used to hold box names (+ 2 bytes that were already unused)
 
 wCelebiEvent::
 ; bit 2: forest is restless

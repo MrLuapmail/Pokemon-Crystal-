@@ -18,9 +18,10 @@ CopyMonToTempMon:
 	ld bc, PARTYMON_STRUCT_LENGTH
 	cp OTPARTYMON
 	jr z, .copywholestruct
-	ld bc, BOXMON_STRUCT_LENGTH
-	callfar CopyBoxmonToTempMon
-	jr .done
+
+	; tried to run old box code, crash
+	di
+	jp @
 
 .copywholestruct
 	ld a, [wCurPartyMon]
@@ -30,19 +31,6 @@ CopyMonToTempMon:
 	call CopyBytes
 
 .done
-	ret
-
-CopyBoxmonToTempMon:
-	ld a, [wCurPartyMon]
-	ld hl, sBoxMon1Species
-	ld bc, BOXMON_STRUCT_LENGTH
-	call AddNTimes
-	ld de, wTempMonSpecies
-	ld bc, BOXMON_STRUCT_LENGTH
-	ld a, BANK(sBoxMon1Species)
-	call OpenSRAM
-	call CopyBytes
-	call CloseSRAM
 	ret
 
 CalcBufferMonStats:
@@ -119,12 +107,8 @@ GetMonSpecies:
 	jr .done
 
 .boxmon
-	ld a, BANK(sBoxSpecies)
-	call OpenSRAM
-	ld hl, sBoxSpecies
-	call .done
-	call CloseSRAM
-	ret
+	di
+	jp @
 
 .breedmon
 	ld a, [wBreedMon1Species]

@@ -325,7 +325,7 @@ NewStorageBoxPointer:
 	ld a, [wCurBox]
 	inc a
 	ld b, a
-	ld d, NUM_NEWBOXES
+	ld d, NUM_BOXES
 .outer_loop
 	ld c, 1
 .inner_loop
@@ -341,7 +341,7 @@ NewStorageBoxPointer:
 	jr nz, .inner_loop
 	ld a, b
 	inc b
-	cp NUM_NEWBOXES
+	cp NUM_BOXES
 	jr nz, .dont_wrap_box
 	ld b, 1
 .dont_wrap_box
@@ -437,7 +437,7 @@ FlushStorageSystem:
 	jr nz, .inner_loop
 	ld a, b
 	inc b
-	cp NUM_NEWBOXES * 2 ; current + backup
+	cp NUM_BOXES * 2 ; current + backup
 	jr nz, .outer_loop
 	jp PopBCDEHL
 
@@ -1043,7 +1043,7 @@ InitializeBoxes:
 ; Initializes the Storage System boxes as empty with default names and themes.
 	ld a, BANK(sNewBox1)
 	call OpenSRAM
-	ld b, NUM_NEWBOXES
+	ld b, NUM_BOXES
 	ld hl, sNewBox1
 .name_loop
 	push bc
@@ -1057,10 +1057,9 @@ InitializeBoxes:
 	call CopyName2
 	dec hl
 	pop de
-	ld a, NUM_NEWBOXES + 1
+	ld a, NUM_BOXES + 1
 	sub e
 	sub 10
-	add "0" + 10
 	jr c, .next
 	ld [hl], "1"
 	inc hl
@@ -1082,7 +1081,7 @@ InitializeBoxes:
 	; MONDB_ENTRIES since that would lead to odd behaviour when trying to check
 	; flags in FlushStorageSystem (which needs to care about both active and
 	; backup boxes).
-	ld b, NUM_NEWBOXES
+	ld b, NUM_BOXES
 	ld hl, sBackupNewBox1Entries
 .outer_backup_loop
 	ld c, MONS_PER_BOX

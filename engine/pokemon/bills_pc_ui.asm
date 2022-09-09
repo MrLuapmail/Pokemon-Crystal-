@@ -1156,8 +1156,11 @@ _GetCursorMon:
 	; If we're dealing with an egg, we're done now.
 	ld a, [wBufferMonAltSpecies]
 	cp EGG
-	ret z
+	jr nz, .not_egg
+	or 1
+	ret
 
+.not_egg
 	; Species name
 	ld a, [wBufferMonSpecies]
 	ld [wNamedObjectIndex], a
