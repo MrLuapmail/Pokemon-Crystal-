@@ -7058,7 +7058,7 @@ Function11b5c0:
 	ld [wCurPartyMon], a
 	xor a ; REMOVE_PARTY
 	ld [wPokemonWithdrawDepositParameter], a
-	farcall RemoveMonFromPartyOrBox
+	farcall RemoveMonFromParty
 	farcall Function170807
 	farcall SaveAfterLinkTrade
 	jp Function11ad8a

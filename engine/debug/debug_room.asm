@@ -1120,99 +1120,103 @@ DebugRoomMenu_PokemonGet:
 	dw DebugRoomMenu_PokemonGet_Page4Values
 
 DebugRoom_SavePokemon:
+	; Used to reference old box data, now deleted.
 	call YesNoBox
 	ret c
-	call DebugRoom_UpdateExpForLevel
-	ld a, [wDebugRoomMonBox]
-	dec a
-	ld b, a
-	add a
-	add b
-	ld h, 0
-	ld l, a
-	ld de, DebugRoom_BoxAddresses
-	add hl, de
-	ld a, [hli]
-	call OpenSRAM
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld a, [hl]
-	cp MONS_PER_BOX
-	jr nc, .full
-	; update count and species list
-	push hl
-	inc [hl]
-	inc hl
-	ld d, 0
-	ld e, a
-	add hl, de
-	ld a, [wDebugRoomMonSpecies]
-	ld [hli], a
-	ld [hl], -1
-	pop hl
-	; skip count and species list
-	ld bc, 2 + MONS_PER_BOX
-	add hl, bc
-	; update Nth box mon
-	push de
-	push hl
-	ld a, e
-	ld bc, BOXMON_STRUCT_LENGTH
-	call AddNTimes
-	ld d, h
-	ld e, l
-	ld hl, wDebugRoomMon
-	ld bc, BOXMON_STRUCT_LENGTH
-	call CopyBytes
-	pop hl
-	pop de
-	; skip box mons
-	ld bc, BOXMON_STRUCT_LENGTH * MONS_PER_BOX
-	add hl, bc
-	; update Nth OT name
-	push de
-	push hl
-	ld a, e
-	ld bc, NAME_LENGTH
-	call AddNTimes
-	ld d, h
-	ld e, l
-	ld hl, .OTString
-	ld bc, NAME_LENGTH
-	call CopyBytes
-	pop hl
-	pop de
-	; skip OT names
-	ld bc, NAME_LENGTH * MONS_PER_BOX
-	add hl, bc
-	; update Nth nickname
-	push de
-	push hl
-	ld a, e
-	ld bc, MON_NAME_LENGTH
-	call AddNTimes
-	ld d, h
-	ld e, l
-	ld hl, .NicknameString
-	ld bc, MON_NAME_LENGTH
-	call CopyBytes
-	pop hl
-	pop de
-	call CloseSRAM
-	ld hl, .CompletedText
-	call MenuTextbox
-	call DebugRoom_JoyWaitABSelect
-	call CloseWindow
 	ret
 
-.full
-	call CloseSRAM
-	ld hl, .BoxIsFullText
-	call MenuTextbox
-	call DebugRoom_JoyWaitABSelect
-	call CloseWindow
-	ret
+	; IF YOU NEED THIS WORKING, ADAPT IT FOR NEWBOX
+;	call DebugRoom_UpdateExpForLevel
+;	ld a, [wDebugRoomMonBox]
+;	dec a
+;	ld b, a
+;	add a
+;	add b
+;	ld h, 0
+;	ld l, a
+;	ld de, DebugRoom_BoxAddresses
+;	add hl, de
+;	ld a, [hli]
+;	call OpenSRAM
+;	ld a, [hli]
+;	ld h, [hl]
+;	ld l, a
+;	ld a, [hl]
+;	cp MONS_PER_BOX
+;	jr nc, .full
+	; update count and species list
+;	push hl
+;	inc [hl]
+;	inc hl
+;	ld d, 0
+;	ld e, a
+;	add hl, de
+;	ld a, [wDebugRoomMonSpecies]
+;	ld [hli], a
+;	ld [hl], -1
+;	pop hl
+	; skip count and species list
+;	ld bc, 2 + MONS_PER_BOX
+;	add hl, bc
+	; update Nth box mon
+;	push de
+;	push hl
+;	ld a, e
+;	ld bc, BOXMON_STRUCT_LENGTH
+;	call AddNTimes
+;	ld d, h
+;	ld e, l
+;	ld hl, wDebugRoomMon
+;	ld bc, BOXMON_STRUCT_LENGTH
+;	call CopyBytes
+;	pop hl
+;	pop de
+	; skip box mons
+;	ld bc, BOXMON_STRUCT_LENGTH * MONS_PER_BOX
+;	add hl, bc
+	; update Nth OT name
+;	push de
+;	push hl
+;	ld a, e
+;	ld bc, NAME_LENGTH
+;	call AddNTimes
+;	ld d, h
+;	ld e, l
+;	ld hl, .OTString
+;	ld bc, NAME_LENGTH
+;	call CopyBytes
+;	pop hl
+;	pop de
+	; skip OT names
+;	ld bc, NAME_LENGTH * MONS_PER_BOX
+;	add hl, bc
+	; update Nth nickname
+;	push de
+;	push hl
+;	ld a, e
+;	ld bc, MON_NAME_LENGTH
+;	call AddNTimes
+;	ld d, h
+;	ld e, l
+;	ld hl, .NicknameString
+;	ld bc, MON_NAME_LENGTH
+;	call CopyBytes
+;	pop hl
+;	pop de
+;	call CloseSRAM
+;	ld hl, .CompletedText
+;	call MenuTextbox
+;	call DebugRoom_JoyWaitABSelect
+;	call CloseWindow
+;	ret
+
+.;full
+;	call CloseSRAM
+;	ld hl, .BoxIsFullText
+;	call MenuTextbox
+;	call DebugRoom_JoyWaitABSelect
+;	call CloseWindow
+;	ret
 
 .OTString:
 	db "DEBUG▶OT@"
@@ -1353,24 +1357,6 @@ DebugRoom_BoxStructStrings:
 .NoUse1:    db "NO USE[1]@"
 .Level:     db "LEVEL@"
 .SendBox:   db "SEND BOX@"
-
-DebugRoom_BoxAddresses:
-	table_width 3, DebugRoom_BoxAddresses
-	dba sBox1
-	dba sBox2
-	dba sBox3
-	dba sBox4
-	dba sBox5
-	dba sBox6
-	dba sBox7
-	dba sBox8
-	dba sBox9
-	dba sBox10
-	dba sBox11
-	dba sBox12
-	dba sBox13
-	dba sBox14
-	assert_table_length NUM_BOXES
 
 DebugRoomMenu_RTCEdit:
 	ld hl, .PagedValuesHeader

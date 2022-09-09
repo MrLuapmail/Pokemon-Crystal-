@@ -469,12 +469,32 @@ GetPredefPal:
 	add hl, bc
 	ret
 
+LoadOnePalette:
+; Loads a single palette from hl to de in GBC Video WRAMX
+	ld c, 1 palettes
+	; fallthrough
+LoadPalettes:
+; Load c palette bytes from hl to de in GBC Video WRAMX
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK("GBC Video")
+	ldh [rSVBK], a
+.loop
+	ld a, [hli]
+	ld [de], a
+	inc de
+	dec c
+	jr nz, .loop
+	pop af
+	ldh [rSVBK], a
+	ret
+
 LoadHLPaletteIntoDE:
+	ld c, 1 palettes
 	ldh a, [rSVBK]
 	push af
 	ld a, BANK(wOBPals1)
 	ldh [rSVBK], a
-	ld c, 1 palettes
 .loop
 	ld a, [hli]
 	ld [de], a
@@ -1299,6 +1319,12 @@ INCLUDE "gfx/stats/party_menu_bg_mobile.pal"
 
 PartyMenuBGPalette:
 INCLUDE "gfx/stats/party_menu_bg.pal"
+
+BillsPC_ThemePals:
+INCLUDE "gfx/pc/themes.pal"
+
+PokerusAndShinyPals:
+INCLUDE "gfx/pc/pokerus_shiny.pal"
 
 TilesetBGPalette:
 INCLUDE "gfx/tilesets/bg_tiles.pal"

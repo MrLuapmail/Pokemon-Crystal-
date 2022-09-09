@@ -45,6 +45,13 @@ GameFreakDittoGFX::
 INCBIN "gfx/splash/ditto.2bpp.lz"
 
 
+SECTION "Bill's PC Graphics", ROMX
+
+BillsPC_CursorGFX:: INCBIN "gfx/pc/cursor.2bpp"
+BillsPC_TileGFX::   INCBIN "gfx/pc/pc.2bpp.lz"
+BillsPC_ObjGFX::    INCBIN "gfx/pc/obj.2bpp.lz"
+
+
 SECTION "Unown Font", ROMX
 
 UnownFont::

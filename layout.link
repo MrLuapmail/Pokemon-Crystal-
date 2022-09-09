@@ -339,6 +339,7 @@ WRAMX 1
 	"Party"
 WRAMX 2
 	"Pic Animations"
+	"Used Storage"
 WRAMX 3
 	"Battle Tower RAM"
 WRAMX 5
@@ -364,15 +365,15 @@ SRAM $00
 	"Backup Save"
 SRAM $01
 	"Save"
-	"Active Box"
+	"Box metadata"
 	"Link Battle Data"
 	"SRAM Hall of Fame"
 	"SRAM Crystal Data"
 	"SRAM Battle Tower"
 SRAM $02
-	"Boxes 1-7"
+	"PokeDB bank 1"
 SRAM $03
-	"Boxes 8-14"
+	"PokeDB bank 2"
 SRAM $04
 	"SRAM Mobile 1"
 SRAM $05
