@@ -38,6 +38,20 @@ pointer list can become somewhat haphazardly ordered). Thus, the pointers
 should not be relied on to be in any particular order. This is a major reason
 as to why you shouldn't try to reference pokedb Pokémon directly.
 
+Slots are stored starting from the top left corner, then continuing on the same
+row until switching to the next row. So the top left corner is the first slot,
+the one right of it is slot 2 while the slot right below the first slot is the
+5th slot.
+
+0x14-0x16 contains bitflags for which of the 2 pokedb banks is used. The flags
+are structured as follows:
+
+    0x14        0x15        0x16
+    0bHGFEDCBA  0bPONMLKJI  0b0000TSRQ
+
+where A corresponds to the bank for slot 1, B for slot 2, etc up to slot 20.
+The bits marked as zero above is unused.
+
 For blank slots, the bitflag has no impact (and may be set if the slot used to
 reference a Pokémon from storage database 2) and should be ignored.
 
