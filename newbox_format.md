@@ -158,7 +158,7 @@ Each pokedb Pokémon entry is checksummed. The checksum is calculated as follows
 * Continue with the 2nd most significant bit to the most significant bit in 0x1F
 * Continue like this for the rest of the name fields
 * Note that since 0x2E would be the 17th bit, and we only keep 16, its MSB is
-  unset. It is still considered an invalid checksum if 0x2F's MSB is set when
+  unset. It is still considered an invalid checksum if 0x2E's MSB is set when
   decoded.
 
 Having a checksum starting point of 127 ensures that a completely blank entry,
