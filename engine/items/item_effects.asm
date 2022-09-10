@@ -624,7 +624,7 @@ PokeBallEffect:
 
 	xor a
 	ld [wCurPartyMon], a
-	ld a, BOXMON
+	ld a, BUFFERMON
 	ld [wMonType], a
 	ld de, wMonOrItemNameBuffer
 	ld b, NAME_MON
@@ -2978,6 +2978,7 @@ RestoreAllPP:
 	ld [wMonType], a
 	; fallthrough
 _RestoreAllPP:
+	xor a
 	ld [wMenuCursorY], a
 	ld c, NUM_MOVES
 .loop
