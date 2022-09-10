@@ -90,7 +90,11 @@ _BillsPC:
 	text_end
 
 BillsPC_LoadUI:
-	call LoadFontsBattleExtra
+	; Load relevant parts from the battle font
+	ld de, FontBattleExtra + $0e tiles
+	ld hl, vTiles2 tile $6e
+	lb bc, BANK(FontBattleExtra), 11
+	call Get2bppViaHDMA
 
 	ld a, 1
 	ldh [rVBK], a
