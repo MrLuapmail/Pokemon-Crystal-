@@ -443,12 +443,12 @@ RadioTower2FBuenaShowIntroductionText:
 
 	para "Do you know about"
 	line "a radio program"
-	cont "called CLOUtCHASING?"
+	cont "called CLOUTCHASER?"
 
 	para "If you can tell me"
-	line "the source of"
+	line "the reason for"
 
-	para "the cringe, you"
+	para "SLOWBROGATE, you"
 	line "will earn clout."
 
 	para "Save up that"
