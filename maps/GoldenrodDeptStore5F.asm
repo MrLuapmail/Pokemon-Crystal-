@@ -59,13 +59,13 @@ GoldenrodDeptStore5FClerkScript:
 GoldenrodDeptStore5FReceptionistScript:
 	faceplayer
 	opentext
-	checkflag ENGINE_GOLDENROD_DEPT_STORE_TM27_RETURN
+	checkevent EVENT_GOLDENROD_DEPT_STORE_TM27_RETURN
 	iftrue .EventIsOver
 	writetext GoldenrodDeptStore5FReceptionistTakeTheseItemsText
 	promptbutton
 	verbosegiveitem TM_RETURN
 	verbosegiveitem TM_FRUSTRATION
-	setflag ENGINE_GOLDENROD_DEPT_STORE_TM27_RETURN
+	setevent EVENT_GOLDENROD_DEPT_STORE_TM27_RETURN
 
 .EventIsOver:
 	writetext GoldenrodDeptStore5FReceptionistThereAreTMsPerfectForMonText
