@@ -42,10 +42,10 @@ CeladonPrizeRoom_tmcounterloop:
 	checkcoins CELADONGAMECORNERPRIZEROOM_TM32_COINS
 	ifequal HAVE_LESS, CeladonPrizeRoom_notenoughcoins
 	getitemname STRING_BUFFER_3, TM_DOUBLE_TEAM
+  checkevent EVENT_GOT_GAMECORNER_DOUBLE_TEAM
+	iftrue CeladonPrizeRoom_AlreadyHaveTMScript
 	scall CeladonPrizeRoom_askbuy
 	iffalse CeladonPrizeRoom_CancelPurchaseScript
-	checkevent EVENT_GOT_GAMECORNER_DOUBLE_TEAM
-	iftrue CeladonPrizeRoom_AlreadyHaveTMScript
 	giveitem TM_DOUBLE_TEAM
 	setevent EVENT_GOT_GAMECORNER_DOUBLE_TEAM
 	iffalse CeladonPrizeRoom_notenoughroom
@@ -56,10 +56,10 @@ CeladonPrizeRoom_tmcounterloop:
 	checkcoins CELADONGAMECORNERPRIZEROOM_TM29_COINS
 	ifequal HAVE_LESS, CeladonPrizeRoom_notenoughcoins
 	getitemname STRING_BUFFER_3, TM_PSYCHIC_M
+  checkevent EVENT_GOT_GAMECORNER_PSYCHIC
+	iftrue CeladonPrizeRoom_AlreadyHaveTMScript
 	scall CeladonPrizeRoom_askbuy
 	iffalse CeladonPrizeRoom_CancelPurchaseScript
-	checkevent EVENT_GOT_GAMECORNER_PSYCHIC
-	iftrue CeladonPrizeRoom_AlreadyHaveTMScript
 	giveitem TM_PSYCHIC_M
 	setevent EVENT_GOT_GAMECORNER_PSYCHIC
 	iffalse CeladonPrizeRoom_notenoughroom
@@ -70,10 +70,10 @@ CeladonPrizeRoom_tmcounterloop:
 	checkcoins CELADONGAMECORNERPRIZEROOM_TM15_COINS
 	ifequal HAVE_LESS, CeladonPrizeRoom_notenoughcoins
 	getitemname STRING_BUFFER_3, TM_HYPER_BEAM
+  checkevent EVENT_GOT_GAMECORNER_HYPER_BEAM
+	iftrue CeladonPrizeRoom_AlreadyHaveTMScript
 	scall CeladonPrizeRoom_askbuy
 	iffalse CeladonPrizeRoom_CancelPurchaseScript
-	checkevent EVENT_GOT_GAMECORNER_HYPER_BEAM
-	iftrue CeladonPrizeRoom_AlreadyHaveTMScript
 	giveitem TM_HYPER_BEAM
 	setevent EVENT_GOT_GAMECORNER_HYPER_BEAM
 	iffalse CeladonPrizeRoom_notenoughroom
@@ -106,6 +106,12 @@ CeladonPrizeRoom_notenoughcoins:
 
 CeladonPrizeRoom_notenoughroom:
 	writetext CeladonPrizeRoom_NotEnoughRoomText
+	waitbutton
+	closetext
+	end
+
+CeladonPrizeRoom_AlreadyBoughtTMScript:
+	writetext CeladonPrizeRoom_AlreadyBoughtTMText
 	waitbutton
 	closetext
 	end
@@ -282,6 +288,11 @@ CeladonPrizeRoom_NotEnoughCoinsText:
 CeladonPrizeRoom_NotEnoughRoomText:
 	text "You have no room"
 	line "for it."
+	done
+
+CeladonPrizeRoom_AlreadyBoughtTMText:
+	text "You already bought"
+	line "this TM."
 	done
 
 CeladonPrizeRoom_ComeAgainText:

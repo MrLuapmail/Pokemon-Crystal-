@@ -8,7 +8,6 @@ SpriteAnimFrameData:
 	dw .Frameset_PartyMonFast
 	dw .Frameset_PartyMonWithMailFast
 	dw .Frameset_PartyMonWithItemFast
-	dw .Frameset_GSTitleTrail
 	dw .Frameset_TextEntryCursor
 	dw .Frameset_TextEntryCursorBig
 	dw .Frameset_GameFreakLogo
@@ -67,6 +66,12 @@ SpriteAnimFrameData:
 	dw .Frameset_IntroUnownF
 	dw .Frameset_CelebiLeft
 	dw .Frameset_CelebiRight
+	dw .Frameset_PcCursor
+	dw .Frameset_PcCursorItem
+	dw .Frameset_PcQuick
+	dw .Frameset_PcMode
+	dw .Frameset_PcMode2
+	dw .Frameset_PcPack
 	assert_table_length NUM_SPRITE_ANIM_FRAMESETS
 
 .Frameset_00:
@@ -74,8 +79,8 @@ SpriteAnimFrameData:
 	endanim
 
 .Frameset_PartyMon:
-	frame SPRITE_ANIM_OAMSET_RED_WALK_1,  8
-	frame SPRITE_ANIM_OAMSET_RED_WALK_2,  8
+	frame SPRITE_ANIM_OAMSET_PARTY_MON_1,  8
+	frame SPRITE_ANIM_OAMSET_PARTY_MON_2,  8
 	dorestart
 
 .Frameset_PartyMonWithMail:
@@ -89,8 +94,8 @@ SpriteAnimFrameData:
 	dorestart
 
 .Frameset_PartyMonFast:
-	frame SPRITE_ANIM_OAMSET_RED_WALK_1,  4
-	frame SPRITE_ANIM_OAMSET_RED_WALK_2,  4
+	frame SPRITE_ANIM_OAMSET_PARTY_MON_1,  4
+	frame SPRITE_ANIM_OAMSET_PARTY_MON_2,  4
 	dorestart
 
 .Frameset_PartyMonWithMailFast:
@@ -122,11 +127,6 @@ SpriteAnimFrameData:
 	frame SPRITE_ANIM_OAMSET_MAGNET_TRAIN_BLUE_2,  8
 	frame SPRITE_ANIM_OAMSET_MAGNET_TRAIN_BLUE_1,  8
 	frame SPRITE_ANIM_OAMSET_MAGNET_TRAIN_BLUE_2,  8, OAM_X_FLIP
-	dorestart
-
-.Frameset_GSTitleTrail:
-	frame SPRITE_ANIM_OAMSET_GS_TITLE_TRAIL_1,  1
-	frame SPRITE_ANIM_OAMSET_GS_TITLE_TRAIL_2,  1
 	dorestart
 
 .Frameset_TextEntryCursor:
@@ -497,3 +497,28 @@ SpriteAnimFrameData:
 	frame SPRITE_ANIM_OAMSET_CELEBI_1,  8, OAM_X_FLIP
 	frame SPRITE_ANIM_OAMSET_CELEBI_2,  8, OAM_X_FLIP
 	endanim
+
+.Frameset_PcCursor:
+	frame SPRITE_ANIM_OAMSET_PC_CURSOR, 32
+	dorestart
+
+.Frameset_PcCursorItem:
+	; Conditionally switched to when dealing with items
+	frame SPRITE_ANIM_OAMSET_PC_CURSOR_ITEM, 32
+	dorestart
+
+.Frameset_PcQuick:
+	frame SPRITE_ANIM_OAMSET_PC_QUICK, 8
+	delanim
+
+.Frameset_PcMode:
+	frame SPRITE_ANIM_OAMSET_PC_MODE, 32
+	dorestart
+
+.Frameset_PcMode2:
+	frame SPRITE_ANIM_OAMSET_PC_MODE2, 32
+	dorestart
+
+.Frameset_PcPack:
+	frame SPRITE_ANIM_OAMSET_PC_PACK, 32
+	dorestart

@@ -289,10 +289,11 @@ CheckAbleToSwitch:
 	ret
 	
 .switch
+	call CheckPlayerMoveTypeMatchups
 	ld a, [wLastPlayerCounterMove]
 	and a
 	jr z, .try_find_again
-	call FindEnemyMonsImmuneToLastCounterMove
+	call FindEnemyMonToSwitchForImmunity
 	
 	ld a, e
 	cp $2
@@ -302,7 +303,8 @@ CheckAbleToSwitch:
 	and a
 	jr z, .try_find_again
 	
-	add $10
+	dec a
+	add $20
 	ld [wEnemySwitchMonParam], a
 	ret
 	
@@ -370,6 +372,70 @@ FindAliveEnemyMons:
 .more_than_one
 	and a
 	ret
+
+FindEnemyMonToSwitchForImmunity:
+	ld hl, wOTPartyMon1
+	ld a, [wOTPartyCount]
+	ld b, a
+	ld c, 1 << (PARTY_LENGTH - 1)
+	ld d, 1
+	xor a
+	ld [wEnemyAISwitchScore], a
+
+.loop
+	ld a, [wCurOTMon]
+	cp d
+	push hl
+	jr z, .next
+
+	push hl
+	push bc
+
+	; If the Pokemon has at least 1 HP...
+	ld bc, MON_HP
+	add hl, bc
+	pop bc
+	ld a, [hli]
+	or [hl]
+	pop hl
+	jr z, .next
+
+	ld a, [hl]
+	ld [wCurSpecies], a
+	call GetBaseData
+
+	; the player's last move is damaging...
+	ld a, [wLastPlayerCounterMove]
+	dec a
+	ld hl, Moves + MOVE_POWER
+	call GetMoveAttr
+	and a
+	jr z, .next
+
+	; and the Pokemon is immune to it...
+	inc hl
+	call GetMoveByte
+	ld hl, wBaseType
+	call CheckTypeMatchup
+	ld a, [wTypeMatchup]
+	and a
+	jr nz, .next
+
+	; ... encourage that Pokemon.
+	ld a, d
+	ld [wEnemyAISwitchScore], a
+.next
+	pop hl
+	dec b
+	ret z
+
+	push bc
+	ld bc, PARTYMON_STRUCT_LENGTH
+	add hl, bc
+	pop bc
+
+	inc d
+	jr .loop
 
 FindEnemyMonsImmuneToLastCounterMove:
 	ld hl, wOTPartyMon1

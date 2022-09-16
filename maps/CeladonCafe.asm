@@ -91,7 +91,7 @@ EatathonContestPoster:
 CeladonCafeTrashcan:
 	checkevent EVENT_FOUND_LEFTOVERS_IN_CELADON_CAFE
 	iftrue .TrashEmpty
-	giveitem LEFTOVERS
+	giveitem RAGECANDYBAR
 	iffalse .PackFull
 	opentext
 	getitemname STRING_BUFFER_3, LEFTOVERS

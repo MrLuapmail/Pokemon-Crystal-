@@ -294,16 +294,76 @@ PokedexCursorPalette:
 INCLUDE "gfx/pokedex/cursor.pal"
 
 _CGB_BillsPC:
+	newfarcall GetBoxTheme
+BillsPC_PreviewTheme:
+	; hl = BillsPC_ThemePals + a * 6 * 2
+	add a
+	add a
+	ld e, a
+	ld d, 0
+	ld hl, BillsPC_ThemePals
+	add hl, de
+	add hl, de
+	add hl, de
 	ld de, wBGPals1
-	ld a, PREDEFPAL_POKEDEX
-	call GetPredefPal
-	call LoadHLPaletteIntoDE
-	ld a, [wCurPartySpecies]
-	cp $ff
-	jr nz, .GetMonPalette
-	ld hl, BillsPCOrangePalette
-	call LoadHLPaletteIntoDE
-	jr .GotPalette
+	ld c, 1 * 2
+	call LoadPalettes
+	push hl
+	; dummy load of unused palette
+	ld c, 2 * 2
+	call LoadPalettes
+	push de
+	ld hl, PokerusAndShinyPals
+	ld de, wBillsPC_PokerusShinyPal
+	ld c, 2 * 2
+	call LoadPalettes
+
+	; Prevents flickering shiny+pokerus background
+	ld hl, wBGPals1 palette 0
+	ld de, wBGPals1 palette 3
+	ld c, 1 * 2
+	call LoadPalettes
+	pop de
+	pop hl
+	ld c, 5 * 2
+	call LoadPalettes
+	ld a, [wBillsPC_ApplyThemePals]
+	and a
+	jr nz, .apply_pals
+	ld de, wOBPals1 palette 1
+	ld hl, .CursorPal
+	push hl
+	call LoadOnePalette
+	pop hl
+	call LoadOnePalette
+	ld hl, .PackPal
+	ld de, wOBPals1 palette 4
+	call LoadOnePalette
+	ld hl, .WhitePal
+	ld de, wOBPals1 palette 6
+	jp LoadOnePalette
+
+.apply_pals
+	newfarjp BillsPC_SetPals
+
+.CursorPal:
+; Coloring is fixed up later.
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 00, 00, 00
+	RGB 00, 00, 00
+
+.PackPal:
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 07, 19, 07
+	RGB 00, 00, 00
+
+.WhitePal:
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 31, 31, 31
 
 .GetMonPalette:
 	ld bc, wTempMonDVs

@@ -469,12 +469,32 @@ GetPredefPal:
 	add hl, bc
 	ret
 
+LoadOnePalette:
+; Loads a single palette from hl to de in GBC Video WRAMX
+	ld c, 1 palettes
+	; fallthrough
+LoadPalettes:
+; Load c palette bytes from hl to de in GBC Video WRAMX
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK("GBC Video")
+	ldh [rSVBK], a
+.loop
+	ld a, [hli]
+	ld [de], a
+	inc de
+	dec c
+	jr nz, .loop
+	pop af
+	ldh [rSVBK], a
+	ret
+
 LoadHLPaletteIntoDE:
+	ld c, 1 palettes
 	ldh a, [rSVBK]
 	push af
 	ld a, BANK(wOBPals1)
 	ldh [rSVBK], a
-	ld c, 1 palettes
 .loop
 	ld a, [hli]
 	ld [de], a
@@ -655,7 +675,7 @@ CGB_ApplyPartyMenuHPPals:
 InitPartyMenuOBPals:
 	ld hl, PartyMenuOBPals
 	ld de, wOBPals1
-	ld bc, 2 palettes
+	ld bc, 8 palettes
 	ld a, BANK(wOBPals1)
 	call FarCopyWRAM
 	ret
@@ -1300,6 +1320,12 @@ INCLUDE "gfx/stats/party_menu_bg_mobile.pal"
 PartyMenuBGPalette:
 INCLUDE "gfx/stats/party_menu_bg.pal"
 
+BillsPC_ThemePals:
+INCLUDE "gfx/pc/themes.pal"
+
+PokerusAndShinyPals:
+INCLUDE "gfx/pc/pokerus_shiny.pal"
+
 TilesetBGPalette:
 INCLUDE "gfx/tilesets/bg_tiles.pal"
 
@@ -1331,6 +1357,19 @@ INCLUDE "gfx/pokegear/pokegear.pal"
 
 FemalePokegearPals:
 INCLUDE "gfx/pokegear/pokegear_f.pal"
+
+; Input: E must contain the offset of the selected palette from PartyMenuOBPals.
+SetFirstOBJPalette::
+	ld hl, PartyMenuOBPals
+	ld d, 0
+	add hl, de
+	ld de, wOBPals1
+	ld bc, 1 palettes
+	ld a, BANK(wOBPals1)
+	call FarCopyWRAM
+	ld a, TRUE
+	ldh [hCGBPalUpdate], a
+	jp ApplyPals
 
 BetaPokerPals:
 INCLUDE "gfx/beta_poker/beta_poker.pal"

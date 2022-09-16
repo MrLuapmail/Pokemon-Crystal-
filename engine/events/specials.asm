@@ -73,21 +73,24 @@ DamageMon:
 	dec hl
 	dec hl
 	dec hl
-	ldh a, [hQuotient + 2]
-	and a
-	jr z, .cont
+	
 	ldh a, [hQuotient + 2]
 	cp [hl]
-	jr nc, .error_damaging
-	
-.cont
-	
 	inc hl
+	jr c, .do_damage
+	jr z, .check_digit_2
+	jr nc, .error_damaging
+
+.check_digit_2
 	ldh a, [hQuotient + 3]
 	inc a
 	cp [hl]
 	jr nc, .error_damaging
-	
+
+.do_damage
+	ldh a, [hQuotient + 3]
+	inc a
+
 	push hl
 	push af
 	; HP bar animation stuff
@@ -351,8 +354,12 @@ PoisonMon:
 	ld a, [wBaseType1]
 	cp POISON
 	jr z, .PoisonImmune
+	cp STEEL
+	jr z, .PoisonImmune
 	ld a, [wBaseType2]
 	cp POISON
+	jr z, .PoisonImmune
+	cp STEEL
 	jr z, .PoisonImmune
 
 	ld bc, MON_STATUS

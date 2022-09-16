@@ -398,7 +398,7 @@ ElmScript_NoRoomForEverstone:
 ElmGiveMasterBallScript:
 	writetext ElmGiveMasterBallText1
 	promptbutton
-	verbosegiveitem MASTER_BALL
+	verbosegiveitem RAGECANDYBAR
 	iffalse .notdone
 	setevent EVENT_GOT_MASTER_BALL_FROM_ELM
 	writetext ElmGiveMasterBallText2
@@ -414,6 +414,12 @@ ElmGiveTicketScript:
 	setevent EVENT_GOT_SS_TICKET_FROM_ELM
 	writetext ElmGiveTicketText2
 	waitbutton
+	writetext ElmGiveRainbowWingText1
+	promptbutton
+	verbosegiveitem RAINBOW_WING
+	writetext ElmGiveRainbowWingText2
+	promptbutton
+	setevent EVENT_GOT_RAINBOW_WING
 	closetext
 	end
 
@@ -1169,24 +1175,10 @@ ElmGiveMasterBallText1:
 	done
 
 ElmGiveMasterBallText2:
-	text "The MASTER BALL is"
-	line "the best!"
+	text "Get"
+	line "ragecandybar'd"
 
-	para "It's the ultimate"
-	line "BALL! It'll catch"
-
-	para "any #MON with-"
-	line "out fail."
-
-	para "It's given only to"
-	line "recognized #MON"
-	cont "researchers."
-
-	para "I think you can"
-	line "make much better"
-
-	para "use of it than I"
-	line "can, <PLAY_G>!"
+	para "idiot!"
 	done
 
 ElmGiveTicketText1:
@@ -1217,6 +1209,19 @@ ElmGiveTicketText2:
 
 	para "Give my regards to"
 	line "PROF.OAK in KANTO!"
+	done
+
+ElmGiveRainbowWingText1:
+	text "Here's another"
+	line "gift that will "
+
+	para "help you find the"
+	line "fabled legendary"
+	cont "in Tin Tower."
+	done
+
+ElmGiveRainbowWingText2:
+	text "Good luck!"
 	done
 
 ElmsLabMonEggText: ; unreferenced

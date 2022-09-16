@@ -118,7 +118,7 @@ GoldenrodDeptStore5FReceptionistTakeTheseItemsText:
 	para "I don't get paid"
 	line "enough to deal with"
 	cont "people like you."
-	done
+  done
 
 GoldenrodDeptStore5FReceptionistThereAreTMsPerfectForMonText:
 	text "Just get what you"

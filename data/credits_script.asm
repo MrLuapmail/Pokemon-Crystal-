@@ -353,6 +353,11 @@ CreditsScript:
 
 	db CREDITS_WAIT, 8
 
+	db  	   	    	   NEW_PC_BOX, 1
+	db                   		  FIQ, 2
+
+	db CREDITS_WAIT, 8
+
 	db  	   	 BUILT_ON_POKECRYSTAL, 1
 	db                           PRET, 3
 

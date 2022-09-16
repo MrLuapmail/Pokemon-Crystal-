@@ -127,9 +127,6 @@ ConvertBerriesToBerryJuice:
 	ld hl, wStatusFlags2
 	bit STATUSFLAGS2_REACHED_GOLDENROD_F, [hl]
 	ret z
-	call Random
-	cp 1 out_of 16 ; 6.25% chance
-	ret nc
 	ld hl, wPartyMons
 	ld a, [wPartyCount]
 .partyMonLoop

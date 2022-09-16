@@ -152,7 +152,7 @@ Buena:
 	writetext RadioTower2FBuenaShowIntroductionText
 	promptbutton
 	setevent EVENT_MET_BUENA
-	verbosegiveitem BLUE_CARD
+	verbosegiveitem RAGECANDYBAR
 .TuneIn:
 	writetext RadioTower2FBuenaTuneInToMyShowText
 	waitbutton
@@ -443,27 +443,27 @@ RadioTower2FBuenaShowIntroductionText:
 
 	para "Do you know about"
 	line "a radio program"
-	cont "called PASSWORD?"
+	cont "called CLOUtCHASING?"
 
 	para "If you can tell me"
-	line "the password from"
+	line "the source of"
 
-	para "the program, you"
-	line "will earn points."
+	para "the cringe, you"
+	line "will earn clout."
 
-	para "Save up those"
-	line "points and trade"
+	para "Save up that"
+	line "clout and trade"
 
-	para "them to that sweet"
+	para "it at that sweet"
 	line "young lady over"
 
-	para "there for some"
-	line "choice prizes!"
+	para "there for "
+	line "absolutely!"
 
-	para "Here you go!"
+	para "NOTHING!"
 
-	para "It's your very own"
-	line "point card!"
+	para "Please do"
+	line "touch some grass"
 	done
 
 RadioTower2FBuenaTuneInToMyShowText:

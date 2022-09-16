@@ -78,10 +78,10 @@ GoldenrodGameCornerTMVendor_LoopScript:
 	checkcoins GOLDENRODGAMECORNER_TM25_COINS
 	ifequal HAVE_LESS, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	getitemname STRING_BUFFER_3, TM_THUNDER
+  checkevent EVENT_GOT_GAMECORNER_THUNDER
+	iftrue GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
-	checkevent EVENT_GOT_GAMECORNER_THUNDER
-	iftrue GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript
 	giveitem TM_THUNDER
 	setevent EVENT_GOT_GAMECORNER_THUNDER
 	iffalse GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
@@ -92,10 +92,10 @@ GoldenrodGameCornerTMVendor_LoopScript:
 	checkcoins GOLDENRODGAMECORNER_TM14_COINS
 	ifequal HAVE_LESS, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	getitemname STRING_BUFFER_3, TM_BLIZZARD
+  checkevent EVENT_GOT_GAMECORNER_BLIZZARD
+	iftrue GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
-	checkevent EVENT_GOT_GAMECORNER_BLIZZARD
-	iftrue GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript
 	giveitem TM_BLIZZARD
 	setevent EVENT_GOT_GAMECORNER_BLIZZARD
 	iffalse GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
@@ -106,10 +106,10 @@ GoldenrodGameCornerTMVendor_LoopScript:
 	checkcoins GOLDENRODGAMECORNER_TM38_COINS
 	ifequal HAVE_LESS, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	getitemname STRING_BUFFER_3, TM_FIRE_BLAST
+  checkevent EVENT_GOT_GAMECORNER_FIRE_BLAST
+	iftrue GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
-	checkevent EVENT_GOT_GAMECORNER_FIRE_BLAST
-	iftrue GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript
 	giveitem TM_FIRE_BLAST
 	setevent EVENT_GOT_GAMECORNER_FIRE_BLAST
 	iffalse GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
@@ -142,6 +142,12 @@ GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript:
 
 GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript:
 	writetext GoldenrodGameCornerPrizeVendorNoMoreRoomText
+	waitbutton
+	closetext
+	end
+
+GoldenrodGameCornerPrizeMonVendor_AlreadyBoughtTMScript:
+	writetext GoldenrodGameCornerPrizeMonVendorAlreadyBoughtTMText
 	waitbutton
 	closetext
 	end
@@ -370,6 +376,11 @@ GoldenrodGameCornerPrizeVendorNeedMoreCoinsText:
 GoldenrodGameCornerPrizeVendorNoMoreRoomText:
 	text "Sorry. You can't"
 	line "carry any more."
+	done
+
+GoldenrodGameCornerPrizeMonVendorAlreadyBoughtTMText:
+	text "You've already"
+	line "bought the TM."
 	done
 
 GoldenrodGameCornerPrizeVendorQuitText:

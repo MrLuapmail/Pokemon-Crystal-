@@ -863,6 +863,73 @@ wOverworldMapBlocksEnd::
 
 SECTION UNION "Overworld Map", WRAM0
 
+; Bill's PC
+
+; If you change ordering of this, remember to fix LCD hblank code too.
+; Note that (as of when comment was written), hblank can't always keep up
+; if doing 4 pals in one go during party shifting.
+wBillsPC_CurPals::
+wBillsPC_CurPartyPals:: ds 2 * 2 * 2 ; 2 bytes per color, 2 colors, 2 mons
+wBillsPC_CurMonPals:: ds 2 * 2 * 4 ; 2 bytes per color, 2 colors, 4 mons
+
+; Stores palettes used for party+box.
+wBillsPC_PalList::
+wBillsPC_PokepicPal:: ds 2 * 2 * 1
+wBillsPC_PokerusShinyPal:: ds 2 * 2 * 1
+wBillsPC_MonPals1:: ds 2 * 2 * 4
+
+	ds 2 * 2 * 2 ; unused row2 BG2-3
+
+wBillsPC_MonPals2:: ds 2 * 2 * 4
+wBillsPC_PartyPals3:: ds 2 * 2 * 2
+wBillsPC_MonPals3:: ds 2 * 2 * 4
+wBillsPC_PartyPals4:: ds 2 * 2 * 2
+wBillsPC_MonPals4:: ds 2 * 2 * 4
+wBillsPC_PartyPals5:: ds 2 * 2 * 2
+wBillsPC_MonPals5:: ds 2 * 2 * 4
+
+; Species lists
+wBillsPC_PartyList:: ds 6
+wBillsPC_BoxList:: ds 20
+
+wBillsPC_HeldIcon:: db
+wBillsPC_QuickIcon:: db
+
+; Cursor data
+wBillsPC_CursorItem:: db ; what item is selected.
+wBillsPC_CursorPos:: db ; 0-3 * 4*row, row 0 is title. Bit 7 means in party.
+wBillsPC_CursorHeldBox:: db ; 0 for party, 1-16 otherwise
+wBillsPC_CursorHeldSlot:: db ; 0 for nothing held, or 1-20 (1-6 if party)
+wBillsPC_CursorDestBox:: db ; 0 for party, 1-16 otherwise
+wBillsPC_CursorDestSlot:: db ; 0 for release, or 1-20 (1-6 if party)
+wBillsPC_CursorMode:: db ; 0 for regular mode (red), 1 for swap mode (blue), 2 for item mode (green)
+wBillsPC_CursorAnimFlag:: db ; manage cursor behaviour
+
+; Quick-move sprite data.
+wBillsPC_QuickFrom::
+wBillsPC_QuickFromBox:: db
+wBillsPC_QuickFromSlot:: db
+wBillsPC_QuickFromX:: db
+wBillsPC_QuickFromY:: db
+
+wBillsPC_QuickTo::
+wBillsPC_QuickToBox:: db
+wBillsPC_QuickToSlot:: db
+wBillsPC_QuickToX:: db
+wBillsPC_QuickToY:: db
+wBillsPC_QuickFrames:: db
+
+wBillsPC_ApplyThemePals:: db ; used by _CGB_BillsPC
+
+	ds 2
+
+wBillsPC_Blank2bppTiles::
+; Since we need GDMA for fast blank copy, reserve blank tiles here.
+	ds 4 tiles
+wBillsPC_ItemVWF:: ds 10 tiles
+
+SECTION UNION "Overworld Map", WRAM0
+
 ; GB Printer data
 wGameboyPrinterRAM::
 wGameboyPrinter2bppSource:: ds 40 tiles
@@ -1819,10 +1886,21 @@ wDefaultSpawnpoint:: db
 SECTION UNION "Miscellaneous WRAM 1", WRAMX
 
 ; mon buffer
+UNION
+wBufferMon:: party_struct wBufferMon
+wBufferMonAltSpecies:: db ; the 2nd (usually redundant) species byte, for eggs
 wBufferMonNickname:: ds MON_NAME_LENGTH
 wBufferMonOT:: ds NAME_LENGTH
-wBufferMon:: party_struct wBufferMon
-	ds 8
+NEXTU
+wEncodedBufferMon:: savemon_struct wEncodedBufferMon
+ENDU
+
+; Points towards box + slot if using GetStorageBoxMon. Slot set to 0 if empty.
+wBufferMonBox:: db
+wBufferMonSlot:: db
+
+wLuckyNumberDigitsBuffer:: ds 5
+
 wMonOrItemNameBuffer:: ds NAME_LENGTH
 	ds NAME_LENGTH
 
@@ -1907,12 +1985,6 @@ wNumRadioLinesPrinted:: db
 wOaksPKMNTalkSegmentCounter:: db
 	ds 5
 wRadioText:: ds 2 * SCREEN_WIDTH
-
-
-SECTION UNION "Miscellaneous WRAM 1", WRAMX
-
-; lucky number show
-wLuckyNumberDigitsBuffer:: ds 5
 
 
 SECTION UNION "Miscellaneous WRAM 1", WRAMX
@@ -2348,7 +2420,7 @@ wSpriteFlags:: db
 
 wHandlePlayerStep:: db
 
-	ds 1
+wCurIconMonHasItemOrMail:: db
 
 wPartyMenuActionText:: db
 
@@ -3130,9 +3202,7 @@ wEventFlags:: flag_array NUM_EVENTS
 
 wCurBox:: db
 
-	ds 2
-
-wBoxNames:: ds BOX_NAME_LENGTH * NUM_BOXES
+	ds 128 ; unused, used to hold box names (+ 2 bytes that were already unused)
 
 wCelebiEvent::
 ; bit 2: forest is restless
@@ -3501,6 +3571,15 @@ wMagnetTrainPlayerSpriteInitX:: db
 
 wLYOverridesBackup:: ds SCREEN_HEIGHT_PX
 wLYOverridesBackupEnd::
+
+
+SECTION "Used Storage", WRAMX
+
+wPokeDB1UsedEntries:: flag_array MONDB_ENTRIES
+wPokeDB1UsedEntriesEnd::
+
+wPokeDB2UsedEntries:: flag_array MONDB_ENTRIES
+wPokeDB2UsedEntriesEnd::
 
 
 SECTION "Battle Animations", WRAMX
