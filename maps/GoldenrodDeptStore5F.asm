@@ -59,40 +59,13 @@ GoldenrodDeptStore5FClerkScript:
 GoldenrodDeptStore5FReceptionistScript:
 	faceplayer
 	opentext
-	readvar VAR_WEEKDAY
-	ifnotequal SUNDAY, .EventIsOver
 	checkflag ENGINE_GOLDENROD_DEPT_STORE_TM27_RETURN
 	iftrue .EventIsOver
-	special GetFirstPokemonHappiness
-	writetext GoldenrodDeptStore5FReceptionistOhYourMonDotDotDotText
-	promptbutton
-	ifgreater 150 - 1, .VeryHappy
-	ifgreater 50 - 1, .SomewhatHappy
-	sjump .NotVeryHappy
-
-.VeryHappy:
-	writetext GoldenrodDeptStore5FReceptionistThisMoveShouldBePerfectText
+	writetext GoldenrodDeptStore5FReceptionistTakeTheseItemsText
 	promptbutton
 	verbosegiveitem TM_RETURN
-	iffalse .Done
-	setflag ENGINE_GOLDENROD_DEPT_STORE_TM27_RETURN
-	closetext
-	end
-
-.SomewhatHappy:
-	writetext GoldenrodDeptStore5FReceptionistItsAdorableText
-	waitbutton
-	closetext
-	end
-
-.NotVeryHappy:
-	writetext GoldenrodDeptStore5FReceptionistItLooksEvilHowAboutThisTMText
-	promptbutton
 	verbosegiveitem TM_FRUSTRATION
-	iffalse .Done
 	setflag ENGINE_GOLDENROD_DEPT_STORE_TM27_RETURN
-	closetext
-	end
 
 .EventIsOver:
 	writetext GoldenrodDeptStore5FReceptionistThereAreTMsPerfectForMonText
@@ -138,39 +111,20 @@ GoldenrodDeptStore5FDirectory:
 GoldenrodDeptStore5FElevatorButton:
 	jumpstd ElevatorButtonScript
 
-GoldenrodDeptStore5FReceptionistOhYourMonDotDotDotText:
-	text "Hello. Oh, your"
-	line "#MON…"
-	done
+GoldenrodDeptStore5FReceptionistTakeTheseItemsText:
+	text "Take these items,"
+	line "I don't need them"
 
-GoldenrodDeptStore5FReceptionistThisMoveShouldBePerfectText:
-	text "It's very attached"
-	line "to you."
-
-	para "This move should"
-	line "be perfect for a"
-	cont "pair like you."
-	done
-
-GoldenrodDeptStore5FReceptionistItsAdorableText:
-	text "It's adorable!"
-
-	para "You should teach"
-	line "it good TM moves."
-	done
-
-GoldenrodDeptStore5FReceptionistItLooksEvilHowAboutThisTMText:
-	text "It looks evil. How"
-	line "about this TM for"
-	cont "it?"
+	para "I don't get paid"
+	line "enough to deal with"
+	cont "people like you."
 	done
 
 GoldenrodDeptStore5FReceptionistThereAreTMsPerfectForMonText:
-	text "There are sure to"
-	line "be TMs that are"
+	text "Just get what you"
+	line "need and get out"
 
-	para "just perfect for"
-	line "your #MON."
+	para "of here!"
 	done
 
 GoldenrodDeptStore5FCarrieMysteryGiftExplanationText:
