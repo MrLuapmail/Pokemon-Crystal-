@@ -99,15 +99,16 @@ CheckPartyFullAfterContest:
 	ld de, wBufferMonOT
 	ld bc, NAME_LENGTH
 	call CopyBytes
+	ld a, [wCurPartySpecies]
+	ld [wBufferMonAltSpecies], a
+	ld [wNamedObjectIndex], a
+	call GetPokemonName
 	pop bc
 	ld a, b
 	ld [wBufferMonBox], a
 	ld a, c
 	ld [wBufferMonSlot], a
 	newfarcall UpdateStorageBoxMonFromTemp
-	ld a, [wCurPartySpecies]
-	ld [wNamedObjectIndex], a
-	call GetPokemonName
 	call GiveANickname_YesNo
 	ld hl, wStringBuffer1
 	jr c, .Box_SkipNickname
