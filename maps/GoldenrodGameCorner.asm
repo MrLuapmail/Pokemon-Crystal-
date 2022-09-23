@@ -78,12 +78,12 @@ GoldenrodGameCornerTMVendor_LoopScript:
 	checkcoins GOLDENRODGAMECORNER_TM25_COINS
 	ifequal HAVE_LESS, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	getitemname STRING_BUFFER_3, TM_THUNDER
+  checkevent EVENT_GOT_GAMECORNER_THUNDER
+	iftrue GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
-	checkevent EVENT_GOT_THUNDER
-	iftrue GoldenrodGameCornerPrizeMonVendor_AlreadyBoughtTMScript
 	giveitem TM_THUNDER
-	setevent EVENT_GOT_THUNDER
+	setevent EVENT_GOT_GAMECORNER_THUNDER
 	iffalse GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
 	takecoins GOLDENRODGAMECORNER_TM25_COINS
 	sjump GoldenrodGameCornerTMVendor_FinishScript
@@ -92,12 +92,12 @@ GoldenrodGameCornerTMVendor_LoopScript:
 	checkcoins GOLDENRODGAMECORNER_TM14_COINS
 	ifequal HAVE_LESS, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	getitemname STRING_BUFFER_3, TM_BLIZZARD
+  checkevent EVENT_GOT_GAMECORNER_BLIZZARD
+	iftrue GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
-	checkevent EVENT_GOT_BLIZZARD
-	iftrue GoldenrodGameCornerPrizeMonVendor_AlreadyBoughtTMScript
 	giveitem TM_BLIZZARD
-	setevent EVENT_GOT_BLIZZARD
+	setevent EVENT_GOT_GAMECORNER_BLIZZARD
 	iffalse GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
 	takecoins GOLDENRODGAMECORNER_TM14_COINS
 	sjump GoldenrodGameCornerTMVendor_FinishScript
@@ -106,12 +106,12 @@ GoldenrodGameCornerTMVendor_LoopScript:
 	checkcoins GOLDENRODGAMECORNER_TM38_COINS
 	ifequal HAVE_LESS, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	getitemname STRING_BUFFER_3, TM_FIRE_BLAST
+  checkevent EVENT_GOT_GAMECORNER_FIRE_BLAST
+	iftrue GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
-	checkevent EVENT_GOT_FIRE_BLAST
-	iftrue GoldenrodGameCornerPrizeMonVendor_AlreadyBoughtTMScript
 	giveitem TM_FIRE_BLAST
-	setevent EVENT_GOT_FIRE_BLAST
+	setevent EVENT_GOT_GAMECORNER_FIRE_BLAST
 	iffalse GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
 	takecoins GOLDENRODGAMECORNER_TM38_COINS
 	sjump GoldenrodGameCornerTMVendor_FinishScript
@@ -131,7 +131,8 @@ GoldenrodGameCornerTMVendor_FinishScript:
 GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript:
 	writetext GoldenrodGameCornerPrizeVendorAlreadyHaveTMText
 	waitbutton
-	sjump GoldenrodGameCornerTMVendor_LoopScript
+	closetext
+	end
 
 GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript:
 	writetext GoldenrodGameCornerPrizeVendorNeedMoreCoinsText
