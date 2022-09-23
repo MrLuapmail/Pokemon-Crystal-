@@ -11,6 +11,18 @@ FastShipCabins_NNW_NNE_NE_MapScripts:
 
 	def_callbacks
 
+TrainerFirebreatherLyle:
+	trainer FIREBREATHER, LYLE, EVENT_BEAT_FIREBREATHER_LYLE, FirebreatherLyleSeenText, FirebreatherLyleBeatenText, 0, .Script
+
+.Script:
+	setevent EVENT_DISABLE_POCKET_PC
+	endifjustbattled
+	opentext
+	writetext FirebreatherLyleAfterBattleText
+	waitbutton
+	closetext
+	end
+
 TrainerCooltrainermSean:
 	trainer COOLTRAINERM, SEAN, EVENT_BEAT_COOLTRAINERM_SEAN, CooltrainermSeanSeenText, CooltrainermSeanBeatenText, 0, .Script
 
@@ -118,6 +130,25 @@ FastShipLazySailorLeavesMovement2:
 	step UP
 	step UP
 	step_end
+
+FirebreatherLyleSeenText:
+	text "I'm going to KANTO"
+	line "to put on fire-"
+	cont "breathing shows!"
+	done
+
+FirebreatherLyleBeatenText:
+	text "Fizzle… The"
+	line "flame's tiny…"
+	done
+
+FirebreatherLyleAfterBattleText:
+	text "I guess fire is"
+	line "weak on the sea."
+
+	para "It doesn't matter?"
+	line "Really?"
+	done
 
 CooltrainermSeanSeenText:
 	text "I'm going to KANTO"
@@ -250,6 +281,7 @@ FastShipCabins_NNW_NNE_NE_MapEvents:
 	bg_event  7, 31, BGEVENT_READ, FastShipCabins_NNW_NNE_NETrashcan
 
 	def_object_events
+	object_event  3, 25, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 2, TrainerFirebreatherLyle, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
 	object_event  4,  3, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 2, TrainerCooltrainermSean, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
 	object_event  1,  5, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerCooltrainerfCarol, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
 	object_event  1,  5, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerPokemaniacEthan, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
