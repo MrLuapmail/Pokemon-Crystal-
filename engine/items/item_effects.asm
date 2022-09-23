@@ -2298,6 +2298,10 @@ XItemEffect:
 	ret
 
 PocketPCEffect:
+	ld hl, wStatusFlags2
+	bit STATUSFLAGS2_BUG_CONTEST_TIMER_F, [hl]
+	jr nz, DisablePocketPCMessage
+
 	ld de, EVENT_DISABLE_POCKET_PC
 	ld b, CHECK_FLAG
 	call EventFlagAction
