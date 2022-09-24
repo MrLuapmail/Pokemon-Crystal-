@@ -42,9 +42,12 @@ CeladonPrizeRoom_tmcounterloop:
 	checkcoins CELADONGAMECORNERPRIZEROOM_TM32_COINS
 	ifequal HAVE_LESS, CeladonPrizeRoom_notenoughcoins
 	getitemname STRING_BUFFER_3, TM_DOUBLE_TEAM
+  checkevent EVENT_GOT_GAMECORNER_DOUBLE_TEAM
+	iftrue CeladonPrizeRoom_AlreadyHaveTMScript
 	scall CeladonPrizeRoom_askbuy
 	iffalse CeladonPrizeRoom_CancelPurchaseScript
-	giveitem RAGECANDYBAR
+	giveitem TM_DOUBLE_TEAM
+	setevent EVENT_GOT_GAMECORNER_DOUBLE_TEAM
 	iffalse CeladonPrizeRoom_notenoughroom
 	takecoins CELADONGAMECORNERPRIZEROOM_TM32_COINS
 	sjump CeladonPrizeRoom_purchased
@@ -53,12 +56,12 @@ CeladonPrizeRoom_tmcounterloop:
 	checkcoins CELADONGAMECORNERPRIZEROOM_TM29_COINS
 	ifequal HAVE_LESS, CeladonPrizeRoom_notenoughcoins
 	getitemname STRING_BUFFER_3, TM_PSYCHIC_M
+  checkevent EVENT_GOT_GAMECORNER_PSYCHIC
+	iftrue CeladonPrizeRoom_AlreadyHaveTMScript
 	scall CeladonPrizeRoom_askbuy
 	iffalse CeladonPrizeRoom_CancelPurchaseScript
-	checkevent EVENT_GOT_PSYCHIC
-	iftrue CeladonPrizeRoom_AlreadyBoughtTMScript
 	giveitem TM_PSYCHIC_M
-	setevent EVENT_GOT_PSYCHIC 
+	setevent EVENT_GOT_GAMECORNER_PSYCHIC
 	iffalse CeladonPrizeRoom_notenoughroom
 	takecoins CELADONGAMECORNERPRIZEROOM_TM29_COINS
 	sjump CeladonPrizeRoom_purchased
@@ -67,12 +70,12 @@ CeladonPrizeRoom_tmcounterloop:
 	checkcoins CELADONGAMECORNERPRIZEROOM_TM15_COINS
 	ifequal HAVE_LESS, CeladonPrizeRoom_notenoughcoins
 	getitemname STRING_BUFFER_3, TM_HYPER_BEAM
+  checkevent EVENT_GOT_GAMECORNER_HYPER_BEAM
+	iftrue CeladonPrizeRoom_AlreadyHaveTMScript
 	scall CeladonPrizeRoom_askbuy
 	iffalse CeladonPrizeRoom_CancelPurchaseScript
-	checkevent EVENT_GOT_HYPER_BEAM
-	iftrue CeladonPrizeRoom_AlreadyBoughtTMScript
 	giveitem TM_HYPER_BEAM
-	setevent EVENT_GOT_HYPER_BEAM
+	setevent EVENT_GOT_GAMECORNER_HYPER_BEAM
 	iffalse CeladonPrizeRoom_notenoughroom
 	takecoins CELADONGAMECORNERPRIZEROOM_TM15_COINS
 	sjump CeladonPrizeRoom_purchased
@@ -89,10 +92,11 @@ CeladonPrizeRoom_purchased:
 	waitbutton
 	sjump CeladonPrizeRoom_tmcounterloop
 
-CeladonPrizeRoom_alreadyhavetm:
+CeladonPrizeRoom_AlreadyHaveTMScript:
 	writetext CeladonPrizeRoom_AlreadyHaveTMText
 	waitbutton
-	sjump CeladonPrizeRoom_tmcounterloop
+	closetext
+	end
 
 CeladonPrizeRoom_notenoughcoins:
 	writetext CeladonPrizeRoom_NotEnoughCoinsText

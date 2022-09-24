@@ -129,6 +129,8 @@ CreditsStringsPointers:
 	dw .Burito 
 	dw .ShowdownCalc
 	dw .ToxicEndUser
+	dw .NewPCBox
+	dw .FIQ
 	dw .BuiltOnPokecrystalDecomp
 	dw .Pret
 	dw .CKKSpecialThanks
@@ -269,10 +271,12 @@ CreditsStringsPointers:
 .Refinery:				   db "      Refinery@"
 .Reje:					   db "        Reje@"
 .Runabun:				   db "      runabun@"
-.Safetyman:				   db "      Safetyman@"
-.Burito:				   db "       Burito@"
+.Safetyman:				   db "     Safetyman@"
+.Burito:				   db "      Burito@"
 .ShowdownCalc:			   db "SHOWDOWN CALCULATOR@"
 .ToxicEndUser:			   db "   toxicenduser@"
+.NewPCBox:			   	   db "    New PC Box@"
+.FIQ:			   		   db "       FIQ@"
 .BuiltOnPokecrystalDecomp: db "BUILT ON POKECRYSTAL@"
 						 next "   DECOMP MADE BY@"
 .Pret:					   db "   pret Community@"

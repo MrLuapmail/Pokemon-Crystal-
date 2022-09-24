@@ -59,14 +59,13 @@ GoldenrodDeptStore5FClerkScript:
 GoldenrodDeptStore5FReceptionistScript:
 	faceplayer
 	opentext
-	readvar VAR_WEEKDAY
-	ifnotequal SUNDAY, .EventIsOver
-	checkflag ENGINE_GOLDENROD_DEPT_STORE_TM27_RETURN
+	checkevent EVENT_GOLDENROD_DEPT_STORE_TM27_RETURN
 	iftrue .EventIsOver
+	writetext GoldenrodDeptStore5FReceptionistTakeTheseItemsText
+	promptbutton
 	verbosegiveitem TM_RETURN
 	verbosegiveitem TM_FRUSTRATION
-	setflag ENGINE_GOLDENROD_DEPT_STORE_TM27_RETURN
-
+	setevent EVENT_GOLDENROD_DEPT_STORE_TM27_RETURN
 
 .EventIsOver:
 	writetext GoldenrodDeptStore5FReceptionistThereAreTMsPerfectForMonText
@@ -112,17 +111,20 @@ GoldenrodDeptStore5FDirectory:
 GoldenrodDeptStore5FElevatorButton:
 	jumpstd ElevatorButtonScript
 
-GoldenrodDeptStore5FReceptionistOhYourMonDotDotDotText:
-	text "Hello. Oh, your"
-	line "#MON…"
-	done
+GoldenrodDeptStore5FReceptionistTakeTheseItemsText:
+	text "Take these items,"
+	line "I don't need them"
+
+	para "I don't get paid"
+	line "enough to deal with"
+	cont "people like you."
+  done
 
 GoldenrodDeptStore5FReceptionistThereAreTMsPerfectForMonText:
-	text "There are sure to"
-	line "be TMs that are"
+	text "Just get what you"
+	line "need and get out"
 
-	para "just perfect for"
-	line "your #MON."
+	para "of here!"
 	done
 
 GoldenrodDeptStore5FCarrieMysteryGiftExplanationText:

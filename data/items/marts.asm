@@ -39,14 +39,14 @@ Marts:
 
 MartCherrygrove:
 	db 4 ; # items
-	db RAGECANDYBAR	
+	db RAGECANDYBAR
 	db ANTIDOTE
 	db PARLYZ_HEAL
 	db AWAKENING
 	db -1 ; end
 
 MartCherrygroveDex:
-	db 6 ; # items
+	db 5 ; # items
 	db POKE_BALL
 	db RAGECANDYBAR
 	db ANTIDOTE

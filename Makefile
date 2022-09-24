@@ -172,6 +172,8 @@ gfx/pokemon/girafarig/front.animated.tilemap: gfx/pokemon/girafarig/front.2bpp g
 
 gfx/pokemon/%/back.2bpp: rgbgfx += -h
 
+gfx/pc/obj.2bpp: gfx/pc/modes.2bpp gfx/pc/bags.2bpp ; $Qcat $^ > $@
+
 gfx/trainers/%.2bpp: rgbgfx += -h
 
 gfx/pokemon/egg/unused_front.2bpp: rgbgfx += -h

@@ -4,7 +4,7 @@ ItemNames::
 	li "ULTRA BALL"
 	li "BRIGHTPOWDER"
 	li "GREAT BALL"
-	li "# BALL"
+	li "POKé BALL" ; no "# BALL", this makes the VWF parser happy
 	li "CANDY BAG"
 	li "BICYCLE"
 	li "MOON STONE"
@@ -36,7 +36,7 @@ ItemNames::
 	li "LEAF STONE"
 	li "METAL POWDER"
 	li "NUGGET"
-	li "# DOLL"
+	li "POKé DOLL"
 	li "FULL HEAL"
 	li "REVIVE"
 	li "MAX REVIVE"

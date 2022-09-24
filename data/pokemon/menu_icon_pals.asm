@@ -256,5 +256,5 @@ MonMenuIconPals:
 	iconpal BLUE, TEAL ; LUGIA
 	iconpal RED, BROWN ; HO_OH
 	iconpal GREEN, PINK ; CELEBI
-	iconpal RED, GREEN ; EGG
+	iconpal RED, PINK ; EGG
 	

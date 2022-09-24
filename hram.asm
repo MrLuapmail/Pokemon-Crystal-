@@ -24,7 +24,7 @@ hSeconds:: db
 
 hVBlankCounter:: db
 
-	ds 1
+hFarCallSavedA:: db
 
 hROMBank:: db
 hVBlank:: db
@@ -136,6 +136,7 @@ hWX::            db
 hWY::            db
 hTilesPerCycle:: db
 hBGMapMode::     db
+hBGMapHalf:: ; used in newbox
 hBGMapThird::    db
 hBGMapAddress::  dw
 
@@ -175,4 +176,16 @@ hDebugRoomMenuPage::
 endc
 hClockResetTrigger:: db
 
-	ds 19
+hFarCallSavedHL::
+hFarCallSavedL:: db
+hFarCallSavedH:: db
+
+hLCDInterruptFunction::
+hFunctionJump::     db ; $c3 jp
+hFunctionTarget::
+hFunctionTargetLo:: db
+hFunctionTargetHi:: db
+
+hAppendVWFText:: ds 4
+
+	ds 10
