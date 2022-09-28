@@ -6858,6 +6858,16 @@ SkipToBattleCommand:
 	ld [wBattleScriptBufferAddress], a
 	ret
 
+GetMoveAttr_bc:
+; Get move attribute c for move b. Returns the attribute in b.
+	ld a, b
+	ld b, 0
+	ld hl, Moves
+	add hl, bc
+	call GetMoveAttr
+	ld b, a
+	ret
+
 GetMoveAttr:
 ; Assuming hl = Moves + x, return attribute x of move a.
 	push bc
