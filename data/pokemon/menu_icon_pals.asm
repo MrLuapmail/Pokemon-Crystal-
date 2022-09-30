@@ -78,9 +78,9 @@ MonMenuIconPals:
 	iconpal GREEN, GREEN ; VICTREEBEL
 	iconpal BLUE, BLUE ; TENTACOOL
 	iconpal BLUE, BLUE ; TENTACRUEL
-	iconpal GRAY, BROWN ; GEODUDE
-	iconpal GRAY, BROWN ; GRAVELER
-	iconpal GRAY, BROWN ; GOLEM
+	iconpal BROWN, RED ; GEODUDE
+	iconpal BROWN, RED ; GRAVELER
+	iconpal BROWN, RED ; GOLEM
 	iconpal RED, BROWN ; PONYTA
 	iconpal RED, PURPLE ; RAPIDASH
 	iconpal PINK, PURPLE ; SLOWPOKE
