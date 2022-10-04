@@ -921,7 +921,7 @@ LoadOrangePage:
 MetAtLevelString:
 	db "Met at@"
 MetUnknownLevelString:
-	db "Met at unknown level@"
+	db "Met at <LV>???@"
 
 IDNoString:
 	db "<ID>№.@"

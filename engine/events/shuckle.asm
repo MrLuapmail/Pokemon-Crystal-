@@ -14,10 +14,6 @@ GiveShuckle:
 	predef TryAddMonToParty
 	jr nc, .NotGiven
 
-; Caught data.
-	ld b, CAUGHT_BY_UNKNOWN
-	farcall SetGiftPartyMonCaughtData
-
 ; Holding a Berry.
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, [wPartyCount]
