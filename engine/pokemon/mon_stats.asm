@@ -93,100 +93,64 @@ PrintTempMonStatsDVs:
 	add hl, bc
 	ld bc, SCREEN_WIDTH - 6
 	add hl, bc
-	 ; Attack DVs and stat
-	ld de, wTempMonAttack + 1
-	ld a, [de]
-	push af
+
+	; Attack
 	ld a, [wTempMonDVs]
-    and $f0
-    swap a
-	ld [wTempMonAttack + 1], a
+	and $f0
+	swap a
 	ld de, wTempMonAttack
-	lb bc, 2, 3
-	call .PrintDVs
-	pop af
-	ld [wTempMonAttack + 1], a
-	lb bc, 2, 3
-	ld de, wTempMonAttack
-	call .PrintStat
-	 ; Defense DVs and stat
-	ld de, wTempMonAttack + 1
-	ld a, [de]
-	push af
+	call .PrintDVsAndStat
+
+	; Defense
 	ld a, [wTempMonDVs]
-    and $f
-	ld [wTempMonAttack + 1], a
-	ld de, wTempMonAttack
-	lb bc, 2, 3
-	call .PrintDVs
-	pop af
-	ld [wTempMonAttack + 1], a
-	lb bc, 2, 3
-	ld de, wTempMonDefense
-	call .PrintStat
-	 ; Special DVs and Sp. Atk stat
-	ld de, wTempMonAttack + 1
-	ld a, [de]
-	push af
+	and $f
+	call .PrintDVsAndStat
+
+	; Spcl. Atk.
 	ld a, [wTempMonDVs + 1]
-    and $f
-	ld [wTempMonAttack + 1], a
-	ld de, wTempMonAttack
-	lb bc, 2, 3
-	call .PrintDVs
-	pop af
-	ld [wTempMonAttack + 1], a
-	lb bc, 2, 3
+	and $f
 	ld de, wTempMonSpclAtk
-	call .PrintStat
-	 ; Special DVs and Sp. Def stat
-	ld de, wTempMonAttack + 1
-	ld a, [de]
 	push af
-	ld a, [wTempMonDVs + 1]
-    and $f
-	ld [wTempMonAttack + 1], a
-	ld de, wTempMonAttack
-	lb bc, 2, 3
-	call .PrintDVs
+	call .PrintDVsAndStat
+
+	; Spcl. Def. Reuses the same DV.
 	pop af
-	ld [wTempMonAttack + 1], a
-	lb bc, 2, 3
-	ld de, wTempMonSpclDef
-	call .PrintStat
-	 ; Speed DVs and stat
-	ld de, wTempMonAttack + 1
-	ld a, [de]
-	push af
+	call .PrintDVsAndStat
+
+	; Speed
 	ld a, [wTempMonDVs + 1]
-    and $f0
-    swap a
-	ld [wTempMonAttack + 1], a
-	ld de, wTempMonAttack
-	lb bc, 2, 3
-	call .PrintDVs
-	pop af
-	ld [wTempMonAttack + 1], a
-	lb bc, 2, 3
+	and $f0
+	swap a
 	ld de, wTempMonSpeed
-	jp PrintNum
+	; fallthrough
 
-.PrintStat:
+.PrintDVsAndStat:
+; Prints the DV in a and then stat pointed by de.
+; Returns the next stat pointer in de.
+	push de
 	push hl
+	ld b, a
+	ld de, wTempMonAttack + 1
+	ld a, [de]
+	push af
+	ld a, b
+	ld [de], a
+	lb bc, 1, 3
 	call PrintNum
-	pop hl
-	ld de, SCREEN_WIDTH
-	add hl, de
-	ld de, SCREEN_WIDTH - 5
-	add hl, de
-	ret
-
-.PrintDVs:
-	push hl
-	call PrintNum
+	pop af
+	ld [wTempMonAttack + 1], a
 	pop hl
 	ld de, 5
 	add hl, de
+	pop de
+	push de
+	push hl
+	lb bc, 2, 3
+	call PrintNum
+	pop hl
+	ld de, (SCREEN_WIDTH * 2) - 5
+	add hl, de
+	pop de
 	ret
 
 .StatNames:

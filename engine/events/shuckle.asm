@@ -14,10 +14,6 @@ GiveShuckle:
 	predef TryAddMonToParty
 	jr nc, .NotGiven
 
-; Caught data.
-	ld b, CAUGHT_BY_UNKNOWN
-	farcall SetGiftPartyMonCaughtData
-
 ; Holding a Berry.
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, [wPartyCount]
@@ -52,6 +48,8 @@ GiveShuckle:
 	call SkipNames
 	ld de, SpecialShuckleOT
 	call CopyName2
+
+	farcall SetCaughtData
 
 ; Engine flag for this event.
 	ld hl, wDailyFlags1

@@ -1319,7 +1319,7 @@ GivePoke::
 	ld [hli], a
 	ld [hl], LOW(RANDY_OT_ID)
 	pop bc
-	farcall SetGiftPartyMonCaughtData
+	farcall SetCaughtData
 	jr .skip_nickname
 
 .send_to_box
