@@ -1530,13 +1530,23 @@ HandleMysteryberry:
 	ret
 
 .restore
-	; lousy hack
-	ld a, [hl]
-	cp SKETCH
-	ld b, 1
-	jr z, .sketch
+	; Figure out max PP of the given move. Restore min(MaxPP,5).
+	; Doesn't account for PP Up because CK+ doesn't have those.
+	push hl
+	push de
+	push bc
+	ld b, [hl]
+	ld c, MOVE_PP
+	farcall GetMoveAttr_bc
+	ld a, b
+	pop bc
+	pop de
+	pop hl
+	ld b, a
+	cp 5
+	jr c, .got_pp_to_restore
 	ld b, 5
-.sketch
+.got_pp_to_restore
 	ld a, [de]
 	add b
 	ld [de], a
