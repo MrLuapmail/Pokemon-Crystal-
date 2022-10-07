@@ -966,7 +966,7 @@ SetTempPartyMonData:
 	ld [de], a
 
 	; Eggs have 0 current HP
-	ld hl, wBufferMonAltSpecies
+	ld a, [wBufferMonAltSpecies]
 	cp EGG
 	jr nz, .not_egg
 	xor a
