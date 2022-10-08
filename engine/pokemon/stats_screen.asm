@@ -410,7 +410,7 @@ StatsScreen_InitUpperHalf:
 	hlcoord 14, 0
 	call PrintLevel
 	ld hl, .NicknamePointers
-	call GetNicknamePointer
+	call GetNicknamenamePointer
 	call CopyNickname
 	hlcoord 8, 2
 	call PlaceString
@@ -560,6 +560,8 @@ LoadPinkPage:
 	hlcoord 0, 8
 	ld b, $0
 	predef DrawPlayerHP
+	hlcoord 8, 8
+	ld [hl], $41 ; right HP/exp bar end cap
 	ld de, .Status_Type
 	hlcoord 0, 12
 	call PlaceString
@@ -570,7 +572,7 @@ LoadPinkPage:
 	ld a, b
 	and $f0
 	jr z, .NotImmuneToPkrs
-	hlcoord 8, 12
+	hlcoord 8, 9
 	ld [hl], "." ; Pokérus immunity dot
 .NotImmuneToPkrs:
 	ld a, [wMonType]
@@ -592,6 +594,24 @@ LoadPinkPage:
 	ld de, .OK_str
 	call PlaceString
 .done_status
+	ld a, [wTempMonHP]
+	ld b, a
+	ld a, [wTempMonHP + 1]
+	ld c, a
+	push bc
+	ld de, .HP_DVs
+	hlcoord 0, 10
+	call PlaceString
+	call .CalcHPDVs
+	hlcoord 6, 10
+	ld de, wTempMonHP
+	lb bc, 2, 3
+	call PrintNum
+	pop bc
+	ld a, c
+	ld [wTempMonHP + 1], a
+	ld a, b
+	ld [wTempMonHP], a
 	hlcoord 1, 15
 	predef PrintMonTypes
 	hlcoord 9, 8
@@ -776,13 +796,94 @@ LoadGreenPage:
 	db "MOVE@"
 
 LoadBluePage:
+	call .PlaceOTInfo
 	hlcoord 10, 8
+	ld de, SCREEN_WIDTH
+	ld b, 10
+	ld a, $31 ; vertical divider
+.vertical_divider
+	ld [hl], a
+	add hl, de
+	dec b
+	jr nz, .vertical_divider
+	hlcoord 11, 8
 	ld bc, 6
 	predef PrintTempMonStatsDVs
 	ret
 
+.PlaceOTInfo:
+	ld de, IDNoString
+	hlcoord 0, 9
+	call PlaceString
+	ld de, OTString
+	hlcoord 0, 12
+	call PlaceString
+	hlcoord 2, 10
+	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
+	ld de, wTempMonID
+	call PrintNum
+	ld hl, .OTNamePointers
+	call GetNicknamenamePointer
+	call CopyNickname
+	farcall CorrectNickErrors
+	hlcoord 2, 13
+	call PlaceString
+	ld a, [wTempMonCaughtGender]
+	and a
+	ret z
+	cp $7f
+	ret z
+	and CAUGHT_GENDER_MASK
+	ld a, "♂"
+	jr z, .got_gender
+	ld a, "♀"
+.got_gender
+	hlcoord 9, 13
+	ld [hl], a
+	ret
+
+.OTNamePointers:
+	dw wPartyMonOTs
+	dw wOTPartyMonOTs
+	dw wBufferMonOT ; unused
+	dw wBufferMonOT ; unused
+	dw wBufferMonOT ; unused
+	dw wBufferMonOT
+
 LoadOrangePage:
-	; Met at level
+	; Met at time
+	ld a, [wTempMonCaughtTime]
+	and CAUGHT_TIME_MASK
+	jr z, .met_time_done ; no time (shouldn't happen)
+	rlca
+	rlca
+	dec a
+	ld hl, .times
+	call GetNthString
+	ld d, h
+	ld e, l
+	call CopyName1
+	ld de, wStringBuffer2
+	hlcoord 1, 9
+	call PlaceString
+
+.met_time_done
+	ld a, [wTempMonCaughtLocation]
+	ld de, .unknown_location
+	and CAUGHT_LOCATION_MASK
+	jr z, .got_location
+	cp LANDMARK_EVENT
+	jr z, .got_location
+	cp LANDMARK_GIFT
+	jr z, .got_location
+	ld e, a
+	farcall GetLandmarkName
+	ld de, wStringBuffer1
+.got_location
+	hlcoord 1, 11
+	call PlaceString
+
+	; caught level
 	; Limited to between 1 and 63 since it's a 6-bit quantity.
 	ld a, [wTempMonCaughtLevel]
 	and CAUGHT_LEVEL_MASK
@@ -792,134 +893,41 @@ LoadOrangePage:
 	ld a, EGG_LEVEL ; egg hatch level
 
 .print
-	push af
-	push af
-	ld de, MetAtLevelString
-	hlcoord 1, 8
-	call PlaceString
-	pop af
 	ld [wTextDecimalByte], a
-	hlcoord 10, 8
+	hlcoord 9, 13
 	ld de, wTextDecimalByte
 	lb bc, PRINTNUM_LEFTALIGN | 1, 3
 	call PrintNum
-	pop af
-	cp 100
-	jr nc, .three_digits
-	cp 10
-	jr nc, .two_digits
-	ld de, InString
-	hlcoord 12, 8
+	ld de, MetAtLevelString
+	hlcoord 1, 13
 	call PlaceString
-	jr .got_level
-
-.two_digits
-	ld de, InString
-	hlcoord 13, 8
-	call PlaceString
-	jr .got_level
-
-.three_digits
-	ld de, InString
-	hlcoord 14, 8
-	call PlaceString
-	jr .got_level
+	hlcoord 8, 13
+	ld [hl], "<LV>"
+	ret
 
 .unknown_level
 	ld de, MetUnknownLevelString
-	hlcoord 1, 8
-	call PlaceString
-
-.got_level
-	; Met at time
-	ld a, [wTempMonCaughtTime]
-	and CAUGHT_TIME_MASK
-	rlca
-	rlca
-	ld hl, .times
-	call GetNthString
-	ld d, h
-	ld e, l
-	call CopyName1
-	ld de, wStringBuffer2
-	hlcoord 1, 12
-	call PlaceString
-
-	ld a, [wTempMonCaughtLocation]
-	ld de, UnknownText
-	and CAUGHT_LOCATION_MASK
-	jr z, .unknown_location
-
-	ld a, [wTempMonCaughtLocation]
-	cp LANDMARK_EVENT
-	jr z, .unknown_location
-	cp LANDMARK_GIFT
-	jr z, .unknown_location
-	ld e, a
-	farcall GetLandmarkName
-	ld de, wStringBuffer1
-	hlcoord 1, 10
-	call PlaceString
-	jr .got_location	
-
-.unknown_location
-	hlcoord 1, 10
-	call PlaceString
-	ld de, LocationText
-	hlcoord 1, 12
-	call PlaceString
-
-.got_location
-	ld de, IDNoString
-	hlcoord 1, 15
-	call PlaceString
-	ld de, OTString
-	hlcoord 1, 16
-	call PlaceString
-	hlcoord 5, 15
-	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
-	ld de, wTempMonID
-	call PrintNum
-	ld hl, .OTNamePointers
-	call GetNicknamePointer
-	call CopyNickname
-	farcall CorrectNickErrors
-	hlcoord 10, 16
+	hlcoord 1, 13
 	jp PlaceString
 
-.OTNamePointers:
-	dw wPartyMonOTs
-	dw wOTPartyMonOTs
-	dw wBufferMonOT ; unused
-	dw wBufferMonOT ; unused
-	dw wBufferMonOT ; unused
-	dw wBufferMonOT
-	
-
 .times
-	db "@"
-	db "in the morning.@"
-	db "during the day.@"
-	db "at night.@"
+	db "Met in the morning@"
+	db "Met during the day@"
+	db "Met at night@"
 
-UnknownText:
-	db "an unknown@"
-LocationText:
-	db "location.@"
+.unknown_location
+	db "UNKNOWN@"
 
 MetAtLevelString:
-	db "Met at <LV> @"
+	db "Met at@"
 MetUnknownLevelString:
-	db "Met at <LV> ??? in@"
-
-InString:
-	db "in@"
+	db "Met at <LV>???@"
 
 IDNoString:
 	db "<ID>№.@"
 
 OTString:
-	db "OT Name:@"
+	db "OT/@"
 
 StatsScreen_PlaceFrontpic:
 	ld hl, wTempMonDVs
@@ -1240,7 +1248,7 @@ CopyNickname:
 	pop de
 	ret
 
-GetNicknamePointer:
+GetNicknamenamePointer:
 	ld a, [wMonType]
 	add a
 	ld c, a

@@ -86,59 +86,34 @@ PrintTempMonStatsDVs:
 ; Print wTempMon's stats at hl, with spacing bc.
 	push bc
 	push hl
-	ld de, .Line1
-	hlcoord 7, 9
-	call PlaceString
-	ld de, .HPLine
-	hlcoord 3, 10
-	call PlaceString
-	ld de, .AtkLine
-	hlcoord 3, 11
-	call PlaceString
-	ld de, .DefLine
-	hlcoord 3, 12
-	call PlaceString
-	ld de, .SpAtkLine
-	hlcoord 3, 13
-	call PlaceString
-	ld de, .SpDefLine
-	hlcoord 3, 14
-	call PlaceString
-	ld de, .SpeLine
-	hlcoord 3, 15
+	ld de, .StatNames
 	call PlaceString
 	pop hl
 	pop bc
 	add hl, bc
-	ld bc, (SCREEN_WIDTH * 2) - 9
+	ld bc, SCREEN_WIDTH - 6
 	add hl, bc
 
-	; HP
-	call .CalcHPDVs
-	ld de, wTempMonHP
-	call .PrintDVsAndStat
-	
 	; Attack
 	ld a, [wTempMonDVs]
-	and $f0 
+	and $f0
 	swap a
 	ld de, wTempMonAttack
 	call .PrintDVsAndStat
 
 	; Defense
 	ld a, [wTempMonDVs]
-	and $f 
-	ld de, wTempMonAttack
+	and $f
 	call .PrintDVsAndStat
 
-	; Sp. Atk.
+	; Spcl. Atk.
 	ld a, [wTempMonDVs + 1]
 	and $f
 	ld de, wTempMonSpclAtk
 	push af
 	call .PrintDVsAndStat
 
-	; Sp. Def. reuses the same DV.
+	; Spcl. Def. Reuses the same DV.
 	pop af
 	call .PrintDVsAndStat
 
@@ -165,7 +140,7 @@ PrintTempMonStatsDVs:
 	pop af
 	ld [wTempMonAttack + 1], a
 	pop hl
-	ld de, 6
+	ld de, 5
 	add hl, de
 	pop de
 	push de
@@ -173,55 +148,18 @@ PrintTempMonStatsDVs:
 	lb bc, 2, 3
 	call PrintNum
 	pop hl
-	ld de, 14
+	ld de, (SCREEN_WIDTH * 2) - 5
 	add hl, de
 	pop de
 	ret
 
-.CalcHPDVs
-	push hl
-	push bc
-	ld hl, wTempMonDVs
-	ld a, [hl]
-	swap a
-	and 1
-	add a
-	add a
-	add a
-	ld b, a
-	ld a, [hli]
-	and 1
-	add a
-	add a
-	add b
-	ld b, a
-	ld a, [hl]
-	swap a
-	and 1
-	add a
-	add b
-	ld b, a
-	ld a, [hl]
-	and 1
-	add b
-	pop bc 
-	pop hl
-	ret
-
-.Line1:
-	db "DVs  Stat@"
-.HPLine:
-	db "HP@"
-.AtkLine:
-	db "Atk@"
-.DefLine:
-	db "Def@"
-.SpAtkLine:
-	db "SpA@"
-.SpDefLine:
-	db "SpD@"
-.SpeLine:
-	db "Spe@"
+.StatNames:
+	db   "DVs  Atk"
+	next "DVs  Def"
+	next "DVs  SpA"
+	next "DVs  SpD"
+	next "DVs  Spe"
+	next "@"
 
 PrintTempMonStats:
 ; Print wTempMon's stats at hl, with spacing bc.
