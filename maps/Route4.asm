@@ -12,6 +12,7 @@ TrainerBirdKeeperHank:
 	trainer BIRD_KEEPER, HANK, EVENT_BEAT_BIRD_KEEPER_HANK, BirdKeeperHankSeenText, BirdKeeperHankBeatenText, 0, .Script
 
 .Script:
+	clearevent EVENT_DISABLE_POCKET_PC
 	endifjustbattled
 	opentext
 	writetext BirdKeeperHankAfterBattleText
