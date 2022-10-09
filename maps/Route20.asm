@@ -17,7 +17,7 @@ TrainerSwimmerfNicole:
 	trainer SWIMMERF, NICOLE, EVENT_BEAT_SWIMMERF_NICOLE, SwimmerfNicoleSeenText, SwimmerfNicoleBeatenText, 0, .Script
 
 .Script:
-clearevent EVENT_DISABLE_POCKET_PC
+	clearevent EVENT_DISABLE_POCKET_PC
 	endifjustbattled
 	opentext
 	writetext SwimmerfNicoleAfterBattleText
