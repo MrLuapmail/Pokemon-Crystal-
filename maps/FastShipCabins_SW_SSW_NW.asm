@@ -9,18 +9,6 @@ FastShipCabins_SW_SSW_NW_MapScripts:
 
 	def_callbacks
 
-TrainerFirebreatherLyle:
-	trainer FIREBREATHER, LYLE, EVENT_BEAT_FIREBREATHER_LYLE, FirebreatherLyleSeenText, FirebreatherLyleBeatenText, 0, .Script
-
-.Script:
-	setevent EVENT_DISABLE_POCKET_PC
-	endifjustbattled
-	opentext
-	writetext FirebreatherLyleAfterBattleText
-	waitbutton
-	closetext
-	end
-
 TrainerBugCatcherKen:
 	trainer BUG_CATCHER, KEN, EVENT_BEAT_BUG_CATCHER_KEN, BugCatcherKenSeenText, BugCatcherKenBeatenText, 0, .Script
 
@@ -111,25 +99,6 @@ FastShipBed:
 
 FastShipCabinsNorthwestCabinTrashcan:
 	jumpstd TrashCanScript
-
-FirebreatherLyleSeenText:
-	text "I'm going to KANTO"
-	line "to put on fire-"
-	cont "breathing shows!"
-	done
-
-FirebreatherLyleBeatenText:
-	text "Fizzle… The"
-	line "flame's tiny…"
-	done
-
-FirebreatherLyleAfterBattleText:
-	text "I guess fire is"
-	line "weak on the sea."
-
-	para "It doesn't matter?"
-	line "Really?"
-	done
 
 BugCatcherKenSeenText:
 	text "I'm visiting my"
@@ -239,7 +208,6 @@ FastShipCabins_SW_SSW_NW_MapEvents:
 	bg_event  7,  7, BGEVENT_READ, FastShipCabinsNorthwestCabinTrashcan
 
 	def_object_events
-	object_event  3,  1, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 2, TrainerFirebreatherLyle, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
 	object_event  6, 15, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, TrainerBugCatcherKen, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
 	object_event  1, 26, SPRITE_BEAUTY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerBeautyCassie, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
 	object_event  3, 28, SPRITE_ROCKER, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 2, TrainerGuitaristClyde, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND

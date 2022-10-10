@@ -13,7 +13,6 @@ TrainerFirebreatherOtis:
 	trainer FIREBREATHER, OTIS, EVENT_BEAT_FIREBREATHER_OTIS, FirebreatherOtisSeenText, FirebreatherOtisBeatenText, 0, .Script
 
 .Script:
-	clearevent EVENT_DISABLE_POCKET_PC
 	endifjustbattled
 	opentext
 	writetext FirebreatherOtisAfterBattleText
