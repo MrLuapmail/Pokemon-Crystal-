@@ -2035,12 +2035,12 @@ _EngineFlagAction:
 
 Script_wildoff:
 	ld hl, wStatusFlags
-	set STATUSFLAGS_NO_WILD_ENCOUNTERS_F, [hl]
+	res STATUSFLAGS_FORCE_WILD_ENCOUNTERS_F, [hl]
 	ret
 
 Script_wildon:
 	ld hl, wStatusFlags
-	res STATUSFLAGS_NO_WILD_ENCOUNTERS_F, [hl]
+	set STATUSFLAGS_FORCE_WILD_ENCOUNTERS_F, [hl]
 	ret
 
 Script_xycompare:

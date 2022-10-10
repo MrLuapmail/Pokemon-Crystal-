@@ -2077,6 +2077,19 @@ CopyMapPartial::
 	ld bc, wMapPartialEnd - wMapPartial
 	call CopyBytes
 
+	; Check if we should force wild encounters to be enabled.
+	push hl
+	ld hl, wStatusFlags
+	res STATUSFLAGS_FORCE_WILD_ENCOUNTERS_F, [hl]
+	ld a, [wEnvironment]
+	bit FORCE_WILD_F, a
+	jr z, .wild_not_forced
+	and LOW(~FORCE_WILD)
+	ld [wEnvironment], a
+	set STATUSFLAGS_FORCE_WILD_ENCOUNTERS_F, [hl]
+.wild_not_forced
+	pop hl
+
 	pop af
 	rst Bankswitch
 	ret
