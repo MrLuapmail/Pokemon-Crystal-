@@ -1190,8 +1190,8 @@ WildBattleScript:
 
 CanUseSweetScent::
 	ld hl, wStatusFlags
-	bit STATUSFLAGS_NO_WILD_ENCOUNTERS_F, [hl]
-	jr nz, .no
+	bit STATUSFLAGS_FORCE_WILD_ENCOUNTERS_F, [hl]
+	jr nz, .yes
 	ld a, [wEnvironment]
 	cp CAVE
 	jr z, .ice_check
@@ -1204,6 +1204,7 @@ CanUseSweetScent::
 	ld a, [wPlayerStandingTile]
 	call CheckIceTile
 	jr z, .no
+.yes
 	scf
 	ret
 

@@ -29,6 +29,9 @@ MAP_LENGTH EQU _RS
 	const DUNGEON
 NUM_ENVIRONMENTS EQU const_value - 1
 
+FORCE_WILD_F EQU 7
+FORCE_WILD EQU (1 << FORCE_WILD_F)
+
 ; map palettes (wEnvironment)
 	const_def
 	const PALETTE_AUTO
