@@ -1536,6 +1536,7 @@ HandleMysteryberry:
 	push de
 	push bc
 	ld b, [hl]
+	dec b
 	ld c, MOVE_PP
 	farcall GetMoveAttr_bc
 	ld a, b
