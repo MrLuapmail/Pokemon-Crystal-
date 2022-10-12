@@ -128,7 +128,7 @@ PrintTempMonStatsDVs:
 	; Defense
 	ld a, [wTempMonDVs]
 	and $f 
-	ld de, wTempMonAttack
+	ld de, wTempMonDefense
 	call .PrintDVsAndStat
 
 	; Sp. Atk.
@@ -140,6 +140,7 @@ PrintTempMonStatsDVs:
 
 	; Sp. Def. reuses the same DV.
 	pop af
+	ld de, wTempMonSpclDef
 	call .PrintDVsAndStat
 
 	; Speed

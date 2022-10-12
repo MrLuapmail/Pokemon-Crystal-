@@ -849,8 +849,6 @@ LoadOrangePage:
 	ld de, UnknownText
 	and CAUGHT_LOCATION_MASK
 	jr z, .unknown_location
-
-	ld a, [wTempMonCaughtLocation]
 	cp LANDMARK_EVENT
 	jr z, .unknown_location
 	cp LANDMARK_GIFT
@@ -885,7 +883,20 @@ LoadOrangePage:
 	call CopyNickname
 	farcall CorrectNickErrors
 	hlcoord 10, 16
-	jp PlaceString
+	call PlaceString
+	ld a, [wTempMonCaughtGender]
+	and a
+	ret z
+	cp $7f
+	ret z
+	and CAUGHT_GENDER_MASK
+	ld a, "♂"
+	jr z, .got_gender
+	ld a, "♀"
+.got_gender
+	hlcoord 17, 16
+	ld [hl], a
+	ret
 
 .OTNamePointers:
 	dw wPartyMonOTs
