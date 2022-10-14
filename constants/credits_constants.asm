@@ -128,8 +128,11 @@
 	const BURITO
 	const CKK_SHOWDOWN_CALC
 	const TOXICENDUSER
+	const EMI
 	const NEW_PC_BOX
 	const FIQ
+	const BUG_HUNTING
+	const DRAZERK
 	const BUILT_ON_POKECRYSTAL
 	const PRET
 	const SPECIAL_THANKS_CKK
