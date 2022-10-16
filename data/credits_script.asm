@@ -309,7 +309,7 @@ CreditsScript:
 
 	db CREDITS_WAIT, 8
 
-	db  	   	  CKK_LEAD_PROGRAMMER, 1
+	db  	   	  	CKK_LEAD_PROGRAMMER, 1
 	db                         KDLPRO, 2
 
 	db CREDITS_WAIT, 8
@@ -336,47 +336,54 @@ CreditsScript:
 
 	db  CKK_GAME_TESTER_THEORYCRAFTER, 0
 	db                       REFINERY, 2
-	db          			 	 REJE, 3
+	db  												 REJE, 3
 	db                        RUNABUN, 4
 
 	db CREDITS_WAIT, 8
 
 	db  CKK_GAME_TESTER_THEORYCRAFTER, 0
 	db                      SAFETYMAN, 2
-	db          		   NOT_SUICUU, 3
-	db          		       BURITO, 4
+	db          		   		 NOT_SUICUU, 3
+	db          		       		 BURITO, 4
 
 	db CREDITS_WAIT, 8
 
-	db  	   	    CKK_SHOWDOWN_CALC, 1
+	db  	   	    	CKK_SHOWDOWN_CALC, 1
 	db                   TOXICENDUSER, 2
+	db                   					EMI, 3
 
 	db CREDITS_WAIT, 8
 
-	db  	   	    	   NEW_PC_BOX, 1
-	db                   		  FIQ, 2
+	db  	   	    	   		 NEW_PC_BOX, 1
+	db                   		  		FIQ, 2
 
 	db CREDITS_WAIT, 8
 
-	db  	   	 BUILT_ON_POKECRYSTAL, 1
+	db  	   	    	   		BUG_HUNTING, 1
+	db                   		  DRAZERK, 2
+
+
+	db CREDITS_WAIT, 8
+
+	db  	   	 	 BUILT_ON_POKECRYSTAL, 1
 	db                           PRET, 3
 
 	db CREDITS_WAIT, 8
 
-	db  	   	   SPECIAL_THANKS_CKK, 1
+	db  	   	   	 SPECIAL_THANKS_CKK, 1
 	db                          PCHAL, 2
 
 	db CREDITS_WAIT, 8
 
-	db  	   	       FAREWELL_MSG_1, 0
+	db  	   	       	 FAREWELL_MSG_1, 0
 
 	db CREDITS_WAIT, 8
 
-	db  	   	       FAREWELL_MSG_2, 1
+	db  	   	       	 FAREWELL_MSG_2, 1
 
 	db CREDITS_WAIT, 8
 
-	db            COPYRIGHT, 1
+	db            					COPYRIGHT, 1
 
 	db CREDITS_WAIT, 9
 	
