@@ -90,6 +90,8 @@ _BillsPC:
 	text_end
 
 BillsPC_LoadUI:
+	call LoadFontsExtra
+
 	; Load relevant parts from the battle font
 	ld de, FontBattleExtra + $0e tiles
 	ld hl, vTiles2 tile $6e
