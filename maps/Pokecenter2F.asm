@@ -893,9 +893,8 @@ Text_OldStatusSelect:
 	done
 
 Text_OldStatusGoodbye:
-	text "Okay then, young"
-	line "lad..."
-	cont "Take care..."
+	text "Okay then..."
+	line "Take care."
 	done
 
 Text_PoisonMon:
