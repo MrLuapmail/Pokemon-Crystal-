@@ -318,18 +318,48 @@ GetGender:
 	call AddNTimes
 
 .DVs:
-; Attack DV
-	ld a, [hli]
-	and $f0
-	ld b, a
-; Speed DV
-	ld a, [hl]
-	and $f0
+	ld a, [hl] ; atk
 	swap a
-
-; Put our DVs together.
-	or b
+	and a, $0F
+	
 	ld b, a
+
+	ld a, [hli] ; def
+	and a, $0F
+	rrca
+	ld c, a
+	swap a
+	or a, c
+	xor a, b
+
+	ld b, a
+
+	ld a, [hl] ; spe
+	swap a
+	and a, $0F
+	rrca
+	rrca
+	ld c, a
+	swap a
+	or a, c
+	xor a, b
+
+	ld b, a
+
+	ld a, [hli] ; spc
+	and a, $0F
+	rrca
+	rrca
+	rrca
+	ld c, a
+	swap a
+	or a, c
+	xor a, b
+
+	xor a, $0F ; same as starting with 0F, max DVs are male
+	and a, $0F ; "random" value between 00 and 0F
+	swap a
+	ld b, a ; store in b
 
 ; We need the gender ratio to do anything with this.
 	push bc

@@ -126,7 +126,7 @@
 	const RUNABUN
 	const SAFETYMAN
 	const BURITO
-	const CKK_SHOWDOWN_CALC
+	const CKK_DAMAGE_CALC
 	const TOXICENDUSER
 	const EMI
 	const NEW_PC_BOX

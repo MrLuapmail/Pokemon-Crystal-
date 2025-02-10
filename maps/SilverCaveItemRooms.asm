@@ -8,7 +8,7 @@ SilverCaveItemRooms_MapScripts:
 	def_callbacks
 
 SilverCaveItemRoomsMaxRevive:
-	itemball MAX_REVIVE
+	itemball TWISTEDSPOON
 
 SilverCaveItemRoomsFullRestore:
 	itemball FULL_RESTORE

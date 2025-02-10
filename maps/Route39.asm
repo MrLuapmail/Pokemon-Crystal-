@@ -106,7 +106,6 @@ TrainerPokefanfRuth:
 	trainer POKEFANF, RUTH, EVENT_BEAT_POKEFANF_RUTH, PokefanfRuthSeenText, PokefanfRuthBeatenText, 0, .Script
 
 .Script:
-	clearevent EVENT_DISABLE_POCKET_PC
 	endifjustbattled
 	opentext
 	writetext PokefanfRuthAfterBattleText
@@ -118,6 +117,7 @@ TrainerSailorEugene:
 	trainer SAILOR, EUGENE, EVENT_BEAT_SAILOR_EUGENE, SailorEugeneSeenText, SailorEugeneBeatenText, 0, .Script
 
 .Script:
+	clearevent EVENT_DISABLE_POCKET_PC
 	endifjustbattled
 	opentext
 	writetext SailorEugeneAfterBattleText
@@ -160,7 +160,7 @@ Route39FruitTree:
 	fruittree FRUITTREE_ROUTE_39
 
 Route39HiddenNugget:
-	hiddenitem NUGGET, EVENT_ROUTE_39_HIDDEN_NUGGET
+	hiddenitem THICK_CLUB, EVENT_ROUTE_39_HIDDEN_NUGGET
 
 Route39MiltankText:
 	text "MILTANK: Mooo!"
@@ -339,9 +339,9 @@ Route39_MapEvents:
 	bg_event  5, 13, BGEVENT_ITEM, Route39HiddenNugget
 
 	def_object_events
-	object_event  6, 28, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 5, TrainerSailorEugene, -1
-	object_event 12, 22, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerPokefanmDerek, -1
-	object_event 15, 24, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerPokefanfRuth, -1
+	object_event 17, 23, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 6, TrainerSailorEugene, -1
+	object_event 11, 22, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerPokefanmDerek, -1
+	object_event 15, 24, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerPokefanfRuth, -1
 	object_event  3, 12, SPRITE_TAUROS, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route39Miltank, -1
 	object_event  6, 11, SPRITE_TAUROS, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route39Miltank, -1
 	object_event  4, 15, SPRITE_TAUROS, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route39Miltank, -1

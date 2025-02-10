@@ -1,123 +1,123 @@
 Unevolved Form,Method,Level,Item,Evolved Form
-Bulbasaur,Level,16,,Ivysaur
-Ivysaur,Level,32,,Venusaur
-Charmander,Level,16,,Charmeleon
-Charmeleon,Level,36,,Charizard
-Squirtle,Level,16,,Wartortle
-Wartortle,Level,36,,Blastoise
 Caterpie,Level,7,,Metapod
-Metapod,Level,10,,Butterfree
 Weedle,Level,7,,Kakuna
+Metapod,Level,10,,Butterfree
 Kakuna,Level,10,,Beedrill
-Pidgey,Level,18,,Pidgeotto
-Pidgeotto,Level,36,,Pidgeot
+Cyndaquil,Level,14,,Quilava
+Sentret,Level,15,,Furret
+Pichu,Level,15,,Pikachu
+Cleffa,Level,15,,Clefairy
+Igglybuff,Level,15,,Jigglypuff
+Mareep,Level,15,,Flaaffy
+Bulbasaur,Level,16,,Ivysaur
+Charmander,Level,16,,Charmeleon
+Squirtle,Level,16,,Wartortle
+Pidgey,Level,16,,Pidgeotto
+Nidoran F,Level,16,,Nidorina
+Nidoran M,Level,16,,Nidorino
+Oddish,Level,16,,Gloom
+Abra,Level,16,,Kadabra
+Bellsprout,Level,16,,Weepinbell
+Chikorita,Level,16,,Bayleef
+Totodile,Level,16,,Croconaw
+Ledyba,Level,16,,Ledian
+Hoppip,Level,16,,Skiploom
+Sunkern,Level,16,,Sunflora
+Togepi,Level,18,,Togetic
+Marill,Level,18,,Azumarill
 Rattata,Level,20,,Raticate
 Spearow,Level,20,,Fearow
+Hoothoot,Level,20,,Noctowl
+Wooper,Level,20,,Quagsire
+Tyrogue,Hitmonchan,25,,Hitmonchan
+Tyrogue,Hitmonlee,25,,Hitmonlee
+Tyrogue,Hitmontop,25,,Hitmontop
 Ekans,Level,22,,Arbok
-Pikachu,Item,,Thunderstone,Raichu
 Sandshrew,Level,22,,Sandslash
-Nidoran F,Level,16,,Nidorina
+Zubat,Level,22,,Golbat
+Spinarak,Level,22,,Ariados
+Snubbull,Level,23,,Granbull
+Paras,Level,24,,Parasect
+Meowth,Level,25,,Persian
+Poliwag,Level,25,,Poliwhirl
+Geodude,Level,25,,Graveler
+Gastly,Level,25,,Haunter
+Goldeen,Level,25,,Seaking
+Natu,Level,25,,Xatu
+Remoraid,Level,25,,Octillery
+Phanpy,Level,25,,Donphan
+Diglett,Level,26,,Dugtrio
+Drowzee,Level,26,,Hypno
+Chinchou,Level,27,,Lanturn
+Skiploom,Level,25,,Jumpluff
+Mankey,Level,28,,Primeape
+Machop,Level,28,,Machoke
+Krabby,Level,28,,Kingler
+Cubone,Level,24,,Marowak
+Slugma,Level,30,,Magcargo
+Venonat,Level,29,,Venomoth
+Psyduck,Level,30,,Golduck
+Magnemite,Level,30,,Magneton
+Voltorb,Level,30,,Electrode
+Magikarp,Level,30,,Gyarados
+Dratini,Level,30,,Dragonair
+Croconaw,Level,30,,Feraligatr
+Flaaffy,Level,30,,Ampharos
+Teddiursa,Level,30,,Ursaring
+Houndour,Level,30,,Houndoom
+Smoochum,Level,30,,Jynx
+Elekid,Level,30,,Electabuzz
+Magby,Level,30,,Magmar
+Larvitar,Level,30,,Pupitar
+Ponyta,Level,31,,Rapidash
+Doduo,Level,37,,Dodrio
+Pineco,Level,31,,Forretress
+Ivysaur,Level,32,,Venusaur
+Horsea,Level,32,,Seadra
+Bayleef,Level,32,,Meganium
+Seel,Level,34,,Dewgong
+Koffing,Level,31,,Weezing
+Charmeleon,Level,36,,Charizard
+Wartortle,Level,36,,Blastoise
+Pidgeotto,Level,36,,Pidgeot
+Poliwhirl,Level,36,,Politoed
+Quilava,Level,36,,Typhlosion
+Slowpoke,Level,37,,Slowbro
+Grimer,Level,37,,Muk
+Tentacool,Level,40,,Tentacruel
+Porygon,Level,40,,Porygon2
+Omanyte,Level,40,,Omastar
+Kabuto,Level,40,,Kabutops
+Graveler,Level,42,,Golem
+Rhyhorn,Level,42,,Rhydon
+Golbat,Level,45,,Crobat
+Seadra,Level,50,,Kingdra
+Swinub,Level,50,,Piloswine
+Kadabra,Level,55,,Alakazam
+Machoke,Level,55,,Machamp
+Haunter,Level,55,,Gengar
+Onix,Level,55,,Steelix
+Scyther,Level,55,,Scizor
+Dragonair,Level,55,,Dragonite
+Pupitar,Level,65,,Tyranitar
+Chansey,Level,90,,Blissey
+Pikachu,Item,,Thunderstone,Raichu
 Nidorina,Item,,Moon Stone,Nidoqueen
-Nidoran M,Level,16,,Nidorino
 Nidorino,Item,,Moon Stone,Nidoking
 Clefairy,Item,,Moon Stone,Clefable
 Vulpix,Item,,Fire Stone,Ninetales
 Jigglypuff,Item,,Moon Stone,Wigglytuff
-Zubat,Level,22,,Golbat
-Golbat,Level,45,,Crobat
-Oddish,Level,21,,Gloom
 Gloom,Item,,Leaf Stone,Vileplume
 Gloom,Item,,Sun Stone,Bellossom
-Paras,Level,24,,Parasect
-Venonat,Level,29,,Venomoth
-Diglett,Level,26,,Dugtrio
-Meowth,Level,28,,Persian
-Psyduck,Level,30,,Golduck
-Mankey,Level,28,,Primeape
 Growlithe,Item,,Fire Stone,Arcanine
-Poliwag,Level,25,,Poliwhirl
 Poliwhirl,Item,,Water Stone,Poliwrath
-Poliwhirl,Level,36,,Politoed
-Abra,Level,16,,Kadabra
-Kadabra,Level,55,,Alakazam
-Machop,Level,28,,Machoke
-Machoke,Level,55,,Machamp
-Bellsprout,Level,21,,Weepinbell
 Weepinbell,Item,,Leaf Stone,Victreebel
-Tentacool,Level,30,,Tentacruel
-Geodude,Level,25,,Graveler
-Graveler,Level,42,,Golem
-Ponyta,Level,36,,Rapidash
-Slowpoke,Level,37,,Slowbro
 Slowpoke,Item,,Water Stone,Slowking
-Magnemite,Level,30,,Magneton
-Doduo,Level,31,,Dodrio
-Seel,Level,34,,Dewgong
-Grimer,Level,38,,Muk
 Shellder,Item,,Water Stone,Cloyster
-Gastly,Level,25,,Haunter
-Haunter,Level,55,,Gengar
-Onix,Level,65,,Steelix
-Drowzee,Level,26,,Hypno
-Krabby,Level,28,,Kingler
-Voltorb,Level,30,,Electrode
 Exeggcute,Item,,Leaf Stone,Exeggutor
-Cubone,Level,28,,Marowak
-Koffing,Level,35,,Weezing
-Rhyhorn,Level,42,,Rhydon
-Chansey,Level,90,,Blissey
-Horsea,Level,32,,Seadra
-Seadra,Level,70,,Kingdra
-Goldeen,Level,27,,Seaking
 Staryu,Item,,Water Stone,Starmie
-Scyther,Level,55,,Scizor
-Magikarp,Level,30,,Gyarados
 Eevee,Item,,Thunderstone,Jolteon
 Eevee,Item,,Water Stone,Vaporeon
 Eevee,Item,,Fire Stone,Flareon
 Eevee,Item,,Sun Stone,Espeon
 Eevee,Item,,Moon Stone,Umbreon
-Porygon,Level,40,,Porygon2
-Omanyte,Level,40,,Omastar
-Kabuto,Level,40,,Kabutops
-Dratini,Level,30,,Dragonair
-Dragonair,Level,55,,Dragonite
-Chikorita,Level,16,,Bayleef
-Bayleef,Level,32,,Meganium
-Cyndaquil,Level,14,,Quilava
-Quilava,Level,36,,Typhlosion
-Totodile,Level,18,,Croconaw
-Croconaw,Level,30,,Feraligatr
-Sentret,Level,15,,Furret
-Hoothoot,Level,20,,Noctowl
-Ledyba,Level,18,,Ledian
-Spinarak,Level,22,,Ariados
-Chinchou,Level,27,,Lanturn
-Pichu,Level,16,,Pikachu
-Cleffa,Level,16,,Clefairy
-Igglybuff,Level,16,,Jigglypuff
-Togepi,Level,18,,Togetic
-Natu,Level,25,,Xatu
-Mareep,Level,15,,Flaaffy
-Flaaffy,Level,30,,Ampharos
-Marill,Level,18,,Azumarill
-Hoppip,Level,18,,Skiploom
-Skiploom,Level,27,,Jumpluff
-Sunkern,Item,,Sun Stone,Sunflora
-Wooper,Level,20,,Quagsire
-Pineco,Level,31,,Forretress
-Snubbull,Level,23,,Granbull
-Teddiursa,Level,30,,Ursaring
-Slugma,Level,38,,Magcargo
-Swinub,Level,33,,Piloswine
-Remoraid,Level,25,,Octillery
-Houndour,Level,24,,Houndoom
-Phanpy,Level,25,,Donphan
-Tyrogue,Hitmonchan,20,,Hitmonchan
-Tyrogue,Hitmonlee,20,,Hitmonlee
-Tyrogue,Hitmontop,20,,Hitmontop
-Smoochum,Level,30,,Jynx
-Elekid,Level,30,,Electabuzz
-Magby,Level,30,,Magmar
-Larvitar,Level,30,,Pupitar
-Pupitar,Level,55,,Tyranitar

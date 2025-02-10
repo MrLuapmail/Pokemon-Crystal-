@@ -65,7 +65,6 @@ MountMoon_MapScripts:
 	applymovement MOUNTMOON_SILVER, MountMoonSilverMovementAfter
 	disappear MOUNTMOON_SILVER
 	setscene SCENE_FINISHED
-	clearevent EVENT_DISABLE_POCKET_PC
 	setevent EVENT_BEAT_RIVAL_IN_MT_MOON
 	playmapmusic
 	end

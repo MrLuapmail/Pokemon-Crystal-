@@ -31,9 +31,9 @@ DragonShrine_MapScripts:
 	loadmenu DragonShrineQuestion1_MenuHeader
 	verticalmenu
 	closewindow
-	ifequal 1, .RightAnswer
-	ifequal 2, .WrongAnswer
-	ifequal 3, .RightAnswer
+	ifequal 1, .WrongAnswer
+	ifequal 2, .RightAnswer
+	ifequal 3, .WrongAnswer
 	end
 
 .Question2:
@@ -43,9 +43,9 @@ DragonShrine_MapScripts:
 	loadmenu DragonShrineQuestion2_MenuHeader
 	verticalmenu
 	closewindow
-	ifequal 1, .RightAnswer
-	ifequal 2, .RightAnswer
-	ifequal 3, .WrongAnswer
+	ifequal 1, .WrongAnswer
+	ifequal 2, .WrongAnswer
+	ifequal 3, .RightAnswer
 .Question3:
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_4
 	writetext DragonShrineQuestion3Text
@@ -53,9 +53,9 @@ DragonShrine_MapScripts:
 	loadmenu DragonShrineQuestion3_MenuHeader
 	verticalmenu
 	closewindow
-	ifequal 1, .WrongAnswer
-	ifequal 2, .RightAnswer
-	ifequal 3, .RightAnswer
+	ifequal 1, .RightAnswer
+	ifequal 2, .WrongAnswer
+	ifequal 3, .WrongAnswer
 .Question4:
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_5
 	writetext DragonShrineQuestion4Text
@@ -63,9 +63,9 @@ DragonShrine_MapScripts:
 	loadmenu DragonShrineQuestion4_MenuHeader
 	verticalmenu
 	closewindow
-	ifequal 1, .RightAnswer
-	ifequal 2, .WrongAnswer
-	ifequal 3, .RightAnswer
+	ifequal 1, .WrongAnswer
+	ifequal 2, .RightAnswer
+	ifequal 3, .WrongAnswer
 .Question5:
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_6
 	writetext DragonShrineQuestion5Text
@@ -287,7 +287,7 @@ DragonShrineQuestion2_MenuHeader:
 	db 3 ; items
 	db "Strategy@"
 	db "Raising@"
-	db "Cheating@"
+	db "Balling hard@"
 
 DragonShrineQuestion3_MenuHeader:
 	db MENU_BACKUP_TILES ; flags
@@ -298,7 +298,7 @@ DragonShrineQuestion3_MenuHeader:
 .MenuData:
 	db STATICMENU_CURSOR | STATICMENU_DISABLE_B ; flags
 	db 3 ; items
-	db "Weak person@"
+	db "Falkner@"
 	db "Tough person@"
 	db "Anybody@"
 
@@ -312,7 +312,7 @@ DragonShrineQuestion4_MenuHeader:
 	db STATICMENU_CURSOR | STATICMENU_DISABLE_B ; flags
 	db 3 ; items
 	db "Love@"
-	db "Violence@"
+	db "Candies@"
 	db "Knowledge@"
 
 DragonShrineQuestion5_MenuHeader:
@@ -325,7 +325,7 @@ DragonShrineQuestion5_MenuHeader:
 	db STATICMENU_CURSOR | STATICMENU_DISABLE_B ; flags
 	db 3 ; items
 	db "Tough@"
-	db "Both@"
+	db "VIGOR@"
 	db "Weak@"
 
 DragonShrinePlayerWalkInMovement:

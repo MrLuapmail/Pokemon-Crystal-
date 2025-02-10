@@ -95,7 +95,7 @@ PlateauRivalBattleCommon:
 	; Cyndaquil
 	winlosstext PlateauRivalWinText, PlateauRivalLoseText
 	setlasttalked INDIGOPLATEAUPOKECENTER1F_SILVER
-	loadtrainer RIVAL2, RIVAL2
+	loadtrainer YOUNGSTER, JOEY2
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
@@ -104,7 +104,7 @@ PlateauRivalBattleCommon:
 .Totodile:
 	winlosstext PlateauRivalWinText, PlateauRivalLoseText
 	setlasttalked INDIGOPLATEAUPOKECENTER1F_SILVER
-	loadtrainer RIVAL2, RIVAL2
+	loadtrainer YOUNGSTER, JOEY2
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
@@ -113,7 +113,7 @@ PlateauRivalBattleCommon:
 .Chikorita:
 	winlosstext PlateauRivalWinText, PlateauRivalLoseText
 	setlasttalked INDIGOPLATEAUPOKECENTER1F_SILVER
-	loadtrainer RIVAL2, RIVAL2
+	loadtrainer YOUNGSTER, JOEY2
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
@@ -123,6 +123,8 @@ PlateauRivalPostBattle:
 	playmusic MUSIC_RIVAL_AFTER
 	opentext
 	writetext PlateauRivalText2
+	promptbutton
+	verbosegiveitem MASTER_BALL
 	waitbutton
 	closetext
 	turnobject PLAYER, DOWN
@@ -244,15 +246,11 @@ PlateauRivalWinText:
 	done
 
 PlateauRivalText2:
-	text "…Darn… I still"
-	line "can't win…"
+	text "…Hmmmm"
+	line "you need some…"
 
-	para "I… I have to think"
-	line "more about my"
-	cont "#MON…"
-
-	para "Humph! Try not to"
-	line "lose!"
+	para "more balls."
+	line "Here take this"
 	done
 
 PlateauRivalLoseText:

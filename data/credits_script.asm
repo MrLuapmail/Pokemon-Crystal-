@@ -348,7 +348,7 @@ CreditsScript:
 
 	db CREDITS_WAIT, 8
 
-	db  	   	    	CKK_SHOWDOWN_CALC, 1
+	db  	   	    	CKK_DAMAGE_CALC, 1
 	db                   TOXICENDUSER, 2
 	db                   					EMI, 3
 

@@ -127,7 +127,7 @@ CreditsStringsPointers:
 	dw .Runabun
 	dw .Safetyman
 	dw .Burito 
-	dw .ShowdownCalc
+	dw .DamageCalc
 	dw .ToxicEndUser
 	dw .Emi
 	dw .NewPCBox
@@ -276,7 +276,7 @@ CreditsStringsPointers:
 .Runabun:				            db "      runabun@"
 .Safetyman:				          db "     Safetyman@"
 .Burito:				            db "      Burito@"
-.ShowdownCalc:			        db "SHOWDOWN CALCULATOR@"
+.DamageCalc:			        db "DAMAGE CALCULATOR@"
 .ToxicEndUser:			        db "   toxicenduser@"
 .Emi:												db "       Emi@"
 .NewPCBox:			   	        db "    New PC Box@"

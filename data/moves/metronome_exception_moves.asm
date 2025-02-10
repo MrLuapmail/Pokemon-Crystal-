@@ -9,4 +9,5 @@ MetronomeExcepts:
 	db MIRROR_COAT
 	db DESTINY_BOND
 	db SLEEP_TALK
+	db THIEF
 	db -1

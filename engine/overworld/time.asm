@@ -191,16 +191,7 @@ InitializeStartDay:
 	call CopyDayToHL
 	ret
 
-CheckPokerusTick::
-	ld hl, wTimerEventStartDay
-	call CalcDaysSince
-	call GetDaysSince
-	and a
-	jr z, .done ; not even a day has passed since game start
-	ld b, a
-	farcall ApplyPokerusTick
-.done
-	xor a
+CheckPokerusTick::	
 	ret
 
 SetUnusedTwoDayTimer: ; unreferenced

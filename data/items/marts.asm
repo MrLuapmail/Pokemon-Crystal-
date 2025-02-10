@@ -190,7 +190,7 @@ MartEcruteak:
 	db AWAKENING
 	db BURN_HEAL
 	db ICE_HEAL
-	db REVIVE
+	db BERRY_JUICE
 	db -1 ; end
 
 MartMahogany1:
