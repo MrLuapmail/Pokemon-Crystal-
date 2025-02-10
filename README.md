@@ -4,7 +4,7 @@ This is the current repo which is used to build current version of CK+.
 
 CK+ is a reimagination of SHF's Crystal Kaizo romhack: https://www.pokecommunity.com/threads/pok%C3%A9mon-crystal-kaizo-the-official-sequel-to-blue-kaizo.334713/
 
-CK+ is build upon the Crystal decomp (see below).
+CK+ is build upon the Crystal decomp: https://github.com/pret/pokecrystal
 
 # Pokémon Crystal [![Build Status][ci-badge]][ci]
 
